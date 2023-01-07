@@ -1,0 +1,14 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-loading {
+  display: block;
+
+  &[mode='determinate'] {
+    @include loading-configs;
+  }
+
+  &[mode='indeterminate'] {
+    @include loading-indetermined;
+  }
+}

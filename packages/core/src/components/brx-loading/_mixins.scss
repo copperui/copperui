@@ -1,0 +1,136 @@
+@use 'sass:math';
+
+@mixin loading-configs {
+  @include loading-token;
+  @include loading-default;
+}
+
+@mixin loading-token {
+  --loading-indetermined-color: var(--interactive);
+  --loading-indetermined-diameter-md: 44px;
+  --loading-indetermined-diameter-sm: 24px;
+}
+
+@mixin loading-default {
+  --loading-diameter: 84px;
+  $diameter: 84px;
+  $position: calc(50% - (84px * 0.5));
+  $rotation-steps: 100;
+  $rotation-increment: 1.8;
+  $stroke: 5px;
+
+  background-color: v(color-secondary-04);
+  border-radius: 50%;
+  height: var(--loading-diameter);
+  width: var(--loading-diameter);
+  z-index: var(--z-index-layer-4);
+
+  .brx-loading-mask,
+  .brx-loading-fill {
+    backface-visibility: hidden;
+    border-radius: 50%;
+    clip: rect(0, $diameter, $diameter, $diameter * 0.5);
+    height: $diameter;
+    overflow: hidden;
+    position: absolute;
+    width: $diameter;
+  }
+
+  .brx-loading-fill {
+    background: var(--interactive);
+    clip: rect(0, $diameter * 0.5, $diameter, 0);
+  }
+
+  &::after {
+    $diameter: $diameter - $stroke * 2;
+    background: v(color-secondary-01);
+    border-radius: 50%;
+    color: var(--interactive);
+    content: attr(data-progress) '%';
+    font-size: v(font-size-scale-up-02);
+    font-weight: v(font-weight-semi-bold);
+    height: $diameter;
+    line-height: $diameter;
+    margin: $stroke;
+    position: absolute;
+    text-align: center;
+    width: $diameter;
+  }
+
+  @keyframes fill {
+    0% {
+      transform: rotate(0deg);
+    }
+    @for $step from 1 through $rotation-steps {
+      $rotation: math.div($step, 100) * 360;
+    }
+  }
+
+  @for $step from 1 through $rotation-steps {
+    $rotation: math.div($step, 100) * 360;
+
+    &[data-progress='#{$step}'] {
+      $rotate: $step * $rotation-increment;
+
+      .brx-loading-mask.full,
+      .brx-loading-fill {
+        animation: fill ease-in-out 2s;
+        transform: rotate(#{$rotate}deg);
+      }
+    }
+  }
+}
+
+@mixin loading-indetermined {
+  $position-md: calc(50% - (44px * 0.5));
+  $position-sm: calc(50% - (24px * 0.5));
+
+  @include loading-token();
+  color: transparent !important;
+  min-height: 32px;
+  pointer-events: none;
+  position: relative;
+  z-index: var(--z-index-layer-4);
+
+  &::after {
+    animation: spinAround 1.3s infinite linear;
+    border: 2px solid var(--loading-indetermined-color);
+    border-radius: 50%;
+    border-right-color: transparent;
+    content: '';
+    display: block;
+    height: var(--loading-indetermined-diameter-sm);
+    left: $position-sm;
+    position: absolute;
+    top: $position-sm;
+    width: var(--loading-indetermined-diameter-sm);
+  }
+
+  &[variant='primary'] {
+    &::after {
+      border-bottom-color: v(color-secondary-01);
+      border-left-color: v(color-secondary-01);
+      border-top-color: v(color-secondary-01);
+    }
+  }
+
+  &[size='medium'] {
+    &::after {
+      border-width: 4px;
+      height: var(--loading-indetermined-diameter-md);
+      left: $position-md;
+      top: $position-md;
+      width: var(--loading-indetermined-diameter-md);
+    }
+  }
+
+  @keyframes spinAround {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+}

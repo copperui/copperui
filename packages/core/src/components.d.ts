@@ -33,6 +33,11 @@ export namespace Components {
          */
         "name": string;
     }
+    interface BrxLoading {
+        "progress": string | number | undefined;
+        "size": string | undefined;
+        "variant": string | undefined;
+    }
     interface BrxTooltip {
         "active": boolean;
         "color": string;
@@ -102,6 +107,7 @@ declare global {
         "brx-accordion-legacy-entry-content": HTMLBrxAccordionLegacyEntryContentElement;
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-icon": HTMLBrxIconElement;
+        "brx-loading": HTMLBrxLoadingElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -135,6 +141,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
     }
+    interface BrxLoading {
+        "progress"?: string | number | undefined;
+        "size"?: string | undefined;
+        "variant"?: string | undefined;
+    }
     interface BrxTooltip {
         "active"?: boolean;
         "color"?: string;
@@ -156,6 +167,7 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry-content": BrxAccordionLegacyEntryContent;
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-icon": BrxIcon;
+        "brx-loading": BrxLoading;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -169,6 +181,7 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-content": LocalJSX.BrxAccordionLegacyEntryContent & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryContentElement>;
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
+            "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }
