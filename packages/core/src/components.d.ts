@@ -33,6 +33,21 @@ export namespace Components {
          */
         "name": string;
     }
+    interface BrxTooltip {
+        "active": boolean;
+        "color": string;
+        "place": 'top' | 'bottom' | 'left' | 'right';
+        "popover": boolean;
+        "target": string | HTMLElement | undefined;
+        "text": string | undefined;
+        "timer": number | undefined;
+        "type": string;
+    }
+    interface BrxTooltipContent {
+        "color": string;
+        "place": string;
+        "popover": boolean;
+    }
 }
 export interface BrxAccordionLegacyEntryItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -69,12 +84,26 @@ declare global {
         prototype: HTMLBrxIconElement;
         new (): HTMLBrxIconElement;
     };
+    interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
+    }
+    var HTMLBrxTooltipElement: {
+        prototype: HTMLBrxTooltipElement;
+        new (): HTMLBrxTooltipElement;
+    };
+    interface HTMLBrxTooltipContentElement extends Components.BrxTooltipContent, HTMLStencilElement {
+    }
+    var HTMLBrxTooltipContentElement: {
+        prototype: HTMLBrxTooltipContentElement;
+        new (): HTMLBrxTooltipContentElement;
+    };
     interface HTMLElementTagNameMap {
         "brx-accordion-legacy": HTMLBrxAccordionLegacyElement;
         "brx-accordion-legacy-entry": HTMLBrxAccordionLegacyEntryElement;
         "brx-accordion-legacy-entry-content": HTMLBrxAccordionLegacyEntryContentElement;
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-icon": HTMLBrxIconElement;
+        "brx-tooltip": HTMLBrxTooltipElement;
+        "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
 }
 declare namespace LocalJSX {
@@ -106,12 +135,29 @@ declare namespace LocalJSX {
          */
         "name"?: string;
     }
+    interface BrxTooltip {
+        "active"?: boolean;
+        "color"?: string;
+        "place"?: 'top' | 'bottom' | 'left' | 'right';
+        "popover"?: boolean;
+        "target"?: string | HTMLElement | undefined;
+        "text"?: string | undefined;
+        "timer"?: number | undefined;
+        "type"?: string;
+    }
+    interface BrxTooltipContent {
+        "color"?: string;
+        "place"?: string;
+        "popover"?: boolean;
+    }
     interface IntrinsicElements {
         "brx-accordion-legacy": BrxAccordionLegacy;
         "brx-accordion-legacy-entry": BrxAccordionLegacyEntry;
         "brx-accordion-legacy-entry-content": BrxAccordionLegacyEntryContent;
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-icon": BrxIcon;
+        "brx-tooltip": BrxTooltip;
+        "brx-tooltip-content": BrxTooltipContent;
     }
 }
 export { LocalJSX as JSX };
@@ -123,6 +169,8 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-content": LocalJSX.BrxAccordionLegacyEntryContent & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryContentElement>;
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
+            "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
+            "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }
     }
 }

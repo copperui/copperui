@@ -13,3 +13,5 @@ export const BrxAccordionLegacyEntry = /*@__PURE__*/createReactComponent<JSX.Brx
 export const BrxAccordionLegacyEntryContent = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryContent, HTMLBrxAccordionLegacyEntryContentElement>('brx-accordion-legacy-entry-content');
 export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryItem, HTMLBrxAccordionLegacyEntryItemElement>('brx-accordion-legacy-entry-item');
 export const BrxIcon = /*@__PURE__*/createReactComponent<JSX.BrxIcon, HTMLBrxIconElement>('brx-icon');
+export const BrxTooltip = /*@__PURE__*/createReactComponent<JSX.BrxTooltip, HTMLBrxTooltipElement>('brx-tooltip');
+export const BrxTooltipContent = /*@__PURE__*/createReactComponent<JSX.BrxTooltipContent, HTMLBrxTooltipContentElement>('brx-tooltip-content');

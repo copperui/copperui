@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-tooltip-content {
+  display: block;
+
+  @include tooltip-configs;
+}
