@@ -1,0 +1,47 @@
+@import '../../styles/component-base';
+
+brx-accordion-legacy-entry-item {
+  border-bottom: 1px solid v(color-secondary-04);
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    --bg-color: transparent;
+    background: v(bg-color);
+    border: 0;
+    color: var(--interactive);
+    display: flex;
+    font-size: v(font-size-scale-up-01);
+    justify-content: space-between;
+    outline: none;
+    padding: v(spacing-scale-2x) 0;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+
+    brx-icon {
+      margin: 0 v(spacing-scale-2x) 0 v(spacing-scale-baseh);
+    }
+
+    .title {
+      flex: 1;
+      margin: 0;
+    }
+
+    @include focus;
+    @include hover;
+  }
+
+  &[active] {
+    border-bottom: 0;
+
+    .header {
+      font-weight: v(font-weight-semi-bold);
+    }
+
+    + brx-accordion-legacy-entry-content {
+      border-bottom: 1px solid v(color-secondary-04);
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../styles/component-base';
+
+brx-accordion-legacy {
+  display: block;
+
+  background: v(bg-color);
+  border-top: 1px solid v(color-secondary-04);
+
+  &[negative] {
+    @include dark-mode;
+    --bg-color: var(--background-dark);
+  }
+}

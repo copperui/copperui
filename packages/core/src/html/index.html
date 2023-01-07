@@ -33,5 +33,177 @@
 
       <brx-icon name="bicycle"></brx-icon>
     </section>
+
+    <section>
+      <h1>Accordion</h1>
+
+      <hr />
+
+      <brx-accordion-legacy single negative="negative">
+        <brx-accordion-legacy-entry header-title="Assuntos #01">
+          <div slot="content">Conteúdo #01 | (título: prop; conteúdo: slot)</div>
+        </brx-accordion-legacy-entry>
+
+        <brx-accordion-legacy-entry header-title="Assuntos #02" content="Conteúdo #02 | (título: prop; conteúdo: prop)"> </brx-accordion-legacy-entry>
+
+        <brx-accordion-legacy-entry>
+          <span slot="title">Assuntos #03</span>
+          <div slot="content">Conteúdo #03 | (título: slot; conteúdo: slot)</div>
+        </brx-accordion-legacy-entry>
+      </brx-accordion-legacy>
+
+      <hr />
+
+      <brx-accordion-legacy id="acc-lgcy-js"> </brx-accordion-legacy>
+
+      <script type="text/javascript">
+        document.querySelector('#acc-lgcy-js').entries = [{ id: '02', title: '02', content: '02' }];
+      </script>
+    </section>
+
+    <!-- <copper-container>
+      <h1>Utilitários</h1>
+
+      <section>
+        <section>
+          <h1>Tooltip</h1>
+
+          <div class="mb-3">
+            <div>
+              <copper-tooltip target="#sample-info-top">
+                <a class="h5" href="javascript:void(0);">Informação</a>
+              </copper-tooltip>
+
+              <copper-tooltip-content id="sample-info-top" info="info" place="top">
+                <span class="text" role="tooltip">Fulano de Tal da Silva</span>
+                <span class="subtext">Diretor Presidente</span>
+              </copper-tooltip-content>
+            </div>
+
+            <hr />
+
+            <div>
+              <copper-tooltip text="Texto de Informação!">
+                <a href="javascript:void(0);"><img src="https://picsum.photos/50" alt="Avatar" /></a>
+              </copper-tooltip>
+            </div>
+
+            <div class="col-md-6 text-center">
+              <div class="mb-3">
+                <copper-tooltip target="#sample-info-top">
+                  <a class="h5" href="javascript:void(0);">Informação</a>
+                </copper-tooltip>
+
+                <copper-tooltip-content id="sample-info-top" info="info" place="top">
+                  <span class="text" role="tooltip">Fulano de Tal da Silva</span><span class="subtext">Diretor Presidente</span>
+                </copper-tooltip-content>
+              </div>
+              <div class="mb-3">
+                <copper-tooltip target="#sample-success-left">
+                  <a class="h5" href="javascript:void(0);">Sucesso</a>
+                </copper-tooltip>
+
+                <copper-tooltip-content id="sample-success-left" success="success" place="left">
+                  <span class="text" role="tooltip">Incluído com Sucesso!</span><span class="subtext">Protocolo 000.22-11</span>
+                </copper-tooltip-content>
+              </div>
+              <div class="mb-3">
+                <copper-tooltip target="#sample-erro-right" error="error" place="right">
+                  <a class="h5" href="javascript:void(0);">Erro</a>
+                </copper-tooltip>
+
+                <copper-tooltip-content id="sample-erro-right" error="error" place="right">
+                  <span class="text" role="tooltip">Não foi possível logar!</span><span class="subtext">Verifique seus dados</span>
+                </copper-tooltip-content>
+              </div>
+              <div class="mb-3">
+                <copper-tooltip target="#sample-warning-bottom">
+                  <a class="h5" href="javascript:void(0);">Advertência</a>
+                </copper-tooltip>
+
+                <copper-tooltip-content id="sample-warning-bottom" warning="warning" place="bottom">
+                  <span class="text" role="tooltip">O Caps Lock está ligadoo!</span><span class="subtext">Desabilite antes de digitar</span>
+                </copper-tooltip-content>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </copper-container>
+
+    <copper-container>
+      <hr />
+
+      <section>
+        <h1>Avatar</h1>
+
+        <hr />
+
+        <copper-avatar> </copper-avatar>
+        <copper-avatar size="medium" name="Frederico"> </copper-avatar>
+        <copper-avatar size="large" name="Pedro" picture-src="https://picsum.photos/id/287/400"> </copper-avatar>
+      </section>
+
+      <hr />
+
+      <section>
+        <h1>Breadcrumb</h1>
+
+        <p>TODO</p>
+      </section>
+
+      <section>
+        <h1>Loading</h1>
+
+        <div>
+          <p>Indeterminado</p>
+          <copper-loading></copper-loading>
+        </div>
+
+        <div>
+          <p>Determinado</p>
+          <copper-loading progress="50"></copper-loading>
+        </div>
+      </section>
+
+      <section>
+        <h1>Button</h1>
+
+        <div>
+          <p>Estados</p>
+
+          <copper-button variant="primary" disabled>Desativado</copper-button>
+          <copper-button variant="primary" active>Ativo</copper-button>
+          <copper-button variant="primary" loading></copper-button>
+        </div>
+
+        <div>
+          <p>Ênfases</p>
+
+          <copper-button> oi pq vc me odeia? </copper-button>
+          <copper-button variant="primary"> oi pq vc me odeia? </copper-button>
+          <copper-button variant="secondary"> oi pq vc me odeia? </copper-button>
+        </div>
+
+        <div>
+          <div class="p-3">
+            <copper-button variant="secondary" size="large">Baixa densidade</copper-button>
+            <copper-button variant="secondary" size="medium">Padrão</copper-button>
+            <copper-button variant="secondary" size="small">Alta densidade</copper-button>
+          </div>
+          <div class="p-3">
+            <copper-button variant="secondary" size="large" circle aria-label="Ícone ilustrativo"><copper-icon name="city"></copper-icon></copper-button>
+            <copper-button variant="secondary" size="medium" circle aria-label="Ícone ilustrativo"><copper-icon name="city"></copper-icon></copper-button>
+            <copper-button variant="secondary" size="small" circle aria-label="Ícone ilustrativo"><copper-icon name="city"></copper-icon></copper-button>
+          </div>
+        </div>
+
+        <div class="p-3 bg-gray-60">
+          <copper-button block dark-mode variant="primary" class="mb-3">Primário</copper-button>
+          <copper-button block dark-mode variant="secondary" class="mb-3">Secundário</copper-button>
+          <copper-button block dark-mode variant="default">Terciário</copper-button>
+        </div>
+      </section>
+    </copper-container> -->
   </body>
 </html>

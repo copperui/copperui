@@ -17,7 +17,7 @@ export class BrxIcon {
    * Define o carregamento automático dos recursos.
    */
   @Prop({ reflect: true })
-  loadResources = false;
+  loadResources = true;
 
   render() {
     const name = this.name.includes('/') ? this.name : `fa5/fas/${this.name}`;

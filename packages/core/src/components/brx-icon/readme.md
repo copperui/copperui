@@ -9,7 +9,7 @@
 
 | Property        | Attribute        | Description                                    | Type      | Default     |
 | --------------- | ---------------- | ---------------------------------------------- | --------- | ----------- |
-| `loadResources` | `load-resources` | Define o carregamento automático dos recursos. | `boolean` | `false`     |
+| `loadResources` | `load-resources` | Define o carregamento automático dos recursos. | `boolean` | `true`      |
 | `name`          | `name`           | O nome do ícone. bicycle -> fa5/fas/bicycle    | `string`  | `undefined` |
 
 
