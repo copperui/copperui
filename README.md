@@ -23,15 +23,20 @@ O copperui é baseado na tecnologia de [_Web Components_][webcomponents] por mei
   </a>
 </p>
 
-
 ---
 
 ### Pacotes
 
-| Projeto | Package | Version | Downloads| Links |
-| ------- | ------- | ------- | -------- |:-----:|
-| **Core** | [`@copperui/core`](https://www.npmjs.com/package/@copperui/core) | [![version](https://img.shields.io/npm/v/@copperui/core/latest.svg)](https://www.npmjs.com/package/@copperui/core) | <a href="https://www.npmjs.com/package/@copperui/core" target="_blank"><img src="https://img.shields.io/npm/dm/@copperui/core.svg" alt="NPM Downloads" /></a> | [`README.md`](core/README.md)
-| **React** | [`@copperui/react`](https://www.npmjs.com/package/@copperui/react) | [![version](https://img.shields.io/npm/v/@copperui/react/latest.svg)](https://www.npmjs.com/package/@copperui/react) | <a href="https://www.npmjs.com/package/@copperui/react" target="_blank"><img src="https://img.shields.io/npm/dm/@copperui/react.svg" alt="NPM Downloads" /></a> | [`README.md`](react/README.md)
+| Projeto   | Package                                                            | Version                                                                                                              | Downloads                                                                                                                                                       |             Links              |
+| --------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------: |
+| **Core**  | [`@copperui/core`](https://www.npmjs.com/package/@copperui/core)   | [![version](https://img.shields.io/npm/v/@copperui/core/latest.svg)](https://www.npmjs.com/package/@copperui/core)   | <a href="https://www.npmjs.com/package/@copperui/core" target="_blank"><img src="https://img.shields.io/npm/dm/@copperui/core.svg" alt="NPM Downloads" /></a>   | [`README.md`](core/README.md)  |
+| **React** | [`@copperui/react`](https://www.npmjs.com/package/@copperui/react) | [![version](https://img.shields.io/npm/v/@copperui/react/latest.svg)](https://www.npmjs.com/package/@copperui/react) | <a href="https://www.npmjs.com/package/@copperui/react" target="_blank"><img src="https://img.shields.io/npm/dm/@copperui/react.svg" alt="NPM Downloads" /></a> | [`README.md`](react/README.md) |
+
+### Referências
+
+| Projeto          | Licença                                                                                                          | Fonte                                                |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Repo do GOVBR-DS | [MIT](https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/-/blob/d4962746c8515c3287b6895b02cc2442af5a7509/LICENSE) | <https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/> |
 
 ---
 

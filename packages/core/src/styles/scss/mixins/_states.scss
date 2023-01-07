@@ -1,0 +1,35 @@
+// Desabilitado
+@mixin disabled {
+  cursor: not-allowed;
+  opacity: var(--disabled);
+
+  * {
+    pointer-events: none;
+  }
+}
+
+// Dark mode
+@mixin dark-mode {
+  --color: var(--color-dark);
+  --color-rgb: var(--color-dark-rgb);
+  --text-color: var(--color);
+  --interactive: var(--interactive-dark);
+  --interactive-rgb: var(--interactive-dark-rgb);
+  --visited: var(--visited-dark);
+  --hover: var(--hover-dark);
+  --pressed: var(--pressed-dark);
+  --focus-color: var(--focus-color-dark);
+  --focus: var(--focus-color);
+}
+@mixin light-mode {
+  --color: var(--color-light);
+  --color-rgb: var(--color-light-rgb);
+  --text-color: var(--color);
+  --interactive: var(--interactive-light);
+  --interactive-rgb: var(--interactive-light-rgb);
+  --visited: var(--visited-light);
+  --hover: var(--hover-light);
+  --pressed: var(--pressed-light);
+  --focus-color: var(--focus-color-light);
+  --focus: var(--focus-color);
+}
