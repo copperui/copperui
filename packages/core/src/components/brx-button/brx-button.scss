@@ -1,0 +1,13 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-button {
+  display: inline-block;
+
+  @include button-configs;
+
+  a.brx-button-native {
+    font-weight: var(--font-weight-semi-bold);
+    text-decoration: none !important;
+  }
+}

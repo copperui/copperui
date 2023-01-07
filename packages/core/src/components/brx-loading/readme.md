@@ -14,6 +14,19 @@
 | `variant`  | `variant`  |             | `string`           | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [brx-button](../brx-button)
+
+### Graph
+```mermaid
+graph TD;
+  brx-button --> brx-loading
+  style brx-loading fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

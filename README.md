@@ -34,9 +34,11 @@ O copperui é baseado na tecnologia de [_Web Components_][webcomponents] por mei
 
 ### Referências
 
-| Projeto          | Licença                                                                                                          | Fonte                                                |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Repo do GOVBR-DS | [MIT](https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/-/blob/d4962746c8515c3287b6895b02cc2442af5a7509/LICENSE) | <https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/> |
+| Projeto                | Licença                                                                                                          | Fonte                                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Repo do GOVBR-DS       | [MIT](https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/-/blob/d4962746c8515c3287b6895b02cc2442af5a7509/LICENSE) | <https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core/> |
+| Especificação GOVBR-DS | [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) e [MIT](https://mit-license.org/)        | <https://www.gov.br/ds/home>                         |
+| Ionic Framework        | [MIT](https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/LICENSE)       | <https://github.com/ionic-team/ionic-framework>      |
 
 ---
 
