@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "husky": "^3.0.9",
+    "lerna": "^6.3.0",
+    "prettier": "^2.8.1",
+    "rimraf": "2.6.3"
+  },
+  "scripts": {
+    "clean": "./scripts/clean.sh",
+    "build": "./scripts/build.sh",
+    "build:components": "yarn workspace @copperui/core build",
+    "new-version": "lerna version --conventional-commits --no-push",
+    "force-version": "lerna version --conventional-commits --force-publish",
+    "format": "lerna run format",
+    "publish": "lerna publish -y from-package --no-private --no-git-tag-version --no-push --force-publish @copperui/core,@copperui/react --dist-tag next"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}

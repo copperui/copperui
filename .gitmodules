@@ -1,0 +1,3 @@
+[submodule "references/govbr-ds-dev-core"]
+	path = references/govbr-ds-dev-core
+	url = https://gitlab.com/govbr-ds/dev/govbr-ds-dev-core.git

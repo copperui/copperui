@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2017"],
+    "moduleResolution": "node",
+    "module": "ES2015",
+    "target": "es2017",
+    "outDir": "dist",
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "**/__tests__/**"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}
