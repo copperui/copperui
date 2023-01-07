@@ -1,0 +1,244 @@
+@mixin button-configs {
+  @include button-tokens;
+  @include button-default;
+  @include button-block;
+  @include button-circle;
+  @include button-sizes;
+  @include button-emphasis;
+  @include button-colors;
+  @include button-states;
+  @include button-dark;
+}
+
+//  XXX: o mixin está no lugar certo ?
+
+@mixin button-magicbutton {
+  --focus-offset: calc((var(--magic-support-size) - var(--magic-size)) * 0.5 + 4px);
+  --button-size: var(--magic-size);
+
+  background-color: var(--interactive-alternative);
+  color: var(--color-dark);
+  font-size: var(--font-size-scale-up-02);
+  font-weight: var(--font-weight-semi-bold);
+
+  &:not(:disabled):not(.disabled) {
+    @include hover('color-dark');
+    @include active('color-dark');
+  }
+}
+
+@mixin button-tokens {
+  --button-radius: 100em;
+  --button-xsmall: 24px;
+  --button-small: 32px;
+  --button-medium: 40px;
+  --button-large: 48px;
+  --button-size: var(--button-medium);
+}
+
+@mixin button-default {
+  .brx-button-native {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--button-radius);
+    color: var(--interactive);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-semi-bold);
+    height: var(--button-size);
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 var(--spacing-scale-3x);
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+  }
+}
+
+@mixin button-block {
+  &[block] {
+    display: block;
+
+    .brx-button-native {
+      width: 100%;
+    }
+  }
+
+  @each $breakpoint in 'sm', 'md', 'lg', 'xl' {
+    @include media-breakpoint-up(#{$breakpoint}) {
+      &.block-#{$breakpoint} {
+        .brx-button-native {
+          width: 100%;
+        }
+      }
+
+      &.auto-#{$breakpoint} {
+        .brx-button-native {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@mixin button-circle {
+  &[circle] {
+    .brx-button-native {
+      padding: 0;
+      border-radius: 50%;
+      width: var(--button-size);
+    }
+  }
+}
+
+@mixin button-sizes {
+  @each $size in 'xsmall', 'small', 'medium', 'large' {
+    &[size='#{$size}'] {
+      --button-size: var(--button-#{$size});
+    }
+  }
+}
+
+@mixin button-emphasis {
+  &[variant='primary'] {
+    --interactive-rgb: var(--color-dark-rgb);
+
+    .brx-button-native {
+      background-color: var(--interactive-light);
+      color: var(--color-dark);
+    }
+  }
+
+  &[variant='secondary'] {
+    .brx-button-native {
+      background-color: var(--background-light);
+      border: 1px solid var(--interactive);
+    }
+  }
+}
+
+@mixin button-colors {
+  @each $color in 'danger', 'success', 'warning', 'info' {
+    &[color='#{$color}'] {
+      .brx-button-native {
+        background-color: var(--#{$color});
+      }
+
+      @if $color != 'warning' {
+        --interactive-rgb: var(--color-dark-rgb);
+
+        .brx-button-native {
+          color: var(--color-dark);
+        }
+      } @else {
+        --interactive-rgb: var(--color-light-rgb);
+
+        .brx-button-native {
+          color: var(--color-light);
+        }
+      }
+    }
+  }
+}
+
+@mixin button-states {
+  &:disabled,
+  &[disabled] {
+    .brx-button-native {
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(:is(:disabled, [disabled])) {
+    .brx-button-native {
+      --focus-offset: var(--spacing-scale-half);
+      @include focus;
+      @include hover;
+      @include active;
+    }
+  }
+
+  &[active] {
+    .brx-button-native {
+      --hover: var(--hover-dark);
+      background-color: var(--active);
+      color: var(--color-dark);
+    }
+  }
+
+  brx-loading {
+    width: auto;
+    height: auto;
+
+    &::after {
+      margin: 0;
+
+      border-color: var(--interactive) var(--interactive) transparent;
+      border-style: solid;
+    }
+  }
+
+  &[variant='primary'],
+  &[color='success'],
+  &[color='danger'],
+  &[color='info'] {
+    brx-loading {
+      &::after {
+        border-color: var(--background) var(--background) transparent;
+      }
+    }
+  }
+}
+
+@mixin button-dark {
+  &[dark-mode] {
+    .brx-button-native {
+      @include dark-mode;
+      color: var(--interactive-dark);
+    }
+
+    &[variant='primary'] {
+      .brx-button-native {
+        --interactive-rgb: var(--background-dark-rgb);
+        background-color: var(--interactive-dark);
+        color: var(--background-dark);
+      }
+    }
+
+    &[variant='secondary'] {
+      .brx-button-native {
+        background-color: var(--background-dark);
+      }
+    }
+
+    &[active] {
+      .brx-button-native {
+        --hover: var(--hover-light);
+        --interactive-rgb: var(--active-rgb);
+        background-color: var(--background-light);
+        color: var(--active);
+      }
+    }
+  }
+}
+
+@mixin button-dark-mode {
+  &[variant='primary'] {
+    .brx-button-native {
+      @include light-mode;
+      --interactive-rgb: var(--background-dark-rgb);
+      background-color: var(--interactive-dark);
+      color: var(--background-dark);
+    }
+  }
+
+  &[variant='secondary'] {
+    .brx-button-native {
+      background-color: var(--background-dark);
+    }
+  }
+}

@@ -23,6 +23,52 @@ export namespace Components {
         "active": boolean;
         "entryId": string | undefined;
     }
+    interface BrxButton {
+        "active": boolean;
+        "block": boolean;
+        /**
+          * The type of button.
+         */
+        "buttonType": string;
+        "circle": boolean;
+        "color": 'danger' | 'success' | 'warning' | 'info';
+        "darkMode": boolean;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download": string | undefined;
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+         */
+        "href": string | undefined;
+        "loading": boolean;
+        /**
+          * CSS class names to be applied to the native button element.
+         */
+        "nativeClass": string | undefined;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        "size": 'large' | 'medium' | 'small' | 'xsmall';
+        /**
+          * If `true`, activates a button with a heavier font weight.
+         */
+        "strong": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target": string | undefined;
+        /**
+          * The type of the button.
+         */
+        "type": 'submit' | 'reset' | 'button';
+        "variant": 'primary' | 'secondary' | 'default';
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -32,6 +78,11 @@ export namespace Components {
           * O nome do ícone. bicycle -> fa5/fas/bicycle
          */
         "name": string;
+    }
+    interface BrxLoading {
+        "progress": string | number | undefined;
+        "size": string | undefined;
+        "variant": string | undefined;
     }
     interface BrxTooltip {
         "active": boolean;
@@ -52,6 +103,10 @@ export namespace Components {
 export interface BrxAccordionLegacyEntryItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxAccordionLegacyEntryItemElement;
+}
+export interface BrxButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxButtonElement;
 }
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
@@ -78,11 +133,23 @@ declare global {
         prototype: HTMLBrxAccordionLegacyEntryItemElement;
         new (): HTMLBrxAccordionLegacyEntryItemElement;
     };
+    interface HTMLBrxButtonElement extends Components.BrxButton, HTMLStencilElement {
+    }
+    var HTMLBrxButtonElement: {
+        prototype: HTMLBrxButtonElement;
+        new (): HTMLBrxButtonElement;
+    };
     interface HTMLBrxIconElement extends Components.BrxIcon, HTMLStencilElement {
     }
     var HTMLBrxIconElement: {
         prototype: HTMLBrxIconElement;
         new (): HTMLBrxIconElement;
+    };
+    interface HTMLBrxLoadingElement extends Components.BrxLoading, HTMLStencilElement {
+    }
+    var HTMLBrxLoadingElement: {
+        prototype: HTMLBrxLoadingElement;
+        new (): HTMLBrxLoadingElement;
     };
     interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
     }
@@ -101,7 +168,9 @@ declare global {
         "brx-accordion-legacy-entry": HTMLBrxAccordionLegacyEntryElement;
         "brx-accordion-legacy-entry-content": HTMLBrxAccordionLegacyEntryContentElement;
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
+        "brx-button": HTMLBrxButtonElement;
         "brx-icon": HTMLBrxIconElement;
+        "brx-loading": HTMLBrxLoadingElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -125,6 +194,60 @@ declare namespace LocalJSX {
         "entryId"?: string | undefined;
         "onCollapseChange"?: (event: BrxAccordionLegacyEntryItemCustomEvent<HTMLBrxAccordionLegacyEntryItemElement>) => void;
     }
+    interface BrxButton {
+        "active"?: boolean;
+        "block"?: boolean;
+        /**
+          * The type of button.
+         */
+        "buttonType"?: string;
+        "circle"?: boolean;
+        "color"?: 'danger' | 'success' | 'warning' | 'info';
+        "darkMode"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string | undefined;
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+         */
+        "href"?: string | undefined;
+        "loading"?: boolean;
+        /**
+          * CSS class names to be applied to the native button element.
+         */
+        "nativeClass"?: string | undefined;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onBrxBlur"?: (event: BrxButtonCustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBrxFocus"?: (event: BrxButtonCustomEvent<void>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        "size"?: 'large' | 'medium' | 'small' | 'xsmall';
+        /**
+          * If `true`, activates a button with a heavier font weight.
+         */
+        "strong"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target"?: string | undefined;
+        /**
+          * The type of the button.
+         */
+        "type"?: 'submit' | 'reset' | 'button';
+        "variant"?: 'primary' | 'secondary' | 'default';
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -134,6 +257,11 @@ declare namespace LocalJSX {
           * O nome do ícone. bicycle -> fa5/fas/bicycle
          */
         "name"?: string;
+    }
+    interface BrxLoading {
+        "progress"?: string | number | undefined;
+        "size"?: string | undefined;
+        "variant"?: string | undefined;
     }
     interface BrxTooltip {
         "active"?: boolean;
@@ -155,7 +283,9 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry": BrxAccordionLegacyEntry;
         "brx-accordion-legacy-entry-content": BrxAccordionLegacyEntryContent;
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
+        "brx-button": BrxButton;
         "brx-icon": BrxIcon;
+        "brx-loading": BrxLoading;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -168,7 +298,9 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry": LocalJSX.BrxAccordionLegacyEntry & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryElement>;
             "brx-accordion-legacy-entry-content": LocalJSX.BrxAccordionLegacyEntryContent & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryContentElement>;
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
+            "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
+            "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }

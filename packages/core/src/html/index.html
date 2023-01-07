@@ -21,9 +21,16 @@
         margin: 0;
         padding: 0;
       }
+
+      section {
+        margin: 2rem 0;
+        padding: 2rem;
+      }
     </style>
   </head>
   <body>
+    <hr />
+
     <section>
       <h1>Accordion (legado)</h1>
 
@@ -51,7 +58,9 @@
       </script>
     </section>
 
-    <section>
+    <hr />
+
+    <!-- <section>
       <h1>Avatar</h1>
 
       <hr />
@@ -59,7 +68,113 @@
       <brx-avatar> </brx-avatar>
       <brx-avatar size="medium" name="Frederico"> </brx-avatar>
       <brx-avatar size="large" name="Pedro" src="https://picsum.photos/id/287/400"> </brx-avatar>
+    </section> -->
+
+    <section>
+      <h1>Button</h1>
+
+      <hr />
+
+      <div>
+        <h2>Ênfases</h2>
+
+        <div class="my-1 p-3">
+          <brx-button variant="primary">Primário</brx-button>
+          <brx-button variant="secondary">Secundário</brx-button>
+          <brx-button>Terciário</brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button dark-mode variant="primary">Primário</brx-button>
+          <brx-button dark-mode variant="secondary">Secundário</brx-button>
+          <brx-button dark-mode>Terciário</brx-button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
+        <h2>Tipo Circular</h2>
+
+        <div class="my-1 p-3">
+          <brx-button variant="primary" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button variant="secondary" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button variant="" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button dark-mode variant="primary" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button dark-mode variant="secondary" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button dark-mode variant="" circle aria-label="Ícone ilustrativo">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
+        <h2>Tipo Bloco</h2>
+
+        <div class="my-1 p-3">
+          <brx-button class="my-3" block variant="primary">Primário</brx-button>
+          <brx-button class="my-3" block variant="secondary">Secundário</brx-button>
+          <brx-button class="my-3" block>Terciário</brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button class="my-3" block dark-mode variant="primary">Primário</brx-button>
+          <brx-button class="my-3" block dark-mode variant="secondary">Secundário</brx-button>
+          <brx-button class="my-3" block dark-mode>Terciário</brx-button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div class="my-1 p-3">
+          <brx-button class="mr-3" variant="secondary" size="large">Baixa densidade</brx-button>
+          <brx-button class="mr-3" variant="secondary" size="medium">Padrão</brx-button>
+          <brx-button variant="secondary" size="small">Alta densidade</brx-button>
+        </div>
+
+        <div class="my-1 p-3">
+          <brx-button class="mr-3" variant="secondary" circle aria-label="Ícone ilustrativo" size="large">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button class="mr-3" variant="secondary" circle aria-label="Ícone ilustrativo" size="medium">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button variant="secondary" circle aria-label="Ícone ilustrativo" size="small">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Estados</h2>
+
+        <div class="my-1 p-3">
+          <brx-button class="mr-3" variant="primary" disabled>Desativado</brx-button>
+          <brx-button class="mr-3" variant="primary" active>Ativo</brx-button>
+          <brx-button variant="primary" loading></brx-button>
+        </div>
+      </div>
     </section>
+
+    <hr />
 
     <section>
       <h1>Ícone</h1>
@@ -70,6 +185,37 @@
 
       <brx-icon name="bicycle"></brx-icon>
     </section>
+
+    <hr />
+
+    <section>
+      <h1>Loading</h1>
+
+      <div>
+        <p>Indeterminado</p>
+
+        <div class="p-3">
+          <brx-loading size="small"></brx-loading>
+        </div>
+        <div class="p-3">
+          <brx-loading></brx-loading>
+        </div>
+      </div>
+
+      <div>
+        <p>Determinado</p>
+
+        <div class="d-flex">
+          <brx-loading progress="0"></brx-loading>
+          <brx-loading progress="25"></brx-loading>
+          <brx-loading progress="50"></brx-loading>
+          <brx-loading progress="75"></brx-loading>
+          <brx-loading progress="100"></brx-loading>
+        </div>
+      </div>
+    </section>
+
+    <hr />
 
     <section>
       <h1>Tooltip</h1>
@@ -135,77 +281,6 @@
       </div>
     </section>
 
-    <!-- <brx-container>
-      <h1>Utilitários</h1>
-
-      <section>
-        
-      </section>
-    </brx-container>
-
-    <brx-container>
-
-
-      <hr />
-
-      <section>
-        <h1>Breadcrumb</h1>
-
-        <p>TODO</p>
-      </section>
-
-      <section>
-        <h1>Loading</h1>
-
-        <div>
-          <p>Indeterminado</p>
-          <brx-loading></brx-loading>
-        </div>
-
-        <div>
-          <p>Determinado</p>
-          <brx-loading progress="50"></brx-loading>
-        </div>
-      </section>
-
-      <section>
-        <h1>Button</h1>
-
-        <div>
-          <p>Estados</p>
-
-          <brx-button variant="primary" disabled>Desativado</brx-button>
-          <brx-button variant="primary" active>Ativo</brx-button>
-          <brx-button variant="primary" loading></brx-button>
-        </div>
-
-        <div>
-          <p>Ênfases</p>
-
-          <brx-button> oi pq vc me odeia? </brx-button>
-          <brx-button variant="primary"> oi pq vc me odeia? </brx-button>
-          <brx-button variant="secondary"> oi pq vc me odeia? </brx-button>
-        </div>
-
-        <div>
-          <div class="p-3">
-            <brx-button variant="secondary" size="large">Baixa densidade</brx-button>
-            <brx-button variant="secondary" size="medium">Padrão</brx-button>
-            <brx-button variant="secondary" size="small">Alta densidade</brx-button>
-          </div>
-          <div class="p-3">
-            <brx-button variant="secondary" size="large" circle aria-label="Ícone ilustrativo"><brx-icon name="city"></brx-icon></brx-button>
-            <brx-button variant="secondary" size="medium" circle aria-label="Ícone ilustrativo"><brx-icon name="city"></brx-icon></brx-button>
-            <brx-button variant="secondary" size="small" circle aria-label="Ícone ilustrativo"><brx-icon name="city"></brx-icon></brx-button>
-          </div>
-        </div>
-
-        <div class="p-3 bg-gray-60">
-          <brx-button block dark-mode variant="primary" class="mb-3">Primário</brx-button>
-          <brx-button block dark-mode variant="secondary" class="mb-3">Secundário</brx-button>
-          <brx-button block dark-mode variant="default">Terciário</brx-button>
-        </div>
-      </section>
-    </brx-container> -->
+    <hr />
   </body>
 </html>
