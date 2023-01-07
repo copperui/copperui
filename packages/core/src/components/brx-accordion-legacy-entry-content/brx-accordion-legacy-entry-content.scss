@@ -1,0 +1,15 @@
+@import '../../styles/component-base';
+
+brx-accordion-legacy-entry-content {
+  color: v(text-color);
+  display: none;
+  font-size: v(font-size-scale-base);
+  margin: 0 v(spacing-scale-base);
+  padding: v(spacing-scale-base) v(spacing-scale-8x) v(spacing-scale-2x);
+
+  * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
