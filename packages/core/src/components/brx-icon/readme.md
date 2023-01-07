@@ -18,11 +18,13 @@
 ### Used by
 
  - [brx-accordion-legacy-entry-item](../brx-accordion-legacy-entry-item)
+ - [brx-tooltip-content](../brx-tooltip-content)
 
 ### Graph
 ```mermaid
 graph TD;
   brx-accordion-legacy-entry-item --> brx-icon
+  brx-tooltip-content --> brx-icon
   style brx-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
