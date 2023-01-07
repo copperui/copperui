@@ -30,7 +30,7 @@ export class BrxButton {
    * CSS class names to be applied to the native button element.
    */
   @Prop({ reflect: true })
-  nativeClass: string | undefined;
+  nativeClass: string | undefined = '';
 
   /**
    * The type of button.
@@ -130,7 +130,7 @@ export class BrxButton {
             download: this.download,
           };
 
-    const allNativeClasses = `brx-button-native ${this.nativeClass}`;
+    const allNativeClasses = `brx-button-native ${this.nativeClass ?? ''}`;
 
     return (
       <Host aria-disabled={disabled ? 'true' : null}>

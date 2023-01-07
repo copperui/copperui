@@ -1,1 +1,1 @@
-export const getWindow = () => window;
+export const getWindow = (): Window | null => window;

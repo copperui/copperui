@@ -84,6 +84,16 @@ export namespace Components {
         "size": string | undefined;
         "variant": string | undefined;
     }
+    interface BrxScrim {
+        "active": boolean;
+        "closeElement": string | undefined;
+        "hideScrim": () => Promise<void>;
+        "showScrim": () => Promise<void>;
+        "type": 'foco' | 'legibilidade' | 'inibicao';
+    }
+    interface BrxScrimTrigger {
+        "target": HTMLBrxScrimElement | string;
+    }
     interface BrxTooltip {
         "active": boolean;
         "color": string;
@@ -151,6 +161,18 @@ declare global {
         prototype: HTMLBrxLoadingElement;
         new (): HTMLBrxLoadingElement;
     };
+    interface HTMLBrxScrimElement extends Components.BrxScrim, HTMLStencilElement {
+    }
+    var HTMLBrxScrimElement: {
+        prototype: HTMLBrxScrimElement;
+        new (): HTMLBrxScrimElement;
+    };
+    interface HTMLBrxScrimTriggerElement extends Components.BrxScrimTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxScrimTriggerElement: {
+        prototype: HTMLBrxScrimTriggerElement;
+        new (): HTMLBrxScrimTriggerElement;
+    };
     interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
     }
     var HTMLBrxTooltipElement: {
@@ -171,6 +193,8 @@ declare global {
         "brx-button": HTMLBrxButtonElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-loading": HTMLBrxLoadingElement;
+        "brx-scrim": HTMLBrxScrimElement;
+        "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -263,6 +287,14 @@ declare namespace LocalJSX {
         "size"?: string | undefined;
         "variant"?: string | undefined;
     }
+    interface BrxScrim {
+        "active"?: boolean;
+        "closeElement"?: string | undefined;
+        "type"?: 'foco' | 'legibilidade' | 'inibicao';
+    }
+    interface BrxScrimTrigger {
+        "target"?: HTMLBrxScrimElement | string;
+    }
     interface BrxTooltip {
         "active"?: boolean;
         "color"?: string;
@@ -286,6 +318,8 @@ declare namespace LocalJSX {
         "brx-button": BrxButton;
         "brx-icon": BrxIcon;
         "brx-loading": BrxLoading;
+        "brx-scrim": BrxScrim;
+        "brx-scrim-trigger": BrxScrimTrigger;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -301,6 +335,8 @@ declare module "@stencil/core" {
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
+            "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
+            "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }
