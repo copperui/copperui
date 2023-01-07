@@ -15,5 +15,7 @@ export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX
 export const BrxButton = /*@__PURE__*/createReactComponent<JSX.BrxButton, HTMLBrxButtonElement>('brx-button');
 export const BrxIcon = /*@__PURE__*/createReactComponent<JSX.BrxIcon, HTMLBrxIconElement>('brx-icon');
 export const BrxLoading = /*@__PURE__*/createReactComponent<JSX.BrxLoading, HTMLBrxLoadingElement>('brx-loading');
+export const BrxScrim = /*@__PURE__*/createReactComponent<JSX.BrxScrim, HTMLBrxScrimElement>('brx-scrim');
+export const BrxScrimTrigger = /*@__PURE__*/createReactComponent<JSX.BrxScrimTrigger, HTMLBrxScrimTriggerElement>('brx-scrim-trigger');
 export const BrxTooltip = /*@__PURE__*/createReactComponent<JSX.BrxTooltip, HTMLBrxTooltipElement>('brx-tooltip');
 export const BrxTooltipContent = /*@__PURE__*/createReactComponent<JSX.BrxTooltipContent, HTMLBrxTooltipContentElement>('brx-tooltip-content');

@@ -45,10 +45,10 @@ export class BrxTooltip {
   popover: boolean = false;
 
   @State()
-  activator: HTMLElement;
+  activator: HTMLElement | null = null;
 
   @State()
-  component: HTMLElement;
+  component: HTMLElement | null = null;
 
   @State()
   placement: 'bottom' | 'top' | 'right' | 'left';
@@ -68,7 +68,7 @@ export class BrxTooltip {
 
     if (target) {
       if (typeof target === 'string') {
-        const component: HTMLElement = getWindow().document.querySelector(target);
+        const component = getWindow()?.document.querySelector(target) as HTMLElement | null;
         this.component = component;
       } else {
         this.component = target;
