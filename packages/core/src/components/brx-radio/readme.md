@@ -26,6 +26,39 @@
 | `brxFocus`  | Emitted when the radio button has focus.   | `CustomEvent<void>`                        |
 
 
+## Methods
+
+### `getNativeChecked() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `setButtonTabindex(value: number) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus(ev: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

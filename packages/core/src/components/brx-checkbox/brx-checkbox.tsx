@@ -1,7 +1,7 @@
 // This file was based on the <ion-checkbox /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/checkbox/checkbox.tsx
 
-import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { generateUniqueId } from '../../utils/entropy';
 import { CheckboxChangeEventDetail } from './brx-checkbox-interface';
 
@@ -11,7 +11,7 @@ import { CheckboxChangeEventDetail } from './brx-checkbox-interface';
   shadow: false,
 })
 export class BrxCheckbox {
-  private focusEl?: HTMLElement;
+  private nativeInput?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
 
@@ -99,9 +99,14 @@ export class BrxCheckbox {
     });
   }
 
+  @Method()
+  async getNativeChecked() {
+    return this.nativeInput?.checked;
+  }
+
   private setFocus() {
-    if (this.focusEl) {
-      this.focusEl.focus();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
     }
   }
 
@@ -141,7 +146,7 @@ export class BrxCheckbox {
           onBlur={() => this.onBlur()}
           onFocus={() => this.onFocus()}
           name={this.name ?? this.inputId}
-          ref={focusEl => (this.focusEl = focusEl)}
+          ref={focusEl => (this.nativeInput = focusEl)}
         />
 
         <label htmlFor={this.inputId}>{this.label}</label>

@@ -15,6 +15,7 @@ export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX
 export const BrxButton = /*@__PURE__*/createReactComponent<JSX.BrxButton, HTMLBrxButtonElement>('brx-button');
 export const BrxCheckbox = /*@__PURE__*/createReactComponent<JSX.BrxCheckbox, HTMLBrxCheckboxElement>('brx-checkbox');
 export const BrxIcon = /*@__PURE__*/createReactComponent<JSX.BrxIcon, HTMLBrxIconElement>('brx-icon');
+export const BrxItem = /*@__PURE__*/createReactComponent<JSX.BrxItem, HTMLBrxItemElement>('brx-item');
 export const BrxLoading = /*@__PURE__*/createReactComponent<JSX.BrxLoading, HTMLBrxLoadingElement>('brx-loading');
 export const BrxRadio = /*@__PURE__*/createReactComponent<JSX.BrxRadio, HTMLBrxRadioElement>('brx-radio');
 export const BrxRadioGroup = /*@__PURE__*/createReactComponent<JSX.BrxRadioGroup, HTMLBrxRadioGroupElement>('brx-radio-group');

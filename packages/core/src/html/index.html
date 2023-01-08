@@ -202,6 +202,88 @@
     <hr />
 
     <section>
+      <h1>Item</h1>
+
+      <div>
+        <h2>Exemplos de itens</h2>
+
+        <hr />
+
+        <brx-item>
+          <div class="row align-items-center">
+            <div class="col-auto"><img class="rounded" src="https://picsum.photos/40" alt="Imagem de exemplo do item sem interação" /></div>
+            <div class="col"><span>Sint ipsum est excepteur qui. Aute Lorem cillum duis reprehenderit. Ut aute cillum esse dolor.</span></div>
+          </div>
+        </brx-item>
+
+        <hr />
+
+        <brx-item>
+          <div class="row align-items-center">
+            <div class="col">Lorem ipsum <a href="javascript:void(0);">dolor</a>, sit amet consectetur <a href="javascript:void(0);">adipisicing</a> elit.</div>
+
+            <div class="col-auto">
+              <brx-button circle type="button" aria-label="Interagir com item"><brx-icon name="city" aria-hidden="true"></brx-icon></brx-button>
+            </div>
+          </div>
+        </brx-item>
+
+        <hr />
+
+        <brx-item passthrough>
+          <a href="#">Item link</a>
+        </brx-item>
+
+        <hr />
+
+        <brx-item passthrough>
+          <button type="button">Item botão</button>
+        </brx-item>
+      </div>
+
+      <hr />
+
+      <div>
+        <h2>Itens de seleção</h2>
+
+        <div>
+          <brx-item data-toggle="selection">
+            <brx-checkbox label="Oi"></brx-checkbox>
+          </brx-item>
+
+          <brx-item data-toggle="selection">
+            <brx-checkbox label="Oi"></brx-checkbox>
+          </brx-item>
+          <brx-item data-toggle="selection">
+            <brx-radio name="item-sel-rad" label="Rótulo do Radio 01" value="item-sel-rad-1"></brx-radio>
+          </brx-item>
+          <brx-item data-toggle="selection">
+            <brx-radio name="item-sel-rad" label="Rótulo do Radio 02" value="item-sel-rad-2"></brx-radio>
+          </brx-item>
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
+        <h2>Item Desativado</h2>
+
+        <hr />
+
+        <div>
+          <brx-item disabled="disabled">
+            <div class="row align-items-center">
+              <div class="col-auto"><img class="rounded" src="https://picsum.photos/40/40" alt="imagem de exemplo 1" /></div>
+              <div class="col"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span></div>
+            </div>
+          </brx-item>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
       <h1>Loading</h1>
 
       <div>
@@ -250,10 +332,10 @@
         <h2>Radio Group</h2>
 
         <brx-radio-group value="c">
-          <brx-radio label="Oi" value="a"></brx-radio>
-          <brx-radio label="Oi" value="b" disabled></brx-radio>
-          <brx-radio label="Oi" value="c" invalid></brx-radio>
-          <brx-radio label="Oi" value="d" valid></brx-radio>
+          <brx-radio name="rex2" label="Oi" value="a"></brx-radio>
+          <brx-radio name="rex2" label="Oi" value="b" disabled></brx-radio>
+          <brx-radio name="rex2" label="Oi" value="c" invalid></brx-radio>
+          <brx-radio name="rex2" label="Oi" value="d" valid></brx-radio>
         </brx-radio-group>
       </div>
     </section>

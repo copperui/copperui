@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 import { tryParseJSON } from '../../utils/data';
 import { IAccordionLegacyEntryDefinition } from '../../interfaces/IAccordionLegacyEntryDefinition';
+import { requestIdleCallbackPony } from '../../utils/environment';
 
 @Component({
   tag: 'brx-accordion-legacy',
@@ -40,7 +41,7 @@ export class BrxAccordionLegacy {
 
     const active = targetItem.active;
 
-    if (active && this.single) {
+    if (this.single && active) {
       this.handleCollapseSingle(targetItem);
     }
   }

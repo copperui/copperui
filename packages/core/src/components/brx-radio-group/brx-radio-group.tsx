@@ -29,12 +29,6 @@ export class BrxRadioGroup implements ComponentInterface {
   label?: HTMLLabelElement | string | null;
 
   /**
-   * If `true`, the radios can be deselected.
-   */
-  @Prop({ reflect: true })
-  allowEmptySelection = false;
-
-  /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop({ reflect: true })
@@ -45,6 +39,12 @@ export class BrxRadioGroup implements ComponentInterface {
    */
   @Prop({ mutable: true })
   value?: any | null;
+
+  /**
+   * If `true`, the radios can be deselected.
+   */
+  @Prop({ reflect: true })
+  allowEmptySelection = false;
 
   @Watch('label')
   async labelChanged() {
@@ -58,9 +58,8 @@ export class BrxRadioGroup implements ComponentInterface {
   }
 
   @Watch('value')
-  valueChanged(value: any | undefined) {
+  valueChanged(value: any | undefined, oldValue) {
     this.setRadioTabindex(value);
-
     this.brxChange.emit({ value });
   }
 
@@ -101,7 +100,10 @@ export class BrxRadioGroup implements ComponentInterface {
      * is a shadow DOM component, it cannot natively perform this behavior
      * using the `name` attribute.
      */
-    const selectedRadio = ev.target && (ev.target as HTMLElement).closest('brx-radio');
+
+    const target = ev.target as HTMLElement | null;
+
+    const selectedRadio = target?.closest('brx-radio');
 
     if (selectedRadio) {
       ev.preventDefault();
