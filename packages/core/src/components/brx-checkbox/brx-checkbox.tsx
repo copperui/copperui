@@ -1,3 +1,6 @@
+// This file was based on the <ion-checkbox /> from the Ionic Framework (MIT)
+// https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/checkbox/checkbox.tsx
+
 import { Component, Element, Event, EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { generateUniqueId } from '../../utils/entropy';
 import { CheckboxChangeEventDetail } from './brx-checkbox-interface';
@@ -11,6 +14,24 @@ export class BrxCheckbox {
   private focusEl?: HTMLElement;
 
   @Element() el!: HTMLElement;
+
+  /**
+   * Emitted when the checked property has changed.
+   */
+  @Event()
+  brxChange!: EventEmitter<CheckboxChangeEventDetail>;
+
+  /**
+   * Emitted when the checkbox has focus.
+   */
+  @Event()
+  brxFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the checkbox loses focus.
+   */
+  @Event()
+  brxBlur!: EventEmitter<void>;
 
   @Prop({ reflect: true })
   label: string | undefined;
@@ -45,19 +66,6 @@ export class BrxCheckbox {
   @Prop({ reflect: true })
   invalid: boolean | undefined;
 
-  /**
-   * The value of the checkbox does not mean if it's checked or not, use the `checked`
-   * property for that.
-   *
-   * The value of a checkbox is analogous to the value of an `<input type="checkbox">`,
-   * it's only used when the checkbox participates in a native `<form>`.
-   */
-  @Prop({ reflect: true })
-  value: any | null = 'on';
-
-  @Prop({ reflect: true })
-  hiddenLabel = false;
-
   @Prop({ reflect: true })
   size: 'small' | 'medium' = 'medium';
 
@@ -67,20 +75,21 @@ export class BrxCheckbox {
   @Prop({ reflect: true })
   darkMode = false;
 
-  /**
-   * Emitted when the checked property has changed.
-   */
-  @Event() brxChange!: EventEmitter<CheckboxChangeEventDetail>;
+  @Prop({ reflect: true })
+  hiddenLabel = false;
+
+  @Prop({ reflect: true, mutable: true })
+  inputId: string | undefined;
 
   /**
-   * Emitted when the checkbox has focus.
+   * The value of the checkbox does not mean if it's checked or not, use the `checked`
+   * property for that.
+   *
+   * The value of a checkbox is analogous to the value of an `<input type="checkbox">`,
+   * it's only used when the checkbox participates in a native `<form>`.
    */
-  @Event() brxFocus!: EventEmitter<void>;
-
-  /**
-   * Emitted when the checkbox loses focus.
-   */
-  @Event() brxBlur!: EventEmitter<void>;
+  @Prop({ reflect: true })
+  value: any | null = 'on';
 
   @Watch('checked')
   checkedStateChanged(isChecked: boolean) {
@@ -111,9 +120,6 @@ export class BrxCheckbox {
     this.brxBlur.emit();
   };
 
-  @Prop({ reflect: true, mutable: true })
-  inputId: string | undefined;
-
   async componentWillLoad() {
     if (this.inputId === undefined) {
       this.inputId = await generateUniqueId();
@@ -129,12 +135,12 @@ export class BrxCheckbox {
           type="checkbox"
           id={this.inputId}
           checked={checked}
+          onChange={this.onChange}
           disabled={this.disabled}
           aria-checked={`${checked}`}
           onBlur={() => this.onBlur()}
           onFocus={() => this.onFocus()}
           name={this.name ?? this.inputId}
-          onChange={() => this.onChange({})}
           ref={focusEl => (this.focusEl = focusEl)}
         />
 

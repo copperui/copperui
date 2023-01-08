@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CheckboxChangeEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
+import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
+import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -115,6 +117,47 @@ export namespace Components {
         "size": string | undefined;
         "variant": string | undefined;
     }
+    interface BrxRadio {
+        /**
+          * The tabindex of the radio button.
+         */
+        "buttonTabindex": number;
+        /**
+          * If `true`, the radio is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled": boolean;
+        "inputId": string | undefined;
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        "setFocus": (ev: any) => Promise<void>;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
+    interface BrxRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection": boolean;
+        "label"?: HTMLLabelElement | string | null;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+    }
     interface BrxScrim {
         "active": boolean;
         "closeElement": string | undefined;
@@ -152,6 +195,14 @@ export interface BrxButtonCustomEvent<T> extends CustomEvent<T> {
 export interface BrxCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxCheckboxElement;
+}
+export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxRadioElement;
+}
+export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxRadioGroupElement;
 }
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
@@ -202,6 +253,18 @@ declare global {
         prototype: HTMLBrxLoadingElement;
         new (): HTMLBrxLoadingElement;
     };
+    interface HTMLBrxRadioElement extends Components.BrxRadio, HTMLStencilElement {
+    }
+    var HTMLBrxRadioElement: {
+        prototype: HTMLBrxRadioElement;
+        new (): HTMLBrxRadioElement;
+    };
+    interface HTMLBrxRadioGroupElement extends Components.BrxRadioGroup, HTMLStencilElement {
+    }
+    var HTMLBrxRadioGroupElement: {
+        prototype: HTMLBrxRadioGroupElement;
+        new (): HTMLBrxRadioGroupElement;
+    };
     interface HTMLBrxScrimElement extends Components.BrxScrim, HTMLStencilElement {
     }
     var HTMLBrxScrimElement: {
@@ -235,6 +298,8 @@ declare global {
         "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-loading": HTMLBrxLoadingElement;
+        "brx-radio": HTMLBrxRadioElement;
+        "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-tooltip": HTMLBrxTooltipElement;
@@ -371,6 +436,58 @@ declare namespace LocalJSX {
         "size"?: string | undefined;
         "variant"?: string | undefined;
     }
+    interface BrxRadio {
+        /**
+          * The tabindex of the radio button.
+         */
+        "buttonTabindex"?: number;
+        /**
+          * If `true`, the radio is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled"?: boolean;
+        "inputId"?: string | undefined;
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the radio button loses focus.
+         */
+        "onBrxBlur"?: (event: BrxRadioCustomEvent<void>) => void;
+        "onBrxChange"?: (event: BrxRadioCustomEvent<RadioChangeEventDetail>) => void;
+        /**
+          * Emitted when the radio button has focus.
+         */
+        "onBrxFocus"?: (event: BrxRadioCustomEvent<void>) => void;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
+    interface BrxRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
+        "label"?: HTMLLabelElement | string | null;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBrxChange"?: (event: BrxRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+    }
     interface BrxScrim {
         "active"?: boolean;
         "closeElement"?: string | undefined;
@@ -403,6 +520,8 @@ declare namespace LocalJSX {
         "brx-checkbox": BrxCheckbox;
         "brx-icon": BrxIcon;
         "brx-loading": BrxLoading;
+        "brx-radio": BrxRadio;
+        "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
         "brx-scrim-trigger": BrxScrimTrigger;
         "brx-tooltip": BrxTooltip;
@@ -421,6 +540,8 @@ declare module "@stencil/core" {
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
+            "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
+            "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;

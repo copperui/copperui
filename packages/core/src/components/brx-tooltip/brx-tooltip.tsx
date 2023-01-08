@@ -2,6 +2,7 @@ import { Component, Host, h, Prop, State, Watch, Element } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
 import { getWindow } from '../../utils/environment';
 import { Instance as PopperInstance } from '@popperjs/core';
+import { findTarget } from '../../utils/helpers';
 
 const POSITIONS = ['top', 'right', 'bottom', 'left'];
 
@@ -67,12 +68,7 @@ export class BrxTooltip {
     const target = this.target;
 
     if (target) {
-      if (typeof target === 'string') {
-        const component = getWindow()?.document.querySelector(target) as HTMLElement | null;
-        this.component = component;
-      } else {
-        this.component = target;
-      }
+      this.component = findTarget(target);
     }
   }
 
