@@ -13,6 +13,7 @@ export const BrxAccordionLegacyEntry = /*@__PURE__*/createReactComponent<JSX.Brx
 export const BrxAccordionLegacyEntryContent = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryContent, HTMLBrxAccordionLegacyEntryContentElement>('brx-accordion-legacy-entry-content');
 export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryItem, HTMLBrxAccordionLegacyEntryItemElement>('brx-accordion-legacy-entry-item');
 export const BrxButton = /*@__PURE__*/createReactComponent<JSX.BrxButton, HTMLBrxButtonElement>('brx-button');
+export const BrxCheckbox = /*@__PURE__*/createReactComponent<JSX.BrxCheckbox, HTMLBrxCheckboxElement>('brx-checkbox');
 export const BrxIcon = /*@__PURE__*/createReactComponent<JSX.BrxIcon, HTMLBrxIconElement>('brx-icon');
 export const BrxLoading = /*@__PURE__*/createReactComponent<JSX.BrxLoading, HTMLBrxLoadingElement>('brx-loading');
 export const BrxScrim = /*@__PURE__*/createReactComponent<JSX.BrxScrim, HTMLBrxScrimElement>('brx-scrim');
