@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-checkbox {
+  display: block;
+
+  @include checkbox-configs;
+}

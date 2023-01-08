@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CheckboxChangeEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -69,6 +70,36 @@ export namespace Components {
         "type": 'submit' | 'reset' | 'button';
         "variant": 'primary' | 'secondary' | 'default';
     }
+    interface BrxCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean | undefined;
+        "darkMode": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        "hiddenLabel": boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate": boolean;
+        "inputId": string | undefined;
+        "invalid": boolean | undefined;
+        "label": string | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "size": 'small' | 'medium';
+        "state": 'invalid' | 'danger' | undefined;
+        "valid": boolean | undefined;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value": any | null;
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -118,6 +149,10 @@ export interface BrxButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxButtonElement;
 }
+export interface BrxCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxCheckboxElement;
+}
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
     }
@@ -148,6 +183,12 @@ declare global {
     var HTMLBrxButtonElement: {
         prototype: HTMLBrxButtonElement;
         new (): HTMLBrxButtonElement;
+    };
+    interface HTMLBrxCheckboxElement extends Components.BrxCheckbox, HTMLStencilElement {
+    }
+    var HTMLBrxCheckboxElement: {
+        prototype: HTMLBrxCheckboxElement;
+        new (): HTMLBrxCheckboxElement;
     };
     interface HTMLBrxIconElement extends Components.BrxIcon, HTMLStencilElement {
     }
@@ -191,6 +232,7 @@ declare global {
         "brx-accordion-legacy-entry-content": HTMLBrxAccordionLegacyEntryContentElement;
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-button": HTMLBrxButtonElement;
+        "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-loading": HTMLBrxLoadingElement;
         "brx-scrim": HTMLBrxScrimElement;
@@ -272,6 +314,48 @@ declare namespace LocalJSX {
         "type"?: 'submit' | 'reset' | 'button';
         "variant"?: 'primary' | 'secondary' | 'default';
     }
+    interface BrxCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean | undefined;
+        "darkMode"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        "hiddenLabel"?: boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        "inputId"?: string | undefined;
+        "invalid"?: boolean | undefined;
+        "label"?: string | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onBrxBlur"?: (event: BrxCheckboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBrxChange"?: (event: BrxCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onBrxFocus"?: (event: BrxCheckboxCustomEvent<void>) => void;
+        "size"?: 'small' | 'medium';
+        "state"?: 'invalid' | 'danger' | undefined;
+        "valid"?: boolean | undefined;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value"?: any | null;
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -316,6 +400,7 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry-content": BrxAccordionLegacyEntryContent;
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-button": BrxButton;
+        "brx-checkbox": BrxCheckbox;
         "brx-icon": BrxIcon;
         "brx-loading": BrxLoading;
         "brx-scrim": BrxScrim;
@@ -333,6 +418,7 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-content": LocalJSX.BrxAccordionLegacyEntryContent & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryContentElement>;
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
+            "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
