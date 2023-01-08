@@ -1,7 +1,7 @@
 // This file was based on the <ion-radio /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/radio/radio.tsx
 
-import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { generateUniqueId } from '../../utils/entropy';
 import { RadioChangeEventDetail } from './brx-radio-interface';
 
@@ -15,7 +15,8 @@ export class BrxRadio {
 
   private radioGroup: HTMLBrxRadioGroupElement | null = null;
 
-  @Element() el!: HTMLBrxRadioElement;
+  @Element()
+  el!: HTMLBrxRadioElement;
 
   /**
    * Emitted when the radio button has focus.
@@ -69,7 +70,6 @@ export class BrxRadio {
   @Prop({ reflect: true, mutable: true })
   inputId: string | undefined;
 
-  /** @internal */
   @Method()
   async setFocus(ev: any) {
     ev.stopPropagation();
@@ -77,16 +77,53 @@ export class BrxRadio {
     this.el.focus();
   }
 
-  /** @internal */
   @Method()
   async setButtonTabindex(value: number) {
     this.buttonTabindex = value;
   }
 
   @Watch('checked')
-  checkedWatch() {
+  checkedWatch(v, ov) {
     if (this.checked) {
-      this.brxChange.emit({ value: this.value });
+      this.brxChange.emit({ checked: this.checked, value: this.value });
+    }
+  }
+
+  @Method()
+  async getNativeChecked() {
+    return this.nativeInput?.checked;
+  }
+
+  private updateState = () => {
+    if (this.radioGroup) {
+      this.checked = this.radioGroup.value === this.value;
+    }
+  };
+
+  private syncChecked = () => {
+    if (this.nativeInput) {
+      this.checked = this.nativeInput?.checked;
+    }
+  };
+
+  private onChange = () => {
+    this.syncChecked();
+  };
+
+  private onFocus = () => {
+    this.brxFocus.emit();
+  };
+
+  private onBlur = () => {
+    this.brxBlur.emit();
+  };
+
+  @Listen('brxChange', { target: 'window' })
+  watchGlobalChange(event: CustomEvent<any>) {
+    const target = (event.target as HTMLElement | null)?.closest('brx-radio');
+
+    if (target !== this.el) {
+      this.syncChecked();
     }
   }
 
@@ -108,6 +145,7 @@ export class BrxRadio {
 
     if (radioGroup) {
       radioGroup.removeEventListener('brxChange', this.updateState);
+
       this.radioGroup = null;
     }
   }
@@ -117,28 +155,6 @@ export class BrxRadio {
       this.inputId = await generateUniqueId();
     }
   }
-
-  private updateState = () => {
-    if (this.radioGroup) {
-      this.checked = this.radioGroup.value === this.value;
-    }
-  };
-
-  private onChange = e => {
-    if (this.disabled) {
-      e.preventDefault();
-    }
-
-    this.checked = this.nativeInput.checked;
-  };
-
-  private onFocus = () => {
-    this.brxFocus.emit();
-  };
-
-  private onBlur = () => {
-    this.brxBlur.emit();
-  };
 
   render() {
     const { inputId, name, value, disabled, checked, buttonTabindex, label } = this;

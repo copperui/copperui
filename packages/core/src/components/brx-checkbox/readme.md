@@ -33,6 +33,19 @@
 | `brxFocus`  | Emitted when the checkbox has focus.           | `CustomEvent<void>`                           |
 
 
+## Methods
+
+### `getNativeChecked() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

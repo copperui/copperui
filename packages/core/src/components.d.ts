@@ -82,6 +82,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
+        "getNativeChecked": () => Promise<boolean>;
         "hiddenLabel": boolean;
         /**
           * If `true`, the checkbox will visually appear as indeterminate.
@@ -112,6 +113,11 @@ export namespace Components {
          */
         "name": string;
     }
+    interface BrxItem {
+        "disabled": boolean;
+        "passthrough": boolean;
+        "selected": boolean;
+    }
     interface BrxLoading {
         "progress": string | number | undefined;
         "size": string | undefined;
@@ -130,6 +136,7 @@ export namespace Components {
           * If `true`, the user cannot interact with the radio.
          */
         "disabled": boolean;
+        "getNativeChecked": () => Promise<boolean>;
         "inputId": string | undefined;
         "label": string;
         /**
@@ -247,6 +254,12 @@ declare global {
         prototype: HTMLBrxIconElement;
         new (): HTMLBrxIconElement;
     };
+    interface HTMLBrxItemElement extends Components.BrxItem, HTMLStencilElement {
+    }
+    var HTMLBrxItemElement: {
+        prototype: HTMLBrxItemElement;
+        new (): HTMLBrxItemElement;
+    };
     interface HTMLBrxLoadingElement extends Components.BrxLoading, HTMLStencilElement {
     }
     var HTMLBrxLoadingElement: {
@@ -297,6 +310,7 @@ declare global {
         "brx-button": HTMLBrxButtonElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-icon": HTMLBrxIconElement;
+        "brx-item": HTMLBrxItemElement;
         "brx-loading": HTMLBrxLoadingElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
@@ -431,6 +445,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
     }
+    interface BrxItem {
+        "disabled"?: boolean;
+        "passthrough"?: boolean;
+        "selected"?: boolean;
+    }
     interface BrxLoading {
         "progress"?: string | number | undefined;
         "size"?: string | undefined;
@@ -519,6 +538,7 @@ declare namespace LocalJSX {
         "brx-button": BrxButton;
         "brx-checkbox": BrxCheckbox;
         "brx-icon": BrxIcon;
+        "brx-item": BrxItem;
         "brx-loading": BrxLoading;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
@@ -539,6 +559,7 @@ declare module "@stencil/core" {
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
+            "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
