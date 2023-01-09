@@ -103,6 +103,12 @@ export namespace Components {
          */
         "value": any | null;
     }
+    interface BrxDivider {
+        "darkMode": boolean;
+        "dashed": boolean;
+        "size": 'sm' | 'md' | 'lg';
+        "vertical": boolean;
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -248,6 +254,12 @@ declare global {
         prototype: HTMLBrxCheckboxElement;
         new (): HTMLBrxCheckboxElement;
     };
+    interface HTMLBrxDividerElement extends Components.BrxDivider, HTMLStencilElement {
+    }
+    var HTMLBrxDividerElement: {
+        prototype: HTMLBrxDividerElement;
+        new (): HTMLBrxDividerElement;
+    };
     interface HTMLBrxIconElement extends Components.BrxIcon, HTMLStencilElement {
     }
     var HTMLBrxIconElement: {
@@ -309,6 +321,7 @@ declare global {
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
+        "brx-divider": HTMLBrxDividerElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-item": HTMLBrxItemElement;
         "brx-loading": HTMLBrxLoadingElement;
@@ -435,6 +448,12 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BrxDivider {
+        "darkMode"?: boolean;
+        "dashed"?: boolean;
+        "size"?: 'sm' | 'md' | 'lg';
+        "vertical"?: boolean;
+    }
     interface BrxIcon {
         /**
           * Define o carregamento automático dos recursos.
@@ -537,6 +556,7 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-button": BrxButton;
         "brx-checkbox": BrxCheckbox;
+        "brx-divider": BrxDivider;
         "brx-icon": BrxIcon;
         "brx-item": BrxItem;
         "brx-loading": BrxLoading;
@@ -558,6 +578,7 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
+            "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
