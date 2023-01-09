@@ -1,0 +1,15 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-divider,
+[data-brx-global-styles~='hr'] hr,
+hr.brx-divider {
+  @include divider-configs;
+}
+
+// A tag HR reaproveita o estilo do Divider com margens pré-configurada
+[data-brx-global-styles~='hr'] hr,
+hr.brx-divider {
+  --divider-padding: var(--spacing-scale-2x);
+  margin: var(--divider-padding) 0;
+}
