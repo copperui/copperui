@@ -124,6 +124,13 @@ export namespace Components {
         "passthrough": boolean;
         "selected": boolean;
     }
+    interface BrxList {
+        "horizontal": boolean;
+        "lines": 'one' | 'two' | 'three' | undefined;
+    }
+    interface BrxListHeader {
+        "headerTitle": string;
+    }
     interface BrxLoading {
         "progress": string | number | undefined;
         "size": string | undefined;
@@ -272,6 +279,18 @@ declare global {
         prototype: HTMLBrxItemElement;
         new (): HTMLBrxItemElement;
     };
+    interface HTMLBrxListElement extends Components.BrxList, HTMLStencilElement {
+    }
+    var HTMLBrxListElement: {
+        prototype: HTMLBrxListElement;
+        new (): HTMLBrxListElement;
+    };
+    interface HTMLBrxListHeaderElement extends Components.BrxListHeader, HTMLStencilElement {
+    }
+    var HTMLBrxListHeaderElement: {
+        prototype: HTMLBrxListHeaderElement;
+        new (): HTMLBrxListHeaderElement;
+    };
     interface HTMLBrxLoadingElement extends Components.BrxLoading, HTMLStencilElement {
     }
     var HTMLBrxLoadingElement: {
@@ -324,6 +343,8 @@ declare global {
         "brx-divider": HTMLBrxDividerElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-item": HTMLBrxItemElement;
+        "brx-list": HTMLBrxListElement;
+        "brx-list-header": HTMLBrxListHeaderElement;
         "brx-loading": HTMLBrxLoadingElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
@@ -469,6 +490,13 @@ declare namespace LocalJSX {
         "passthrough"?: boolean;
         "selected"?: boolean;
     }
+    interface BrxList {
+        "horizontal"?: boolean;
+        "lines"?: 'one' | 'two' | 'three' | undefined;
+    }
+    interface BrxListHeader {
+        "headerTitle"?: string;
+    }
     interface BrxLoading {
         "progress"?: string | number | undefined;
         "size"?: string | undefined;
@@ -559,6 +587,8 @@ declare namespace LocalJSX {
         "brx-divider": BrxDivider;
         "brx-icon": BrxIcon;
         "brx-item": BrxItem;
+        "brx-list": BrxList;
+        "brx-list-header": BrxListHeader;
         "brx-loading": BrxLoading;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
@@ -581,6 +611,8 @@ declare module "@stencil/core" {
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;
+            "brx-list": LocalJSX.BrxList & JSXBase.HTMLAttributes<HTMLBrxListElement>;
+            "brx-list-header": LocalJSX.BrxListHeader & JSXBase.HTMLAttributes<HTMLBrxListHeaderElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
