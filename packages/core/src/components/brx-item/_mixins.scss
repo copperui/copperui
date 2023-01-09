@@ -57,7 +57,7 @@
 
   brx-checkbox,
   brx-radio {
-    &:not(.hidden-label) {
+    &:not(.hidden-label):not([hidden-label]) {
       margin-bottom: calc(var(--item-padding-y) * -1);
       margin-left: calc(var(--item-padding-x) * -1);
       margin-right: calc(var(--item-padding-x) * -1);
