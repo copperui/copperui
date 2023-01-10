@@ -1,4 +1,4 @@
-# brx-collapse-trigger
+# brx-dropdown-trigger
 
 
 
@@ -16,48 +16,17 @@
 | `useIcons`   | `use-icons`    |             | `boolean`               | `true`                   |
 
 
-## Events
-
-| Event                          | Description | Type                |
-| ------------------------------ | ----------- | ------------------- |
-| `brxSetTargetVisibilityStatus` |             | `CustomEvent<void>` |
-| `brxTriggerClick`              |             | `CustomEvent<void>` |
-
-
-## Methods
-
-### `getTarget() => Promise<HTMLElement>`
-
-
-
-#### Returns
-
-Type: `Promise<HTMLElement>`
-
-
-
-### `getTrigger() => Promise<HTMLElement>`
-
-
-
-#### Returns
-
-Type: `Promise<HTMLElement>`
-
-
-
-
 ## Dependencies
 
-### Used by
+### Depends on
 
- - [brx-dropdown-trigger](../brx-dropdown-trigger)
+- [brx-collapse-trigger](../brx-collapse-trigger)
 
 ### Graph
 ```mermaid
 graph TD;
   brx-dropdown-trigger --> brx-collapse-trigger
-  style brx-collapse-trigger fill:#f9f,stroke:#333,stroke-width:4px
+  style brx-dropdown-trigger fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

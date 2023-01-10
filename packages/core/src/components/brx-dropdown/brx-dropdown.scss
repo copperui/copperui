@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'dropdown';
+
+brx-dropdown {
+  display: block;
+
+  @include dropdown-configs;
+}

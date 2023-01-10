@@ -1,0 +1,33 @@
+@mixin dropdown-configs {
+  position: relative;
+
+  brx-dropdown-trigger {
+    + * {
+      box-shadow: var(--surface-shadow-sm);
+      left: 0;
+      position: absolute;
+      top: 100%;
+    }
+  }
+
+  > brx-notification {
+    left: auto;
+    right: 0;
+  }
+
+  brx-item {
+    @include light-mode;
+    --item-padding-y: var(--spacing-scale-2x);
+    --interactive-rgb: var(--color-rgb);
+    background-color: var(--background-light);
+    color: var(--color);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    &[selected] {
+      @include dark-mode;
+    }
+  }
+}
