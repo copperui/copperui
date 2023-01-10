@@ -1,15 +1,16 @@
 import { Component, Host, h, Listen, ComponentInterface, Prop, State } from '@stencil/core';
 import { BrxCollapseTrigger } from '../brx-collapse-trigger/brx-collapse-trigger';
-import { IBrxCollapseTriggerProps } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
+import { IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
 
 @Component({
   tag: 'brx-dropdown-trigger',
   styleUrl: 'brx-dropdown-trigger.scss',
   shadow: false,
 })
-export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTriggerProps {
+export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTriggerState {
   private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
 
+  // brx-collapse-trigger props
   @Prop({ reflect: true })
   useIcons: boolean = true;
 
@@ -23,7 +24,8 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
   iconToShow: string = 'fa5/fas/chevron-down';
 
   @Prop({ reflect: true, attribute: 'target' })
-  propTarget: HTMLElement | string;
+  target: HTMLElement | string;
+  // end brx-collapse-trigger props
 
   @State()
   dropdown: boolean;
@@ -61,9 +63,9 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
     this.setParentsTargetVisibilityStatus();
   }
 
-  getCollapseTriggerProps() {
-    const { useIcons, breakpoint, iconToHide, iconToShow, propTarget } = this;
-    return { useIcons, breakpoint, iconToHide, iconToShow, target: propTarget };
+  getCollapseTriggerProps(): IBrxCollapseTriggerState {
+    const { useIcons, breakpoint, iconToHide, iconToShow, target } = this;
+    return { useIcons, breakpoint, iconToHide, iconToShow, target };
   }
 
   render() {
@@ -74,8 +76,8 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
         <brx-collapse-trigger
           {...collapseTriggerProps}
           ref={el => void (this.collapseTriggerEl = el)}
-          onBrxSetTargetVisibilityStatus={() => this.setTargetVisibilityStatus()}
           onBrxTriggerClick={() => this.handleTriggerClickBehavior()}
+          onBrxSetTargetVisibilityStatus={() => this.setTargetVisibilityStatus()}
         >
           <slot></slot>
         </brx-collapse-trigger>

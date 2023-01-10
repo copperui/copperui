@@ -40,14 +40,14 @@ export namespace Components {
         /**
           * The type of button.
          */
-        "buttonType": string;
+        "buttonType": string | undefined;
         "circle": boolean;
         "color": 'danger' | 'success' | 'warning' | 'info';
         "darkMode": boolean;
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled": boolean;
+        "disabled": boolean | undefined;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -65,6 +65,7 @@ export namespace Components {
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel": string | undefined;
+        "signin": boolean | 'avatar';
         "size": 'large' | 'medium' | 'small' | 'xsmall';
         /**
           * If `true`, activates a button with a heavier font weight.
@@ -117,7 +118,7 @@ export namespace Components {
         "getTrigger": () => Promise<HTMLElement>;
         "iconToHide": string;
         "iconToShow": string;
-        "propTarget": HTMLElement | string;
+        "target": HTMLElement | string;
         "useIcons": boolean;
     }
     interface BrxDivider {
@@ -132,7 +133,7 @@ export namespace Components {
         "breakpoint": string | undefined;
         "iconToHide": string;
         "iconToShow": string;
-        "propTarget": HTMLElement | string;
+        "target": HTMLElement | string;
         "useIcons": boolean;
     }
     interface BrxIcon {
@@ -215,6 +216,12 @@ export namespace Components {
     }
     interface BrxScrimTrigger {
         "target": HTMLBrxScrimElement | string;
+    }
+    interface BrxSignin {
+        "iconName": string;
+        "label": string;
+        "showIcon": boolean;
+        "showLabel": boolean;
     }
     interface BrxTooltip {
         "active": boolean;
@@ -377,6 +384,12 @@ declare global {
         prototype: HTMLBrxScrimTriggerElement;
         new (): HTMLBrxScrimTriggerElement;
     };
+    interface HTMLBrxSigninElement extends Components.BrxSignin, HTMLStencilElement {
+    }
+    var HTMLBrxSigninElement: {
+        prototype: HTMLBrxSigninElement;
+        new (): HTMLBrxSigninElement;
+    };
     interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
     }
     var HTMLBrxTooltipElement: {
@@ -410,6 +423,7 @@ declare global {
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
+        "brx-signin": HTMLBrxSigninElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -447,14 +461,14 @@ declare namespace LocalJSX {
         /**
           * The type of button.
          */
-        "buttonType"?: string;
+        "buttonType"?: string | undefined;
         "circle"?: boolean;
         "color"?: 'danger' | 'success' | 'warning' | 'info';
         "darkMode"?: boolean;
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled"?: boolean;
+        "disabled"?: boolean | undefined;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -480,6 +494,7 @@ declare namespace LocalJSX {
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel"?: string | undefined;
+        "signin"?: boolean | 'avatar';
         "size"?: 'large' | 'medium' | 'small' | 'xsmall';
         /**
           * If `true`, activates a button with a heavier font weight.
@@ -543,7 +558,7 @@ declare namespace LocalJSX {
         "iconToShow"?: string;
         "onBrxSetTargetVisibilityStatus"?: (event: BrxCollapseTriggerCustomEvent<void>) => void;
         "onBrxTriggerClick"?: (event: BrxCollapseTriggerCustomEvent<void>) => void;
-        "propTarget"?: HTMLElement | string;
+        "target"?: HTMLElement | string;
         "useIcons"?: boolean;
     }
     interface BrxDivider {
@@ -558,7 +573,7 @@ declare namespace LocalJSX {
         "breakpoint"?: string | undefined;
         "iconToHide"?: string;
         "iconToShow"?: string;
-        "propTarget"?: HTMLElement | string;
+        "target"?: HTMLElement | string;
         "useIcons"?: boolean;
     }
     interface BrxIcon {
@@ -650,6 +665,12 @@ declare namespace LocalJSX {
     interface BrxScrimTrigger {
         "target"?: HTMLBrxScrimElement | string;
     }
+    interface BrxSignin {
+        "iconName"?: string;
+        "label"?: string;
+        "showIcon"?: boolean;
+        "showLabel"?: boolean;
+    }
     interface BrxTooltip {
         "active"?: boolean;
         "color"?: string;
@@ -686,6 +707,7 @@ declare namespace LocalJSX {
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
         "brx-scrim-trigger": BrxScrimTrigger;
+        "brx-signin": BrxSignin;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -714,6 +736,7 @@ declare module "@stencil/core" {
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
+            "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }

@@ -1,15 +1,16 @@
 // This file was based on the <ion-button /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/button/button.tsx
 
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attributes';
+import { IBrxButtonInterfaceState } from './brx-button-interface';
 
 @Component({
   tag: 'brx-button',
   styleUrl: 'brx-button.scss',
   shadow: false,
 })
-export class BrxButton {
+export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
   private inheritedAttributes: Attributes = {};
 
   @Element() el!: HTMLElement;
@@ -26,6 +27,8 @@ export class BrxButton {
   @Event()
   brxBlur!: EventEmitter<void>;
 
+  // brx-button props
+
   /**
    * CSS class names to be applied to the native button element.
    */
@@ -36,13 +39,13 @@ export class BrxButton {
    * The type of button.
    */
   @Prop({ mutable: true })
-  buttonType = 'button';
+  buttonType: string | undefined = 'button';
 
   /**
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true })
-  disabled = false;
+  disabled: boolean | undefined = false;
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -110,6 +113,11 @@ export class BrxButton {
 
   @Prop({ reflect: true })
   variant: 'primary' | 'secondary' | 'default' = 'default';
+
+  @Prop({ reflect: true })
+  signin: boolean | 'avatar' = false;
+
+  // end brx-button props
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAriaAttributes(this.el);
