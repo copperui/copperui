@@ -200,7 +200,7 @@
 
       <div>
         <brx-list data-sub="data-sub">
-          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l1">
+          <brx-collapse-trigger tabindex="0" target="#c-l1">
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 01</div>
@@ -238,7 +238,7 @@
             <brx-divider></brx-divider>
           </brx-list>
 
-          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l2">
+          <brx-collapse-trigger tabindex="0" target="#c-l2">
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 02</div>
@@ -276,7 +276,7 @@
             <brx-divider></brx-divider>
           </brx-list>
 
-          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l3">
+          <brx-collapse-trigger tabindex="0" target="#c-l3">
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 03</div>
@@ -410,7 +410,7 @@
 
     <!-- Dropdown -->
 
-    <section>
+    <!-- <section>
       <h1>Dropdown</h1>
 
       <div>
@@ -467,7 +467,7 @@
       </div>
     </section>
 
-    <hr />
+    <hr /> -->
 
     <!-- Ícone -->
 
@@ -902,19 +902,19 @@
         <hr />
 
         <div>
-          <p>TODO: "Por expansão" depende de collapse.</p>
-
-          <!-- <brx-list>
+          <brx-list>
             <brx-list-header header-title="Por expansão"></brx-list-header>
 
             <brx-divider></brx-divider>
 
-            <brx-item data-toggle="collapse" target="#l1">
-              <div class="content">
-                <div class="flex-fill">RÓTULO 01</div>
-                <brx-icon name="fa5/fas/angle-down"></brx-icon>
-              </div>
-            </brx-item>
+            <brx-collapse-trigger target="#l1">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 01</div>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
 
             <brx-list id="l1" hidden="hidden">
               <brx-item>
@@ -945,12 +945,14 @@
               <brx-divider></brx-divider>
             </brx-list>
 
-            <brx-item data-toggle="collapse" target="#l2">
-              <div class="content">
-                <div class="flex-fill">RÓTULO 02</div>
-                <brx-icon name="fa5/fas/angle-down"></brx-icon>
-              </div>
-            </brx-item>
+            <brx-collapse-trigger target="#l2">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 02</div>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
 
             <brx-list id="l2" hidden="hidden">
               <brx-item>
@@ -981,12 +983,14 @@
               <brx-divider></brx-divider>
             </brx-list>
 
-            <brx-item data-toggle="collapse" target="#l3">
-              <div class="content">
-                <div class="flex-fill">RÓTULO 03</div>
-                <brx-icon name="fa5/fas/angle-down"></brx-icon>
-              </div>
-            </brx-item>
+            <brx-collapse-trigger target="#l3">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 03</div>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
 
             <brx-list id="l3" hidden="hidden">
               <brx-item>
@@ -1016,7 +1020,7 @@
 
               <brx-divider></brx-divider>
             </brx-list>
-          </brx-list> -->
+          </brx-list>
         </div>
       </div>
 
@@ -1060,108 +1064,114 @@
         </div>
 
         <div>
-          <p>TODO: "Versão com expansão" depende de collapse.</p>
-          <!-- <brx-list class="horizontal mt-5">
+          <brx-list class="horizontal mt-5">
             <brx-list-header header-title="Versão com expansão"></brx-list-header>
 
             <brx-divider></brx-divider>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" target="#h1">
-                <div class="content">
-                  <div class="flex-fill">RÓTULO 01</div>
-                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
-                </div>
-              </div>
-              <div class="br-list" id="h1" role="list" hidden="hidden">
-                <div class="br-item" role="listitem">
+              <brx-collapse-trigger target="#h1">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 01</div>
+                    <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+
+              <brx-list id="h1" hidden="hidden">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-              </div>
+              </brx-list>
             </div>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" target="#h2">
-                <div class="content">
-                  <div class="flex-fill">RÓTULO 02</div>
-                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
-                </div>
-              </div>
-              <div class="br-list" id="h2" role="list" hidden="hidden">
-                <div class="br-item" role="listitem">
+              <brx-collapse-trigger target="#h2">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 02</div>
+                    <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+              <brx-list id="h2" hidden="hidden">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-              </div>
+              </brx-list>
             </div>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" target="#h3">
-                <div class="content">
-                  <div class="flex-fill">RÓTULO 03</div>
-                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
-                </div>
-              </div>
-              <div class="br-list" id="h3" role="list" hidden="hidden">
-                <div class="br-item" role="listitem">
+              <brx-collapse-trigger target="#h3">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 03</div>
+                    <brx-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+              <brx-list id="h3" hidden="hidden">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-                <div class="br-item" role="listitem">
+                <brx-item>
                   <div class="row align-items-center">
                     <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
                     <div class="col">Sub-item</div>
                   </div>
-                </div>
+                </brx-item>
                 <brx-divider></brx-divider>
-              </div>
+              </brx-list>
             </div>
-          </brx-list> -->
+          </brx-list>
         </div>
       </div>
     </section>
