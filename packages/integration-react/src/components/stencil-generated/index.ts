@@ -12,6 +12,7 @@ export const BrxAccordionLegacy = /*@__PURE__*/createReactComponent<JSX.BrxAccor
 export const BrxAccordionLegacyEntry = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntry, HTMLBrxAccordionLegacyEntryElement>('brx-accordion-legacy-entry');
 export const BrxAccordionLegacyEntryContent = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryContent, HTMLBrxAccordionLegacyEntryContentElement>('brx-accordion-legacy-entry-content');
 export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX.BrxAccordionLegacyEntryItem, HTMLBrxAccordionLegacyEntryItemElement>('brx-accordion-legacy-entry-item');
+export const BrxAvatar = /*@__PURE__*/createReactComponent<JSX.BrxAvatar, HTMLBrxAvatarElement>('brx-avatar');
 export const BrxButton = /*@__PURE__*/createReactComponent<JSX.BrxButton, HTMLBrxButtonElement>('brx-button');
 export const BrxCheckbox = /*@__PURE__*/createReactComponent<JSX.BrxCheckbox, HTMLBrxCheckboxElement>('brx-checkbox');
 export const BrxCollapseTrigger = /*@__PURE__*/createReactComponent<JSX.BrxCollapseTrigger, HTMLBrxCollapseTriggerElement>('brx-collapse-trigger');
