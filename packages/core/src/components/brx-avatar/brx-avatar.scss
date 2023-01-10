@@ -1,0 +1,6 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-avatar {
+  @include avatar-configs;
+}
