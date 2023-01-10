@@ -410,18 +410,20 @@
 
     <!-- Dropdown -->
 
-    <!-- <section>
+    <section>
       <h1>Dropdown</h1>
 
       <div>
         <div class="row">
           <div class="col">
-            <div>
-              <brx-button circle size="small" data-toggle="dropdown" aria-label="Abrir Acesso Rápido" target="#target">
-                <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
-              </brx-button>
+            <brx-dropdown>
+              <brx-dropdown-trigger target="#dropdown-target-1">
+                <brx-button circle size="small" aria-label="Abrir Acesso Rápido">
+                  <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                </brx-button>
+              </brx-dropdown-trigger>
 
-              <brx-list class="target" id="target" hidden="hidden">
+              <brx-list class="target" id="dropdown-target-1" hidden="hidden">
                 <brx-list-header header-title="Acesso Rápido"></brx-list-header>
 
                 <brx-item pass-styles>
@@ -437,13 +439,16 @@
                   <a href="#">Link de acesso 4</a>
                 </brx-item>
               </brx-list>
-            </div>
+            </brx-dropdown>
           </div>
+
           <div class="col">
-            <div>
-              <brx-button circle size="small" data-toggle="dropdown" aria-label="Abrir Acesso Rápido" target="#target2">
-                <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
-              </brx-button>
+            <brx-dropdown>
+              <brx-dropdown-trigger target="#target2">
+                <brx-button circle size="small" aria-label="Abrir Acesso Rápido">
+                  <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                </brx-button>
+              </brx-dropdown-trigger>
 
               <brx-list class="target" id="target2" hidden="hidden">
                 <brx-list-header header-title="Acesso Rápido"></brx-list-header>
@@ -461,13 +466,13 @@
                   <a href="#">Link de acesso 4</a>
                 </brx-item>
               </brx-list>
-            </div>
+            </brx-dropdown>
           </div>
         </div>
       </div>
     </section>
 
-    <hr /> -->
+    <hr />
 
     <!-- Ícone -->
 

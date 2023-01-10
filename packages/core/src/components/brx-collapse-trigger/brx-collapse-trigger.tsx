@@ -1,15 +1,22 @@
-import { Component, Host, h, Prop, Element, Listen, ComponentInterface } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Listen, ComponentInterface, State, Watch, Method, Event, EventEmitter } from '@stencil/core';
 import { generateUniqueId } from '../../utils/entropy';
-import { findTarget } from '../../utils/helpers';
+import { findTarget, toggleAttribute } from '../../utils/helpers';
+import { IBrxCollapseTriggerProps } from './brx-collapse-trigger-interface';
 
 @Component({
   tag: 'brx-collapse-trigger',
   styleUrl: 'brx-collapse-trigger.scss',
   shadow: false,
 })
-export class BrxCollapseTrigger implements ComponentInterface {
+export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTriggerProps {
   @Element()
   el: HTMLElement;
+
+  @Event()
+  brxTriggerClick: EventEmitter<void>;
+
+  @Event()
+  brxSetTargetVisibilityStatus: EventEmitter<void>;
 
   @Prop({ reflect: true })
   useIcons: boolean = true;
@@ -26,12 +33,16 @@ export class BrxCollapseTrigger implements ComponentInterface {
   @Prop({ reflect: true, attribute: 'target' })
   propTarget: HTMLElement | string;
 
-  get trigger() {
-    return this.el;
-  }
+  @State()
+  trigger: HTMLElement;
 
-  get target(): HTMLElement | null {
-    return findTarget(this.propTarget);
+  @State()
+  target: HTMLElement | null;
+
+  @Watch('propTarget')
+  setupElements() {
+    this.trigger = this.el;
+    this.target = findTarget(this.propTarget);
   }
 
   // TODO: Melhorar a solução
@@ -45,7 +56,9 @@ export class BrxCollapseTrigger implements ComponentInterface {
     }
   }
 
-  async setUp() {
+  async setup() {
+    this.setupElements();
+
     this._setVisibilityStatus();
 
     if (this.useIcons) {
@@ -88,9 +101,10 @@ export class BrxCollapseTrigger implements ComponentInterface {
 
     if (target) {
       const isTargetHidden = target.hasAttribute('hidden');
-
       target.setAttribute('aria-hidden', String(isTargetHidden));
     }
+
+    this.brxSetTargetVisibilityStatus.emit();
   }
 
   _handleTriggerClickBehavior() {
@@ -104,7 +118,7 @@ export class BrxCollapseTrigger implements ComponentInterface {
           this._toggleIcon();
         }
 
-        trigger.dispatchEvent(new Event('change'));
+        trigger.dispatchEvent(new window.Event('change'));
       }
     } else {
       this._toggleVisibility();
@@ -113,19 +127,17 @@ export class BrxCollapseTrigger implements ComponentInterface {
         this._toggleIcon();
       }
 
-      trigger.dispatchEvent(new Event('change'));
+      trigger.dispatchEvent(new window.Event('change'));
     }
+
+    this.brxTriggerClick.emit();
   }
 
   _toggleVisibility() {
     const { target } = this;
 
     if (target) {
-      if (target.hasAttribute('hidden')) {
-        target.removeAttribute('hidden');
-      } else {
-        target.setAttribute('hidden', '');
-      }
+      toggleAttribute(target, 'hidden');
 
       this._setVisibilityStatus();
     }
@@ -150,8 +162,19 @@ export class BrxCollapseTrigger implements ComponentInterface {
     this._handleTriggerClickBehavior();
   }
 
+  @Method()
+  async getTrigger() {
+    return this.trigger;
+  }
+
+  @Method()
+  async getTarget() {
+    return this.target;
+  }
+
   componentDidLoad(): void {
-    this.setUp();
+    this.setupElements();
+    this.setup();
   }
 
   render() {

@@ -11,3 +11,11 @@ export const findTarget = <R extends T | null, T extends HTMLElement>(target: T 
 
   return null;
 };
+
+export const toggleAttribute = (element: HTMLElement, name: string) => {
+  if (element.hasAttribute(name)) {
+    element.removeAttribute(name);
+  } else {
+    element.setAttribute(name, '');
+  }
+};

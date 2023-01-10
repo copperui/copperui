@@ -105,6 +105,8 @@ export namespace Components {
     }
     interface BrxCollapseTrigger {
         "breakpoint": string | undefined;
+        "getTarget": () => Promise<HTMLElement>;
+        "getTrigger": () => Promise<HTMLElement>;
         "iconToHide": string;
         "iconToShow": string;
         "propTarget": HTMLElement | string;
@@ -115,6 +117,15 @@ export namespace Components {
         "dashed": boolean;
         "size": 'sm' | 'md' | 'lg';
         "vertical": boolean;
+    }
+    interface BrxDropdown {
+    }
+    interface BrxDropdownTrigger {
+        "breakpoint": string | undefined;
+        "iconToHide": string;
+        "iconToShow": string;
+        "propTarget": HTMLElement | string;
+        "useIcons": boolean;
     }
     interface BrxIcon {
         /**
@@ -225,6 +236,10 @@ export interface BrxCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxCheckboxElement;
 }
+export interface BrxCollapseTriggerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxCollapseTriggerElement;
+}
 export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioElement;
@@ -281,6 +296,18 @@ declare global {
     var HTMLBrxDividerElement: {
         prototype: HTMLBrxDividerElement;
         new (): HTMLBrxDividerElement;
+    };
+    interface HTMLBrxDropdownElement extends Components.BrxDropdown, HTMLStencilElement {
+    }
+    var HTMLBrxDropdownElement: {
+        prototype: HTMLBrxDropdownElement;
+        new (): HTMLBrxDropdownElement;
+    };
+    interface HTMLBrxDropdownTriggerElement extends Components.BrxDropdownTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxDropdownTriggerElement: {
+        prototype: HTMLBrxDropdownTriggerElement;
+        new (): HTMLBrxDropdownTriggerElement;
     };
     interface HTMLBrxIconElement extends Components.BrxIcon, HTMLStencilElement {
     }
@@ -357,6 +384,8 @@ declare global {
         "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-collapse-trigger": HTMLBrxCollapseTriggerElement;
         "brx-divider": HTMLBrxDividerElement;
+        "brx-dropdown": HTMLBrxDropdownElement;
+        "brx-dropdown-trigger": HTMLBrxDropdownTriggerElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-item": HTMLBrxItemElement;
         "brx-list": HTMLBrxListElement;
@@ -489,6 +518,8 @@ declare namespace LocalJSX {
         "breakpoint"?: string | undefined;
         "iconToHide"?: string;
         "iconToShow"?: string;
+        "onBrxSetTargetVisibilityStatus"?: (event: BrxCollapseTriggerCustomEvent<void>) => void;
+        "onBrxTriggerClick"?: (event: BrxCollapseTriggerCustomEvent<void>) => void;
         "propTarget"?: HTMLElement | string;
         "useIcons"?: boolean;
     }
@@ -497,6 +528,15 @@ declare namespace LocalJSX {
         "dashed"?: boolean;
         "size"?: 'sm' | 'md' | 'lg';
         "vertical"?: boolean;
+    }
+    interface BrxDropdown {
+    }
+    interface BrxDropdownTrigger {
+        "breakpoint"?: string | undefined;
+        "iconToHide"?: string;
+        "iconToShow"?: string;
+        "propTarget"?: HTMLElement | string;
+        "useIcons"?: boolean;
     }
     interface BrxIcon {
         /**
@@ -611,6 +651,8 @@ declare namespace LocalJSX {
         "brx-checkbox": BrxCheckbox;
         "brx-collapse-trigger": BrxCollapseTrigger;
         "brx-divider": BrxDivider;
+        "brx-dropdown": BrxDropdown;
+        "brx-dropdown-trigger": BrxDropdownTrigger;
         "brx-icon": BrxIcon;
         "brx-item": BrxItem;
         "brx-list": BrxList;
@@ -636,6 +678,8 @@ declare module "@stencil/core" {
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-collapse-trigger": LocalJSX.BrxCollapseTrigger & JSXBase.HTMLAttributes<HTMLBrxCollapseTriggerElement>;
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
+            "brx-dropdown": LocalJSX.BrxDropdown & JSXBase.HTMLAttributes<HTMLBrxDropdownElement>;
+            "brx-dropdown-trigger": LocalJSX.BrxDropdownTrigger & JSXBase.HTMLAttributes<HTMLBrxDropdownTriggerElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;
             "brx-list": LocalJSX.BrxList & JSXBase.HTMLAttributes<HTMLBrxListElement>;
