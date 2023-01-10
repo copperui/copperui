@@ -172,7 +172,9 @@
 
 @mixin list-data-lines {
   &[data-one-line] brx-item,
-  &[data-one-line] & brx-item {
+  &[data-one-line] & brx-item,
+  &[lines='one'] brx-item,
+  &[lines='one'] & brx-item {
     height: 2em;
 
     .content {
@@ -181,7 +183,9 @@
   }
 
   &[data-two-lines] brx-item,
-  &[data-two-lines] & brx-item {
+  &[data-two-lines] & brx-item,
+  &[lines='two'] brx-item,
+  &[lines='two'] & brx-item {
     height: 4em;
 
     .content {
@@ -190,7 +194,9 @@
   }
 
   &[data-three-lines] brx-item,
-  &[data-three-lines] & brx-item {
+  &[data-three-lines] & brx-item,
+  &[lines='three'] brx-item,
+  &[lines='three'] & brx-item {
     height: 6em;
 
     .content {

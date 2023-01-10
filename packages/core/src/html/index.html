@@ -107,7 +107,7 @@
           <brx-button variant="secondary" circle aria-label="Ícone ilustrativo">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button variant="" circle aria-label="Ícone ilustrativo">
+          <brx-button circle aria-label="Ícone ilustrativo">
             <brx-icon name="city"></brx-icon>
           </brx-button>
         </div>
@@ -190,6 +190,130 @@
         <brx-checkbox checked disabled label="Oi"></brx-checkbox>
         <brx-checkbox invalid label="Oi"></brx-checkbox>
         <brx-checkbox valid label="Oi"></brx-checkbox>
+      </div>
+    </section>
+
+    <!-- Collapse -->
+
+    <section>
+      <h1>Collapse</h1>
+
+      <div>
+        <brx-list data-sub="data-sub">
+          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l1">
+            <brx-item button>
+              <div class="content">
+                <div class="flex-fill">RÓTULO 01</div>
+                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+              </div>
+            </brx-item>
+          </brx-collapse-trigger>
+
+          <brx-list id="c-l1" hidden="hidden" data-sub="data-sub">
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+
+          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l2">
+            <brx-item button>
+              <div class="content">
+                <div class="flex-fill">RÓTULO 02</div>
+                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+              </div>
+            </brx-item>
+          </brx-collapse-trigger>
+
+          <brx-list id="c-l2" hidden="hidden" data-sub="data-sub">
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+
+          <brx-collapse-trigger tabindex="0" data-toggle="collapse" target="#c-l3">
+            <brx-item button>
+              <div class="content">
+                <div class="flex-fill">RÓTULO 03</div>
+                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+              </div>
+            </brx-item>
+          </brx-collapse-trigger>
+
+          <brx-list id="c-l3" hidden="hidden" data-sub="data-sub">
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col">Sub-item</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+        </brx-list>
       </div>
     </section>
 
@@ -284,6 +408,67 @@
 
     <hr />
 
+    <!-- Dropdown -->
+
+    <section>
+      <h1>Dropdown</h1>
+
+      <div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <brx-button circle size="small" data-toggle="dropdown" aria-label="Abrir Acesso Rápido" target="#target">
+                <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+              </brx-button>
+
+              <brx-list class="target" id="target" hidden="hidden">
+                <brx-list-header header-title="Acesso Rápido"></brx-list-header>
+
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 1</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 2</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 3</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 4</a>
+                </brx-item>
+              </brx-list>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <brx-button circle size="small" data-toggle="dropdown" aria-label="Abrir Acesso Rápido" target="#target2">
+                <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+              </brx-button>
+
+              <brx-list class="target" id="target2" hidden="hidden">
+                <brx-list-header header-title="Acesso Rápido"></brx-list-header>
+
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 1</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 2</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 3</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 4</a>
+                </brx-item>
+              </brx-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
     <!-- Ícone -->
 
     <section>
@@ -329,13 +514,13 @@
 
         <hr />
 
-        <brx-item passthrough>
+        <brx-item pass-styles>
           <a href="#">Item link</a>
         </brx-item>
 
         <hr />
 
-        <brx-item passthrough>
+        <brx-item pass-styles>
           <button type="button">Item botão</button>
         </brx-item>
       </div>
@@ -383,6 +568,8 @@
     </section>
 
     <hr />
+
+    <!-- List -->
 
     <section>
       <h1>List</h1>
@@ -722,7 +909,7 @@
 
             <brx-divider></brx-divider>
 
-            <brx-item data-toggle="collapse" data-target="l1">
+            <brx-item data-toggle="collapse" target="#l1">
               <div class="content">
                 <div class="flex-fill">RÓTULO 01</div>
                 <brx-icon name="fa5/fas/angle-down"></brx-icon>
@@ -758,7 +945,7 @@
               <brx-divider></brx-divider>
             </brx-list>
 
-            <brx-item data-toggle="collapse" data-target="l2">
+            <brx-item data-toggle="collapse" target="#l2">
               <div class="content">
                 <div class="flex-fill">RÓTULO 02</div>
                 <brx-icon name="fa5/fas/angle-down"></brx-icon>
@@ -794,7 +981,7 @@
               <brx-divider></brx-divider>
             </brx-list>
 
-            <brx-item data-toggle="collapse" data-target="l3">
+            <brx-item data-toggle="collapse" target="#l3">
               <div class="content">
                 <div class="flex-fill">RÓTULO 03</div>
                 <brx-icon name="fa5/fas/angle-down"></brx-icon>
@@ -880,10 +1067,10 @@
             <brx-divider></brx-divider>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" data-target="h1">
+              <div class="br-item" role="listitem" data-toggle="collapse" target="#h1">
                 <div class="content">
                   <div class="flex-fill">RÓTULO 01</div>
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </div>
               <div class="br-list" id="h1" role="list" hidden="hidden">
@@ -912,10 +1099,10 @@
             </div>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" data-target="h2">
+              <div class="br-item" role="listitem" data-toggle="collapse" target="#h2">
                 <div class="content">
                   <div class="flex-fill">RÓTULO 02</div>
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </div>
               <div class="br-list" id="h2" role="list" hidden="hidden">
@@ -944,10 +1131,10 @@
             </div>
 
             <div class="group">
-              <div class="br-item" role="listitem" data-toggle="collapse" data-target="h3">
+              <div class="br-item" role="listitem" data-toggle="collapse" target="#h3">
                 <div class="content">
                   <div class="flex-fill">RÓTULO 03</div>
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  <brx-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </div>
               <div class="br-list" id="h3" role="list" hidden="hidden">
