@@ -1,13 +1,12 @@
 @import '../../styles/component-base';
 @import 'mixins';
 
-brx-item:not([passthrough]) {
+brx-item:not([pass-styles]) {
   background: var(--background);
-
   @include item-configs;
 }
 
-brx-item[passthrough] > * {
+brx-item[pass-styles] > * {
   width: 100%;
   height: 100%;
   border: none;
@@ -18,14 +17,14 @@ brx-item[passthrough] > * {
 }
 
 // Item aplicado em link/botão
-brx-item[passthrough] > a {
+brx-item[pass-styles] > a {
   color: var(--interactive);
 
   @include hover;
   @include active;
 }
 
-brx-item[passthrough] > button {
+brx-item[pass-styles] > button {
   background-color: transparent;
   color: var(--color);
 

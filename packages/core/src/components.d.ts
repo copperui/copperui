@@ -103,6 +103,13 @@ export namespace Components {
          */
         "value": any | null;
     }
+    interface BrxCollapseTrigger {
+        "breakpoint": string | undefined;
+        "iconToHide": string;
+        "iconToShow": string;
+        "propTarget": HTMLElement | string;
+        "useIcons": boolean;
+    }
     interface BrxDivider {
         "darkMode": boolean;
         "dashed": boolean;
@@ -120,11 +127,13 @@ export namespace Components {
         "name": string;
     }
     interface BrxItem {
+        "button": boolean;
         "disabled": boolean;
-        "passthrough": boolean;
+        "passStyles": boolean;
         "selected": boolean;
     }
     interface BrxList {
+        "headerTitle": string | undefined;
         "horizontal": boolean;
         "lines": 'one' | 'two' | 'three' | undefined;
     }
@@ -261,6 +270,12 @@ declare global {
         prototype: HTMLBrxCheckboxElement;
         new (): HTMLBrxCheckboxElement;
     };
+    interface HTMLBrxCollapseTriggerElement extends Components.BrxCollapseTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxCollapseTriggerElement: {
+        prototype: HTMLBrxCollapseTriggerElement;
+        new (): HTMLBrxCollapseTriggerElement;
+    };
     interface HTMLBrxDividerElement extends Components.BrxDivider, HTMLStencilElement {
     }
     var HTMLBrxDividerElement: {
@@ -340,6 +355,7 @@ declare global {
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
+        "brx-collapse-trigger": HTMLBrxCollapseTriggerElement;
         "brx-divider": HTMLBrxDividerElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-item": HTMLBrxItemElement;
@@ -469,6 +485,13 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BrxCollapseTrigger {
+        "breakpoint"?: string | undefined;
+        "iconToHide"?: string;
+        "iconToShow"?: string;
+        "propTarget"?: HTMLElement | string;
+        "useIcons"?: boolean;
+    }
     interface BrxDivider {
         "darkMode"?: boolean;
         "dashed"?: boolean;
@@ -486,11 +509,13 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface BrxItem {
+        "button"?: boolean;
         "disabled"?: boolean;
-        "passthrough"?: boolean;
+        "passStyles"?: boolean;
         "selected"?: boolean;
     }
     interface BrxList {
+        "headerTitle"?: string | undefined;
         "horizontal"?: boolean;
         "lines"?: 'one' | 'two' | 'three' | undefined;
     }
@@ -584,6 +609,7 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-button": BrxButton;
         "brx-checkbox": BrxCheckbox;
+        "brx-collapse-trigger": BrxCollapseTrigger;
         "brx-divider": BrxDivider;
         "brx-icon": BrxIcon;
         "brx-item": BrxItem;
@@ -608,6 +634,7 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
+            "brx-collapse-trigger": LocalJSX.BrxCollapseTrigger & JSXBase.HTMLAttributes<HTMLBrxCollapseTriggerElement>;
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;

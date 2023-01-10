@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type      | Default     |
-| ------------- | ------------- | ----------- | --------- | ----------- |
-| `disabled`    | `disabled`    |             | `boolean` | `undefined` |
-| `passthrough` | `passthrough` |             | `boolean` | `undefined` |
-| `selected`    | `selected`    |             | `boolean` | `undefined` |
+| Property     | Attribute     | Description | Type      | Default     |
+| ------------ | ------------- | ----------- | --------- | ----------- |
+| `button`     | `button`      |             | `boolean` | `undefined` |
+| `disabled`   | `disabled`    |             | `boolean` | `undefined` |
+| `passStyles` | `pass-styles` |             | `boolean` | `undefined` |
+| `selected`   | `selected`    |             | `boolean` | `undefined` |
 
 
 ----------------------------------------------

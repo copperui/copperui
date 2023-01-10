@@ -44,6 +44,7 @@
   }
 
   // Transforma curso em cursor pointer quando br-item eh data-toggle
+  &[button],
   &[data-toggle] {
     cursor: pointer;
   }
@@ -175,8 +176,8 @@
   }
 }
 
-// TODO: Este mixin ainda é necessário?
 @mixin item-toggle {
+  &[button],
   &[data-toggle] {
     @include hover('color');
 

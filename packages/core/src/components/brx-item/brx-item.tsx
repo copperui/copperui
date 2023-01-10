@@ -11,13 +11,16 @@ export class BrxItem implements ComponentInterface {
   el!: HTMLElement;
 
   @Prop({ reflect: true })
-  passthrough: boolean;
+  button: boolean;
 
   @Prop({ reflect: true })
   disabled: boolean;
 
   @Prop({ reflect: true, mutable: true })
   selected: boolean;
+
+  @Prop({ reflect: true })
+  passStyles: boolean;
 
   syncInProgress: boolean = false;
 
@@ -55,7 +58,7 @@ export class BrxItem implements ComponentInterface {
 
   render() {
     return (
-      <Host>
+      <Host role="listitem">
         <slot></slot>
       </Host>
     );
