@@ -1,4 +1,4 @@
-export interface IBrxCollapseTriggerProps {
+export interface IBrxCollapseTriggerState {
   useIcons: boolean;
 
   breakpoint: string | undefined;
@@ -7,5 +7,5 @@ export interface IBrxCollapseTriggerProps {
 
   iconToShow: string;
 
-  propTarget: HTMLElement | string;
+  target: HTMLElement | string;
 }

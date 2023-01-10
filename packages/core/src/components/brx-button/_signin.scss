@@ -1,0 +1,42 @@
+@mixin signin-configs {
+  @include signin-tokens;
+  @include signin-default;
+  @include signin-avatar;
+  @include signin-dark;
+}
+
+@mixin signin-tokens {
+  --background: var(--gray-2);
+  --sign-in-img: 20px;
+}
+
+@mixin signin-default {
+  &[variant='default'] {
+    .brx-button-native {
+      background-color: var(--background);
+    }
+  }
+
+  .brx-button-native {
+    padding: 0 var(--spacing-scale-2x);
+
+    img {
+      max-height: var(--sign-in-img);
+    }
+  }
+}
+
+@mixin signin-avatar {
+  &[signin='avatar'] {
+    .brx-button-native {
+      height: auto;
+      padding: var(--spacing-scale-base);
+    }
+  }
+}
+
+@mixin signin-dark {
+  &[dark-mode] {
+    --background: var(--background-dark);
+  }
+}

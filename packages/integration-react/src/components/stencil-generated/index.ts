@@ -28,5 +28,6 @@ export const BrxRadio = /*@__PURE__*/createReactComponent<JSX.BrxRadio, HTMLBrxR
 export const BrxRadioGroup = /*@__PURE__*/createReactComponent<JSX.BrxRadioGroup, HTMLBrxRadioGroupElement>('brx-radio-group');
 export const BrxScrim = /*@__PURE__*/createReactComponent<JSX.BrxScrim, HTMLBrxScrimElement>('brx-scrim');
 export const BrxScrimTrigger = /*@__PURE__*/createReactComponent<JSX.BrxScrimTrigger, HTMLBrxScrimTriggerElement>('brx-scrim-trigger');
+export const BrxSignin = /*@__PURE__*/createReactComponent<JSX.BrxSignin, HTMLBrxSigninElement>('brx-signin');
 export const BrxTooltip = /*@__PURE__*/createReactComponent<JSX.BrxTooltip, HTMLBrxTooltipElement>('brx-tooltip');
 export const BrxTooltipContent = /*@__PURE__*/createReactComponent<JSX.BrxTooltipContent, HTMLBrxTooltipContentElement>('brx-tooltip-content');

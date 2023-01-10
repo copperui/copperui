@@ -84,9 +84,11 @@ export class BrxTooltip {
   }
 
   async setupPopperInstance(force = false) {
-    if (!this.popperInstance || force) {
+    const { activator, component } = this;
+
+    if ((activator && component && !this.popperInstance) || force) {
       const { createPopper } = await import('@popperjs/core');
-      this.popperInstance = createPopper(this.activator, this.component, {});
+      this.popperInstance = createPopper(activator, component, {});
     }
   }
 
@@ -95,9 +97,7 @@ export class BrxTooltip {
   @Watch('placement')
   @Watch('activator')
   async setupPopper() {
-    const activator = this.activator;
-    const component = this.component;
-    const notification = this.notification;
+    const { activator, component, notification } = this;
     let placement = this.placement;
 
     const deps = [activator, component, notification, placement];
@@ -173,21 +173,27 @@ export class BrxTooltip {
   async show(event: Event) {
     await this.setupPopper();
 
-    this.place && this.component.setAttribute('place', this.place);
+    const { place, component } = this;
 
-    this.component.style.display = 'unset';
-    this.component.setAttribute('data-show', '');
-    this.component.style.zIndex = '9999';
+    if (place && component) {
+      place && component.setAttribute('place', place);
 
-    this._fixPosition();
+      component.style.display = 'unset';
+      component.setAttribute('data-show', '');
+      component.style.zIndex = '9999';
 
-    // Importante pois "display: none" conflitua com a instancia do componente e precisa ser setado aqui já que pelo css ativa o efeito fade no primeiro carregamento
-    this.component.style.visibility = 'visible';
+      this._fixPosition();
 
-    if (this.timer) {
-      clearTimeout(this.closeTimer);
+      // Importante pois "display: none" conflitua com a instancia do componente e precisa ser setado aqui já que pelo css ativa o efeito fade no primeiro carregamento
+      component.style.visibility = 'visible';
 
-      this.closeTimer = setTimeout(this.hide, this.timer, event, this.component);
+      const { timer, hide, closeTimer } = this;
+
+      if (timer) {
+        clearTimeout(closeTimer);
+
+        this.closeTimer = setTimeout(hide, timer, event, component);
+      }
     }
   }
 

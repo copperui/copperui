@@ -1,5 +1,6 @@
 @import '../../styles/component-base';
 @import 'mixins';
+@import 'signin';
 
 brx-button {
   display: inline-block;
@@ -10,4 +11,8 @@ brx-button {
     font-weight: var(--font-weight-semi-bold);
     text-decoration: none !important;
   }
+}
+
+brx-button[signin] {
+  @include signin-configs;
 }
