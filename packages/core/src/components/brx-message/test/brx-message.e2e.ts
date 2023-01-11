@@ -1,0 +1,11 @@
+import { newE2EPage } from '@stencil/core/testing';
+
+describe('brx-message', () => {
+  it('renders', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<brx-message></brx-message>');
+
+    const element = await page.find('brx-message');
+    expect(element).toHaveClass('hydrated');
+  });
+});

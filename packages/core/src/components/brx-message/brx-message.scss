@@ -1,0 +1,10 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-message[variant='message'] {
+  @include message-configs;
+}
+
+brx-message[variant='feedback'] {
+  @include feedback-configs;
+}

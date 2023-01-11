@@ -137,6 +137,7 @@ export namespace Components {
         "useIcons": boolean;
     }
     interface BrxIcon {
+        "iconClass": string | undefined;
         /**
           * Define o carregamento automático dos recursos.
          */
@@ -164,6 +165,13 @@ export namespace Components {
         "progress": string | number | undefined;
         "size": string | undefined;
         "variant": string | undefined;
+    }
+    interface BrxMessage {
+        "dismiss": () => Promise<void>;
+        "dismissable": boolean;
+        "messageTitle": string;
+        "severity": 'success' | 'danger' | 'info' | 'warning';
+        "variant": 'message' | 'feedback';
     }
     interface BrxRadio {
         /**
@@ -360,6 +368,12 @@ declare global {
         prototype: HTMLBrxLoadingElement;
         new (): HTMLBrxLoadingElement;
     };
+    interface HTMLBrxMessageElement extends Components.BrxMessage, HTMLStencilElement {
+    }
+    var HTMLBrxMessageElement: {
+        prototype: HTMLBrxMessageElement;
+        new (): HTMLBrxMessageElement;
+    };
     interface HTMLBrxRadioElement extends Components.BrxRadio, HTMLStencilElement {
     }
     var HTMLBrxRadioElement: {
@@ -419,6 +433,7 @@ declare global {
         "brx-list": HTMLBrxListElement;
         "brx-list-header": HTMLBrxListHeaderElement;
         "brx-loading": HTMLBrxLoadingElement;
+        "brx-message": HTMLBrxMessageElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
@@ -577,6 +592,7 @@ declare namespace LocalJSX {
         "useIcons"?: boolean;
     }
     interface BrxIcon {
+        "iconClass"?: string | undefined;
         /**
           * Define o carregamento automático dos recursos.
          */
@@ -604,6 +620,12 @@ declare namespace LocalJSX {
         "progress"?: string | number | undefined;
         "size"?: string | undefined;
         "variant"?: string | undefined;
+    }
+    interface BrxMessage {
+        "dismissable"?: boolean;
+        "messageTitle"?: string;
+        "severity"?: 'success' | 'danger' | 'info' | 'warning';
+        "variant"?: 'message' | 'feedback';
     }
     interface BrxRadio {
         /**
@@ -703,6 +725,7 @@ declare namespace LocalJSX {
         "brx-list": BrxList;
         "brx-list-header": BrxListHeader;
         "brx-loading": BrxLoading;
+        "brx-message": BrxMessage;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
@@ -732,6 +755,7 @@ declare module "@stencil/core" {
             "brx-list": LocalJSX.BrxList & JSXBase.HTMLAttributes<HTMLBrxListElement>;
             "brx-list-header": LocalJSX.BrxListHeader & JSXBase.HTMLAttributes<HTMLBrxListHeaderElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
+            "brx-message": LocalJSX.BrxMessage & JSXBase.HTMLAttributes<HTMLBrxMessageElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;

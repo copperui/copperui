@@ -24,6 +24,7 @@ export const BrxItem = /*@__PURE__*/createReactComponent<JSX.BrxItem, HTMLBrxIte
 export const BrxList = /*@__PURE__*/createReactComponent<JSX.BrxList, HTMLBrxListElement>('brx-list');
 export const BrxListHeader = /*@__PURE__*/createReactComponent<JSX.BrxListHeader, HTMLBrxListHeaderElement>('brx-list-header');
 export const BrxLoading = /*@__PURE__*/createReactComponent<JSX.BrxLoading, HTMLBrxLoadingElement>('brx-loading');
+export const BrxMessage = /*@__PURE__*/createReactComponent<JSX.BrxMessage, HTMLBrxMessageElement>('brx-message');
 export const BrxRadio = /*@__PURE__*/createReactComponent<JSX.BrxRadio, HTMLBrxRadioElement>('brx-radio');
 export const BrxRadioGroup = /*@__PURE__*/createReactComponent<JSX.BrxRadioGroup, HTMLBrxRadioGroupElement>('brx-radio-group');
 export const BrxScrim = /*@__PURE__*/createReactComponent<JSX.BrxScrim, HTMLBrxScrimElement>('brx-scrim');
