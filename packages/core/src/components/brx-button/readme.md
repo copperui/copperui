@@ -39,6 +39,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [brx-message](../brx-message)
+
 ### Depends on
 
 - [brx-loading](../brx-loading)
@@ -47,6 +51,7 @@
 ```mermaid
 graph TD;
   brx-button --> brx-loading
+  brx-message --> brx-button
   style brx-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

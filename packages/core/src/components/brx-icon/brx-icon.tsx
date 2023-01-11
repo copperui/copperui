@@ -19,7 +19,11 @@ export class BrxIcon {
   @Prop({ reflect: true })
   loadResources = true;
 
+  @Prop({ reflect: true })
+  iconClass: string | undefined;
+
   render() {
+    const { iconClass = '' } = this;
     const name = this.name.includes('/') ? this.name : `fa5/fas/${this.name}`;
 
     if (name.startsWith('fa5')) {
@@ -32,7 +36,8 @@ export class BrxIcon {
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
             </Fragment>
           )}
-          <i class={`${style} fa-${identifier}`} aria-hidden="true"></i>
+
+          <i class={`${style} fa-${identifier} ${iconClass}`} aria-hidden="true"></i>
         </Host>
       );
     }

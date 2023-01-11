@@ -73,8 +73,6 @@
       <brx-avatar size="medium" name="Frederico"> </brx-avatar>
       <brx-avatar size="large" name="Pedro" src="https://picsum.photos/id/287/400"> </brx-avatar>
 
-      <!-- TODO: Exemplo com o componente Sign-in -->
-
       <div>
         <brx-dropdown>
           <brx-dropdown-trigger target="#avatar-menu">
@@ -1244,6 +1242,55 @@
           <brx-loading progress="50"></brx-loading>
           <brx-loading progress="75"></brx-loading>
           <brx-loading progress="100"></brx-loading>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Message -->
+
+    <section>
+      <h1>Message</h1>
+
+      <div>
+        <h2>Tipo Padrão</h2>
+
+        <div>
+          <brx-message dismissable variant="message" severity="danger" message-title="Data de início do afastamento inválida.">
+            <span>A data não pode ser superior à data atual.</span>
+          </brx-message>
+
+          <brx-message dismissable variant="message" severity="success" message-title="Sucesso.">
+            <span>Seus dados foram alterados conforme preencimento do formulário.</span>
+          </brx-message>
+
+          <brx-message dismissable variant="message" severity="info" message-title="Informação.">
+            <span>Seus dados só serão salvos após o preenchimento do primeiro campo do formulário.</span>
+          </brx-message>
+
+          <brx-message dismissable variant="message" severity="warning" message-title="Atenção.">
+            <span>Em caso de dúvida, não compartilhe sua senha com terceiros. Ligue para a Central de atendimento.</span>
+          </brx-message>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo contextual</h2>
+
+        <div>
+          <div class="mb-3">
+            <brx-message variant="feedback" severity="danger">O CPF deve conter apenas dígitos.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message variant="feedback" severity="success">Campo correto.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message variant="feedback" severity="warning">A tecla CAPS-LOCK está ativada.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message variant="feedback" severity="info">Os arquivos devem ser no formato PNG, JPG, PDF e ter no máximo 1GB.</brx-message>
+          </div>
         </div>
       </div>
     </section>
