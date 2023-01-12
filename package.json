@@ -9,6 +9,7 @@
     "@commitlint/config-conventional": "^12.1.1",
     "husky": "^3.0.9",
     "lerna": "^6.3.0",
+    "lerna-changelog": "^2.2.0",
     "prettier": "^2.8.1",
     "rimraf": "2.6.3"
   },
@@ -19,7 +20,8 @@
     "new-version": "lerna version --conventional-commits --no-push",
     "force-version": "lerna version --conventional-commits --force-publish",
     "format": "lerna run format",
-    "publish": "lerna publish -y from-package --no-private --no-git-tag-version --no-push --force-publish @copperui/core,@copperui/react --dist-tag next"
+    "publish": "lerna publish -y from-package --no-private --no-git-tag-version --no-push --force-publish @copperui/core,@copperui/react --dist-tag next",
+    "changelog": "lerna-changelog"
   },
   "husky": {
     "hooks": {

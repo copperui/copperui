@@ -2,16 +2,16 @@
 <html dir="ltr" lang="pt-br">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
     <title>copperui components playground</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" />
 
-    <script type="module" src="/build/copperui.esm.js"></script>
+    <script src="/build/copperui.esm.js" type="module"></script>
     <script nomodule src="/build/copperui.js"></script>
-    <link rel="stylesheet" href="/build/copperui.css" />
+    <link href="/build/copperui.css" rel="stylesheet" />
 
-    <style type="text/css" media="screen, print">
+    <style media="screen, print" type="text/css">
       html {
         margin: 0;
         padding: 0;
@@ -38,12 +38,12 @@
 
       <hr />
 
-      <brx-accordion-legacy single negative="negative">
+      <brx-accordion-legacy negative="negative" single>
         <brx-accordion-legacy-entry header-title="Assuntos #01">
           <div slot="content">Conteúdo #01 | (título: prop; conteúdo: slot)</div>
         </brx-accordion-legacy-entry>
 
-        <brx-accordion-legacy-entry header-title="Assuntos #02" content="Conteúdo #02 | (título: prop; conteúdo: prop)"> </brx-accordion-legacy-entry>
+        <brx-accordion-legacy-entry content="Conteúdo #02 | (título: prop; conteúdo: prop)" header-title="Assuntos #02"></brx-accordion-legacy-entry>
 
         <brx-accordion-legacy-entry>
           <span slot="title">Assuntos #03</span>
@@ -53,7 +53,7 @@
 
       <hr />
 
-      <brx-accordion-legacy id="acc-lgcy-js"> </brx-accordion-legacy>
+      <brx-accordion-legacy id="acc-lgcy-js"></brx-accordion-legacy>
 
       <script type="text/javascript">
         document.querySelector('#acc-lgcy-js').entries = [{ id: '02', title: '02', content: '02' }];
@@ -69,9 +69,9 @@
 
       <hr />
 
-      <brx-avatar> </brx-avatar>
-      <brx-avatar size="medium" name="Frederico"> </brx-avatar>
-      <brx-avatar size="large" name="Pedro" src="https://picsum.photos/id/287/400"> </brx-avatar>
+      <brx-avatar></brx-avatar>
+      <brx-avatar name="Frederico" size="medium"></brx-avatar>
+      <brx-avatar name="Pedro" size="large" src="https://picsum.photos/id/287/400"></brx-avatar>
 
       <div>
         <brx-dropdown>
@@ -79,7 +79,7 @@
             <brx-button signin="avatar">
               <brx-signin>
                 <div slot="content">
-                  <brx-avatar name="Fulano da Silva" content-class="bg-orange-vivid-30 text-pure-0"> </brx-avatar>
+                  <brx-avatar content-class="bg-orange-vivid-30 text-pure-0" name="Fulano da Silva"></brx-avatar>
                   <span class="ml-2 text-gray-80 text-weight-regular"> Olá, <span class="text-weight-semi-bold">Fulano</span> </span>
                   <brx-icon name="fa5/fas/caret-down"></brx-icon>
                 </div>
@@ -87,8 +87,8 @@
             </brx-button>
           </brx-dropdown-trigger>
 
-          <brx-list id="avatar-menu" hidden="hidden">
-            <brx-item pass-styles> </brx-item>
+          <brx-list hidden="hidden" id="avatar-menu">
+            <brx-item pass-styles></brx-item>
             <brx-item pass-styles>
               <a href="javascript:void(0)">Dados pessoais</a>
             </brx-item>
@@ -135,25 +135,25 @@
         <h2>Tipo Circular</h2>
 
         <div class="my-1 p-3">
-          <brx-button variant="primary" circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle variant="primary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button variant="secondary" circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle variant="secondary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle>
             <brx-icon name="city"></brx-icon>
           </brx-button>
         </div>
 
         <div class="my-1 p-3 bg-gray-60">
-          <brx-button dark-mode variant="primary" circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="primary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button dark-mode variant="secondary" circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="secondary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button dark-mode variant="" circle aria-label="Ícone ilustrativo">
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="">
             <brx-icon name="city"></brx-icon>
           </brx-button>
         </div>
@@ -165,15 +165,15 @@
         <h2>Tipo Bloco</h2>
 
         <div class="my-1 p-3">
-          <brx-button class="my-3" block variant="primary">Primário</brx-button>
-          <brx-button class="my-3" block variant="secondary">Secundário</brx-button>
-          <brx-button class="my-3" block>Terciário</brx-button>
+          <brx-button block class="my-3" variant="primary">Primário</brx-button>
+          <brx-button block class="my-3" variant="secondary">Secundário</brx-button>
+          <brx-button block class="my-3">Terciário</brx-button>
         </div>
 
         <div class="my-1 p-3 bg-gray-60">
-          <brx-button class="my-3" block dark-mode variant="primary">Primário</brx-button>
-          <brx-button class="my-3" block dark-mode variant="secondary">Secundário</brx-button>
-          <brx-button class="my-3" block dark-mode>Terciário</brx-button>
+          <brx-button block class="my-3" dark-mode variant="primary">Primário</brx-button>
+          <brx-button block class="my-3" dark-mode variant="secondary">Secundário</brx-button>
+          <brx-button block class="my-3" dark-mode>Terciário</brx-button>
         </div>
       </div>
 
@@ -183,19 +183,19 @@
         <h2>Densidades</h2>
 
         <div class="my-1 p-3">
-          <brx-button class="mr-3" variant="secondary" size="large">Baixa densidade</brx-button>
-          <brx-button class="mr-3" variant="secondary" size="medium">Padrão</brx-button>
-          <brx-button variant="secondary" size="small">Alta densidade</brx-button>
+          <brx-button class="mr-3" size="large" variant="secondary">Baixa densidade</brx-button>
+          <brx-button class="mr-3" size="medium" variant="secondary">Padrão</brx-button>
+          <brx-button size="small" variant="secondary">Alta densidade</brx-button>
         </div>
 
         <div class="my-1 p-3">
-          <brx-button class="mr-3" variant="secondary" circle aria-label="Ícone ilustrativo" size="large">
+          <brx-button aria-label="Ícone ilustrativo" circle class="mr-3" size="large" variant="secondary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button class="mr-3" variant="secondary" circle aria-label="Ícone ilustrativo" size="medium">
+          <brx-button aria-label="Ícone ilustrativo" circle class="mr-3" size="medium" variant="secondary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button variant="secondary" circle aria-label="Ícone ilustrativo" size="small">
+          <brx-button aria-label="Ícone ilustrativo" circle size="small" variant="secondary">
             <brx-icon name="city"></brx-icon>
           </brx-button>
         </div>
@@ -205,9 +205,9 @@
         <h2>Estados</h2>
 
         <div class="my-1 p-3">
-          <brx-button class="mr-3" variant="primary" disabled>Desativado</brx-button>
-          <brx-button class="mr-3" variant="primary" active>Ativo</brx-button>
-          <brx-button variant="primary" loading></brx-button>
+          <brx-button class="mr-3" disabled variant="primary">Desativado</brx-button>
+          <brx-button active class="mr-3" variant="primary">Ativo</brx-button>
+          <brx-button loading variant="primary"></brx-button>
         </div>
       </div>
     </section>
@@ -223,7 +223,7 @@
         <brx-checkbox label="Oi"></brx-checkbox>
         <brx-checkbox checked disabled label="Oi"></brx-checkbox>
         <brx-checkbox invalid label="Oi"></brx-checkbox>
-        <brx-checkbox valid label="Oi"></brx-checkbox>
+        <brx-checkbox label="Oi" valid></brx-checkbox>
       </div>
     </section>
 
@@ -238,15 +238,17 @@
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 01</div>
-                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
               </div>
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list id="c-l1" hidden="hidden" data-sub="data-sub">
+          <brx-list data-sub="data-sub" hidden="hidden" id="c-l1">
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -255,7 +257,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -264,7 +268,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -276,15 +282,17 @@
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 02</div>
-                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
               </div>
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list id="c-l2" hidden="hidden" data-sub="data-sub">
+          <brx-list data-sub="data-sub" hidden="hidden" id="c-l2">
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -293,7 +301,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -302,7 +312,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -314,15 +326,17 @@
             <brx-item button>
               <div class="content">
                 <div class="flex-fill">RÓTULO 03</div>
-                <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
               </div>
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list id="c-l3" hidden="hidden" data-sub="data-sub">
+          <brx-list data-sub="data-sub" hidden="hidden" id="c-l3">
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -331,7 +345,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -340,7 +356,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
               </div>
             </brx-item>
@@ -362,7 +380,7 @@
         <h2>Horizontal tracejado</h2>
 
         <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        <brx-divider class="my-3" dashed> </brx-divider>
+        <brx-divider class="my-3" dashed></brx-divider>
         <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
       </div>
 
@@ -371,19 +389,19 @@
 
         <div class="my-3">
           <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <brx-divider class="my-3"> </brx-divider>
+          <brx-divider class="my-3"></brx-divider>
           <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
         </div>
 
         <div class="my-3 bg-gray-60 text-pure-0 p-3">
           <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <brx-divider class="my-3" dark-mode> </brx-divider>
+          <brx-divider class="my-3" dark-mode></brx-divider>
           <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
         </div>
 
         <div class="my-3 bg-gray-60 text-pure-0 p-3">
           <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <brx-divider class="my-3" dark-mode dashed> </brx-divider>
+          <brx-divider class="my-3" dark-mode dashed></brx-divider>
           <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
         </div>
       </div>
@@ -394,7 +412,7 @@
         <div class="my-3">
           <div class="d-flex">
             <div>Voluptate ipsa iure placeat praesentium, sint deleniti consectetur quisquam neque veniam possimus, hic commodi?</div>
-            <brx-divider class="mx-3" vertical dashed></brx-divider>
+            <brx-divider class="mx-3" dashed vertical></brx-divider>
             <div>A adipisci mollitia blanditiis itaque velit laudantium voluptatum molestiae quasi.</div>
           </div>
         </div>
@@ -452,12 +470,12 @@
           <div class="col">
             <brx-dropdown>
               <brx-dropdown-trigger target="#dropdown-target-1">
-                <brx-button circle size="small" aria-label="Abrir Acesso Rápido">
+                <brx-button aria-label="Abrir Acesso Rápido" circle size="small">
                   <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
                 </brx-button>
               </brx-dropdown-trigger>
 
-              <brx-list class="target" id="dropdown-target-1" hidden="hidden">
+              <brx-list class="target" hidden="hidden" id="dropdown-target-1">
                 <brx-list-header header-title="Acesso Rápido"></brx-list-header>
 
                 <brx-item pass-styles>
@@ -479,12 +497,12 @@
           <div class="col">
             <brx-dropdown>
               <brx-dropdown-trigger target="#target2">
-                <brx-button circle size="small" aria-label="Abrir Acesso Rápido">
+                <brx-button aria-label="Abrir Acesso Rápido" circle size="small">
                   <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
                 </brx-button>
               </brx-dropdown-trigger>
 
-              <brx-list class="target" id="target2" hidden="hidden">
+              <brx-list class="target" hidden="hidden" id="target2">
                 <brx-list-header header-title="Acesso Rápido"></brx-list-header>
 
                 <brx-item pass-styles>
@@ -522,6 +540,171 @@
 
     <hr />
 
+    <!-- Input -->
+
+    <section>
+      <h1>Input</h1>
+
+      <div>
+        <h2>Input padrão</h2>
+
+        <div>
+          <div class="col-sm-8 col-lg-5">
+            <brx-input label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="helper">
+                <p>Texto auxiliar. Função de previnir erros.</p>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="medium" label="Densidade padrão" placeholder="Placeholder"> </brx-input>
+          </div>
+
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="small" label="Densidade alta" placeholder="Placeholder"> </brx-input>
+          </div>
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="large" label="Densidade baixa" placeholder="Placeholder"> </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com ícones</h2>
+
+        <div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="medium" label="Login" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="small" label="Nome" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="large" label="Grupo" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com botões</h2>
+
+        <div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button type="password" enable-password-toggle density="medium" label="Senha" placeholder="Digite a sua senha"> </brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button density="small" label="Logar" placeholder="Digite o seu usuário">
+              <div slot="end-button">
+                <brx-button size="small" aria-label="Botão de ação">
+                  <brx-icon name="fa5/fas/arrow-right"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button density="large" label="Buscar" placeholder="Digite uma palavra">
+              <div slot="end-button">
+                <brx-button size="small" aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com Destaque</h2>
+
+        <div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder"> </brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search" aria-hidden="true"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label start-icon-name="fa5/fas/user" label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search" aria-hidden="true"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com validações e estados</h2>
+
+        <div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="success" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="success"> Mensagem de Sucesso </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="danger" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="danger"> Mensagem de Erro </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="info" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="info"> Mensagem informativa </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="warning" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="warning"> Mensagem de alerta </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input disabled label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="warning"> Campo Desabilitado </brx-message>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com rótulo lateral</h2>
+
+        <div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Label / Rótulo" label-class="text-nowrap" placeholder="Placeholder"> </brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Com ícone" label-class="text-nowrap" start-icon-name="fa5/fas/edit" placeholder="Placeholder"> </brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Com botão" label-class="text-nowrap" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button>
+                  <brx-icon name="fa5/fas/heart"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
     <!-- Item -->
 
     <section>
@@ -534,7 +717,7 @@
 
         <brx-item>
           <div class="row align-items-center">
-            <div class="col-auto"><img class="rounded" src="https://picsum.photos/40" alt="Imagem de exemplo do item sem interação" /></div>
+            <div class="col-auto"><img alt="Imagem de exemplo do item sem interação" class="rounded" src="https://picsum.photos/40" /></div>
             <div class="col"><span>Sint ipsum est excepteur qui. Aute Lorem cillum duis reprehenderit. Ut aute cillum esse dolor.</span></div>
           </div>
         </brx-item>
@@ -546,7 +729,9 @@
             <div class="col">Lorem ipsum <a href="javascript:void(0);">dolor</a>, sit amet consectetur <a href="javascript:void(0);">adipisicing</a> elit.</div>
 
             <div class="col-auto">
-              <brx-button circle type="button" aria-label="Interagir com item"><brx-icon name="city" aria-hidden="true"></brx-icon></brx-button>
+              <brx-button aria-label="Interagir com item" circle type="button">
+                <brx-icon aria-hidden="true" name="city"></brx-icon>
+              </brx-button>
             </div>
           </div>
         </brx-item>
@@ -579,11 +764,11 @@
           </brx-item>
 
           <brx-item data-toggle="selection">
-            <brx-radio name="item-sel-rad" label="Rótulo do Radio 01" value="item-sel-rad-1"></brx-radio>
+            <brx-radio label="Rótulo do Radio 01" name="item-sel-rad" value="item-sel-rad-1"></brx-radio>
           </brx-item>
 
           <brx-item data-toggle="selection">
-            <brx-radio name="item-sel-rad" label="Rótulo do Radio 02" value="item-sel-rad-2"></brx-radio>
+            <brx-radio label="Rótulo do Radio 02" name="item-sel-rad" value="item-sel-rad-2"></brx-radio>
           </brx-item>
         </div>
       </div>
@@ -598,7 +783,7 @@
         <div>
           <brx-item disabled="disabled">
             <div class="row align-items-center">
-              <div class="col-auto"><img class="rounded" src="https://picsum.photos/40/40" alt="imagem de exemplo 1" /></div>
+              <div class="col-auto"><img alt="imagem de exemplo 1" class="rounded" src="https://picsum.photos/40/40" /></div>
               <div class="col"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span></div>
             </div>
           </brx-item>
@@ -624,7 +809,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -632,7 +819,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -640,7 +829,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -656,7 +847,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">
                   <brx-checkbox hidden-label />
@@ -666,7 +859,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">
                   <brx-checkbox hidden-label />
@@ -676,7 +871,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">
                   <brx-checkbox hidden-label />
@@ -698,7 +895,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -708,7 +907,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -718,7 +919,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -736,7 +939,9 @@
 
             <brx-item class="py-3">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -746,7 +951,9 @@
 
             <brx-item class="py-3">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -756,7 +963,9 @@
 
             <brx-item class="py-3">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -774,7 +983,9 @@
 
             <brx-item class="py-4">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -784,7 +995,9 @@
 
             <brx-item class="py-4">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -794,7 +1007,9 @@
 
             <brx-item class="py-4">
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -818,7 +1033,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -826,7 +1043,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -834,7 +1053,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -844,7 +1065,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -852,7 +1075,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -860,7 +1085,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -878,7 +1105,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -886,33 +1115,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
-                <div class="col">Sub-item</div>
-                <div class="col-auto">META</div>
-              </div>
-            </brx-item>
-
-            <brx-divider></brx-divider>
-
-            <brx-item>
-              <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
-                <div class="col">Sub-item</div>
-                <div class="col-auto">META</div>
-              </div>
-            </brx-item>
-
-            <brx-item>
-              <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
-                <div class="col">Sub-item</div>
-                <div class="col-auto">META</div>
-              </div>
-            </brx-item>
-
-            <brx-item>
-              <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -922,7 +1127,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -930,7 +1137,41 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">Sub-item</div>
                 <div class="col-auto">META</div>
               </div>
@@ -950,15 +1191,17 @@
               <brx-item button>
                 <div class="content">
                   <div class="flex-fill">RÓTULO 01</div>
-                  <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </brx-item>
             </brx-collapse-trigger>
 
-            <brx-list id="l1" hidden="hidden">
+            <brx-list hidden="hidden" id="l1">
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -967,7 +1210,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -976,7 +1221,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -988,15 +1235,17 @@
               <brx-item button>
                 <div class="content">
                   <div class="flex-fill">RÓTULO 02</div>
-                  <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </brx-item>
             </brx-collapse-trigger>
 
-            <brx-list id="l2" hidden="hidden">
+            <brx-list hidden="hidden" id="l2">
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1005,7 +1254,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1014,7 +1265,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1026,15 +1279,17 @@
               <brx-item button>
                 <div class="content">
                   <div class="flex-fill">RÓTULO 03</div>
-                  <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                 </div>
               </brx-item>
             </brx-collapse-trigger>
 
-            <brx-list id="l3" hidden="hidden">
+            <brx-list hidden="hidden" id="l3">
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1043,7 +1298,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1052,7 +1309,9 @@
 
               <brx-item>
                 <div class="row align-items-center">
-                  <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
                   <div class="col">Sub-item</div>
                 </div>
               </brx-item>
@@ -1074,7 +1333,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -1084,7 +1345,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -1094,7 +1357,9 @@
 
             <brx-item>
               <div class="row align-items-center">
-                <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
                 <div class="col">ITEM Texto principal</div>
                 <div class="col-auto">META</div>
               </div>
@@ -1113,29 +1378,35 @@
                 <brx-item button>
                   <div class="content">
                     <div class="flex-fill">RÓTULO 01</div>
-                    <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                   </div>
                 </brx-item>
               </brx-collapse-trigger>
 
-              <brx-list id="h1" hidden="hidden">
+              <brx-list hidden="hidden" id="h1">
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
@@ -1148,28 +1419,34 @@
                 <brx-item button>
                   <div class="content">
                     <div class="flex-fill">RÓTULO 02</div>
-                    <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                   </div>
                 </brx-item>
               </brx-collapse-trigger>
-              <brx-list id="h2" hidden="hidden">
+              <brx-list hidden="hidden" id="h2">
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
@@ -1182,28 +1459,34 @@
                 <brx-item button>
                   <div class="content">
                     <div class="flex-fill">RÓTULO 03</div>
-                    <brx-icon name="fa5/fas/angle-down" data-collapse-icon></brx-icon>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
                   </div>
                 </brx-item>
               </brx-collapse-trigger>
-              <brx-list id="h3" hidden="hidden">
+              <brx-list hidden="hidden" id="h3">
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
                 <brx-divider></brx-divider>
                 <brx-item>
                   <div class="row align-items-center">
-                    <div class="col-auto"><brx-icon name="fa5/fas/heartbeat"></brx-icon></div>
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
                     <div class="col">Sub-item</div>
                   </div>
                 </brx-item>
@@ -1257,19 +1540,19 @@
         <h2>Tipo Padrão</h2>
 
         <div>
-          <brx-message dismissable variant="message" severity="danger" message-title="Data de início do afastamento inválida.">
+          <brx-message dismissable message-title="Data de início do afastamento inválida." severity="danger" variant="message">
             <span>A data não pode ser superior à data atual.</span>
           </brx-message>
 
-          <brx-message dismissable variant="message" severity="success" message-title="Sucesso.">
+          <brx-message dismissable message-title="Sucesso." severity="success" variant="message">
             <span>Seus dados foram alterados conforme preencimento do formulário.</span>
           </brx-message>
 
-          <brx-message dismissable variant="message" severity="info" message-title="Informação.">
+          <brx-message dismissable message-title="Informação." severity="info" variant="message">
             <span>Seus dados só serão salvos após o preenchimento do primeiro campo do formulário.</span>
           </brx-message>
 
-          <brx-message dismissable variant="message" severity="warning" message-title="Atenção.">
+          <brx-message dismissable message-title="Atenção." severity="warning" variant="message">
             <span>Em caso de dúvida, não compartilhe sua senha com terceiros. Ligue para a Central de atendimento.</span>
           </brx-message>
         </div>
@@ -1280,16 +1563,16 @@
 
         <div>
           <div class="mb-3">
-            <brx-message variant="feedback" severity="danger">O CPF deve conter apenas dígitos.</brx-message>
+            <brx-message severity="danger" variant="feedback">O CPF deve conter apenas dígitos.</brx-message>
           </div>
           <div class="mb-3">
-            <brx-message variant="feedback" severity="success">Campo correto.</brx-message>
+            <brx-message severity="success" variant="feedback">Campo correto.</brx-message>
           </div>
           <div class="mb-3">
-            <brx-message variant="feedback" severity="warning">A tecla CAPS-LOCK está ativada.</brx-message>
+            <brx-message severity="warning" variant="feedback">A tecla CAPS-LOCK está ativada.</brx-message>
           </div>
           <div class="mb-3">
-            <brx-message variant="feedback" severity="info">Os arquivos devem ser no formato PNG, JPG, PDF e ter no máximo 1GB.</brx-message>
+            <brx-message severity="info" variant="feedback">Os arquivos devem ser no formato PNG, JPG, PDF e ter no máximo 1GB. </brx-message>
           </div>
         </div>
       </div>
@@ -1308,9 +1591,9 @@
         <h2>Largado</h2>
 
         <brx-radio label="Oi" name="rex1" value="a"></brx-radio>
-        <brx-radio label="Oi" name="rex1" value="b" disabled></brx-radio>
-        <brx-radio label="Oi" name="rex1" value="c" invalid></brx-radio>
-        <brx-radio label="Oi" name="rex1" value="d" valid></brx-radio>
+        <brx-radio disabled label="Oi" name="rex1" value="b"></brx-radio>
+        <brx-radio invalid label="Oi" name="rex1" value="c"></brx-radio>
+        <brx-radio label="Oi" name="rex1" valid value="d"></brx-radio>
       </div>
 
       <hr />
@@ -1319,10 +1602,10 @@
         <h2>Radio Group</h2>
 
         <brx-radio-group value="c">
-          <brx-radio name="rex2" label="Oi" value="a"></brx-radio>
-          <brx-radio name="rex2" label="Oi" value="b" disabled></brx-radio>
-          <brx-radio name="rex2" label="Oi" value="c" invalid></brx-radio>
-          <brx-radio name="rex2" label="Oi" value="d" valid></brx-radio>
+          <brx-radio label="Oi" name="rex2" value="a"></brx-radio>
+          <brx-radio disabled label="Oi" name="rex2" value="b"></brx-radio>
+          <brx-radio invalid label="Oi" name="rex2" value="c"></brx-radio>
+          <brx-radio label="Oi" name="rex2" valid value="d"></brx-radio>
         </brx-radio-group>
       </div>
     </section>
@@ -1358,7 +1641,7 @@
         <h2>Tipo Icônico Primário</h2>
 
         <div>
-          <brx-button signin circle variant="primary">
+          <brx-button circle signin variant="primary">
             <brx-signin show-icon show-label="false"></brx-signin>
           </brx-button>
         </div>
@@ -1368,19 +1651,19 @@
         <h2>Ênfase Primária, Secundária e Tipo Icônico com Fundo Escuro</h2>
 
         <div class="p-3 mb-3 bg-primary-darken-02">
-          <brx-button signin dark-mode variant="primary">
+          <brx-button dark-mode signin variant="primary">
             <brx-signin show-icon show-label></brx-signin>
           </brx-button>
         </div>
 
         <div class="p-3 mb-3 bg-primary-darken-02">
-          <brx-button signin dark-mode>
+          <brx-button dark-mode signin>
             <brx-signin show-icon show-label></brx-signin>
           </brx-button>
         </div>
 
         <div class="p-3 mb-3 bg-primary-darken-02">
-          <brx-button signin circle dark-mode>
+          <brx-button circle dark-mode signin>
             <brx-signin show-icon show-label="false"></brx-signin>
           </brx-button>
         </div>
@@ -1414,7 +1697,7 @@
         <div>
           <brx-button signin>
             <brx-signin>
-              <div slot="content">Entrar com&nbsp;<img src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png" alt="gov.br" /></div>
+              <div slot="content">Entrar com&nbsp;<img alt="gov.br" src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png" /></div>
             </brx-signin>
           </brx-button>
         </div>
@@ -1424,7 +1707,7 @@
         <h2>Densidade - Alta</h2>
 
         <div>
-          <brx-button signin variant="primary" size="small">
+          <brx-button signin size="small" variant="primary">
             <brx-signin>
               <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
             </brx-signin>
@@ -1436,7 +1719,7 @@
         <h2>Densidade - Alta</h2>
 
         <div>
-          <brx-button signin variant="primary" size="medium">
+          <brx-button signin size="medium" variant="primary">
             <brx-signin>
               <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
             </brx-signin>
@@ -1448,7 +1731,7 @@
         <h2>Densidade - Baixa</h2>
 
         <div>
-          <brx-button signin variant="primary" size="large">
+          <brx-button signin size="large" variant="primary">
             <brx-signin>
               <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
             </brx-signin>
@@ -1460,7 +1743,7 @@
         <h2>Tipo Bloco</h2>
 
         <div>
-          <brx-button signin block>
+          <brx-button block signin>
             <brx-signin show-icon show-label></brx-signin>
           </brx-button>
         </div>
@@ -1478,7 +1761,7 @@
         <div class="bg-gray-10 p-4">
           <p>Conteúdo!</p>
 
-          <brx-button variant="secondary" data-scrim-dismiss>Fechar</brx-button>
+          <brx-button data-scrim-dismiss variant="secondary">Fechar</brx-button>
           <brx-button variant="primary">noop</brx-button>
         </div>
       </brx-scrim>
@@ -1511,7 +1794,7 @@
 
         <div>
           <brx-tooltip text="Texto de Informação!">
-            <a href="javascript:void(0);"><img src="https://picsum.photos/50" alt="Avatar" /></a>
+            <a href="javascript:void(0);"><img alt="Avatar" src="https://picsum.photos/50" /></a>
           </brx-tooltip>
         </div>
 
@@ -1521,7 +1804,7 @@
               <a class="h5" href="javascript:void(0);">Informação</a>
             </brx-tooltip>
 
-            <brx-tooltip-content id="sample-info-top" color="info" place="top">
+            <brx-tooltip-content color="info" id="sample-info-top" place="top">
               <span class="text" role="tooltip">Fulano de Tal da Silva</span><span class="subtext">Diretor Presidente</span>
             </brx-tooltip-content>
           </div>
@@ -1530,16 +1813,16 @@
               <a class="h5" href="javascript:void(0);">Sucesso</a>
             </brx-tooltip>
 
-            <brx-tooltip-content id="sample-success-left" color="success" place="left">
+            <brx-tooltip-content color="success" id="sample-success-left" place="left">
               <span class="text" role="tooltip">Incluído com Sucesso!</span><span class="subtext">Protocolo 000.22-11</span>
             </brx-tooltip-content>
           </div>
           <div class="mb-3">
-            <brx-tooltip target="#sample-erro-right" place="right">
+            <brx-tooltip place="right" target="#sample-erro-right">
               <a class="h5" href="javascript:void(0);">Erro</a>
             </brx-tooltip>
 
-            <brx-tooltip-content id="sample-erro-right" color="error" place="right">
+            <brx-tooltip-content color="error" id="sample-erro-right" place="right">
               <span class="text" role="tooltip">Não foi possível logar!</span><span class="subtext">Verifique seus dados</span>
             </brx-tooltip-content>
           </div>
@@ -1548,7 +1831,7 @@
               <a class="h5" href="javascript:void(0);">Advertência</a>
             </brx-tooltip>
 
-            <brx-tooltip-content id="sample-warning-bottom" color="warning" place="bottom">
+            <brx-tooltip-content color="warning" id="sample-warning-bottom" place="bottom">
               <span class="text" role="tooltip">O Caps Lock está ligadoo!</span><span class="subtext">Desabilite antes de digitar</span>
             </brx-tooltip-content>
           </div>

@@ -20,6 +20,7 @@ export const BrxDivider = /*@__PURE__*/createReactComponent<JSX.BrxDivider, HTML
 export const BrxDropdown = /*@__PURE__*/createReactComponent<JSX.BrxDropdown, HTMLBrxDropdownElement>('brx-dropdown');
 export const BrxDropdownTrigger = /*@__PURE__*/createReactComponent<JSX.BrxDropdownTrigger, HTMLBrxDropdownTriggerElement>('brx-dropdown-trigger');
 export const BrxIcon = /*@__PURE__*/createReactComponent<JSX.BrxIcon, HTMLBrxIconElement>('brx-icon');
+export const BrxInput = /*@__PURE__*/createReactComponent<JSX.BrxInput, HTMLBrxInputElement>('brx-input');
 export const BrxItem = /*@__PURE__*/createReactComponent<JSX.BrxItem, HTMLBrxItemElement>('brx-item');
 export const BrxList = /*@__PURE__*/createReactComponent<JSX.BrxList, HTMLBrxListElement>('brx-list');
 export const BrxListHeader = /*@__PURE__*/createReactComponent<JSX.BrxListHeader, HTMLBrxListHeaderElement>('brx-list-header');
