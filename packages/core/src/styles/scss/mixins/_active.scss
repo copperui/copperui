@@ -7,8 +7,8 @@
   &:not(:disabled) {
     &:active {
       background-image: linear-gradient(
-        rgba(var(--#{$color}-rgb), var(--pressed)),
-        rgba(var(--#{$color}-rgb), var(--pressed))
+          rgba(var(--#{$color}-rgb), var(--pressed)),
+          rgba(var(--#{$color}-rgb), var(--pressed))
       );
     }
   }

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Fragment, Method, Element } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop } from '@stencil/core';
 
 @Component({
   tag: 'brx-message',
@@ -21,11 +21,6 @@ export class BrxMessage {
   @Prop({ reflect: true })
   severity: 'success' | 'danger' | 'info' | 'warning' = 'info';
 
-  @Method()
-  async dismiss() {
-    this.el.parentElement.removeChild(this.el);
-  }
-
   get iconName() {
     switch (this.severity) {
       case 'danger': {
@@ -44,6 +39,11 @@ export class BrxMessage {
         return 'fa5/fas/exclamation-triangle';
       }
     }
+  }
+
+  @Method()
+  async dismiss() {
+    this.el.parentElement.removeChild(this.el);
   }
 
   render() {

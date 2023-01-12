@@ -1,7 +1,5 @@
 # brx-collapse-trigger
 
-
-
 <!-- Auto Generated Below -->
 
 

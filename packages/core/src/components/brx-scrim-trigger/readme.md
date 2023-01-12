@@ -1,7 +1,5 @@
 # brx-scrim-trigger
 
-
-
 <!-- Auto Generated Below -->
 
 

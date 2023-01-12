@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Fragment } from '@stencil/core';
+import { Component, Fragment, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'brx-icon',

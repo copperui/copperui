@@ -1,6 +1,5 @@
-import { Component, Host, h, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
-import { getWindow } from '../../utils/environment';
 import { Instance as PopperInstance } from '@popperjs/core';
 import { findTarget } from '../../utils/helpers';
 
@@ -16,52 +15,37 @@ const SHOW_EVENTS = ['mouseenter', 'click', 'focus'];
   shadow: false,
 })
 export class BrxTooltip {
-  #eventListenersCleanup = new CleanupManager();
-
   @Element()
   el: HTMLElement;
-
   @Prop({ reflect: true })
   type: string = 'info';
-
   @Prop({ reflect: true })
   text: string | undefined;
-
   @Prop({ reflect: true })
   timer: number | undefined;
-
   @Prop({ reflect: true })
   color: string = 'info';
-
   @Prop({ reflect: true })
   place: 'top' | 'bottom' | 'left' | 'right' = 'top';
-
   @Prop({ reflect: true })
   target: string | HTMLElement | undefined;
-
   @Prop({ reflect: true })
   active: boolean = false;
-
   @Prop({ reflect: true })
   popover: boolean = false;
-
   @State()
   activator: HTMLElement | null = null;
-
   @State()
   component: HTMLElement | null = null;
-
   @State()
   placement: 'bottom' | 'top' | 'right' | 'left';
-
   @State()
   closeTimer: any | null = null;
-
   @State()
   notification: boolean = false;
-
   @State()
   popperInstance: PopperInstance | null = null;
+  #eventListenersCleanup = new CleanupManager();
 
   @Watch('target')
   setupComponent() {

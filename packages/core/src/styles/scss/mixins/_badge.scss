@@ -128,7 +128,7 @@
   }
 }
 
-@mixin status-icon-bottom {  
+@mixin status-icon-bottom {
   bottom: -0.5em;
   position: absolute;
 
@@ -136,7 +136,7 @@
     @include type();
     left: auto;
     right: -1.2em;
-  }  
+  }
 
   &.is-left {
     @include type;

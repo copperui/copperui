@@ -1,6 +1,5 @@
-import { Component, Host, h, Prop, Element, Listen, ComponentInterface, State, Watch, Method, Event, EventEmitter } from '@stencil/core';
-import { generateUniqueId } from '../../utils/entropy';
-import { findTarget, toggleAttribute } from '../../utils/helpers';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { findTarget, generateUniqueId, toggleAttribute } from '../../utils/helpers';
 import { IBrxCollapseTriggerState } from './brx-collapse-trigger-interface';
 
 @Component({

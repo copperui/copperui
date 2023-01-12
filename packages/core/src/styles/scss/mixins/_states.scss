@@ -21,6 +21,7 @@
   --focus-color: var(--focus-color-dark);
   --focus: var(--focus-color);
 }
+
 @mixin light-mode {
   --color: var(--color-light);
   --color-rgb: var(--color-light-rgb);

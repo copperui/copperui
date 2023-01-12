@@ -4,8 +4,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
 import type { RadioGroupChangeEventDetail } from './brx-radio-group-interface';
-import { generateUniqueId } from '../../utils/entropy';
-import { findTarget } from '../../utils/helpers';
+import { findTarget, generateUniqueId } from '../../utils/helpers';
 import { RadioChangeEventDetail } from '../brx-radio/brx-radio-interface';
 
 @Component({
@@ -65,31 +64,6 @@ export class BrxRadioGroup implements ComponentInterface {
 
   componentDidLoad() {
     this.setRadioTabindex(this.value);
-  }
-
-  private setRadioTabindex = (value: any | undefined) => {
-    const radios = this.getRadios();
-
-    // Get the first radio that is not disabled and the checked one
-    const first = radios.find(radio => !radio.disabled);
-    const checked = radios.find(radio => radio.value === value && !radio.disabled);
-
-    if (!first && !checked) {
-      return;
-    }
-
-    // If an enabled checked radio exists, set it to be the focusable radio
-    // otherwise we default to focus the first radio
-    const focusable = checked || first;
-
-    for (const radio of radios) {
-      const tabindex = radio === focusable ? 0 : -1;
-      radio.setButtonTabindex(tabindex);
-    }
-  };
-
-  private getRadios(): HTMLBrxRadioElement[] {
-    return Array.from(this.el.querySelectorAll('ion-radio'));
   }
 
   @Listen('brxChange')
@@ -172,5 +146,30 @@ export class BrxRadioGroup implements ComponentInterface {
         <slot />
       </Host>
     );
+  }
+
+  private setRadioTabindex = (value: any | undefined) => {
+    const radios = this.getRadios();
+
+    // Get the first radio that is not disabled and the checked one
+    const first = radios.find(radio => !radio.disabled);
+    const checked = radios.find(radio => radio.value === value && !radio.disabled);
+
+    if (!first && !checked) {
+      return;
+    }
+
+    // If an enabled checked radio exists, set it to be the focusable radio
+    // otherwise we default to focus the first radio
+    const focusable = checked || first;
+
+    for (const radio of radios) {
+      const tabindex = radio === focusable ? 0 : -1;
+      radio.setButtonTabindex(tabindex);
+    }
+  };
+
+  private getRadios(): HTMLBrxRadioElement[] {
+    return Array.from(this.el.querySelectorAll('ion-radio'));
   }
 }

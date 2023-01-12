@@ -13,30 +13,10 @@ $tokens-spacing: (
 // Espaçamentos automáticos
 $spacers-automatic: ();
 @for $i from 2 through $spacer-variation {
-  $tokens-spacing: map-merge(
-    $tokens-spacing,
-    (
-      "spacing-scale-#{$i}x": $spacer * $i,
-    )
-  );
-  $tokens-spacing: map-merge(
-    $tokens-spacing,
-    (
-      "spacing-scale-#{$i}xh": $spacer * $i + $spacer * 0.5,
-    )
-  );
-  $spacers-automatic: map-merge(
-    $spacers-automatic,
-    (
-      "#{$i}x": var(--spacing-scale-#{$i}x),
-    )
-  );
-  $spacers-automatic: map-merge(
-    $spacers-automatic,
-    (
-      "#{$i}xh": var(--spacing-scale-#{$i}xh),
-    )
-  );
+  $tokens-spacing: map-merge($tokens-spacing, ("spacing-scale-#{$i}x": $spacer * $i));
+  $tokens-spacing: map-merge($tokens-spacing, ("spacing-scale-#{$i}xh": $spacer * $i + $spacer * 0.5));
+  $spacers-automatic: map-merge($spacers-automatic, ("#{$i}x": var(--spacing-scale-#{$i}x)));
+  $spacers-automatic: map-merge($spacers-automatic, ("#{$i}xh": var(--spacing-scale-#{$i}xh)));
 }
 
 // Espaçamentos manuais

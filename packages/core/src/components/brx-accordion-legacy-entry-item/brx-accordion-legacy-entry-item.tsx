@@ -1,4 +1,4 @@
-import { Component, Host, h, Watch, Event, EventEmitter, Listen, Prop, Element } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
 import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attributes';
 
 @Component({
@@ -7,19 +7,15 @@ import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attribu
   shadow: false,
 })
 export class BrxAccordionLegacyEntryItem {
-  private inheritedAttributes: Attributes = {};
-
   @Element()
   el: HTMLBrxAccordionLegacyEntryItemElement;
-
   @Prop({ reflect: true, mutable: true })
   active: boolean = false;
-
   @Prop({ reflect: true })
   entryId: string | undefined;
-
   @Event({ eventName: 'collapseChange' })
   collapseChangeEmitter: EventEmitter<HTMLBrxAccordionLegacyEntryItemElement>;
+  private inheritedAttributes: Attributes = {};
 
   @Watch('active')
   handleChange() {

@@ -1,7 +1,5 @@
 # brx-accordion-legacy
 
-
-
 <!-- Auto Generated Below -->
 
 

@@ -1,7 +1,5 @@
 # brx-accordion-legacy-entry-item
 
-
-
 <!-- Auto Generated Below -->
 
 

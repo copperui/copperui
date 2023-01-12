@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { tryParseJSON } from '../../utils/data';
 import { IAccordionLegacyEntryDefinition } from '../../interfaces/IAccordionLegacyEntryDefinition';
-import { requestIdleCallbackPony } from '../../utils/environment';
+import { tryParseJSON } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-accordion-legacy',

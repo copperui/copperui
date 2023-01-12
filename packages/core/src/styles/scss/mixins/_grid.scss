@@ -59,7 +59,7 @@
       .container-sm {
         --grid-maxwidth: calc(
           var(--grid-breakpoint-#{$breakpoint}) -
-            var(--grid-#{$breakpoint-name}-margin)
+          var(--grid-#{$breakpoint-name}-margin)
         );
       }
     }
@@ -69,7 +69,7 @@
       .container-md {
         --grid-maxwidth: calc(
           var(--grid-breakpoint-#{$breakpoint}) -
-            var(--grid-#{$breakpoint-name}-margin)
+          var(--grid-#{$breakpoint-name}-margin)
         );
       }
     }
@@ -80,7 +80,7 @@
       .container-lg {
         --grid-maxwidth: calc(
           var(--grid-breakpoint-#{$breakpoint}) -
-            var(--grid-#{$breakpoint-name}-margin)
+          var(--grid-#{$breakpoint-name}-margin)
         );
       }
     }
@@ -92,7 +92,7 @@
       .container-xl {
         --grid-maxwidth: calc(
           var(--grid-breakpoint-#{$breakpoint}) -
-            var(--grid-#{$breakpoint-name}-margin)
+          var(--grid-#{$breakpoint-name}-margin)
         );
       }
     }

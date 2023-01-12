@@ -8,9 +8,7 @@
 .border {
   @each $direction in top, right, bottom, left {
     &-#{$direction} {
-      border-#{$direction}: var(--border-width)
-        var(--border-style)
-        var(--border-color) !important;
+      border-#{$direction}: var(--border-width) var(--border-style) var(--border-color) !important;
     }
   }
 }

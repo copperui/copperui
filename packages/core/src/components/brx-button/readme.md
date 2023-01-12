@@ -1,7 +1,5 @@
 # brx-button
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -41,6 +39,7 @@
 
 ### Used by
 
+ - [brx-input](../brx-input)
  - [brx-message](../brx-message)
 
 ### Depends on
@@ -51,6 +50,7 @@
 ```mermaid
 graph TD;
   brx-button --> brx-loading
+  brx-input --> brx-button
   brx-message --> brx-button
   style brx-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

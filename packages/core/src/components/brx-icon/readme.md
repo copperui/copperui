@@ -1,7 +1,5 @@
 # brx-icon
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -20,6 +18,7 @@
 
  - [brx-accordion-legacy-entry-item](../brx-accordion-legacy-entry-item)
  - [brx-avatar](../brx-avatar)
+ - [brx-input](../brx-input)
  - [brx-message](../brx-message)
  - [brx-signin](../brx-signin)
  - [brx-tooltip-content](../brx-tooltip-content)
@@ -29,6 +28,7 @@
 graph TD;
   brx-accordion-legacy-entry-item --> brx-icon
   brx-avatar --> brx-icon
+  brx-input --> brx-icon
   brx-message --> brx-icon
   brx-signin --> brx-icon
   brx-tooltip-content --> brx-icon

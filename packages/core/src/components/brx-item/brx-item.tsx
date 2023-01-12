@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop, Listen, Element, ComponentInterface } from '@stencil/core';
-import { getWindow, requestIdleCallbackPony } from '../../utils/environment';
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
+import { requestIdleCallbackPony } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-item',

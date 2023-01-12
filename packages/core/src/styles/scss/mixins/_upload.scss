@@ -120,6 +120,7 @@
       .upload-button {
         border-color: $color;
       }
+
       .feedback.color-#{$state} {
         align-items: center;
         background: $color;
@@ -129,6 +130,7 @@
         margin-bottom: var(--spacing-scale-base);
         padding: 5px;
       }
+
       @if ($state == warning) {
         .feedback.color-warning {
           color: var(--color-secondary-08) !important;

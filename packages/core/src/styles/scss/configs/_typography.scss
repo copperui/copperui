@@ -12,15 +12,15 @@ $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weights: (
-	"thin": $font-weight-thin,
-	"extra-light": $font-weight-extra-light,
-	"light": $font-weight-light,
-	"regular": $font-weight-regular,
-	"medium": $font-weight-medium,
-	"semi-bold": $font-weight-semi-bold,
-	"bold": $font-weight-bold,
-	"extra-bold": $font-weight-extra-bold,
-	"black": $font-weight-black,
+  "thin": $font-weight-thin,
+  "extra-light": $font-weight-extra-light,
+  "light": $font-weight-light,
+  "regular": $font-weight-regular,
+  "medium": $font-weight-medium,
+  "semi-bold": $font-weight-semi-bold,
+  "bold": $font-weight-bold,
+  "extra-bold": $font-weight-extra-bold,
+  "black": $font-weight-black,
 );
 
 // Tamanhos
@@ -40,39 +40,39 @@ $font-size-scale-up-09: $font-size-scale-base * 5.16;
 $font-size-scale-up-10: $font-size-scale-base * 6.192;
 $font-size-scale-up-11: $font-size-scale-base * 7.43;
 $tokens-font-size: (
-	font-size-scale-base: $font-size-scale-base,
-	font-size-scale-down-01: $font-size-scale-down-01,
-	font-size-scale-down-02: $font-size-scale-down-02,
-	font-size-scale-down-03: $font-size-scale-down-03,
-	font-size-scale-up-01: $font-size-scale-up-01,
-	font-size-scale-up-02: $font-size-scale-up-02,
-	font-size-scale-up-03: $font-size-scale-up-03,
-	font-size-scale-up-04: $font-size-scale-up-04,
-	font-size-scale-up-05: $font-size-scale-up-05,
-	font-size-scale-up-06: $font-size-scale-up-06,
-	font-size-scale-up-07: $font-size-scale-up-07,
-	font-size-scale-up-08: $font-size-scale-up-08,
-	font-size-scale-up-09: $font-size-scale-up-09,
-	font-size-scale-up-10: $font-size-scale-up-10,
-	font-size-scale-up-11: $font-size-scale-up-11,
+  font-size-scale-base: $font-size-scale-base,
+  font-size-scale-down-01: $font-size-scale-down-01,
+  font-size-scale-down-02: $font-size-scale-down-02,
+  font-size-scale-down-03: $font-size-scale-down-03,
+  font-size-scale-up-01: $font-size-scale-up-01,
+  font-size-scale-up-02: $font-size-scale-up-02,
+  font-size-scale-up-03: $font-size-scale-up-03,
+  font-size-scale-up-04: $font-size-scale-up-04,
+  font-size-scale-up-05: $font-size-scale-up-05,
+  font-size-scale-up-06: $font-size-scale-up-06,
+  font-size-scale-up-07: $font-size-scale-up-07,
+  font-size-scale-up-08: $font-size-scale-up-08,
+  font-size-scale-up-09: $font-size-scale-up-09,
+  font-size-scale-up-10: $font-size-scale-up-10,
+  font-size-scale-up-11: $font-size-scale-up-11,
 );
 
 $text-font-size: (
-	base: $font-size-scale-base,
-	down-01: $font-size-scale-down-01,
-	down-02: $font-size-scale-down-02,
-	down-03: $font-size-scale-down-03,
-	up-01: $font-size-scale-up-01,
-	up-02: $font-size-scale-up-02,
-	up-03: $font-size-scale-up-03,
-	up-04: $font-size-scale-up-04,
-	up-05: $font-size-scale-up-05,
-	up-06: $font-size-scale-up-06,
-	up-07: $font-size-scale-up-07,
-	up-08: $font-size-scale-up-08,
-	up-09: $font-size-scale-up-09,
-	up-10: $font-size-scale-up-10,
-	up-11: $font-size-scale-up-11,
+  base: $font-size-scale-base,
+  down-01: $font-size-scale-down-01,
+  down-02: $font-size-scale-down-02,
+  down-03: $font-size-scale-down-03,
+  up-01: $font-size-scale-up-01,
+  up-02: $font-size-scale-up-02,
+  up-03: $font-size-scale-up-03,
+  up-04: $font-size-scale-up-04,
+  up-05: $font-size-scale-up-05,
+  up-06: $font-size-scale-up-06,
+  up-07: $font-size-scale-up-07,
+  up-08: $font-size-scale-up-08,
+  up-09: $font-size-scale-up-09,
+  up-10: $font-size-scale-up-10,
+  up-11: $font-size-scale-up-11,
 );
 
 // Altura de linhas
@@ -80,7 +80,7 @@ $font-line-height-low: 1.15;
 $font-line-height-medium: 1.45;
 $font-line-height-high: 1.85;
 $tokens-line-height: (
-	font-line-height-low: $font-line-height-low,
-	font-line-height-medium: $font-line-height-medium,
-	font-line-height-high: $font-line-height-high,
+  font-line-height-low: $font-line-height-low,
+  font-line-height-medium: $font-line-height-medium,
+  font-line-height-high: $font-line-height-high,
 );

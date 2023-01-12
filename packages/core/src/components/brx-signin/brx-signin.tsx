@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Fragment } from '@stencil/core';
+import { Component, Fragment, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'brx-signin',
@@ -18,6 +18,7 @@ export class BrxSignin {
 
   @Prop({ reflect: true })
   iconName: string = 'fa5/fas/user';
+
   // end brx-signin props
 
   render() {

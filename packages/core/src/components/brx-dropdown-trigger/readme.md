@@ -1,7 +1,5 @@
 # brx-dropdown-trigger
 
-
-
 <!-- Auto Generated Below -->
 
 

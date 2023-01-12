@@ -1,7 +1,5 @@
 # brx-tooltip-content
 
-
-
 <!-- Auto Generated Below -->
 
 
