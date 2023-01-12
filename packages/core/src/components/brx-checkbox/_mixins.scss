@@ -133,6 +133,7 @@
         --border-color: var(--danger);
       }
     }
+
     // Focus
     &:focus-visible,
     &.focus-visible,
@@ -142,6 +143,7 @@
         @include focus-soft;
       }
     }
+
     //hover
     &:hover:not(:disabled) {
       + label::before {
@@ -179,6 +181,7 @@
             --border-color: var(--focus-color);
           }
         }
+
         // Checado
         &:checked + label::before {
           --border-color: var(--#{$color});
@@ -201,11 +204,13 @@
         line-height: var(--spacing-scale-2xh);
         min-height: var(--spacing-scale-2xh);
       }
+
       // Caixa
       + label::before {
         height: var(--spacing-scale-2xh);
         width: var(--spacing-scale-2xh);
       }
+
       // Checado
       &:checked {
         + label::after {

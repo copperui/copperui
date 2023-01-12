@@ -1,7 +1,5 @@
 # brx-avatar
 
-
-
 <!-- Auto Generated Below -->
 
 

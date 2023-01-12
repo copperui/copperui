@@ -61,116 +61,52 @@ $shadow-color: var(--rgb-secondary-09);
 
 // Sombras Inferiores (Padrão)
 $shadow-none: none;
-$shadow-sm: var(--surface-offset-none) var(--surface-offset-sm)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md: var(--surface-offset-none) var(--surface-offset-md)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg: var(--surface-offset-none) var(--surface-offset-lg)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl: var(--surface-offset-none) var(--surface-offset-xl)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm: var(--surface-offset-none) var(--surface-offset-sm) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md: var(--surface-offset-none) var(--surface-offset-md) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg: var(--surface-offset-none) var(--surface-offset-lg) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl: var(--surface-offset-none) var(--surface-offset-xl) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras Inferiores internas
-$shadow-sm-inset: var(--surface-offset-none) var(--surface-offset-sm-n)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-inset: var(--surface-offset-none) var(--surface-offset-md-n)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-inset: var(--surface-offset-none) var(--surface-offset-lg-n)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-inset: var(--surface-offset-none) var(--surface-offset-xl-n)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-inset: var(--surface-offset-none) var(--surface-offset-sm-n) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset: var(--surface-offset-none) var(--surface-offset-md-n) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset: var(--surface-offset-none) var(--surface-offset-lg-n) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset: var(--surface-offset-none) var(--surface-offset-xl-n) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras Superiores
-$shadow-sm-up: var(--surface-offset-none) var(--surface-offset-sm-n)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-up: var(--surface-offset-none) var(--surface-offset-md-n)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-up: var(--surface-offset-none) var(--surface-offset-lg-n)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-up: var(--surface-offset-none) var(--surface-offset-xl-n)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-up: var(--surface-offset-none) var(--surface-offset-sm-n) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-up: var(--surface-offset-none) var(--surface-offset-md-n) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-up: var(--surface-offset-none) var(--surface-offset-lg-n) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-up: var(--surface-offset-none) var(--surface-offset-xl-n) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras Superiores internas
-$shadow-sm-inset-up: var(--surface-offset-none) var(--surface-offset-sm)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-inset-up: var(--surface-offset-none) var(--surface-offset-md)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-inset-up: var(--surface-offset-none) var(--surface-offset-lg)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-inset-up: var(--surface-offset-none) var(--surface-offset-xl)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-inset-up: var(--surface-offset-none) var(--surface-offset-sm) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-up: var(--surface-offset-none) var(--surface-offset-md) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-up: var(--surface-offset-none) var(--surface-offset-lg) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-up: var(--surface-offset-none) var(--surface-offset-xl) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras à direita
-$shadow-sm-right: var(--surface-offset-sm) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-right: var(--surface-offset-md) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-right: var(--surface-offset-lg) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-right: var(--surface-offset-xl) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-right: var(--surface-offset-sm) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-right: var(--surface-offset-md) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-right: var(--surface-offset-lg) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-right: var(--surface-offset-xl) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras à direita internas
-$shadow-sm-inset-right: var(--surface-offset-sm-n) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-inset-right: var(--surface-offset-md-n) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-inset-right: var(--surface-offset-lg-n) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-inset-right: var(--surface-offset-xl-n) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-inset-right: var(--surface-offset-sm-n) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-right: var(--surface-offset-md-n) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-right: var(--surface-offset-lg-n) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-right: var(--surface-offset-xl-n) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras à esquerda
-$shadow-sm-left: var(--surface-offset-sm-n) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-left: var(--surface-offset-md-n) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-left: var(--surface-offset-lg-n) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-left: var(--surface-offset-xl-n) var(--surface-offset-none)
-  var(--surface-blur-lg)
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-left: var(--surface-offset-sm-n) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-left: var(--surface-offset-md-n) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-left: var(--surface-offset-lg-n) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-left: var(--surface-offset-xl-n) var(--surface-offset-none) var(--surface-blur-lg) rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 // Sombras à esquerda internas
-$shadow-sm-inset-left: var(--surface-offset-sm) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-md-inset-left: var(--surface-offset-md) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-lg-inset-left: var(--surface-offset-lg) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
-$shadow-xl-inset-left: var(--surface-offset-xl) var(--surface-offset-none)
-  var(--surface-blur-lg) inset
-  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-sm-inset-left: var(--surface-offset-sm) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-left: var(--surface-offset-md) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-left: var(--surface-offset-lg) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-left: var(--surface-offset-xl) var(--surface-offset-none) var(--surface-blur-lg) inset rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
 
 $shadows: (
   shadow-color: $shadow-color,

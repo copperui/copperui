@@ -20,10 +20,12 @@
       top: 100%;
     }
   }
+
   > .#{$prefix}notification {
     left: auto;
     right: 0;
   }
+
   .#{$prefix}item {
     @include light-mode;
     --item-padding-y: var(--spacing-scale-2x);

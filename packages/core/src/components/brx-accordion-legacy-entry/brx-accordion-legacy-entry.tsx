@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core';
-import { generateUniqueId } from '../../utils/entropy';
+import { Component, h, Host, Prop } from '@stencil/core';
+import { generateUniqueId } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-accordion-legacy-entry',

@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop, Listen } from '@stencil/core';
-import { getWindow } from '../../utils/environment';
+import { Component, h, Host, Listen, Prop } from '@stencil/core';
+import { getWindow } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-scrim-trigger',

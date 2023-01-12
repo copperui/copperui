@@ -35,6 +35,7 @@
   @include token-color-rgb($blue-cool-vivid);
   @include token-color-rgb($blue-warm-vivid);
 }
+
 // Cores cyan
 @mixin family-cyan {
   @include token-color($cyan);
@@ -42,6 +43,7 @@
   @include token-color-rgb($cyan);
   @include token-color($cyan-vivid);
 }
+
 // Cores gold
 @mixin family-gold {
   @include token-color($gold);
@@ -49,6 +51,7 @@
   @include token-color-rgb($gold);
   @include token-color-rgb($gold-vivid);
 }
+
 // Cores gray
 @mixin family-gray {
   @include token-color($gray);
@@ -58,6 +61,7 @@
   @include token-color-rgb($gray-cool);
   @include token-color-rgb($gray-warm);
 }
+
 // Cores green
 @mixin family-green {
   @include token-color($green);
@@ -73,6 +77,7 @@
   @include token-color-rgb($green-cool-vivid);
   @include token-color-rgb($green-warm-vivid);
 }
+
 // Cores indigo
 @mixin family-indigo {
   @include token-color($indigo);
@@ -88,6 +93,7 @@
   @include token-color-rgb($indigo-cool-vivid);
   @include token-color-rgb($indigo-warm-vivid);
 }
+
 // Cores magenta
 @mixin family-magenta {
   @include token-color($magenta);
@@ -95,6 +101,7 @@
   @include token-color-rgb($magenta);
   @include token-color-rgb($magenta-vivid);
 }
+
 // Cores mint
 @mixin family-mint {
   @include token-color($mint);
@@ -106,6 +113,7 @@
   @include token-color-rgb($mint-vivid);
   @include token-color-rgb($mint-cool-vivid);
 }
+
 // Cores orange
 @mixin family-orange {
   @include token-color($orange);
@@ -117,11 +125,13 @@
   @include token-color-rgb($orange-vivid);
   @include token-color-rgb($orange-warm-vivid);
 }
+
 // Cores pure
 @mixin family-pure {
   @include token-color($pure);
   @include token-color-rgb($pure);
 }
+
 // Cores red
 @mixin family-red {
   @include token-color($red);
@@ -137,6 +147,7 @@
   @include token-color-rgb($red-cool-vivid);
   @include token-color-rgb($red-warm-vivid);
 }
+
 // Cores violet
 @mixin family-violet {
   @include token-color($violet);
@@ -148,6 +159,7 @@
   @include token-color-rgb($violet-vivid);
   @include token-color-rgb($violet-warm-vivid);
 }
+
 // Cores yellow
 @mixin family-yellow {
   @include token-color($yellow);

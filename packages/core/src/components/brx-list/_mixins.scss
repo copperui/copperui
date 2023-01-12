@@ -70,6 +70,7 @@
     }
   }
 }
+
 // Lista dentro de outra lista
 @mixin list-in-list {
   & & {
@@ -102,15 +103,18 @@
     > brx-list-header {
       flex-grow: 1;
       width: 100%;
+
       + brx-divider {
         @include list-header-divider-config;
       }
     }
+
     > brx-item,
     > .group {
       + brx-divider {
         @include list-group-divider-config;
       }
+
       @include list-horizontal-group;
     }
 

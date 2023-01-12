@@ -1,7 +1,5 @@
 # brx-radio-group
 
-
-
 <!-- Auto Generated Below -->
 
 

@@ -76,15 +76,15 @@
   --hover-light: var(--surface-opacity-xs);
   --hover-dark: var(--surface-opacity-sm);
   --hover-effect: linear-gradient(
-    rgba(var(--interactive-rgb), var(--hover)),
-    rgba(var(--interactive-rgb), var(--hover))
+      rgba(var(--interactive-rgb), var(--hover)),
+      rgba(var(--interactive-rgb), var(--hover))
   );
   --pressed: var(--pressed-light);
   --pressed-light: var(--surface-opacity-md);
   --pressed-dark: var(--surface-opacity-lg);
   --pressed-effect: linear-gradient(
-    rgba(var(--interactive-rgb), var(--pressed)),
-    rgba(var(--interactive-rgb), var(--pressed))
+      rgba(var(--interactive-rgb), var(--pressed)),
+      rgba(var(--interactive-rgb), var(--pressed))
   );
   --focus-style: dashed;
   --focus-color: var(--focus-color-light);

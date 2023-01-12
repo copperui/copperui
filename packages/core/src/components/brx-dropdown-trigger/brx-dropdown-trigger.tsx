@@ -1,5 +1,4 @@
-import { Component, Host, h, Listen, ComponentInterface, Prop, State } from '@stencil/core';
-import { BrxCollapseTrigger } from '../brx-collapse-trigger/brx-collapse-trigger';
+import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
 import { IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
 
 @Component({
@@ -8,27 +7,21 @@ import { IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-t
   shadow: false,
 })
 export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTriggerState {
-  private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
-
   // brx-collapse-trigger props
   @Prop({ reflect: true })
   useIcons: boolean = true;
-
   @Prop({ reflect: true })
   breakpoint: string | undefined;
-
   @Prop({ reflect: true })
   iconToHide: string = 'fa5/fas/chevron-up';
-
   @Prop({ reflect: true })
   iconToShow: string = 'fa5/fas/chevron-down';
-
   @Prop({ reflect: true, attribute: 'target' })
   target: HTMLElement | string;
-  // end brx-collapse-trigger props
-
   @State()
   dropdown: boolean;
+  // end brx-collapse-trigger props
+  private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
 
   @Listen('mousedown', { target: 'document', passive: true })
   async handleDropdown(event: MouseEvent) {

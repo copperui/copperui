@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop } from '@stencil/core';
 
 @Component({
   tag: 'brx-scrim',
