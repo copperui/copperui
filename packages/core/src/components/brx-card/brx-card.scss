@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-card {
+  display: block;
+
+  @include card-configs;
+}

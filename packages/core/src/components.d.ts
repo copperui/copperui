@@ -92,6 +92,19 @@ export namespace Components {
         "type": 'submit' | 'reset' | 'button';
         "variant": 'primary' | 'secondary' | 'default';
     }
+    interface BrxCard {
+        "darkMode": boolean;
+        "disabled": boolean;
+        "hFixed": boolean;
+        "hover": boolean;
+        "syncDisabledState": () => Promise<void>;
+    }
+    interface BrxCardContent {
+    }
+    interface BrxCardFooter {
+    }
+    interface BrxCardHeader {
+    }
     interface BrxCheckbox {
         "_parent": string | boolean | undefined;
         "checkAllLabel": string;
@@ -459,6 +472,30 @@ declare global {
         prototype: HTMLBrxButtonElement;
         new (): HTMLBrxButtonElement;
     };
+    interface HTMLBrxCardElement extends Components.BrxCard, HTMLStencilElement {
+    }
+    var HTMLBrxCardElement: {
+        prototype: HTMLBrxCardElement;
+        new (): HTMLBrxCardElement;
+    };
+    interface HTMLBrxCardContentElement extends Components.BrxCardContent, HTMLStencilElement {
+    }
+    var HTMLBrxCardContentElement: {
+        prototype: HTMLBrxCardContentElement;
+        new (): HTMLBrxCardContentElement;
+    };
+    interface HTMLBrxCardFooterElement extends Components.BrxCardFooter, HTMLStencilElement {
+    }
+    var HTMLBrxCardFooterElement: {
+        prototype: HTMLBrxCardFooterElement;
+        new (): HTMLBrxCardFooterElement;
+    };
+    interface HTMLBrxCardHeaderElement extends Components.BrxCardHeader, HTMLStencilElement {
+    }
+    var HTMLBrxCardHeaderElement: {
+        prototype: HTMLBrxCardHeaderElement;
+        new (): HTMLBrxCardHeaderElement;
+    };
     interface HTMLBrxCheckboxElement extends Components.BrxCheckbox, HTMLStencilElement {
     }
     var HTMLBrxCheckboxElement: {
@@ -587,6 +624,10 @@ declare global {
         "brx-accordion-trigger": HTMLBrxAccordionTriggerElement;
         "brx-avatar": HTMLBrxAvatarElement;
         "brx-button": HTMLBrxButtonElement;
+        "brx-card": HTMLBrxCardElement;
+        "brx-card-content": HTMLBrxCardContentElement;
+        "brx-card-footer": HTMLBrxCardFooterElement;
+        "brx-card-header": HTMLBrxCardHeaderElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-checkgroup": HTMLBrxCheckgroupElement;
         "brx-collapse-trigger": HTMLBrxCollapseTriggerElement;
@@ -698,6 +739,18 @@ declare namespace LocalJSX {
          */
         "type"?: 'submit' | 'reset' | 'button';
         "variant"?: 'primary' | 'secondary' | 'default';
+    }
+    interface BrxCard {
+        "darkMode"?: boolean;
+        "disabled"?: boolean;
+        "hFixed"?: boolean;
+        "hover"?: boolean;
+    }
+    interface BrxCardContent {
+    }
+    interface BrxCardFooter {
+    }
+    interface BrxCardHeader {
     }
     interface BrxCheckbox {
         "_parent"?: string | boolean | undefined;
@@ -1024,6 +1077,10 @@ declare namespace LocalJSX {
         "brx-accordion-trigger": BrxAccordionTrigger;
         "brx-avatar": BrxAvatar;
         "brx-button": BrxButton;
+        "brx-card": BrxCard;
+        "brx-card-content": BrxCardContent;
+        "brx-card-footer": BrxCardFooter;
+        "brx-card-header": BrxCardHeader;
         "brx-checkbox": BrxCheckbox;
         "brx-checkgroup": BrxCheckgroup;
         "brx-collapse-trigger": BrxCollapseTrigger;
@@ -1057,6 +1114,10 @@ declare module "@stencil/core" {
             "brx-accordion-trigger": LocalJSX.BrxAccordionTrigger & JSXBase.HTMLAttributes<HTMLBrxAccordionTriggerElement>;
             "brx-avatar": LocalJSX.BrxAvatar & JSXBase.HTMLAttributes<HTMLBrxAvatarElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
+            "brx-card": LocalJSX.BrxCard & JSXBase.HTMLAttributes<HTMLBrxCardElement>;
+            "brx-card-content": LocalJSX.BrxCardContent & JSXBase.HTMLAttributes<HTMLBrxCardContentElement>;
+            "brx-card-footer": LocalJSX.BrxCardFooter & JSXBase.HTMLAttributes<HTMLBrxCardFooterElement>;
+            "brx-card-header": LocalJSX.BrxCardHeader & JSXBase.HTMLAttributes<HTMLBrxCardHeaderElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-checkgroup": LocalJSX.BrxCheckgroup & JSXBase.HTMLAttributes<HTMLBrxCheckgroupElement>;
             "brx-collapse-trigger": LocalJSX.BrxCollapseTrigger & JSXBase.HTMLAttributes<HTMLBrxCollapseTriggerElement>;
