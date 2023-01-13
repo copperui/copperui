@@ -84,10 +84,14 @@ export namespace Components {
         "variant": 'primary' | 'secondary' | 'default';
     }
     interface BrxCheckbox {
+        "_parent": string | boolean | undefined;
+        "checkAllLabel": string;
         /**
           * If `true`, the checkbox is selected.
          */
         "checked": boolean | undefined;
+        "child": string | undefined;
+        "danger": boolean | undefined;
         "darkMode": boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -108,11 +112,14 @@ export namespace Components {
         "name": string;
         "size": 'small' | 'medium';
         "state": 'invalid' | 'danger' | undefined;
+        "uncheckAllLabel": string;
         "valid": boolean | undefined;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value": any | null;
+    }
+    interface BrxCheckgroup {
     }
     interface BrxCollapseTrigger {
         "breakpoint": string | undefined;
@@ -440,6 +447,12 @@ declare global {
         prototype: HTMLBrxCheckboxElement;
         new (): HTMLBrxCheckboxElement;
     };
+    interface HTMLBrxCheckgroupElement extends Components.BrxCheckgroup, HTMLStencilElement {
+    }
+    var HTMLBrxCheckgroupElement: {
+        prototype: HTMLBrxCheckgroupElement;
+        new (): HTMLBrxCheckgroupElement;
+    };
     interface HTMLBrxCollapseTriggerElement extends Components.BrxCollapseTrigger, HTMLStencilElement {
     }
     var HTMLBrxCollapseTriggerElement: {
@@ -556,6 +569,7 @@ declare global {
         "brx-avatar": HTMLBrxAvatarElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
+        "brx-checkgroup": HTMLBrxCheckgroupElement;
         "brx-collapse-trigger": HTMLBrxCollapseTriggerElement;
         "brx-divider": HTMLBrxDividerElement;
         "brx-dropdown": HTMLBrxDropdownElement;
@@ -659,10 +673,14 @@ declare namespace LocalJSX {
         "variant"?: 'primary' | 'secondary' | 'default';
     }
     interface BrxCheckbox {
+        "_parent"?: string | boolean | undefined;
+        "checkAllLabel"?: string;
         /**
           * If `true`, the checkbox is selected.
          */
         "checked"?: boolean | undefined;
+        "child"?: string | undefined;
+        "danger"?: boolean | undefined;
         "darkMode"?: boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -694,11 +712,14 @@ declare namespace LocalJSX {
         "onBrxFocus"?: (event: BrxCheckboxCustomEvent<void>) => void;
         "size"?: 'small' | 'medium';
         "state"?: 'invalid' | 'danger' | undefined;
+        "uncheckAllLabel"?: string;
         "valid"?: boolean | undefined;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
         "value"?: any | null;
+    }
+    interface BrxCheckgroup {
     }
     interface BrxCollapseTrigger {
         "breakpoint"?: string | undefined;
@@ -976,6 +997,7 @@ declare namespace LocalJSX {
         "brx-avatar": BrxAvatar;
         "brx-button": BrxButton;
         "brx-checkbox": BrxCheckbox;
+        "brx-checkgroup": BrxCheckgroup;
         "brx-collapse-trigger": BrxCollapseTrigger;
         "brx-divider": BrxDivider;
         "brx-dropdown": BrxDropdown;
@@ -1007,6 +1029,7 @@ declare module "@stencil/core" {
             "brx-avatar": LocalJSX.BrxAvatar & JSXBase.HTMLAttributes<HTMLBrxAvatarElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
+            "brx-checkgroup": LocalJSX.BrxCheckgroup & JSXBase.HTMLAttributes<HTMLBrxCheckgroupElement>;
             "brx-collapse-trigger": LocalJSX.BrxCollapseTrigger & JSXBase.HTMLAttributes<HTMLBrxCollapseTriggerElement>;
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-dropdown": LocalJSX.BrxDropdown & JSXBase.HTMLAttributes<HTMLBrxDropdownElement>;

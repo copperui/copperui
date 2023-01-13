@@ -97,7 +97,7 @@
 }
 
 @mixin checkbox-indeterminate {
-  input[indeterminate] {
+  input:indeterminate {
     + label {
       &::before {
         --interactive-rgb: var(--color-rgb);
@@ -164,8 +164,6 @@
 
 @mixin checkbox-colors {
   @each $state, $color in (invalid, danger), (valid, success) {
-    &.is-#{$state},
-    &.#{$state},
     &[#{$state}],
     &[state~='#{$state}'] {
       input {
@@ -194,9 +192,6 @@
 // TODO: Remover na próxima versão
 @mixin checkbox-sizes {
   // Versão pequena
-  &.is-small,
-  &.small,
-  &[small],
   &[size='small'] {
     input {
       // Texto
@@ -221,7 +216,7 @@
           width: 6px;
         }
 
-        &[indeterminate] + label::after {
+        &:indeterminate + label::after {
           border-color: var(--background-light);
           border-width: 0 0 3px;
           top: 2px;

@@ -220,10 +220,64 @@
       <h1>Checkbox</h1>
 
       <div>
-        <brx-checkbox label="Oi"></brx-checkbox>
-        <brx-checkbox checked disabled label="Oi"></brx-checkbox>
-        <brx-checkbox invalid label="Oi"></brx-checkbox>
-        <brx-checkbox label="Oi" valid></brx-checkbox>
+        <brx-checkbox label="Opção 1"></brx-checkbox>
+        <brx-checkbox disabled checked label="Opção 2"></brx-checkbox>
+        <brx-checkbox invalid label="Opção 3"></brx-checkbox>
+        <brx-checkbox valid label="Opção 4"></brx-checkbox>
+      </div>
+
+      <div>
+        <h2>parent e child</h2>
+
+        <div>
+          <div class="mb-1">
+            <brx-checkbox parent="check-02"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-2">
+            <brx-checkbox child="check-02" label="Opção 1"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-2">
+            <brx-checkbox child="check-02" label="Opção 2"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-2">
+            <brx-checkbox parent="check-03" child="check-02" check-all-label="Selecionar grupo" uncheck-all-label="Desselecionar grupo"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-4">
+            <brx-checkbox child="check-03" label="Opção 3"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-4">
+            <brx-checkbox child="check-03" label="Opção 4"></brx-checkbox>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Checkgroup</h2>
+
+        <brx-checkgroup>
+          <div class="mb-1">
+            <brx-checkbox parent></brx-checkbox>
+          </div>
+
+          <div class="mb-1 ml-2">
+            <brx-checkbox label="Opção 1"></brx-checkbox>
+          </div>
+          <div class="mb-1 ml-2">
+            <brx-checkbox label="Opção 2"></brx-checkbox>
+          </div>
+
+          <brx-checkgroup>
+            <div class="mb-1 ml-2">
+              <brx-checkbox parent check-all-label="Selecionar grupo" uncheck-all-label="Desselecionar grupo"></brx-checkbox>
+            </div>
+            <div class="mb-1 ml-4">
+              <brx-checkbox label="Opção 3"></brx-checkbox>
+            </div>
+            <div class="mb-1 ml-4">
+              <brx-checkbox label="Opção 4"></brx-checkbox>
+            </div>
+          </brx-checkgroup>
+        </brx-checkgroup>
       </div>
     </section>
 
