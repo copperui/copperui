@@ -15,6 +15,7 @@ export const BrxAccordionLegacyEntryItem = /*@__PURE__*/createReactComponent<JSX
 export const BrxAvatar = /*@__PURE__*/createReactComponent<JSX.BrxAvatar, HTMLBrxAvatarElement>('brx-avatar');
 export const BrxButton = /*@__PURE__*/createReactComponent<JSX.BrxButton, HTMLBrxButtonElement>('brx-button');
 export const BrxCheckbox = /*@__PURE__*/createReactComponent<JSX.BrxCheckbox, HTMLBrxCheckboxElement>('brx-checkbox');
+export const BrxCheckgroup = /*@__PURE__*/createReactComponent<JSX.BrxCheckgroup, HTMLBrxCheckgroupElement>('brx-checkgroup');
 export const BrxCollapseTrigger = /*@__PURE__*/createReactComponent<JSX.BrxCollapseTrigger, HTMLBrxCollapseTriggerElement>('brx-collapse-trigger');
 export const BrxDivider = /*@__PURE__*/createReactComponent<JSX.BrxDivider, HTMLBrxDividerElement>('brx-divider');
 export const BrxDropdown = /*@__PURE__*/createReactComponent<JSX.BrxDropdown, HTMLBrxDropdownElement>('brx-dropdown');
