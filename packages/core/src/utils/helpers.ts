@@ -10,7 +10,7 @@ export const requestIdleCallbackPony = (callback: () => void, options?: IdleRequ
   }
 };
 
-export const findTarget = <R extends T | null, T extends HTMLElement>(target: T | string) => {
+export const findTarget = <R extends T | null, T extends HTMLElement = HTMLElement>(target: T | string): R => {
   if (target) {
     if (typeof target === 'string') {
       return getWindow()?.document.querySelector(target) as R;
@@ -20,6 +20,10 @@ export const findTarget = <R extends T | null, T extends HTMLElement>(target: T 
   }
 
   return null;
+};
+
+export const findTargets = <E extends Element, S extends string = string>(selector: S): E[] => {
+  return Array.from(getWindow()?.document.querySelectorAll(selector) ?? []);
 };
 
 export const toggleAttribute = (element: HTMLElement, name: string) => {

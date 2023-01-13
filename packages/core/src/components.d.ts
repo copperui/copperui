@@ -28,6 +28,15 @@ export namespace Components {
         "active": boolean;
         "entryId": string | undefined;
     }
+    interface BrxAccordionTrigger {
+        "breakpoint": string | undefined;
+        "close": () => Promise<void>;
+        "group": string;
+        "iconToHide": string;
+        "iconToShow": string;
+        "target": HTMLElement | string;
+        "useIcons": boolean;
+    }
     interface BrxAvatar {
         "alt": string | undefined;
         "contentClass": string | undefined;
@@ -123,10 +132,13 @@ export namespace Components {
     }
     interface BrxCollapseTrigger {
         "breakpoint": string | undefined;
+        "close": (emitEvent?: boolean) => Promise<void>;
+        "getIsOpen": () => Promise<boolean>;
         "getTarget": () => Promise<HTMLElement>;
         "getTrigger": () => Promise<HTMLElement>;
         "iconToHide": string;
         "iconToShow": string;
+        "open": (emitEvent?: boolean) => Promise<void>;
         "target": HTMLElement | string;
         "useIcons": boolean;
     }
@@ -429,6 +441,12 @@ declare global {
         prototype: HTMLBrxAccordionLegacyEntryItemElement;
         new (): HTMLBrxAccordionLegacyEntryItemElement;
     };
+    interface HTMLBrxAccordionTriggerElement extends Components.BrxAccordionTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxAccordionTriggerElement: {
+        prototype: HTMLBrxAccordionTriggerElement;
+        new (): HTMLBrxAccordionTriggerElement;
+    };
     interface HTMLBrxAvatarElement extends Components.BrxAvatar, HTMLStencilElement {
     }
     var HTMLBrxAvatarElement: {
@@ -566,6 +584,7 @@ declare global {
         "brx-accordion-legacy-entry": HTMLBrxAccordionLegacyEntryElement;
         "brx-accordion-legacy-entry-content": HTMLBrxAccordionLegacyEntryContentElement;
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
+        "brx-accordion-trigger": HTMLBrxAccordionTriggerElement;
         "brx-avatar": HTMLBrxAvatarElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-checkbox": HTMLBrxCheckboxElement;
@@ -608,6 +627,14 @@ declare namespace LocalJSX {
         "active"?: boolean;
         "entryId"?: string | undefined;
         "onCollapseChange"?: (event: BrxAccordionLegacyEntryItemCustomEvent<HTMLBrxAccordionLegacyEntryItemElement>) => void;
+    }
+    interface BrxAccordionTrigger {
+        "breakpoint"?: string | undefined;
+        "group"?: string;
+        "iconToHide"?: string;
+        "iconToShow"?: string;
+        "target"?: HTMLElement | string;
+        "useIcons"?: boolean;
     }
     interface BrxAvatar {
         "alt"?: string | undefined;
@@ -994,6 +1021,7 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry": BrxAccordionLegacyEntry;
         "brx-accordion-legacy-entry-content": BrxAccordionLegacyEntryContent;
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
+        "brx-accordion-trigger": BrxAccordionTrigger;
         "brx-avatar": BrxAvatar;
         "brx-button": BrxButton;
         "brx-checkbox": BrxCheckbox;
@@ -1026,6 +1054,7 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry": LocalJSX.BrxAccordionLegacyEntry & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryElement>;
             "brx-accordion-legacy-entry-content": LocalJSX.BrxAccordionLegacyEntryContent & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryContentElement>;
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
+            "brx-accordion-trigger": LocalJSX.BrxAccordionTrigger & JSXBase.HTMLAttributes<HTMLBrxAccordionTriggerElement>;
             "brx-avatar": LocalJSX.BrxAvatar & JSXBase.HTMLAttributes<HTMLBrxAvatarElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;

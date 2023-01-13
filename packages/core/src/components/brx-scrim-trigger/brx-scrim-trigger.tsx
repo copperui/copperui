@@ -1,5 +1,5 @@
 import { Component, h, Host, Listen, Prop } from '@stencil/core';
-import { getWindow } from '../../utils/helpers';
+import { findTarget, getWindow } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-scrim-trigger',
@@ -11,19 +11,7 @@ export class BrxScrimTrigger {
   target: HTMLBrxScrimElement | string;
 
   get scrim(): HTMLBrxScrimElement | null {
-    const target = this.target;
-
-    if (target) {
-      if (typeof target === 'string') {
-        const scrim = getWindow()?.document.querySelector(target) as HTMLBrxScrimElement | null;
-
-        return scrim;
-      }
-
-      return target;
-    }
-
-    return null;
+    return findTarget(this.target);
   }
 
   @Listen('click')
