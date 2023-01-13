@@ -1,11 +1,16 @@
 export interface IBrxCollapseTriggerState {
-  useIcons: boolean;
+  target: HTMLElement | string;
 
-  breakpoint: string | undefined;
+  useIcons: boolean;
 
   iconToHide: string;
 
   iconToShow: string;
 
-  target: HTMLElement | string;
+  breakpoint: string | undefined;
 }
+
+export const getCollapseTriggerProps = <Self extends IBrxCollapseTriggerState>(self: Self): IBrxCollapseTriggerState => {
+  const { useIcons, breakpoint, iconToHide, iconToShow, target } = self;
+  return { useIcons, breakpoint, iconToHide, iconToShow, target };
+};

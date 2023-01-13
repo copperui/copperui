@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
-import { IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
+import { getCollapseTriggerProps, IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
 
 @Component({
   tag: 'brx-dropdown-trigger',
@@ -10,17 +10,23 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
   // brx-collapse-trigger props
   @Prop({ reflect: true })
   useIcons: boolean = true;
+
   @Prop({ reflect: true })
   breakpoint: string | undefined;
+
   @Prop({ reflect: true })
   iconToHide: string = 'fa5/fas/chevron-up';
+
   @Prop({ reflect: true })
   iconToShow: string = 'fa5/fas/chevron-down';
+
   @Prop({ reflect: true, attribute: 'target' })
   target: HTMLElement | string;
+  // end brx-collapse-trigger props
+
   @State()
   dropdown: boolean;
-  // end brx-collapse-trigger props
+
   private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
 
   @Listen('mousedown', { target: 'document', passive: true })
@@ -56,13 +62,8 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
     this.setParentsTargetVisibilityStatus();
   }
 
-  getCollapseTriggerProps(): IBrxCollapseTriggerState {
-    const { useIcons, breakpoint, iconToHide, iconToShow, target } = this;
-    return { useIcons, breakpoint, iconToHide, iconToShow, target };
-  }
-
   render() {
-    const collapseTriggerProps = this.getCollapseTriggerProps();
+    const collapseTriggerProps = getCollapseTriggerProps(this);
 
     return (
       <Host>

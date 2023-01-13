@@ -3,7 +3,7 @@
 
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 import { CheckboxChangeEventDetail } from './brx-checkbox-interface';
-import { generateUniqueId, getWindow } from '../../utils/helpers';
+import { findTargets, generateUniqueId, getWindow } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-checkbox',
@@ -117,8 +117,7 @@ export class BrxCheckbox implements ComponentInterface {
     const { el, parent } = this;
 
     if (parent) {
-      const win = getWindow();
-      const documentChildren = typeof parent === 'string' && win ? Array.from<HTMLBrxCheckboxElement>(win.document.querySelectorAll(`brx-checkbox[child="${parent}"]`)) : [];
+      const documentChildren = typeof parent === 'string' ? findTargets<HTMLBrxCheckboxElement>(`brx-checkbox[child="${parent}"]`) : [];
 
       const parentGroup = el.closest('brx-checkgroup');
       const parentGroupAllCheckboxes = Array.from(parentGroup?.querySelectorAll('brx-checkbox') ?? []);

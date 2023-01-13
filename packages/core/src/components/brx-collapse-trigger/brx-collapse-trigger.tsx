@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { findTarget, generateUniqueId, toggleAttribute } from '../../utils/helpers';
+import { findTarget, generateUniqueId } from '../../utils/helpers';
 import { IBrxCollapseTriggerState } from './brx-collapse-trigger-interface';
 
 @Component({
@@ -38,6 +38,10 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
   @State()
   targetEl: HTMLElement | null;
 
+  get isOpen() {
+    return !this.targetEl?.hasAttribute('hidden');
+  }
+
   @Watch('target')
   setupElements() {
     this.triggerEl = this.el;
@@ -46,11 +50,11 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
 
   // TODO: Melhorar a solução
   _checkBreakpoint() {
-    const { targetEl: target, breakpoint } = this;
+    const { targetEl, breakpoint } = this;
 
-    if (target && breakpoint) {
+    if (targetEl && breakpoint) {
       if (window.matchMedia('(min-width: 977px)').matches) {
-        target.removeAttribute('hidden');
+        targetEl.removeAttribute('hidden');
       }
     }
   }
@@ -64,15 +68,15 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
       this._toggleIcon();
     }
 
-    const { triggerEl: trigger, targetEl: target } = this;
+    const { triggerEl, targetEl } = this;
 
-    if (trigger && target) {
-      if (!trigger.hasAttribute('aria-controls')) {
-        if (!target.id) {
-          target.id = await generateUniqueId();
+    if (triggerEl && targetEl) {
+      if (!triggerEl.hasAttribute('aria-controls')) {
+        if (!targetEl.id) {
+          targetEl.id = await generateUniqueId();
         }
 
-        trigger.setAttribute('aria-controls', target.id);
+        triggerEl.setAttribute('aria-controls', targetEl.id);
       }
     }
 
@@ -85,70 +89,86 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
   }
 
   _setTriggerVisibilityStatus() {
-    const { targetEl: target, triggerEl: trigger } = this;
+    const { targetEl, triggerEl } = this;
 
-    if (target) {
-      const isTargetHidden = target.hasAttribute('hidden');
+    if (targetEl) {
+      const isTargetHidden = targetEl.hasAttribute('hidden');
 
-      trigger.setAttribute('data-visible', String(!isTargetHidden));
-      trigger.setAttribute('aria-expanded', String(!isTargetHidden));
+      triggerEl.setAttribute('data-visible', String(!isTargetHidden));
+      triggerEl.setAttribute('aria-expanded', String(!isTargetHidden));
     }
   }
 
   _setTargetVisibilityStatus() {
-    const { targetEl: target } = this;
+    const { targetEl } = this;
 
-    if (target) {
-      const isTargetHidden = target.hasAttribute('hidden');
-      target.setAttribute('aria-hidden', String(isTargetHidden));
+    if (targetEl) {
+      const isTargetHidden = targetEl.hasAttribute('hidden');
+
+      targetEl.setAttribute('aria-hidden', String(isTargetHidden));
     }
 
     this.brxSetTargetVisibilityStatus.emit();
   }
 
   _handleTriggerClickBehavior() {
-    const { triggerEl: trigger, breakpoint } = this;
+    const { breakpoint } = this;
 
-    if (breakpoint) {
-      if (window.matchMedia('(max-width: 977px)').matches) {
-        this._toggleVisibility();
+    const canChange = !breakpoint || window.matchMedia('(max-width: 977px)').matches;
 
-        if (this.useIcons) {
-          this._toggleIcon();
-        }
-
-        trigger.dispatchEvent(new window.Event('change'));
-      }
-    } else {
+    if (canChange) {
       this._toggleVisibility();
 
       if (this.useIcons) {
         this._toggleIcon();
       }
-
-      trigger.dispatchEvent(new window.Event('change'));
     }
+  }
 
+  private emitChange() {
+    this.triggerEl?.dispatchEvent(new window.Event('change'));
     this.brxTriggerClick.emit();
   }
 
-  _toggleVisibility() {
-    const { targetEl: target } = this;
+  @Method()
+  async open(emitEvent: boolean = true) {
+    const { targetEl } = this;
 
-    if (target) {
-      toggleAttribute(target, 'hidden');
-
+    if (targetEl) {
+      this.targetEl.removeAttribute('hidden');
       this._setVisibilityStatus();
+
+      emitEvent && this.emitChange();
+    }
+  }
+
+  @Method()
+  async close(emitEvent: boolean = true) {
+    const { targetEl } = this;
+
+    if (targetEl) {
+      this.targetEl.setAttribute('hidden', '');
+      this._setVisibilityStatus();
+
+      emitEvent && this.emitChange();
+    }
+  }
+
+  _toggleVisibility(emitEvent: boolean = true) {
+    if (this.isOpen) {
+      this.close(emitEvent);
+    } else {
+      this.open(emitEvent);
     }
   }
 
   _toggleIcon() {
-    const { targetEl: target, triggerEl: trigger, iconToShow, iconToHide } = this;
+    const { targetEl, triggerEl, iconToShow, iconToHide } = this;
 
-    if (target) {
-      const hidden = target.hasAttribute('hidden');
+    if (targetEl) {
+      const hidden = targetEl.hasAttribute('hidden');
 
-      const icons: HTMLBrxIconElement[] = Array.from(trigger.querySelectorAll('brx-icon[data-collapse-icon]'));
+      const icons: HTMLBrxIconElement[] = Array.from(triggerEl.querySelectorAll('brx-icon[data-collapse-icon]'));
 
       for (const icon of icons) {
         icon.name = hidden ? iconToShow : iconToHide;
@@ -169,6 +189,11 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
   @Method()
   async getTarget() {
     return this.targetEl;
+  }
+
+  @Method()
+  async getIsOpen() {
+    return this.isOpen;
   }
 
   componentWillLoad(): void {
