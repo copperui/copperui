@@ -45,6 +45,18 @@ export namespace Components {
         "size": 'large' | 'medium' | 'small';
         "src": string | undefined;
     }
+    interface BrxBreadcrumb {
+        "dropdownId": string;
+    }
+    interface BrxBreadcrumbCard {
+        "hidden": boolean;
+    }
+    interface BrxBreadcrumbItem {
+        "active": boolean;
+        "home": boolean;
+    }
+    interface BrxBreadcrumbList {
+    }
     interface BrxButton {
         "active": boolean;
         "block": boolean;
@@ -466,6 +478,30 @@ declare global {
         prototype: HTMLBrxAvatarElement;
         new (): HTMLBrxAvatarElement;
     };
+    interface HTMLBrxBreadcrumbElement extends Components.BrxBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLBrxBreadcrumbElement: {
+        prototype: HTMLBrxBreadcrumbElement;
+        new (): HTMLBrxBreadcrumbElement;
+    };
+    interface HTMLBrxBreadcrumbCardElement extends Components.BrxBreadcrumbCard, HTMLStencilElement {
+    }
+    var HTMLBrxBreadcrumbCardElement: {
+        prototype: HTMLBrxBreadcrumbCardElement;
+        new (): HTMLBrxBreadcrumbCardElement;
+    };
+    interface HTMLBrxBreadcrumbItemElement extends Components.BrxBreadcrumbItem, HTMLStencilElement {
+    }
+    var HTMLBrxBreadcrumbItemElement: {
+        prototype: HTMLBrxBreadcrumbItemElement;
+        new (): HTMLBrxBreadcrumbItemElement;
+    };
+    interface HTMLBrxBreadcrumbListElement extends Components.BrxBreadcrumbList, HTMLStencilElement {
+    }
+    var HTMLBrxBreadcrumbListElement: {
+        prototype: HTMLBrxBreadcrumbListElement;
+        new (): HTMLBrxBreadcrumbListElement;
+    };
     interface HTMLBrxButtonElement extends Components.BrxButton, HTMLStencilElement {
     }
     var HTMLBrxButtonElement: {
@@ -623,6 +659,10 @@ declare global {
         "brx-accordion-legacy-entry-item": HTMLBrxAccordionLegacyEntryItemElement;
         "brx-accordion-trigger": HTMLBrxAccordionTriggerElement;
         "brx-avatar": HTMLBrxAvatarElement;
+        "brx-breadcrumb": HTMLBrxBreadcrumbElement;
+        "brx-breadcrumb-card": HTMLBrxBreadcrumbCardElement;
+        "brx-breadcrumb-item": HTMLBrxBreadcrumbItemElement;
+        "brx-breadcrumb-list": HTMLBrxBreadcrumbListElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-card": HTMLBrxCardElement;
         "brx-card-content": HTMLBrxCardContentElement;
@@ -684,6 +724,18 @@ declare namespace LocalJSX {
         "name"?: string | undefined;
         "size"?: 'large' | 'medium' | 'small';
         "src"?: string | undefined;
+    }
+    interface BrxBreadcrumb {
+        "dropdownId"?: string;
+    }
+    interface BrxBreadcrumbCard {
+        "hidden"?: boolean;
+    }
+    interface BrxBreadcrumbItem {
+        "active"?: boolean;
+        "home"?: boolean;
+    }
+    interface BrxBreadcrumbList {
     }
     interface BrxButton {
         "active"?: boolean;
@@ -1076,6 +1128,10 @@ declare namespace LocalJSX {
         "brx-accordion-legacy-entry-item": BrxAccordionLegacyEntryItem;
         "brx-accordion-trigger": BrxAccordionTrigger;
         "brx-avatar": BrxAvatar;
+        "brx-breadcrumb": BrxBreadcrumb;
+        "brx-breadcrumb-card": BrxBreadcrumbCard;
+        "brx-breadcrumb-item": BrxBreadcrumbItem;
+        "brx-breadcrumb-list": BrxBreadcrumbList;
         "brx-button": BrxButton;
         "brx-card": BrxCard;
         "brx-card-content": BrxCardContent;
@@ -1113,6 +1169,10 @@ declare module "@stencil/core" {
             "brx-accordion-legacy-entry-item": LocalJSX.BrxAccordionLegacyEntryItem & JSXBase.HTMLAttributes<HTMLBrxAccordionLegacyEntryItemElement>;
             "brx-accordion-trigger": LocalJSX.BrxAccordionTrigger & JSXBase.HTMLAttributes<HTMLBrxAccordionTriggerElement>;
             "brx-avatar": LocalJSX.BrxAvatar & JSXBase.HTMLAttributes<HTMLBrxAvatarElement>;
+            "brx-breadcrumb": LocalJSX.BrxBreadcrumb & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbElement>;
+            "brx-breadcrumb-card": LocalJSX.BrxBreadcrumbCard & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbCardElement>;
+            "brx-breadcrumb-item": LocalJSX.BrxBreadcrumbItem & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbItemElement>;
+            "brx-breadcrumb-list": LocalJSX.BrxBreadcrumbList & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbListElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-card": LocalJSX.BrxCard & JSXBase.HTMLAttributes<HTMLBrxCardElement>;
             "brx-card-content": LocalJSX.BrxCardContent & JSXBase.HTMLAttributes<HTMLBrxCardContentElement>;

@@ -11,6 +11,16 @@
     <script nomodule src="/build/copperui.js"></script>
     <link href="/build/copperui.css" rel="stylesheet" />
 
+    <script>
+      document.addEventListener('click', e => {
+        const target = e.target;
+
+        if (target.closest('a[href="#"]')) {
+          e.preventDefault();
+        }
+      });
+    </script>
+
     <style media="screen, print" type="text/css">
       html {
         margin: 0;
@@ -245,6 +255,80 @@
             </brx-item>
           </brx-list>
         </brx-dropdown>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+
+    <section>
+      <h1>Breadcrumb</h1>
+
+      <div>
+        <h2>Exemplo padrão</h2>
+
+        <brx-breadcrumb>
+          <brx-breadcrumb-item home>
+            <brx-button circle href="#">
+              <span class="sr-only">Página inicial</span>
+              <brx-icon name="fa5/fas/home"></brx-icon>
+            </brx-button>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 01</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 02</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 03</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item active>
+            <span>Página atual</span>
+          </brx-breadcrumb-item>
+        </brx-breadcrumb>
+      </div>
+
+      <div>
+        <h2>Exemplo com truncamento</h2>
+
+        <brx-breadcrumb>
+          <brx-breadcrumb-item home>
+            <brx-button circle href="#">
+              <span class="sr-only">Página inicial</span>
+              <brx-icon name="fa5/fas/home"></brx-icon>
+            </brx-button>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 01</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 02</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <a href="#">Página Ancestral 03</a>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item>
+            <brx-tooltip target="#breadcrumb-2-item-4" place="bottom" color="info">
+              <a href="#">Página Ancestral Com Título Grande</a>
+            </brx-tooltip>
+
+            <brx-tooltip-content id="breadcrumb-2-item-4">
+              <span class="text" role="tooltip">Página Ancestral Com Título Grande</span>
+            </brx-tooltip-content>
+          </brx-breadcrumb-item>
+
+          <brx-breadcrumb-item active>
+            <span>Página atual</span>
+          </brx-breadcrumb-item>
+        </brx-breadcrumb>
       </div>
     </section>
 
@@ -1205,7 +1289,7 @@
 
         <brx-item>
           <div class="row align-items-center">
-            <div class="col">Lorem ipsum <a href="javascript:void(0);">dolor</a>, sit amet consectetur <a href="javascript:void(0);">adipisicing</a> elit.</div>
+            <div class="col">Lorem ipsum <a href="#">dolor</a>, sit amet consectetur <a href="#">adipisicing</a> elit.</div>
 
             <div class="col-auto">
               <brx-button aria-label="Interagir com item" circle type="button">
@@ -2259,11 +2343,11 @@
 
       <div class="mb-3">
         <div>
-          <brx-tooltip target="#sample-info-top">
-            <a class="h5" href="javascript:void(0);">Informação</a>
+          <brx-tooltip target="#sample-info-top" color="info" place="top">
+            <a class="h5" href="#">Informação</a>
           </brx-tooltip>
 
-          <brx-tooltip-content id="sample-info-top" info="info" place="top">
+          <brx-tooltip-content id="sample-info-top">
             <span class="text" role="tooltip">Fulano de Tal da Silva</span>
             <span class="subtext">Diretor Presidente</span>
           </brx-tooltip-content>
@@ -2273,44 +2357,44 @@
 
         <div>
           <brx-tooltip text="Texto de Informação!">
-            <a href="javascript:void(0);"><img alt="Avatar" src="https://picsum.photos/50" /></a>
+            <a href="#"><img alt="Avatar" src="https://picsum.photos/50" /></a>
           </brx-tooltip>
         </div>
 
         <div class="col-md-6 text-center">
           <div class="mb-3">
-            <brx-tooltip target="#sample-info-top">
-              <a class="h5" href="javascript:void(0);">Informação</a>
+            <brx-tooltip target="#sample-info-top" place="top" color="info">
+              <a class="h5" href="#">Informação</a>
             </brx-tooltip>
 
-            <brx-tooltip-content color="info" id="sample-info-top" place="top">
+            <brx-tooltip-content id="sample-info-top">
               <span class="text" role="tooltip">Fulano de Tal da Silva</span><span class="subtext">Diretor Presidente</span>
             </brx-tooltip-content>
           </div>
           <div class="mb-3">
-            <brx-tooltip target="#sample-success-left">
-              <a class="h5" href="javascript:void(0);">Sucesso</a>
+            <brx-tooltip target="#sample-success-left" place="left" color="success">
+              <a class="h5" href="#">Sucesso</a>
             </brx-tooltip>
 
-            <brx-tooltip-content color="success" id="sample-success-left" place="left">
+            <brx-tooltip-content id="sample-success-left">
               <span class="text" role="tooltip">Incluído com Sucesso!</span><span class="subtext">Protocolo 000.22-11</span>
             </brx-tooltip-content>
           </div>
           <div class="mb-3">
-            <brx-tooltip place="right" target="#sample-erro-right">
-              <a class="h5" href="javascript:void(0);">Erro</a>
+            <brx-tooltip place="right" target="#sample-erro-right" place="right" color="error">
+              <a class="h5" href="#">Erro</a>
             </brx-tooltip>
 
-            <brx-tooltip-content color="error" id="sample-erro-right" place="right">
+            <brx-tooltip-content id="sample-erro-right">
               <span class="text" role="tooltip">Não foi possível logar!</span><span class="subtext">Verifique seus dados</span>
             </brx-tooltip-content>
           </div>
           <div class="mb-3">
-            <brx-tooltip target="#sample-warning-bottom">
-              <a class="h5" href="javascript:void(0);">Advertência</a>
+            <brx-tooltip target="#sample-warning-bottom" place="bottom" color="warning">
+              <a class="h5" href="#">Advertência</a>
             </brx-tooltip>
 
-            <brx-tooltip-content color="warning" id="sample-warning-bottom" place="bottom">
+            <brx-tooltip-content id="sample-warning-bottom">
               <span class="text" role="tooltip">O Caps Lock está ligadoo!</span><span class="subtext">Desabilite antes de digitar</span>
             </brx-tooltip-content>
           </div>

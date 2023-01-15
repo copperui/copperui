@@ -20,7 +20,7 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
   @Prop({ reflect: true })
   iconToShow: string = 'fa5/fas/chevron-down';
 
-  @Prop({ reflect: true, attribute: 'target' })
+  @Prop({ reflect: true })
   target: HTMLElement | string;
   // end brx-collapse-trigger props
 

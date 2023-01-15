@@ -104,11 +104,10 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
 
     if (targetEl) {
       const isTargetHidden = targetEl.hasAttribute('hidden');
-
       targetEl.setAttribute('aria-hidden', String(isTargetHidden));
-    }
 
-    this.brxSetTargetVisibilityStatus.emit();
+      this.brxSetTargetVisibilityStatus.emit();
+    }
   }
 
   _handleTriggerClickBehavior() {
@@ -126,8 +125,12 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
   }
 
   private emitChange() {
-    this.triggerEl?.dispatchEvent(new window.Event('change'));
-    this.brxTriggerClick.emit();
+    const { triggerEl } = this;
+
+    if (triggerEl) {
+      triggerEl.dispatchEvent(new window.Event('change'));
+      this.brxTriggerClick.emit();
+    }
   }
 
   @Method()

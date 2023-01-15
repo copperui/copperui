@@ -17,42 +17,66 @@ const SHOW_EVENTS = ['mouseenter', 'click', 'focus'];
 export class BrxTooltip {
   @Element()
   el: HTMLElement;
+
   @Prop({ reflect: true })
   type: string = 'info';
+
   @Prop({ reflect: true })
   text: string | undefined;
+
   @Prop({ reflect: true })
   timer: number | undefined;
+
   @Prop({ reflect: true })
   color: string = 'info';
+
   @Prop({ reflect: true })
   place: 'top' | 'bottom' | 'left' | 'right' = 'top';
+
   @Prop({ reflect: true })
   target: string | HTMLElement | undefined;
+
   @Prop({ reflect: true })
   active: boolean = false;
+
   @Prop({ reflect: true })
   popover: boolean = false;
+
   @State()
   activator: HTMLElement | null = null;
+
   @State()
   component: HTMLElement | null = null;
+
   @State()
   placement: 'bottom' | 'top' | 'right' | 'left';
+
   @State()
   closeTimer: any | null = null;
+
   @State()
   notification: boolean = false;
+
   @State()
   popperInstance: PopperInstance | null = null;
+
   #eventListenersCleanup = new CleanupManager();
 
+  @Watch('place')
+  @Watch('color')
   @Watch('target')
   setupComponent() {
     const target = this.target;
 
     if (target) {
       this.component = findTarget(target);
+    }
+
+    const { component, color, place } = this;
+
+    if (component) {
+      component.setAttribute('color', color);
+      component.setAttribute('place', place);
     }
   }
 
@@ -84,9 +108,7 @@ export class BrxTooltip {
     const { activator, component, notification } = this;
     let placement = this.placement;
 
-    const deps = [activator, component, notification, placement];
-
-    if (deps.some(i => i === undefined || i === null)) {
+    if ([activator, component, notification, placement].some(i => i === undefined || i === null)) {
       return;
     }
 
@@ -284,15 +306,13 @@ export class BrxTooltip {
 
         {!this.target && (
           <brx-tooltip-content
-            color={this.color}
-            place={this.place}
             ref={(el: HTMLElement) => {
               requestIdleCallback(() => {
                 this.component = el;
               });
             }}
           >
-            {this.text}
+            <slot name="content">{this.text}</slot>
           </brx-tooltip-content>
         )}
       </Host>

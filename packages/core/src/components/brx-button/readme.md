@@ -39,6 +39,7 @@
 
 ### Used by
 
+ - [brx-breadcrumb](../brx-breadcrumb)
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
 
@@ -50,6 +51,7 @@
 ```mermaid
 graph TD;
   brx-button --> brx-loading
+  brx-breadcrumb --> brx-button
   brx-input --> brx-button
   brx-message --> brx-button
   style brx-button fill:#f9f,stroke:#333,stroke-width:4px

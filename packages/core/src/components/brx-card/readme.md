@@ -28,6 +28,19 @@ Type: `Promise<void>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [brx-breadcrumb-card](../brx-breadcrumb-card)
+
+### Graph
+```mermaid
+graph TD;
+  brx-breadcrumb-card --> brx-card
+  style brx-card fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
