@@ -16,6 +16,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [brx-breadcrumb](../brx-breadcrumb)
+
 ### Depends on
 
 - [brx-collapse-trigger](../brx-collapse-trigger)
@@ -24,6 +28,7 @@
 ```mermaid
 graph TD;
   brx-dropdown-trigger --> brx-collapse-trigger
+  brx-breadcrumb --> brx-dropdown-trigger
   style brx-dropdown-trigger fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
