@@ -76,24 +76,37 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
    */
   @Prop()
   type: 'submit' | 'reset' | 'button' = 'button';
+
   @Prop({ reflect: true })
   block: boolean = false;
+
   @Prop({ reflect: true })
   circle: boolean = false;
+
   @Prop({ reflect: true })
   darkMode: boolean = false;
+
   @Prop({ reflect: true })
   active: boolean = false;
+
   @Prop({ reflect: true })
   loading: boolean = false;
+
   @Prop({ reflect: true })
   color: 'danger' | 'success' | 'warning' | 'info';
+
   @Prop({ reflect: true })
   size: 'large' | 'medium' | 'small' | 'xsmall' = 'medium';
+
   @Prop({ reflect: true })
   variant: 'primary' | 'secondary' | 'default' = 'default';
+
   @Prop({ reflect: true })
   signin: boolean | 'avatar' = false;
+
+  @Prop({ reflect: true })
+  magic: boolean = false;
+
   private inheritedAttributes: Attributes = {};
 
   // end brx-button props

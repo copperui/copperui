@@ -1,6 +1,7 @@
 @import '../../styles/component-base';
 @import 'mixins';
 @import 'signin';
+@import 'magic';
 
 brx-button {
   display: inline-block;
@@ -15,4 +16,12 @@ brx-button {
 
 brx-button[signin] {
   @include signin-configs;
+}
+
+brx-button[magic] {
+  @include magic-configs;
+
+  .brx-button-native {
+    @include button-magicbutton;
+  }
 }
