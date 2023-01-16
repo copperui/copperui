@@ -340,6 +340,15 @@ export namespace Components {
         "severity": 'success' | 'danger' | 'info' | 'warning';
         "variant": 'message' | 'feedback';
     }
+    interface BrxModal {
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | 'auto' | undefined;
+    }
+    interface BrxModalBody {
+    }
+    interface BrxModalFooter {
+    }
+    interface BrxModalHeader {
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -611,6 +620,30 @@ declare global {
         prototype: HTMLBrxMessageElement;
         new (): HTMLBrxMessageElement;
     };
+    interface HTMLBrxModalElement extends Components.BrxModal, HTMLStencilElement {
+    }
+    var HTMLBrxModalElement: {
+        prototype: HTMLBrxModalElement;
+        new (): HTMLBrxModalElement;
+    };
+    interface HTMLBrxModalBodyElement extends Components.BrxModalBody, HTMLStencilElement {
+    }
+    var HTMLBrxModalBodyElement: {
+        prototype: HTMLBrxModalBodyElement;
+        new (): HTMLBrxModalBodyElement;
+    };
+    interface HTMLBrxModalFooterElement extends Components.BrxModalFooter, HTMLStencilElement {
+    }
+    var HTMLBrxModalFooterElement: {
+        prototype: HTMLBrxModalFooterElement;
+        new (): HTMLBrxModalFooterElement;
+    };
+    interface HTMLBrxModalHeaderElement extends Components.BrxModalHeader, HTMLStencilElement {
+    }
+    var HTMLBrxModalHeaderElement: {
+        prototype: HTMLBrxModalHeaderElement;
+        new (): HTMLBrxModalHeaderElement;
+    };
     interface HTMLBrxRadioElement extends Components.BrxRadio, HTMLStencilElement {
     }
     var HTMLBrxRadioElement: {
@@ -682,6 +715,10 @@ declare global {
         "brx-list-header": HTMLBrxListHeaderElement;
         "brx-loading": HTMLBrxLoadingElement;
         "brx-message": HTMLBrxMessageElement;
+        "brx-modal": HTMLBrxModalElement;
+        "brx-modal-body": HTMLBrxModalBodyElement;
+        "brx-modal-footer": HTMLBrxModalFooterElement;
+        "brx-modal-header": HTMLBrxModalHeaderElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
@@ -1042,6 +1079,15 @@ declare namespace LocalJSX {
         "severity"?: 'success' | 'danger' | 'info' | 'warning';
         "variant"?: 'message' | 'feedback';
     }
+    interface BrxModal {
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | 'auto' | undefined;
+    }
+    interface BrxModalBody {
+    }
+    interface BrxModalFooter {
+    }
+    interface BrxModalHeader {
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -1152,6 +1198,10 @@ declare namespace LocalJSX {
         "brx-list-header": BrxListHeader;
         "brx-loading": BrxLoading;
         "brx-message": BrxMessage;
+        "brx-modal": BrxModal;
+        "brx-modal-body": BrxModalBody;
+        "brx-modal-footer": BrxModalFooter;
+        "brx-modal-header": BrxModalHeader;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
@@ -1193,6 +1243,10 @@ declare module "@stencil/core" {
             "brx-list-header": LocalJSX.BrxListHeader & JSXBase.HTMLAttributes<HTMLBrxListHeaderElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
             "brx-message": LocalJSX.BrxMessage & JSXBase.HTMLAttributes<HTMLBrxMessageElement>;
+            "brx-modal": LocalJSX.BrxModal & JSXBase.HTMLAttributes<HTMLBrxModalElement>;
+            "brx-modal-body": LocalJSX.BrxModalBody & JSXBase.HTMLAttributes<HTMLBrxModalBodyElement>;
+            "brx-modal-footer": LocalJSX.BrxModalFooter & JSXBase.HTMLAttributes<HTMLBrxModalFooterElement>;
+            "brx-modal-header": LocalJSX.BrxModalHeader & JSXBase.HTMLAttributes<HTMLBrxModalHeaderElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
