@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-skiplink {
+  display: block;
+
+  @include skiplink-configs;
+}

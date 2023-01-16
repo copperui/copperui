@@ -407,6 +407,9 @@ export namespace Components {
         "showIcon": boolean;
         "showLabel": boolean;
     }
+    interface BrxSkiplink {
+        "full": boolean;
+    }
     interface BrxTag {
         "interaction": boolean;
         "interactionSelect": boolean;
@@ -679,6 +682,12 @@ declare global {
         prototype: HTMLBrxSigninElement;
         new (): HTMLBrxSigninElement;
     };
+    interface HTMLBrxSkiplinkElement extends Components.BrxSkiplink, HTMLStencilElement {
+    }
+    var HTMLBrxSkiplinkElement: {
+        prototype: HTMLBrxSkiplinkElement;
+        new (): HTMLBrxSkiplinkElement;
+    };
     interface HTMLBrxTagElement extends Components.BrxTag, HTMLStencilElement {
     }
     var HTMLBrxTagElement: {
@@ -735,6 +744,7 @@ declare global {
         "brx-scrim": HTMLBrxScrimElement;
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-signin": HTMLBrxSigninElement;
+        "brx-skiplink": HTMLBrxSkiplinkElement;
         "brx-tag": HTMLBrxTagElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
@@ -1166,6 +1176,9 @@ declare namespace LocalJSX {
         "showIcon"?: boolean;
         "showLabel"?: boolean;
     }
+    interface BrxSkiplink {
+        "full"?: boolean;
+    }
     interface BrxTag {
         "interaction"?: boolean;
         "interactionSelect"?: boolean;
@@ -1224,6 +1237,7 @@ declare namespace LocalJSX {
         "brx-scrim": BrxScrim;
         "brx-scrim-trigger": BrxScrimTrigger;
         "brx-signin": BrxSignin;
+        "brx-skiplink": BrxSkiplink;
         "brx-tag": BrxTag;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
@@ -1270,6 +1284,7 @@ declare module "@stencil/core" {
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
+            "brx-skiplink": LocalJSX.BrxSkiplink & JSXBase.HTMLAttributes<HTMLBrxSkiplinkElement>;
             "brx-tag": LocalJSX.BrxTag & JSXBase.HTMLAttributes<HTMLBrxTagElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;

@@ -9,6 +9,7 @@ brx-item:not([pass-styles]) {
 brx-item[pass-styles] > * {
   width: 100%;
   height: 100%;
+
   border: none;
   display: block;
 
@@ -19,6 +20,8 @@ brx-item[pass-styles] > * {
 // Item aplicado em link/botão
 brx-item[pass-styles] > a {
   color: var(--interactive);
+
+  height: auto;
 
   @include hover;
   @include active;
