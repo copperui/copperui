@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
 import { Instance as PopperInstance } from '@popperjs/core';
-import { findTarget } from '../../utils/helpers';
+import { enqueueIdleCallback, findTarget } from '../../utils/helpers';
 
 const POSITIONS = ['top', 'right', 'bottom', 'left'];
 
@@ -285,7 +285,7 @@ export class BrxTooltip {
   connectedCallback() {
     this.activator = this.el;
 
-    requestIdleCallback(() => {
+    enqueueIdleCallback(() => {
       this.setupPlacement();
       this.setupComponent();
     });
@@ -307,7 +307,7 @@ export class BrxTooltip {
         {!this.target && (
           <brx-tooltip-content
             ref={(el: HTMLElement) => {
-              requestIdleCallback(() => {
+              enqueueIdleCallback(() => {
                 this.component = el;
               });
             }}

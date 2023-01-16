@@ -11,17 +11,21 @@ import { IBrxButtonInterfaceState } from './brx-button-interface';
   shadow: false,
 })
 export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
-  @Element() el!: HTMLElement;
+  @Element()
+  el!: HTMLElement;
+
   /**
    * Emitted when the button has focus.
    */
   @Event()
   brxFocus!: EventEmitter<void>;
+
   /**
    * Emitted when the button loses focus.
    */
   @Event()
   brxBlur!: EventEmitter<void>;
+
   /**
    * CSS class names to be applied to the native button element.
    */
@@ -29,16 +33,19 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
   nativeClass: string | undefined = '';
 
   // brx-button props
+
   /**
    * The type of button.
    */
   @Prop({ mutable: true })
   buttonType: string | undefined = 'button';
+
   /**
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true })
   disabled: boolean | undefined = false;
+
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
    * it, so the user will be prompted to save it as a local file. If the attribute
@@ -47,23 +54,27 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
    */
   @Prop()
   download: string | undefined;
+
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
    * If this property is set, an anchor tag will be rendered.
    */
   @Prop()
   href: string | undefined;
+
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
   @Prop()
   rel: string | undefined;
+
   /**
    * If `true`, activates a button with a heavier font weight.
    */
   @Prop()
   strong = false;
+
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
@@ -71,6 +82,7 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
    */
   @Prop()
   target: string | undefined;
+
   /**
    * The type of the button.
    */

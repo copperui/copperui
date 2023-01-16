@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { requestIdleCallbackPony } from '../../utils/helpers';
+import { enqueueIdleCallback } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-item',
@@ -43,7 +43,7 @@ export class BrxItem implements ComponentInterface {
     if (!this.syncInProgress) {
       this.syncInProgress = true;
 
-      requestIdleCallbackPony(
+      enqueueIdleCallback(
         () => {
           this.syncSelectedState();
         },

@@ -1,6 +1,6 @@
 export const getWindow = (): Window | null => window;
 
-export const requestIdleCallbackPony = (callback: () => void, options?: IdleRequestOptions) => {
+export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestOptions) => {
   const win = getWindow();
 
   if (win && 'requestIdleCallback' in win) {

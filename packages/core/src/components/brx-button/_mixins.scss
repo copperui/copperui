@@ -10,8 +10,6 @@
   @include button-dark;
 }
 
-//  XXX: o mixin está no lugar certo ?
-
 @mixin button-magicbutton {
   --focus-offset: calc((var(--magic-support-size) - var(--magic-size)) * 0.5 + 4px);
   --button-size: var(--magic-size);

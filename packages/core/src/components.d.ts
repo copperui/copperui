@@ -407,6 +407,11 @@ export namespace Components {
         "showIcon": boolean;
         "showLabel": boolean;
     }
+    interface BrxTag {
+        "interaction": boolean;
+        "interactionSelect": boolean;
+        "selected": boolean;
+    }
     interface BrxTooltip {
         "active": boolean;
         "color": string;
@@ -674,6 +679,12 @@ declare global {
         prototype: HTMLBrxSigninElement;
         new (): HTMLBrxSigninElement;
     };
+    interface HTMLBrxTagElement extends Components.BrxTag, HTMLStencilElement {
+    }
+    var HTMLBrxTagElement: {
+        prototype: HTMLBrxTagElement;
+        new (): HTMLBrxTagElement;
+    };
     interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
     }
     var HTMLBrxTooltipElement: {
@@ -724,6 +735,7 @@ declare global {
         "brx-scrim": HTMLBrxScrimElement;
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-signin": HTMLBrxSigninElement;
+        "brx-tag": HTMLBrxTagElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -1154,6 +1166,11 @@ declare namespace LocalJSX {
         "showIcon"?: boolean;
         "showLabel"?: boolean;
     }
+    interface BrxTag {
+        "interaction"?: boolean;
+        "interactionSelect"?: boolean;
+        "selected"?: boolean;
+    }
     interface BrxTooltip {
         "active"?: boolean;
         "color"?: string;
@@ -1207,6 +1224,7 @@ declare namespace LocalJSX {
         "brx-scrim": BrxScrim;
         "brx-scrim-trigger": BrxScrimTrigger;
         "brx-signin": BrxSignin;
+        "brx-tag": BrxTag;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -1252,6 +1270,7 @@ declare module "@stencil/core" {
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
+            "brx-tag": LocalJSX.BrxTag & JSXBase.HTMLAttributes<HTMLBrxTagElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }
