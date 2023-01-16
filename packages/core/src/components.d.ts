@@ -80,6 +80,7 @@ export namespace Components {
          */
         "href": string | undefined;
         "loading": boolean;
+        "magic": boolean;
         /**
           * CSS class names to be applied to the native button element.
          */
@@ -760,6 +761,7 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         "loading"?: boolean;
+        "magic"?: boolean;
         /**
           * CSS class names to be applied to the native button element.
          */
