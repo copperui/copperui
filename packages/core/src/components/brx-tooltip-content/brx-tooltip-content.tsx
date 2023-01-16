@@ -19,8 +19,10 @@ export class BrxTooltipContent {
   color: string = 'info';
 
   render() {
+    const { place } = this;
+
     return (
-      <Host role="tooltip" data-toggle="tooltip">
+      <Host role="tooltip" data-toggle="tooltip" placement={place}>
         <slot></slot>
 
         <div data-popper-arrow class="arrow"></div>
