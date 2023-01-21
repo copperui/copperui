@@ -10,6 +10,7 @@ import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input";
 import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { TabChangeEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -410,6 +411,35 @@ export namespace Components {
     interface BrxSkiplink {
         "full": boolean;
     }
+    interface BrxTab {
+        "counter": boolean;
+        "iconName": string;
+        "label": string | undefined;
+        "setActive": (active: boolean) => Promise<void>;
+        "tabTitle": string;
+        "tooltipText": string | undefined;
+        "value": string | undefined;
+    }
+    interface BrxTabTooltip {
+        "tooltipText": string | undefined;
+    }
+    interface BrxTabs {
+        "counter": boolean;
+        "darkMode": boolean;
+        "defaultValue": string | undefined;
+        "getCurrentValue": () => Promise<string>;
+        "name": string;
+        "size": 'small' | 'medium' | 'large';
+        "value": string | undefined | null;
+    }
+    interface BrxTabsPanel {
+        "active": boolean;
+        "value": string | undefined;
+    }
+    interface BrxTabsPanels {
+        "darkMode": boolean;
+        "name": string;
+    }
     interface BrxTag {
         "interaction": boolean;
         "interactionSelect": boolean;
@@ -418,6 +448,7 @@ export namespace Components {
     interface BrxTooltip {
         "active": boolean;
         "color": string;
+        "hide": () => Promise<void>;
         "place": 'top' | 'bottom' | 'left' | 'right';
         "popover": boolean;
         "target": string | HTMLElement | undefined;
@@ -458,6 +489,10 @@ export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioGroupElement;
+}
+export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxTabsElement;
 }
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
@@ -688,6 +723,36 @@ declare global {
         prototype: HTMLBrxSkiplinkElement;
         new (): HTMLBrxSkiplinkElement;
     };
+    interface HTMLBrxTabElement extends Components.BrxTab, HTMLStencilElement {
+    }
+    var HTMLBrxTabElement: {
+        prototype: HTMLBrxTabElement;
+        new (): HTMLBrxTabElement;
+    };
+    interface HTMLBrxTabTooltipElement extends Components.BrxTabTooltip, HTMLStencilElement {
+    }
+    var HTMLBrxTabTooltipElement: {
+        prototype: HTMLBrxTabTooltipElement;
+        new (): HTMLBrxTabTooltipElement;
+    };
+    interface HTMLBrxTabsElement extends Components.BrxTabs, HTMLStencilElement {
+    }
+    var HTMLBrxTabsElement: {
+        prototype: HTMLBrxTabsElement;
+        new (): HTMLBrxTabsElement;
+    };
+    interface HTMLBrxTabsPanelElement extends Components.BrxTabsPanel, HTMLStencilElement {
+    }
+    var HTMLBrxTabsPanelElement: {
+        prototype: HTMLBrxTabsPanelElement;
+        new (): HTMLBrxTabsPanelElement;
+    };
+    interface HTMLBrxTabsPanelsElement extends Components.BrxTabsPanels, HTMLStencilElement {
+    }
+    var HTMLBrxTabsPanelsElement: {
+        prototype: HTMLBrxTabsPanelsElement;
+        new (): HTMLBrxTabsPanelsElement;
+    };
     interface HTMLBrxTagElement extends Components.BrxTag, HTMLStencilElement {
     }
     var HTMLBrxTagElement: {
@@ -745,6 +810,11 @@ declare global {
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-signin": HTMLBrxSigninElement;
         "brx-skiplink": HTMLBrxSkiplinkElement;
+        "brx-tab": HTMLBrxTabElement;
+        "brx-tab-tooltip": HTMLBrxTabTooltipElement;
+        "brx-tabs": HTMLBrxTabsElement;
+        "brx-tabs-panel": HTMLBrxTabsPanelElement;
+        "brx-tabs-panels": HTMLBrxTabsPanelsElement;
         "brx-tag": HTMLBrxTagElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
@@ -1179,6 +1249,34 @@ declare namespace LocalJSX {
     interface BrxSkiplink {
         "full"?: boolean;
     }
+    interface BrxTab {
+        "counter"?: boolean;
+        "iconName"?: string;
+        "label"?: string | undefined;
+        "tabTitle"?: string;
+        "tooltipText"?: string | undefined;
+        "value"?: string | undefined;
+    }
+    interface BrxTabTooltip {
+        "tooltipText"?: string | undefined;
+    }
+    interface BrxTabs {
+        "counter"?: boolean;
+        "darkMode"?: boolean;
+        "defaultValue"?: string | undefined;
+        "name"?: string;
+        "onBrxTabChange"?: (event: BrxTabsCustomEvent<TabChangeEventDetail>) => void;
+        "size"?: 'small' | 'medium' | 'large';
+        "value"?: string | undefined | null;
+    }
+    interface BrxTabsPanel {
+        "active"?: boolean;
+        "value"?: string | undefined;
+    }
+    interface BrxTabsPanels {
+        "darkMode"?: boolean;
+        "name"?: string;
+    }
     interface BrxTag {
         "interaction"?: boolean;
         "interactionSelect"?: boolean;
@@ -1238,6 +1336,11 @@ declare namespace LocalJSX {
         "brx-scrim-trigger": BrxScrimTrigger;
         "brx-signin": BrxSignin;
         "brx-skiplink": BrxSkiplink;
+        "brx-tab": BrxTab;
+        "brx-tab-tooltip": BrxTabTooltip;
+        "brx-tabs": BrxTabs;
+        "brx-tabs-panel": BrxTabsPanel;
+        "brx-tabs-panels": BrxTabsPanels;
         "brx-tag": BrxTag;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
@@ -1285,6 +1388,11 @@ declare module "@stencil/core" {
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
             "brx-skiplink": LocalJSX.BrxSkiplink & JSXBase.HTMLAttributes<HTMLBrxSkiplinkElement>;
+            "brx-tab": LocalJSX.BrxTab & JSXBase.HTMLAttributes<HTMLBrxTabElement>;
+            "brx-tab-tooltip": LocalJSX.BrxTabTooltip & JSXBase.HTMLAttributes<HTMLBrxTabTooltipElement>;
+            "brx-tabs": LocalJSX.BrxTabs & JSXBase.HTMLAttributes<HTMLBrxTabsElement>;
+            "brx-tabs-panel": LocalJSX.BrxTabsPanel & JSXBase.HTMLAttributes<HTMLBrxTabsPanelElement>;
+            "brx-tabs-panels": LocalJSX.BrxTabsPanels & JSXBase.HTMLAttributes<HTMLBrxTabsPanelsElement>;
             "brx-tag": LocalJSX.BrxTag & JSXBase.HTMLAttributes<HTMLBrxTagElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;

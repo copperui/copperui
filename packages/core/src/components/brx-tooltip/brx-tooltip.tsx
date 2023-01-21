@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
 import { Instance as PopperInstance } from '@popperjs/core';
 import { enqueueIdleCallback, findTarget } from '../../utils/helpers';
@@ -66,7 +66,7 @@ export class BrxTooltip {
   @Watch('color')
   @Watch('target')
   setupComponent() {
-    const target = this.target;
+    const { target } = this;
 
     if (target) {
       this.component = findTarget(target);
@@ -203,12 +203,22 @@ export class BrxTooltip {
     }
   }
 
-  hide(_event: Event) {
-    this.component.removeAttribute('data-show');
-    this.component.style.zIndex = '-1';
-    this.component.style.visibility = 'hidden';
+  @Method()
+  hide() {
+    const { component } = this;
 
-    clearTimeout(this.closeTimer);
+    if (component) {
+      component.removeAttribute('data-show');
+      component.style.zIndex = '-1';
+      component.style.visibility = 'hidden';
+    }
+
+    if (this.closeTimer) {
+      clearTimeout(this.closeTimer);
+      // this.closeTimer = null;
+    }
+
+    return Promise.resolve();
   }
 
   _toggleActivatorIcon() {
@@ -225,13 +235,15 @@ export class BrxTooltip {
   }
 
   _fixPosition() {
-    if (this.notification) {
+    const { notification, activator, component } = this;
+
+    if (notification && activator && component) {
       setTimeout(() => {
-        const ac = this.activator.getBoundingClientRect();
+        const ac = activator.getBoundingClientRect();
 
         const top = ac.top + ac.height + 10;
 
-        this.component.setAttribute(
+        component.setAttribute(
           'style',
           `position: fixed !important;
           top: ${top}px !important;
@@ -259,25 +271,26 @@ export class BrxTooltip {
         this.#eventListenersCleanup.add(() => this.activator.removeEventListener(eventName, handleEvent));
       }
     }
+
     // Adiciona ação de fechar ao botao do popover
     // if (this.popover || this.notification) {
     if (this.popover) {
       const closeBtn = this.component.querySelector('.close');
 
       closeBtn.addEventListener('click', event => {
-        this.hide(event);
+        this.hide();
         this._toggleActivatorIcon();
       });
 
       // Ação de fechar padrao ao sair do ativador
     } else {
-      const handleEvent = (otherEvent: Event) => {
-        this.hide(otherEvent);
+      const handleHideEvent = () => {
+        this.hide();
       };
 
       for (const eventName of HIDE_EVENTS) {
-        this.activator.addEventListener(eventName, handleEvent);
-        this.#eventListenersCleanup.add(() => this.activator.removeEventListener(eventName, handleEvent));
+        this.activator.addEventListener(eventName, handleHideEvent);
+        this.#eventListenersCleanup.add(() => this.activator.removeEventListener(eventName, handleHideEvent));
       }
     }
   }
@@ -291,8 +304,22 @@ export class BrxTooltip {
     });
   }
 
+  componentShouldUpdate(_newVal: any, _oldVal: any, propName: string): boolean | void {
+    switch (propName) {
+      case 'target':
+      case 'text': {
+        return true;
+      }
+
+      default: {
+        return false;
+      }
+    }
+  }
+
   render() {
     // XXX: ???
+
     // text_tooltip.classList.add('sample')
     // if (this.activator && this.onActivator) {
     //   this.activator.appendChild(text_tooltip)
@@ -300,11 +327,13 @@ export class BrxTooltip {
     //   document.body.appendChild(text_tooltip)
     // }
 
+    const { target, text } = this;
+
     return (
       <Host>
         <slot></slot>
 
-        {!this.target && (
+        {!target && (
           <brx-tooltip-content
             ref={(el: HTMLElement) => {
               enqueueIdleCallback(() => {
@@ -312,7 +341,7 @@ export class BrxTooltip {
               });
             }}
           >
-            <slot name="content">{this.text}</slot>
+            <slot name="content">{text}</slot>
           </brx-tooltip-content>
         )}
       </Host>

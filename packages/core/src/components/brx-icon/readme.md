@@ -23,6 +23,7 @@
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
  - [brx-signin](../brx-signin)
+ - [brx-tab](../brx-tab)
  - [brx-tooltip-content](../brx-tooltip-content)
 
 ### Graph
@@ -35,6 +36,7 @@ graph TD;
   brx-input --> brx-icon
   brx-message --> brx-icon
   brx-signin --> brx-icon
+  brx-tab --> brx-icon
   brx-tooltip-content --> brx-icon
   style brx-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
