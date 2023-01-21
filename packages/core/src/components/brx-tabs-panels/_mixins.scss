@@ -1,0 +1,22 @@
+@mixin tabs-content-configs {
+  @include tabs-content-default;
+  @include tabs-content-dark;
+}
+
+@mixin tabs-content-default {
+  brx-tabs-panel {
+    color: var(--text-color);
+
+    display: none;
+
+    &[active] {
+      display: block;
+    }
+  }
+}
+
+@mixin tabs-content-dark {
+  &[dark-mode] {
+    @include dark-mode;
+  }
+}

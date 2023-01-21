@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-tabs-panels {
+  display: block;
+
+  @include tabs-content-configs;
+}

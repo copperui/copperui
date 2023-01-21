@@ -17,7 +17,24 @@
 | `type`    | `type`    |             | `string`                                 | `'info'`    |
 
 
+## Methods
+
+### `hide() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
+
+### Used by
+
+ - [brx-tab-tooltip](../brx-tab)
 
 ### Depends on
 
@@ -28,6 +45,7 @@
 graph TD;
   brx-tooltip --> brx-tooltip-content
   brx-tooltip-content --> brx-icon
+  brx-tab-tooltip --> brx-tooltip
   style brx-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

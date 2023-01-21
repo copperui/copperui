@@ -1,0 +1,167 @@
+@mixin tab-configs {
+  @include tabs-tokens;
+  @include tabs-nav;
+  @include tabs-count;
+  @include tabs-sizes;
+  @include tabs-dark-mode;
+}
+
+@mixin tabs-tokens {
+  --tab-padding: var(--spacing-scale-3x);
+  --tab-size: var(--tab-medium);
+  --tab-large: var(--spacing-scale-3x);
+  --tab-medium: var(--spacing-scale-2x);
+  --tab-small: var(--spacing-scale-base);
+}
+
+@mixin tabs-nav {
+  .brx-tabs-nav {
+    @include scrollbar;
+    overflow-x: auto;
+    width: 100%;
+
+    @include media-breakpoint-down(sm) {
+      @include scrollbar;
+      display: flex;
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    ul {
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  brx-tab {
+    .brx-tab-container {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      white-space: nowrap;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    button,
+    a {
+      --focus-offset: calc(var(--spacing-scale-half) * -1);
+      @include focus;
+      @include hover('color');
+      background-color: transparent;
+      border: 0;
+      border-bottom: 4px solid transparent;
+      color: var(--color);
+      display: inline-block;
+      font-size: var(--font-size-scale-up-02);
+      font-weight: var(--font-weight-medium);
+      line-height: 1;
+      padding: var(--tab-size) var(--tab-padding);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    &[active] {
+      button {
+        border-bottom: 4px solid var(--active);
+        color: var(--active);
+      }
+
+      .brx-tab-results {
+        --font-weight: var(--font-weight-semi-bold);
+        color: var(--active);
+      }
+    }
+  }
+
+  .brx-tab-results {
+    display: flex;
+    font-weight: var(--font-weight);
+    justify-content: center;
+    margin-top: var(--spacing-scale-2x);
+    position: absolute;
+    top: 100%;
+  }
+}
+
+@mixin tabs-count {
+  &:not([counter]) {
+    .brx-tab-results {
+      display: none;
+    }
+  }
+
+  &[counter] {
+    .brx-tabs-nav {
+      ul {
+        margin-bottom: calc(var(--spacing-scale-2x) + var(--font-size-scale-up-02) + var(--spacing-scale-base));
+      }
+    }
+  }
+}
+
+@mixin tabs-sizes {
+  @each $size in 'small', 'medium', 'large' {
+    &[size='#{$size}'] {
+      --tab-size: var(--tab-#{$size});
+    }
+  }
+}
+
+@mixin tabs-nav-gradiente {
+  .brx-tabs-nav-right::after {
+    //TODO: Atualizar o código com padrão de gradiente quando estiver pronto
+    background: linear-gradient(to right, rgba(var(--pure-100-rgb), var(--surface-opacity-none)), rgba(var(--pure-100-rgb), 0.2));
+    content: '';
+    height: var(--height-nav, 10px);
+    // --height-nav:60px;
+    left: var(--right-gradient-nav, 0);
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+    visibility: visible;
+    width: 3%;
+    z-index: var(--z-index-layer-0);
+  }
+
+  .brx-tabs-nav-left::before {
+    background: linear-gradient(to left, rgba(var(--pure-100-rgb), var(--surface-opacity-none)), rgba(var(--pure-100-rgb), 0.2));
+    content: '';
+    height: var(--height-nav, 10px);
+    // --height-nav:60px;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+
+    visibility: visible;
+    width: 3%;
+    z-index: var(--z-index-layer-0);
+  }
+}
+
+@mixin tabs-dark-mode {
+  &[dark-mode] {
+    @include dark-mode;
+
+    brx-tab[active] {
+      button {
+        border-bottom-color: var(--background-light);
+        color: var(--color);
+      }
+    }
+  }
+}
