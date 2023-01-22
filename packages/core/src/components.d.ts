@@ -7,10 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CheckboxChangeEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
-import { InputChangeEventDetail } from "./components/brx-input/brx-input";
+import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
 import { TabChangeEventDetail } from "./components/brx-tabs/brx-tabs-interface";
+import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -445,6 +446,102 @@ export namespace Components {
         "interactionSelect": boolean;
         "selected": boolean;
     }
+    interface BrxTextarea {
+        /**
+          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
+         */
+        "autoGrow": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit": boolean;
+        "color": 'success' | 'danger' | 'warning' | 'info';
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        "counter"?: 'limit' | 'total';
+        "darkMode": boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+         */
+        "fireFocusEvents": boolean;
+        /**
+          * Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        "inline": boolean;
+        "inputId": string;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "label": string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Instructbrxal text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets blur on the native `textarea` in `brx-textarea`. Use this method instead of the global `textarea.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `textarea` in `brx-textarea`. Use this method instead of the global `textarea.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface BrxTooltip {
         "active": boolean;
         "color": string;
@@ -493,6 +590,10 @@ export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxTabsElement;
+}
+export interface BrxTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxTextareaElement;
 }
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
@@ -759,6 +860,12 @@ declare global {
         prototype: HTMLBrxTagElement;
         new (): HTMLBrxTagElement;
     };
+    interface HTMLBrxTextareaElement extends Components.BrxTextarea, HTMLStencilElement {
+    }
+    var HTMLBrxTextareaElement: {
+        prototype: HTMLBrxTextareaElement;
+        new (): HTMLBrxTextareaElement;
+    };
     interface HTMLBrxTooltipElement extends Components.BrxTooltip, HTMLStencilElement {
     }
     var HTMLBrxTooltipElement: {
@@ -816,6 +923,7 @@ declare global {
         "brx-tabs-panel": HTMLBrxTabsPanelElement;
         "brx-tabs-panels": HTMLBrxTabsPanelsElement;
         "brx-tag": HTMLBrxTagElement;
+        "brx-textarea": HTMLBrxTextareaElement;
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
@@ -1282,6 +1390,106 @@ declare namespace LocalJSX {
         "interactionSelect"?: boolean;
         "selected"?: boolean;
     }
+    interface BrxTextarea {
+        /**
+          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
+         */
+        "autoGrow"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit"?: boolean;
+        "color"?: 'success' | 'danger' | 'warning' | 'info';
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        "counter"?: 'limit' | 'total';
+        "darkMode"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+         */
+        "fireFocusEvents"?: boolean;
+        "inline"?: boolean;
+        "inputId"?: string;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "label"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBrxBlur"?: (event: BrxTextareaCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBrxChange"?: (event: BrxTextareaCustomEvent<TextareaChangeEventDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBrxFocus"?: (event: BrxTextareaCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBrxInput"?: (event: BrxTextareaCustomEvent<InputEvent>) => void;
+        /**
+          * Instructbrxal text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface BrxTooltip {
         "active"?: boolean;
         "color"?: string;
@@ -1342,6 +1550,7 @@ declare namespace LocalJSX {
         "brx-tabs-panel": BrxTabsPanel;
         "brx-tabs-panels": BrxTabsPanels;
         "brx-tag": BrxTag;
+        "brx-textarea": BrxTextarea;
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-content": BrxTooltipContent;
     }
@@ -1394,6 +1603,7 @@ declare module "@stencil/core" {
             "brx-tabs-panel": LocalJSX.BrxTabsPanel & JSXBase.HTMLAttributes<HTMLBrxTabsPanelElement>;
             "brx-tabs-panels": LocalJSX.BrxTabsPanels & JSXBase.HTMLAttributes<HTMLBrxTabsPanelsElement>;
             "brx-tag": LocalJSX.BrxTag & JSXBase.HTMLAttributes<HTMLBrxTagElement>;
+            "brx-textarea": LocalJSX.BrxTextarea & JSXBase.HTMLAttributes<HTMLBrxTextareaElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }

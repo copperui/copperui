@@ -1,10 +1,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { AutocompleteTypes, TextFieldTypes } from '../../interfaces';
 import { generateUniqueId } from '../../utils/helpers';
-
-export interface InputChangeEventDetail {
-  value: string | number | undefined | null;
-}
+import { InputChangeEventDetail } from './brx-input.interface';
 
 @Component({
   tag: 'brx-input',
