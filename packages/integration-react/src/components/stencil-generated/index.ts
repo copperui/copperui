@@ -52,5 +52,6 @@ export const BrxTabs = /*@__PURE__*/createReactComponent<JSX.BrxTabs, HTMLBrxTab
 export const BrxTabsPanel = /*@__PURE__*/createReactComponent<JSX.BrxTabsPanel, HTMLBrxTabsPanelElement>('brx-tabs-panel');
 export const BrxTabsPanels = /*@__PURE__*/createReactComponent<JSX.BrxTabsPanels, HTMLBrxTabsPanelsElement>('brx-tabs-panels');
 export const BrxTag = /*@__PURE__*/createReactComponent<JSX.BrxTag, HTMLBrxTagElement>('brx-tag');
+export const BrxTextarea = /*@__PURE__*/createReactComponent<JSX.BrxTextarea, HTMLBrxTextareaElement>('brx-textarea');
 export const BrxTooltip = /*@__PURE__*/createReactComponent<JSX.BrxTooltip, HTMLBrxTooltipElement>('brx-tooltip');
 export const BrxTooltipContent = /*@__PURE__*/createReactComponent<JSX.BrxTooltipContent, HTMLBrxTooltipContentElement>('brx-tooltip-content');

@@ -36,9 +36,11 @@ export const toggleAttribute = (element: HTMLElement, name: string) => {
 
 export const findItemLabel = (componentEl: HTMLElement) => {
   const itemEl = componentEl.closest('my-item');
+
   if (itemEl) {
     return itemEl.querySelector('my-label');
   }
+
   return null;
 };
 
