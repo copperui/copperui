@@ -351,6 +351,9 @@ export namespace Components {
     }
     interface BrxModalHeader {
     }
+    interface BrxNotification {
+        "_dismiss": () => Promise<void>;
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -788,6 +791,12 @@ declare global {
         prototype: HTMLBrxModalHeaderElement;
         new (): HTMLBrxModalHeaderElement;
     };
+    interface HTMLBrxNotificationElement extends Components.BrxNotification, HTMLStencilElement {
+    }
+    var HTMLBrxNotificationElement: {
+        prototype: HTMLBrxNotificationElement;
+        new (): HTMLBrxNotificationElement;
+    };
     interface HTMLBrxRadioElement extends Components.BrxRadio, HTMLStencilElement {
     }
     var HTMLBrxRadioElement: {
@@ -911,6 +920,7 @@ declare global {
         "brx-modal-body": HTMLBrxModalBodyElement;
         "brx-modal-footer": HTMLBrxModalFooterElement;
         "brx-modal-header": HTMLBrxModalHeaderElement;
+        "brx-notification": HTMLBrxNotificationElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
@@ -1288,6 +1298,8 @@ declare namespace LocalJSX {
     }
     interface BrxModalHeader {
     }
+    interface BrxNotification {
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -1538,6 +1550,7 @@ declare namespace LocalJSX {
         "brx-modal-body": BrxModalBody;
         "brx-modal-footer": BrxModalFooter;
         "brx-modal-header": BrxModalHeader;
+        "brx-notification": BrxNotification;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
@@ -1591,6 +1604,7 @@ declare module "@stencil/core" {
             "brx-modal-body": LocalJSX.BrxModalBody & JSXBase.HTMLAttributes<HTMLBrxModalBodyElement>;
             "brx-modal-footer": LocalJSX.BrxModalFooter & JSXBase.HTMLAttributes<HTMLBrxModalFooterElement>;
             "brx-modal-header": LocalJSX.BrxModalHeader & JSXBase.HTMLAttributes<HTMLBrxModalHeaderElement>;
+            "brx-notification": LocalJSX.BrxNotification & JSXBase.HTMLAttributes<HTMLBrxNotificationElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;

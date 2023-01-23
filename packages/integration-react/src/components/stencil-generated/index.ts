@@ -40,6 +40,7 @@ export const BrxModal = /*@__PURE__*/createReactComponent<JSX.BrxModal, HTMLBrxM
 export const BrxModalBody = /*@__PURE__*/createReactComponent<JSX.BrxModalBody, HTMLBrxModalBodyElement>('brx-modal-body');
 export const BrxModalFooter = /*@__PURE__*/createReactComponent<JSX.BrxModalFooter, HTMLBrxModalFooterElement>('brx-modal-footer');
 export const BrxModalHeader = /*@__PURE__*/createReactComponent<JSX.BrxModalHeader, HTMLBrxModalHeaderElement>('brx-modal-header');
+export const BrxNotification = /*@__PURE__*/createReactComponent<JSX.BrxNotification, HTMLBrxNotificationElement>('brx-notification');
 export const BrxRadio = /*@__PURE__*/createReactComponent<JSX.BrxRadio, HTMLBrxRadioElement>('brx-radio');
 export const BrxRadioGroup = /*@__PURE__*/createReactComponent<JSX.BrxRadioGroup, HTMLBrxRadioGroupElement>('brx-radio-group');
 export const BrxScrim = /*@__PURE__*/createReactComponent<JSX.BrxScrim, HTMLBrxScrimElement>('brx-scrim');
