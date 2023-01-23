@@ -48,7 +48,7 @@
       <h1>Accordion</h1>
 
       <div>
-        <brx-list data-sub="data-sub">
+        <brx-list>
           <brx-accordion-trigger group="a" tabindex="0" target="#a-l1">
             <brx-item button>
               <div class="content">
@@ -58,7 +58,7 @@
             </brx-item>
           </brx-accordion-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="a-l1">
+          <brx-list hidden="hidden" id="a-l1">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -102,7 +102,7 @@
             </brx-item>
           </brx-accordion-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="a-l2">
+          <brx-list hidden="hidden" id="a-l2">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -146,7 +146,7 @@
             </brx-item>
           </brx-accordion-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="a-l3">
+          <brx-list hidden="hidden" id="a-l3">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -422,10 +422,10 @@
         </div>
 
         <div class="my-1 p-3">
-          <brx-button aria-label="Ícone ilustrativo" circle class="mr-3" size="large" variant="secondary">
+          <brx-button aria-label="Ícone ilustrativo" circle size="large" variant="secondary" class="mr-3">
             <brx-icon name="city"></brx-icon>
           </brx-button>
-          <brx-button aria-label="Ícone ilustrativo" circle class="mr-3" size="medium" variant="secondary">
+          <brx-button aria-label="Ícone ilustrativo" circle size="medium" variant="secondary" class="mr-3">
             <brx-icon name="city"></brx-icon>
           </brx-button>
           <brx-button aria-label="Ícone ilustrativo" circle size="small" variant="secondary">
@@ -807,7 +807,7 @@
       <h1>Collapse</h1>
 
       <div>
-        <brx-list data-sub="data-sub">
+        <brx-list>
           <brx-collapse-trigger tabindex="0" target="#c-l1">
             <brx-item button>
               <div class="content">
@@ -817,7 +817,7 @@
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="c-l1">
+          <brx-list hidden="hidden" id="c-l1">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -861,7 +861,7 @@
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="c-l2">
+          <brx-list hidden="hidden" id="c-l2">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -905,7 +905,7 @@
             </brx-item>
           </brx-collapse-trigger>
 
-          <brx-list data-sub="data-sub" hidden="hidden" id="c-l3">
+          <brx-list hidden="hidden" id="c-l3">
             <brx-item>
               <div class="row align-items-center">
                 <div class="col-auto">
@@ -2307,6 +2307,121 @@
             <brx-button variant="primary">Abrir modal</brx-button>
           </brx-scrim-trigger>
         </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Notification -->
+
+    <section>
+      <h1>Notification</h1>
+
+      <div>
+        <brx-notification>
+          <div class="notification-header">
+            <div class="row">
+              <div class="col-10">
+                <span class="text-bold">Fulano da Silva</span>
+
+                <br />
+
+                <small>nome.sobrenome@dominio.gov</small>
+              </div>
+
+              <div class="col-2">
+                <div class="close text-right">
+                  <brx-button circle size="small" aria-label="Fechar">
+                    <brx-icon name="fa5/fas/times"></brx-icon>
+                  </brx-button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-body">
+            <brx-tabs name="notification-1">
+              <brx-tab value="alertas" tooltip-text="Alertas" icon-name="fa5/fas/bell" class="notification-tooltip"></brx-tab>
+              <brx-tab value="mensagens" tooltip-text="Mensagens" icon-name="fa5/fas/envelope" class="notification-tooltip" active></brx-tab>
+            </brx-tabs>
+
+            <brx-tabs-panels name="notification-1">
+              <brx-tabs-panel value="alertas">
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                      Link de Acesso
+                    </button>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                      Link de Acesso
+                    </button>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                      Link de Acesso
+                    </button>
+                  </brx-item>
+                </brx-list>
+              </brx-tabs-panel>
+
+              <brx-tabs-panel value="mensagens" active>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <brx-tag status size="small" class="bg-warning"></brx-tag>
+
+                      <span class="text-bold">Título</span>
+                      <span class="text-medium mb-2">25 de out</span>
+
+                      <span>
+                        Nostrud consequat culpa ex mollit aute. Ex ex veniam ea labore laboris duis duis elit. Ex aute dolor enim aute Lorem dolor. Duis labore ad anim culpa. Non
+                        aliqua excepteur sunt eiusmod ex consectetur ex esse laborum velit ut aute.
+                      </span>
+                    </button>
+                  </brx-item>
+
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <span class="text-bold">Título</span>
+                      <span class="text-medium mb-2">24 de out</span>
+                      <span>
+                        Labore nulla elit laborum nulla duis. Deserunt ad nulla commodo occaecat nulla proident ea proident aliquip dolore sunt nulla. Do sit eu consectetur quis
+                        culpa. Eiusmod minim irure sint nulla incididunt occaecat ipsum mollit in ut. Minim adipisicing veniam adipisicing velit nostrud duis consectetur aute nulla
+                        deserunt culpa aliquip.
+                      </span>
+                    </button>
+                  </brx-item>
+
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <brx-tag status size="small" class="bg-warning"></brx-tag>
+                      <span class="text-bold">Título</span>
+                      <span class="text-medium mb-2">03 de out</span>
+                      <span> Duis qui dolor dolor qui sint consectetur. Ipsum eu dolore ex anim reprehenderit laborum commodo. Labore do ut nulla eiusmod consectetur. </span>
+                    </button>
+                  </brx-item>
+
+                  <brx-item pass-styles="">
+                    <button type="button">
+                      <span class="text-bold">Título</span>
+                      <span class="text-medium mb-2">16 de mai</span>
+                      <span>
+                        Sunt velit dolor enim mollit incididunt irure est. Ad ea Lorem culpa quis occaecat sunt in exercitation nisi. Sit laborum laborum dolor culpa ipsum velit.
+                        Non nulla nisi dolore et anim consequat officia deserunt amet qui. Incididunt exercitation irure labore ut Lorem culpa. Dolore ea irure pariatur ullamco
+                        culpa veniam amet dolor in fugiat pariatur ut. Sit non ut enim et incididunt tempor irure pariatur ex proident labore cillum dolore nisi.
+                      </span>
+                    </button>
+                  </brx-item>
+                </brx-list>
+              </brx-tabs-panel>
+            </brx-tabs-panels>
+          </div>
+        </brx-notification>
       </div>
     </section>
 
