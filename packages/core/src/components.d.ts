@@ -11,7 +11,7 @@ import { InputChangeEventDetail } from "./components/brx-input/brx-input.interfa
 import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
-import { TabChangeEventDetail } from "./components/brx-tabs/brx-tabs-interface";
+import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 export namespace Components {
@@ -1441,6 +1441,7 @@ declare namespace LocalJSX {
         "defaultValue"?: string | undefined;
         "name"?: string;
         "onBrxTabChange"?: (event: BrxTabsCustomEvent<TabChangeEventDetail>) => void;
+        "onBrxTabClick"?: (event: BrxTabsCustomEvent<TabClickEventDetail>) => void;
         "size"?: 'small' | 'medium' | 'large';
         "value"?: string | undefined | null;
     }

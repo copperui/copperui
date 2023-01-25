@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { getWindow } from '../../utils/helpers';
-import { TabChangeEventDetail } from './brx-tabs-interface';
+import { TabChangeEventDetail, TabClickEventDetail } from './brx-tabs-interface';
 
 @Component({
   tag: 'brx-tabs',
@@ -10,6 +10,9 @@ import { TabChangeEventDetail } from './brx-tabs-interface';
 export class BrxTabs implements ComponentInterface {
   @Element()
   el: HTMLElement;
+
+  @Event()
+  brxTabClick: EventEmitter<TabClickEventDetail>;
 
   @Event()
   brxTabChange: EventEmitter<TabChangeEventDetail>;
@@ -149,8 +152,6 @@ export class BrxTabs implements ComponentInterface {
     if (this.value === null) {
       this.currentValue = value;
     }
-
-    this.brxTabChange.emit({ value });
   }
 
   getInitialValue() {
@@ -173,14 +174,15 @@ export class BrxTabs implements ComponentInterface {
     }
   }
 
-  @Watch('value')
-  handleValueChange() {
-    this.currentValue = this.value;
-  }
-
   @Watch('currentValue')
   handleCurrentValueChange() {
     this.syncTabs();
+    this.brxTabChange.emit({ value: this.currentValue });
+  }
+
+  @Watch('value')
+  handleValueChange() {
+    this.currentValue = this.value;
   }
 
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -262,7 +264,12 @@ export class BrxTabs implements ComponentInterface {
 
     if (tabTrigger) {
       const tab = tabTrigger.closest('brx-tab');
-      this.updateValue(tab.value);
+
+      const { value } = tab;
+
+      this.updateValue(value);
+
+      this.brxTabClick.emit({ value });
     }
   }
 

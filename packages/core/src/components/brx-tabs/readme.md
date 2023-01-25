@@ -22,6 +22,7 @@
 | Event          | Description | Type                                |
 | -------------- | ----------- | ----------------------------------- |
 | `brxTabChange` |             | `CustomEvent<TabChangeEventDetail>` |
+| `brxTabClick`  |             | `CustomEvent<TabClickEventDetail>`  |
 
 
 ## Methods
