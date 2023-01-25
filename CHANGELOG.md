@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/copperui/copperui/compare/v0.1.0...v0.1.1) (2023-01-25)
+
+### Bug Fixes
+
+- **react:** add export for stencil-generated ([a78cb04](https://github.com/copperui/copperui/commit/a78cb0463e8774fb0aff0f3dda3b74b5d58e3b22))
+
 # 0.1.0 (2023-01-25)
 
 ### Bug Fixes

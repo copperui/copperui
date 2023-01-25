@@ -1,7 +1,7 @@
 {
   "name": "@copperui/react",
   "sideEffects": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "Integração do copperui com o React.",
   "main": "./dist/index.js",
