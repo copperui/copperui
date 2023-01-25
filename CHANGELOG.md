@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/copperui/copperui/compare/v0.1.1...v0.2.0) (2023-01-25)
+
+### Bug Fixes
+
+- **react:** add "type" to "module" ([a7db720](https://github.com/copperui/copperui/commit/a7db72031e04ee8e45639860dc17b465ad9d927c))
+
+### Features
+
+- **core:** components: brx-tabs: add tabClick event ([5f99adb](https://github.com/copperui/copperui/commit/5f99adb574e90e1d4f5385186979f33698558cff))
+
 ## [0.1.1](https://github.com/copperui/copperui/compare/v0.1.0...v0.1.1) (2023-01-25)
 
 ### Bug Fixes
