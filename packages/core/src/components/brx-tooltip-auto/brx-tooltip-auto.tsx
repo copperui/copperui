@@ -1,13 +1,17 @@
-import { Component, Host, ComponentInterface, h, Prop, State, Fragment, Listen, Element } from '@stencil/core';
+import { Component, ComponentInterface, Element, Fragment, h, Host, Prop, State } from '@stencil/core';
 import { generateUniqueId } from '../../utils/helpers';
+import { BrxTooltip } from '../brx-tooltip/brx-tooltip';
 
 @Component({
-  tag: 'brx-tab-tooltip',
+  tag: 'brx-tooltip-auto',
   shadow: false,
 })
-export class BrxTabTooltip implements ComponentInterface {
+export class BrxTooltipAuto implements ComponentInterface {
   @Element()
   el: HTMLElement;
+
+  @Prop()
+  place: BrxTooltip['place'] = 'bottom';
 
   @Prop()
   tooltipText: string | undefined;
@@ -21,16 +25,18 @@ export class BrxTabTooltip implements ComponentInterface {
     }
   }
 
-  render() {
-    const { tooltipText, tooltipContentId } = this;
+  get enabled() {
+    return !!this.tooltipText;
+  }
 
-    const enabled = !!tooltipText;
+  render() {
+    const { place, enabled, tooltipText, tooltipContentId } = this;
 
     return (
       <Host>
         {enabled && (
           <Fragment>
-            <brx-tooltip target={`#${tooltipContentId}`} class="brx-tab-container" place="bottom">
+            <brx-tooltip target={`#${tooltipContentId}`} class="brx-tooltip-auto-container" place={place}>
               <slot />
             </brx-tooltip>
 
@@ -39,7 +45,7 @@ export class BrxTabTooltip implements ComponentInterface {
         )}
 
         {!enabled && (
-          <div class="brx-tab-container">
+          <div class="brx-tooltip-auto-container">
             <slot />
           </div>
         )}

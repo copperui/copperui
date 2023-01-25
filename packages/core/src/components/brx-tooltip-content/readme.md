@@ -16,8 +16,8 @@
 
 ### Used by
 
- - [brx-tab-tooltip](../brx-tab)
  - [brx-tooltip](../brx-tooltip)
+ - [brx-tooltip-auto](../brx-tooltip-auto)
 
 ### Depends on
 
@@ -27,8 +27,8 @@
 ```mermaid
 graph TD;
   brx-tooltip-content --> brx-icon
-  brx-tab-tooltip --> brx-tooltip-content
   brx-tooltip --> brx-tooltip-content
+  brx-tooltip-auto --> brx-tooltip-content
   style brx-tooltip-content fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

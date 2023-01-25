@@ -10,8 +10,10 @@ import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
 import { TabChangeEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
+import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -415,6 +417,21 @@ export namespace Components {
     interface BrxSkiplink {
         "full": boolean;
     }
+    interface BrxStep {
+        "defaultValue": number | undefined;
+        "type": 'simple' | 'text' | 'void' | undefined;
+        "updateActiveStep": (value: number | undefined) => Promise<void>;
+        "value": number | null;
+    }
+    interface BrxStepProgress {
+    }
+    interface BrxStepProgressBtn {
+        "active": boolean;
+        "alert": 'success' | 'info' | 'warning' | 'danger' | undefined;
+        "disabled": boolean;
+        "stepNum": string;
+        "tooltipText": string | undefined;
+    }
     interface BrxTab {
         "counter": boolean;
         "iconName": string;
@@ -423,9 +440,6 @@ export namespace Components {
         "tabTitle": string;
         "tooltipText": string | undefined;
         "value": string | undefined;
-    }
-    interface BrxTabTooltip {
-        "tooltipText": string | undefined;
     }
     interface BrxTabs {
         "counter": boolean;
@@ -556,6 +570,10 @@ export namespace Components {
         "timer": number | undefined;
         "type": string;
     }
+    interface BrxTooltipAuto {
+        "place": BrxTooltip['place'];
+        "tooltipText": string | undefined;
+    }
     interface BrxTooltipContent {
         "color": string;
         "place": string;
@@ -589,6 +607,10 @@ export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioGroupElement;
+}
+export interface BrxStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxStepElement;
 }
 export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -833,17 +855,29 @@ declare global {
         prototype: HTMLBrxSkiplinkElement;
         new (): HTMLBrxSkiplinkElement;
     };
+    interface HTMLBrxStepElement extends Components.BrxStep, HTMLStencilElement {
+    }
+    var HTMLBrxStepElement: {
+        prototype: HTMLBrxStepElement;
+        new (): HTMLBrxStepElement;
+    };
+    interface HTMLBrxStepProgressElement extends Components.BrxStepProgress, HTMLStencilElement {
+    }
+    var HTMLBrxStepProgressElement: {
+        prototype: HTMLBrxStepProgressElement;
+        new (): HTMLBrxStepProgressElement;
+    };
+    interface HTMLBrxStepProgressBtnElement extends Components.BrxStepProgressBtn, HTMLStencilElement {
+    }
+    var HTMLBrxStepProgressBtnElement: {
+        prototype: HTMLBrxStepProgressBtnElement;
+        new (): HTMLBrxStepProgressBtnElement;
+    };
     interface HTMLBrxTabElement extends Components.BrxTab, HTMLStencilElement {
     }
     var HTMLBrxTabElement: {
         prototype: HTMLBrxTabElement;
         new (): HTMLBrxTabElement;
-    };
-    interface HTMLBrxTabTooltipElement extends Components.BrxTabTooltip, HTMLStencilElement {
-    }
-    var HTMLBrxTabTooltipElement: {
-        prototype: HTMLBrxTabTooltipElement;
-        new (): HTMLBrxTabTooltipElement;
     };
     interface HTMLBrxTabsElement extends Components.BrxTabs, HTMLStencilElement {
     }
@@ -880,6 +914,12 @@ declare global {
     var HTMLBrxTooltipElement: {
         prototype: HTMLBrxTooltipElement;
         new (): HTMLBrxTooltipElement;
+    };
+    interface HTMLBrxTooltipAutoElement extends Components.BrxTooltipAuto, HTMLStencilElement {
+    }
+    var HTMLBrxTooltipAutoElement: {
+        prototype: HTMLBrxTooltipAutoElement;
+        new (): HTMLBrxTooltipAutoElement;
     };
     interface HTMLBrxTooltipContentElement extends Components.BrxTooltipContent, HTMLStencilElement {
     }
@@ -927,14 +967,17 @@ declare global {
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
         "brx-signin": HTMLBrxSigninElement;
         "brx-skiplink": HTMLBrxSkiplinkElement;
+        "brx-step": HTMLBrxStepElement;
+        "brx-step-progress": HTMLBrxStepProgressElement;
+        "brx-step-progress-btn": HTMLBrxStepProgressBtnElement;
         "brx-tab": HTMLBrxTabElement;
-        "brx-tab-tooltip": HTMLBrxTabTooltipElement;
         "brx-tabs": HTMLBrxTabsElement;
         "brx-tabs-panel": HTMLBrxTabsPanelElement;
         "brx-tabs-panels": HTMLBrxTabsPanelsElement;
         "brx-tag": HTMLBrxTagElement;
         "brx-textarea": HTMLBrxTextareaElement;
         "brx-tooltip": HTMLBrxTooltipElement;
+        "brx-tooltip-auto": HTMLBrxTooltipAutoElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
     }
 }
@@ -1369,6 +1412,21 @@ declare namespace LocalJSX {
     interface BrxSkiplink {
         "full"?: boolean;
     }
+    interface BrxStep {
+        "defaultValue"?: number | undefined;
+        "onBrxStepChange"?: (event: BrxStepCustomEvent<StepChangeEventDetail>) => void;
+        "type"?: 'simple' | 'text' | 'void' | undefined;
+        "value"?: number | null;
+    }
+    interface BrxStepProgress {
+    }
+    interface BrxStepProgressBtn {
+        "active"?: boolean;
+        "alert"?: 'success' | 'info' | 'warning' | 'danger' | undefined;
+        "disabled"?: boolean;
+        "stepNum"?: string;
+        "tooltipText"?: string | undefined;
+    }
     interface BrxTab {
         "counter"?: boolean;
         "iconName"?: string;
@@ -1376,9 +1434,6 @@ declare namespace LocalJSX {
         "tabTitle"?: string;
         "tooltipText"?: string | undefined;
         "value"?: string | undefined;
-    }
-    interface BrxTabTooltip {
-        "tooltipText"?: string | undefined;
     }
     interface BrxTabs {
         "counter"?: boolean;
@@ -1512,6 +1567,10 @@ declare namespace LocalJSX {
         "timer"?: number | undefined;
         "type"?: string;
     }
+    interface BrxTooltipAuto {
+        "place"?: BrxTooltip['place'];
+        "tooltipText"?: string | undefined;
+    }
     interface BrxTooltipContent {
         "color"?: string;
         "place"?: string;
@@ -1557,14 +1616,17 @@ declare namespace LocalJSX {
         "brx-scrim-trigger": BrxScrimTrigger;
         "brx-signin": BrxSignin;
         "brx-skiplink": BrxSkiplink;
+        "brx-step": BrxStep;
+        "brx-step-progress": BrxStepProgress;
+        "brx-step-progress-btn": BrxStepProgressBtn;
         "brx-tab": BrxTab;
-        "brx-tab-tooltip": BrxTabTooltip;
         "brx-tabs": BrxTabs;
         "brx-tabs-panel": BrxTabsPanel;
         "brx-tabs-panels": BrxTabsPanels;
         "brx-tag": BrxTag;
         "brx-textarea": BrxTextarea;
         "brx-tooltip": BrxTooltip;
+        "brx-tooltip-auto": BrxTooltipAuto;
         "brx-tooltip-content": BrxTooltipContent;
     }
 }
@@ -1611,14 +1673,17 @@ declare module "@stencil/core" {
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
             "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
             "brx-skiplink": LocalJSX.BrxSkiplink & JSXBase.HTMLAttributes<HTMLBrxSkiplinkElement>;
+            "brx-step": LocalJSX.BrxStep & JSXBase.HTMLAttributes<HTMLBrxStepElement>;
+            "brx-step-progress": LocalJSX.BrxStepProgress & JSXBase.HTMLAttributes<HTMLBrxStepProgressElement>;
+            "brx-step-progress-btn": LocalJSX.BrxStepProgressBtn & JSXBase.HTMLAttributes<HTMLBrxStepProgressBtnElement>;
             "brx-tab": LocalJSX.BrxTab & JSXBase.HTMLAttributes<HTMLBrxTabElement>;
-            "brx-tab-tooltip": LocalJSX.BrxTabTooltip & JSXBase.HTMLAttributes<HTMLBrxTabTooltipElement>;
             "brx-tabs": LocalJSX.BrxTabs & JSXBase.HTMLAttributes<HTMLBrxTabsElement>;
             "brx-tabs-panel": LocalJSX.BrxTabsPanel & JSXBase.HTMLAttributes<HTMLBrxTabsPanelElement>;
             "brx-tabs-panels": LocalJSX.BrxTabsPanels & JSXBase.HTMLAttributes<HTMLBrxTabsPanelsElement>;
             "brx-tag": LocalJSX.BrxTag & JSXBase.HTMLAttributes<HTMLBrxTagElement>;
             "brx-textarea": LocalJSX.BrxTextarea & JSXBase.HTMLAttributes<HTMLBrxTextareaElement>;
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
+            "brx-tooltip-auto": LocalJSX.BrxTooltipAuto & JSXBase.HTMLAttributes<HTMLBrxTooltipAutoElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
         }
     }

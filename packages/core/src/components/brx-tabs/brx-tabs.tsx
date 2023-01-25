@@ -191,7 +191,6 @@ export class BrxTabs implements ComponentInterface {
 
       if (tab) {
         this.openTab(tab.value);
-
         const button = tab.querySelector('button');
         button.focus();
       }
@@ -266,8 +265,9 @@ export class BrxTabs implements ComponentInterface {
       this.updateValue(tab.value);
     }
   }
+
   @Listen('focusout')
-  handleFocusOut(_event: MouseEvent) {
+  handleFocusOut() {
     this.hiddenTooltips();
   }
 
