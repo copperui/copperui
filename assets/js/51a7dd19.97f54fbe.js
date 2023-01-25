@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_copperui_docs=self.webpackChunk_copperui_docs||[]).push([[980],{3769:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);

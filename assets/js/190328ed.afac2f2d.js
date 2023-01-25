@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_copperui_docs=self.webpackChunk_copperui_docs||[]).push([[165],{4618:o=>{o.exports=JSON.parse('{"title":"Come\xe7ar Agora","description":"Aprenda os coneceitos principais.","slug":"/comecar-agora","permalink":"/docs/comecar-agora","navigation":{"next":{"title":"Introdu\xe7\xe3o","permalink":"/docs/comecar-agora/introducao"}}}')}}]);
