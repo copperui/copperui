@@ -7,31 +7,46 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default     |
-| ------------- | -------------- | ----------- | -------- | ----------- |
-| `tooltipText` | `tooltip-text` |             | `string` | `undefined` |
+| Property      | Attribute      | Description | Type      | Default     |
+| ------------- | -------------- | ----------- | --------- | ----------- |
+| `counter`     | `counter`      |             | `boolean` | `undefined` |
+| `iconName`    | `icon-name`    |             | `string`  | `undefined` |
+| `label`       | `label`        |             | `string`  | `undefined` |
+| `tabTitle`    | `tab-title`    |             | `string`  | `undefined` |
+| `tooltipText` | `tooltip-text` |             | `string`  | `undefined` |
+| `value`       | `value`        |             | `string`  | `undefined` |
+
+
+## Methods
+
+### `setActive(active: boolean) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies
 
-### Used by
-
- - [brx-tab](.)
-
 ### Depends on
 
-- [brx-tooltip](../brx-tooltip)
-- [brx-tooltip-content](../brx-tooltip-content)
+- [brx-tooltip-auto](../brx-tooltip-auto)
+- [brx-icon](../brx-icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  brx-tab-tooltip --> brx-tooltip
-  brx-tab-tooltip --> brx-tooltip-content
+  brx-tab --> brx-tooltip-auto
+  brx-tab --> brx-icon
+  brx-tooltip-auto --> brx-tooltip
+  brx-tooltip-auto --> brx-tooltip-content
   brx-tooltip --> brx-tooltip-content
   brx-tooltip-content --> brx-icon
-  brx-tab --> brx-tab-tooltip
-  style brx-tab-tooltip fill:#f9f,stroke:#333,stroke-width:4px
+  style brx-tab fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

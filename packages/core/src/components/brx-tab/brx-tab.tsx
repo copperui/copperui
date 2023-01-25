@@ -43,7 +43,7 @@ export class BrxTab implements ComponentInterface {
 
     return (
       <Host role="listitem" title={tabTitle}>
-        <brx-tab-tooltip tooltip-text={tooltipText}>
+        <brx-tooltip-auto tooltip-text={tooltipText}>
           <button type="button" aria-label={label ?? tooltipText}>
             <span class="name">
               <span class="d-flex flex-column flex-sm-row">
@@ -65,7 +65,7 @@ export class BrxTab implements ComponentInterface {
           <span class="brx-tab-results">
             <slot name="results"></slot>
           </span>
-        </brx-tab-tooltip>
+        </brx-tooltip-auto>
       </Host>
     );
   }

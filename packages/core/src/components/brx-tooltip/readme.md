@@ -34,7 +34,7 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [brx-tab-tooltip](../brx-tab)
+ - [brx-tooltip-auto](../brx-tooltip-auto)
 
 ### Depends on
 
@@ -45,7 +45,7 @@ Type: `Promise<void>`
 graph TD;
   brx-tooltip --> brx-tooltip-content
   brx-tooltip-content --> brx-icon
-  brx-tab-tooltip --> brx-tooltip
+  brx-tooltip-auto --> brx-tooltip
   style brx-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
