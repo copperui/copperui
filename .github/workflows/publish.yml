@@ -7,7 +7,7 @@ on:
       - release
 
 jobs:
-  deploy-storybook:
+  deploy-gh-pages:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -43,13 +43,13 @@ jobs:
         run: |
           yarn workspace @copperui/core build
 
-      - name: Build Storybook
+      - name: Build GH Pages
         run: |
-          yarn workspace @copperui/core storybook:build --quiet
+          yarn workspace @copperui/docs build
 
-      - name: Deploy Storybook
+      - name: Deploy GH Pages
         run: |
-          yarn workspace @copperui/core storybook:deploy deploy
+          yarn workspace @copperui/docs ghpages
 
   publish:
     runs-on: ubuntu-20.04

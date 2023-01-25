@@ -1,0 +1,9 @@
+{
+  "label": "Começar Agora",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Aprenda os coneceitos principais.",
+    "slug": "/comecar-agora"
+  }
+}

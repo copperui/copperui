@@ -76,3 +76,19 @@ export const tryParseJSON = (payload: any): any => {
 
   return payload;
 };
+
+export const focusNextElement = () => {
+  //lista de elementos que desejamos focar
+  const focussableElements = 'a:not([disabled]), button:not([disabled]), input[type=text]:not([disabled]), [tabindex]:not([disabled]):not([tabindex="-1"])';
+  if (document.activeElement) {
+    const focussable = Array.prototype.filter.call(document.body.querySelectorAll(focussableElements), element => {
+      // testa a visibilidade e inclui o elemento ativo
+      return element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement;
+    });
+    const index = focussable.indexOf(document.activeElement);
+    if (index > -1) {
+      const nextElement = focussable[index + 1] || focussable[0];
+      nextElement.focus();
+    }
+  }
+};

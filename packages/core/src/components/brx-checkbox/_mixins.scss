@@ -79,46 +79,52 @@
 }
 
 @mixin checkbox-checked {
-  input {
-    &:checked + label {
-      &::after {
-        border: solid var(--selected);
-        border-width: 0 3px 3px 0;
-        content: '';
-        height: var(--icon-size-sm);
-        left: 8px;
-        position: absolute;
-        top: 4px;
-        transform: rotate(45deg);
-        width: 8px;
+  &[checked] {
+    input {
+      + label {
+        &::after {
+          border: solid var(--selected);
+          border-width: 0 3px 3px 0;
+          content: '';
+          height: var(--icon-size-sm);
+          left: 8px;
+          position: absolute;
+          top: 4px;
+          transform: rotate(45deg);
+          width: 8px;
+        }
       }
     }
   }
 }
 
 @mixin checkbox-indeterminate {
-  input:indeterminate {
-    + label {
-      &::before {
-        --interactive-rgb: var(--color-rgb);
-        background: var(--selected);
-        border-color: var(--selected);
-      }
-    }
-
-    &:hover:not(:disabled) {
-      + label::before {
-        --interactive-rgb: var(--color-dark-rgb);
-      }
-    }
-
-    &:checked {
+  &[indeterminate] {
+    input {
       + label {
-        &::after {
-          border-color: var(--background-light);
-          border-width: 0 0 3px;
-          top: 2px;
-          transform: none;
+        &::before {
+          --interactive-rgb: var(--color-rgb);
+          background: var(--selected);
+          border-color: var(--selected);
+        }
+      }
+
+      &:hover:not(:disabled) {
+        + label::before {
+          --interactive-rgb: var(--color-dark-rgb);
+        }
+      }
+    }
+
+    &[checked] {
+      input {
+        + label {
+          &::after {
+            border-color: var(--background-light);
+            border-width: 0 0 3px;
+            top: 2px;
+            transform: none;
+          }
         }
       }
     }
@@ -126,21 +132,21 @@
 }
 
 @mixin checkbox-states {
+  &,
+  &[checked] {
+    input:focus-visible,
+    &[focus-visible] input {
+      + label::before {
+        @include focus-soft;
+      }
+    }
+  }
+
   input {
     // Inválido
     &:invalid {
       + label::before {
         --border-color: var(--danger);
-      }
-    }
-
-    // Focus
-    &:focus-visible,
-    &.focus-visible,
-    &[focus-visible] {
-      &:checked + label::before,
-      + label::before {
-        @include focus-soft;
       }
     }
 
@@ -166,22 +172,25 @@
   @each $state, $color in (invalid, danger), (valid, success) {
     &[#{$state}],
     &[state~='#{$state}'] {
-      input {
-        + label::before {
-          --border-color: var(--#{$color});
-        }
-
-        &:focus-visible,
-        &.focus-visible,
-        &[focus-visible] {
-          &:checked + label::before,
+      &,
+      &[checked] {
+        input:focus-visible,
+        &[focus-visible] input {
           + label::before {
             --border-color: var(--focus-color);
           }
         }
+      }
 
+      &[checked] {
         // Checado
-        &:checked + label::before {
+        input + label::before {
+          --border-color: var(--#{$color});
+        }
+      }
+
+      input {
+        + label::before {
           --border-color: var(--#{$color});
         }
       }
@@ -205,9 +214,10 @@
         height: var(--spacing-scale-2xh);
         width: var(--spacing-scale-2xh);
       }
+    }
 
-      // Checado
-      &:checked {
+    &[checked] {
+      input {
         + label::after {
           border-width: 0 2px 2px 0;
           height: var(--icon-size-sm);
@@ -215,8 +225,10 @@
           top: 6px;
           width: 6px;
         }
+      }
 
-        &:indeterminate + label::after {
+      &[indeterminate] {
+        input + label::after {
           border-color: var(--background-light);
           border-width: 0 0 3px;
           top: 2px;
