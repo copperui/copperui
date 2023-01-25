@@ -1,0 +1,62 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Uso
+
+## Exemplo de uso do componente brx-tabs
+
+<Tabs>
+
+<TabItem value="html" label="HTML">
+
+```html
+<brx-tabs name="exemplo-html">
+  <brx-tab value="tab-todos" tooltip-text="Todos" icon-name="fa5/fas/image"></brx-tab>
+  <brx-tab value="tab-noticias" tooltip-text="Notícias" icon-name="fa5/fas/image" active></brx-tab>
+</brx-tabs>
+
+<brx-tabs-panels name="exemplo-html">
+  <brx-tabs-panel value="tab-todos">
+    <p>Painel Todos</p>
+  </brx-tabs-panel>
+  <brx-tabs-panel value="tab-noticias" active>
+    <p>Painel Noticias</p>
+  </brx-tabs-panel>
+</brx-tabs-panels>
+```
+
+</TabItem>
+
+<TabItem value="react" label="React">
+
+```tsx
+import { BrxTabs, BrxTab, BrxTabsPanels, BrxTabsPanel } from '@copperui/react';
+
+export function UsoTabs() {
+  return (
+    <>
+      <BrxTabs name="exemplo-react">
+        <BrxTab value="tab-todos" tooltipText="Todos" iconName="fa5/fas/image"></BrxTab>
+        <BrxTab value="tab-noticias" tooltipText="Notícias" iconName="fa5/fas/image" active></BrxTab>
+      </BrxTabs>
+
+      <BrxTabsPanels name="exemplo-react">
+        <BrxTabsPanel value="tab-todos">
+          <p>Painel Todos</p>
+        </BrxTabsPanel>
+        <BrxTabsPanel value="tab-noticias" active>
+          <p>Painel Noticias</p>
+        </BrxTabsPanel>
+      </BrxTabsPanels>
+    </>
+  );
+}
+```
+
+</TabItem>
+
+</Tabs>

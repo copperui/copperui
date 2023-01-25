@@ -1,0 +1,113 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Instalação
+
+<Tabs>
+
+<TabItem value="webcomponents" label="Web Components - HTML, Vue.js e Vanilla JS">
+
+## Via CDN
+
+Adicione as seguintes declarações à tag `head` de seu projeto.
+
+```html {3-5} showLineNumbers
+<html>
+  <head>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@copperui/core/dist/copperui/copperui.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@copperui/core/dist/copperui/copperui.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@copperui/core/dist/copperui/copperui.css" />
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+```
+
+Já está pronto para o uso!
+
+## Via NPM
+
+Instale utilizando o gerenciador de pacotes de sua preferência.
+
+<Tabs groupId="pkg">
+  <TabItem value="npm">
+
+```sh
+npm install @copperui/core
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```sh
+yarn add @copperui/core
+```
+
+  </TabItem>
+
+</Tabs>
+
+### Modo 1: JavaScript
+
+```js {2,3,6} showLineNumbers
+// Importar a lib de Web Components
+import { defineCustomElements } from '@copperui/core/lib/loader';
+import '@copperui/core/dist/copperui/copperui.css';
+// ...
+// Registrar os Web Components
+defineCustomElements(window);
+```
+
+### Modo 2: HTML
+
+```sh
+cp node_modules/@copperui/core/dist/copperui/* {ASSETS_PATH}
+```
+
+```html {3-5} showLineNumbers
+<html>
+  <head>
+    <script type="module" src="{ASSETS_PATH}/copperui.esm.js"></script>
+    <script nomodule src="{ASSETS_PATH}/copperui.js"></script>
+    <link rel="stylesheet" href="{ASSETS_PATH}/copperui.css" />
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+```
+
+</TabItem>
+
+<TabItem value="react" label="React">
+
+## Via NPM
+
+<Tabs>
+  <TabItem value="npm">
+
+```sh
+npm install @copperui/react
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```sh
+yarn add @copperui/react
+```
+
+  </TabItem>
+
+</Tabs>
+
+</TabItem>
+
+</Tabs>
+
+Siga para o [Uso](./Uso).

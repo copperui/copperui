@@ -9,12 +9,16 @@ import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attribu
 export class BrxAccordionLegacyEntryItem {
   @Element()
   el: HTMLBrxAccordionLegacyEntryItemElement;
+
   @Prop({ reflect: true, mutable: true })
   active: boolean = false;
+
   @Prop({ reflect: true })
   entryId: string | undefined;
+
   @Event({ eventName: 'collapseChange' })
   collapseChangeEmitter: EventEmitter<HTMLBrxAccordionLegacyEntryItemElement>;
+
   private inheritedAttributes: Attributes = {};
 
   @Watch('active')

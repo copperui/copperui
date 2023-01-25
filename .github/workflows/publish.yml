@@ -7,49 +7,49 @@ on:
       - release
 
 jobs:
-  # deploy-storybook:
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - uses: actions/checkout@v3
+  deploy-gh-pages:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
 
-  #     - name: Configure CI Git User
-  #       run: |
-  #         git config --global user.name 'github-actions-bot'
-  #         git config --global user.email 'support+actions@github.com'
-  #         git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/copperui/copperui.git
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name 'github-actions-bot'
+          git config --global user.email 'support+actions@github.com'
+          git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/copperui/copperui.git
 
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 18
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-  #     - name: Install yarn v3
-  #       run: corepack enable && corepack prepare yarn@stable --activate
+      - name: Install yarn v3
+        run: corepack enable && corepack prepare yarn@stable --activate
 
-  #     - name: Restore Lerna
-  #       id: yarn-cache
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           node_modules
-  #           */*/node_modules
-  #         key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Restore Lerna
+        id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-  #     - name: Install project dependencies
-  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
-  #       run: yarn
+      - name: Install project dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
 
-  #     - name: Build Components
-  #       run: |
-  #         yarn workspace @copperui/core build
+      - name: Build Components
+        run: |
+          yarn workspace @copperui/core build
 
-  #     - name: Build Storybook
-  #       run: |
-  #         yarn workspace @copperui/core storybook:build --quiet
+      - name: Build GH Pages
+        run: |
+          yarn workspace @copperui/docs build
 
-  #     - name: Deploy Storybook
-  #       run: |
-  #         yarn workspace @copperui/core storybook:deploy deploy
+      - name: Deploy GH Pages
+        run: |
+          yarn workspace @copperui/docs ghpages
 
   publish:
     runs-on: ubuntu-20.04

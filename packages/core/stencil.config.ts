@@ -12,6 +12,7 @@ export const config: Config = {
     sass(),
     postcss({}),
   ],
+
   outputTargets: [
     react({
       componentCorePackage: '@copperui/core',
@@ -37,6 +38,7 @@ export const config: Config = {
       ],
     },
   ],
+  buildEs5: 'prod',
   extras: {
     cloneNodeFix: true,
     experimentalImportInjection: true,

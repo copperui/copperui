@@ -39,7 +39,6 @@
     "@stencil/sass": "^2.0.1",
     "@types/jest": "^27.0.3",
     "babel-loader": "^8.3.0",
-    "gh-pages": "^4.0.0",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
     "puppeteer": "^10.0.0"
