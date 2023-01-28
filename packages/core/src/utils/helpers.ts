@@ -1,3 +1,5 @@
+export const wait = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms));
+
 export const getWindow = (): Window | null => window;
 
 export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestOptions) => {
@@ -62,6 +64,12 @@ export const hasShadowDom = (el: HTMLElement) => {
   return !!el.shadowRoot && !!(el as any).attachShadow;
 };
 
+export const generateWeakId = (intensity: number = 0) => {
+  return `wid_${parseInt((Math.random() * 10 ** (15 + intensity)).toString())
+    .toString(16)
+    .toUpperCase()}`;
+};
+
 export const generateUniqueId = async (): Promise<string> => {
   const { nanoid } = await import('nanoid');
   return `gid_${nanoid()}`;
@@ -91,4 +99,33 @@ export const focusNextElement = () => {
       nextElement.focus();
     }
   }
+};
+
+export const preventDefaults = (event: Event) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
+export const calcSize = (bytes: number) => {
+  let sOutput = '';
+
+  const aMultiples = ['KB', 'MB', 'GB', 'TB'];
+
+  for (let nMultiple = 0, nApprox = bytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+    sOutput = `${nApprox.toFixed(2)} ${aMultiples[nMultiple]}`;
+  }
+
+  return sOutput;
+};
+
+export const getFileListFromFiles = (files: File[]): FileList => {
+  const fileInput = new ClipboardEvent('').clipboardData || new DataTransfer();
+
+  const len = files.length;
+
+  for (let i = 0; i < len; i++) {
+    fileInput.items.add(files[i]);
+  }
+
+  return fileInput.files;
 };

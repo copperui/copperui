@@ -17,11 +17,13 @@
 ### Used by
 
  - [brx-button](../brx-button)
+ - [brx-upload](../brx-upload)
 
 ### Graph
 ```mermaid
 graph TD;
   brx-button --> brx-loading
+  brx-upload --> brx-loading
   style brx-loading fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

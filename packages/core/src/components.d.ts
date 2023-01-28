@@ -14,6 +14,7 @@ import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface"
 import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
+import { AttachmentAsset, IHandleUploadFiles, UploadChangeEventDetail } from "./components/brx-upload/brx-upload-interfaces";
 export namespace Components {
     interface BrxAccordionLegacy {
         "entries": any;
@@ -579,6 +580,50 @@ export namespace Components {
         "place": string;
         "popover": boolean;
     }
+    interface BrxUpload {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        "disabled": boolean;
+        "getAttachmentAssets": () => Promise<AttachmentAsset[]>;
+        "handleUploadFiles": IHandleUploadFiles;
+        "hiddenLabel": boolean;
+        "inputId": string | undefined;
+        "label": string | undefined;
+        "labelClass": string;
+        "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "size"?: number;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        "status": 'danger' | 'warning' | 'info' | 'success' | undefined;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        "value": AttachmentAsset[] | null;
+    }
 }
 export interface BrxAccordionLegacyEntryItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -619,6 +664,10 @@ export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
 export interface BrxTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxTextareaElement;
+}
+export interface BrxUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxUploadElement;
 }
 declare global {
     interface HTMLBrxAccordionLegacyElement extends Components.BrxAccordionLegacy, HTMLStencilElement {
@@ -927,6 +976,12 @@ declare global {
         prototype: HTMLBrxTooltipContentElement;
         new (): HTMLBrxTooltipContentElement;
     };
+    interface HTMLBrxUploadElement extends Components.BrxUpload, HTMLStencilElement {
+    }
+    var HTMLBrxUploadElement: {
+        prototype: HTMLBrxUploadElement;
+        new (): HTMLBrxUploadElement;
+    };
     interface HTMLElementTagNameMap {
         "brx-accordion-legacy": HTMLBrxAccordionLegacyElement;
         "brx-accordion-legacy-entry": HTMLBrxAccordionLegacyEntryElement;
@@ -979,6 +1034,7 @@ declare global {
         "brx-tooltip": HTMLBrxTooltipElement;
         "brx-tooltip-auto": HTMLBrxTooltipAutoElement;
         "brx-tooltip-content": HTMLBrxTooltipContentElement;
+        "brx-upload": HTMLBrxUploadElement;
     }
 }
 declare namespace LocalJSX {
@@ -1577,6 +1633,50 @@ declare namespace LocalJSX {
         "place"?: string;
         "popover"?: boolean;
     }
+    interface BrxUpload {
+        /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        "disabled"?: boolean;
+        "handleUploadFiles"?: IHandleUploadFiles;
+        "hiddenLabel"?: boolean;
+        "inputId"?: string | undefined;
+        "label"?: string | undefined;
+        "labelClass"?: string;
+        "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        "onBrxChange"?: (event: BrxUploadCustomEvent<UploadChangeEventDetail>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+         */
+        "size"?: number;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        "status"?: 'danger' | 'warning' | 'info' | 'success' | undefined;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        "value"?: AttachmentAsset[] | null;
+    }
     interface IntrinsicElements {
         "brx-accordion-legacy": BrxAccordionLegacy;
         "brx-accordion-legacy-entry": BrxAccordionLegacyEntry;
@@ -1629,6 +1729,7 @@ declare namespace LocalJSX {
         "brx-tooltip": BrxTooltip;
         "brx-tooltip-auto": BrxTooltipAuto;
         "brx-tooltip-content": BrxTooltipContent;
+        "brx-upload": BrxUpload;
     }
 }
 export { LocalJSX as JSX };
@@ -1686,6 +1787,7 @@ declare module "@stencil/core" {
             "brx-tooltip": LocalJSX.BrxTooltip & JSXBase.HTMLAttributes<HTMLBrxTooltipElement>;
             "brx-tooltip-auto": LocalJSX.BrxTooltipAuto & JSXBase.HTMLAttributes<HTMLBrxTooltipAutoElement>;
             "brx-tooltip-content": LocalJSX.BrxTooltipContent & JSXBase.HTMLAttributes<HTMLBrxTooltipContentElement>;
+            "brx-upload": LocalJSX.BrxUpload & JSXBase.HTMLAttributes<HTMLBrxUploadElement>;
         }
     }
 }

@@ -235,7 +235,7 @@
               <brx-signin>
                 <div slot="content">
                   <brx-avatar content-class="bg-orange-vivid-30 text-pure-0" name="Fulano da Silva"></brx-avatar>
-                  <span class="ml-2 text-gray-80 text-weight-regular"> Olá, <span class="text-weight-semi-bold">Fulano</span> </span>
+                  <span class="ml-2 text-gray-80 text-weight-regular"> Olá, <span class="text-weight-semi-bold">Fulano</span></span>
                   <brx-icon name="fa5/fas/caret-down"></brx-icon>
                 </div>
               </brx-signin>
@@ -459,7 +459,7 @@
           <brx-card disabled>
             <brx-card-header>
               <div class="d-flex">
-                <brx-avatar name="Fulano da Silva" src="https://picsum.photos/id/823/400"> </brx-avatar>
+                <brx-avatar name="Fulano da Silva" src="https://picsum.photos/id/823/400"></brx-avatar>
 
                 <div class="ml-3">
                   <div class="text-weight-semi-bold text-up-02">Maria Amorim</div>
@@ -1495,14 +1495,14 @@
 
         <div>
           <div class="col-sm-4 col-lg-3 mb-3">
-            <brx-input density="medium" label="Densidade padrão" placeholder="Placeholder"> </brx-input>
+            <brx-input density="medium" label="Densidade padrão" placeholder="Placeholder"></brx-input>
           </div>
 
           <div class="col-sm-4 col-lg-3 mb-3">
-            <brx-input density="small" label="Densidade alta" placeholder="Placeholder"> </brx-input>
+            <brx-input density="small" label="Densidade alta" placeholder="Placeholder"></brx-input>
           </div>
           <div class="col-sm-4 col-lg-3 mb-3">
-            <brx-input density="large" label="Densidade baixa" placeholder="Placeholder"> </brx-input>
+            <brx-input density="large" label="Densidade baixa" placeholder="Placeholder"></brx-input>
           </div>
         </div>
       </div>
@@ -1528,7 +1528,7 @@
 
         <div>
           <div class="col-sm-6 col-lg-4 mb-3">
-            <brx-input button type="password" enable-password-toggle density="medium" label="Senha" placeholder="Digite a sua senha"> </brx-input>
+            <brx-input button type="password" enable-password-toggle density="medium" label="Senha" placeholder="Digite a sua senha"></brx-input>
           </div>
           <div class="col-sm-6 col-lg-4 mb-3">
             <brx-input button density="small" label="Logar" placeholder="Digite o seu usuário">
@@ -1556,7 +1556,7 @@
 
         <div>
           <div class="col-sm-10 col-lg-8 mb-3">
-            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder"> </brx-input>
+            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder"></brx-input>
           </div>
           <div class="col-sm-10 col-lg-8 mb-3">
             <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder">
@@ -1616,10 +1616,10 @@
 
         <div>
           <div class="col-sm-10 col-lg-7 mb-3">
-            <brx-input inline label="Label / Rótulo" label-class="text-nowrap" placeholder="Placeholder"> </brx-input>
+            <brx-input inline label="Label / Rótulo" label-class="text-nowrap" placeholder="Placeholder"></brx-input>
           </div>
           <div class="col-sm-10 col-lg-7 mb-3">
-            <brx-input inline label="Com ícone" label-class="text-nowrap" start-icon-name="fa5/fas/edit" placeholder="Placeholder"> </brx-input>
+            <brx-input inline label="Com ícone" label-class="text-nowrap" start-icon-name="fa5/fas/edit" placeholder="Placeholder"></brx-input>
           </div>
           <div class="col-sm-10 col-lg-7 mb-3">
             <brx-input inline label="Com botão" label-class="text-nowrap" placeholder="Placeholder">
@@ -3780,7 +3780,7 @@
         <h2>Com limite e contador de caracteres</h2>
 
         <div>
-          <brx-textarea label="Label" placeholder="Exemplo de textarea com contador de caracteres" counter="limit"></brx-textarea>
+          <brx-textarea label="Label" placeholder="Exemplo de textarea com contador de caracteres" counter="limit" maxlength="200"></brx-textarea>
         </div>
       </div>
 
@@ -3863,6 +3863,56 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>Upload</h1>
+
+      <div>
+        <h2>Envio de 1 arquivo</h2>
+
+        <brx-upload label="Envio de arquivo."></brx-upload>
+      </div>
+
+      <div>
+        <h2>Envio de vários arquivos.</h2>
+
+        <brx-upload label="Envio de arquivos." multiple></brx-upload>
+
+        <p class="text-base mt-1">Clique ou arraste os arquivos para cima do componente Upload.</p>
+      </div>
+
+      <div>
+        <h2>Upload com mensagem de feedback</h2>
+
+        <brx-upload label="Envio de arquivo." data-danger="data-danger"></brx-upload>
+
+        <brx-message class="mt-1" variant="feedback" severity="danger"> Os arquivos devem ser no formato PNG ou JPG e ter no máximo 100MB. </brx-message>
+      </div>
+
+      <div>
+        <h2>Upload desabilitado</h2>
+
+        <brx-upload label="Envio de arquivo" disabled></brx-upload>
+
+        <brx-message variant="feedback" severity="warning" class="mt-1">
+          <span>Upload desabilitado</span>
+        </brx-message>
+      </div>
+
+      <script>
+        const uploads = Array.from(document.querySelectorAll('brx-upload'));
+
+        const mockUpload = () => {
+          return new Promise(resolve => setTimeout(resolve, 3 * 1000));
+        };
+
+        for (const upload of uploads) {
+          upload.handleUploadFiles = mockUpload;
+        }
+      </script>
     </section>
 
     <hr />

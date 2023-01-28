@@ -28,6 +28,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [brx-upload](../brx-upload)
+
 ### Depends on
 
 - [brx-icon](../brx-icon)
@@ -39,6 +43,7 @@ graph TD;
   brx-message --> brx-icon
   brx-message --> brx-button
   brx-button --> brx-loading
+  brx-upload --> brx-message
   style brx-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

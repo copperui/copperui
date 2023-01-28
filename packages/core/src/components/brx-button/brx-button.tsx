@@ -119,9 +119,9 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
   @Prop({ reflect: true })
   magic: boolean = false;
 
-  private inheritedAttributes: Attributes = {};
-
   // end brx-button props
+
+  private inheritedAttributes: Attributes = {};
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAriaAttributes(this.el);
