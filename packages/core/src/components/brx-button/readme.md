@@ -43,6 +43,7 @@
  - [brx-breadcrumb](../brx-breadcrumb)
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
+ - [brx-upload](../brx-upload)
 
 ### Depends on
 
@@ -55,6 +56,7 @@ graph TD;
   brx-breadcrumb --> brx-button
   brx-input --> brx-button
   brx-message --> brx-button
+  brx-upload --> brx-button
   style brx-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

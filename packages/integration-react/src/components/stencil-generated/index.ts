@@ -59,3 +59,4 @@ export const BrxTextarea = /*@__PURE__*/createReactComponent<JSX.BrxTextarea, HT
 export const BrxTooltip = /*@__PURE__*/createReactComponent<JSX.BrxTooltip, HTMLBrxTooltipElement>('brx-tooltip');
 export const BrxTooltipAuto = /*@__PURE__*/createReactComponent<JSX.BrxTooltipAuto, HTMLBrxTooltipAutoElement>('brx-tooltip-auto');
 export const BrxTooltipContent = /*@__PURE__*/createReactComponent<JSX.BrxTooltipContent, HTMLBrxTooltipContentElement>('brx-tooltip-content');
+export const BrxUpload = /*@__PURE__*/createReactComponent<JSX.BrxUpload, HTMLBrxUploadElement>('brx-upload');

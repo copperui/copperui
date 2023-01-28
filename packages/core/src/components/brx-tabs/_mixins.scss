@@ -38,12 +38,13 @@
   }
 
   brx-tab {
-    .brx-tab-container {
+    .brx-tooltip-auto-container {
       align-items: center;
       display: flex;
       justify-content: center;
-      position: relative;
       white-space: nowrap;
+
+      position: relative;
 
       &:first-child {
         padding-left: 0;

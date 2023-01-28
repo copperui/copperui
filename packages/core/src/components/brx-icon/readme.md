@@ -25,6 +25,7 @@
  - [brx-signin](../brx-signin)
  - [brx-tab](../brx-tab)
  - [brx-tooltip-content](../brx-tooltip-content)
+ - [brx-upload](../brx-upload)
 
 ### Graph
 ```mermaid
@@ -38,6 +39,7 @@ graph TD;
   brx-signin --> brx-icon
   brx-tab --> brx-icon
   brx-tooltip-content --> brx-icon
+  brx-upload --> brx-icon
   style brx-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

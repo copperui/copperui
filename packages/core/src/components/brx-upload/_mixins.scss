@@ -1,0 +1,119 @@
+// Dependências
+@import '../brx-button/mixins';
+
+// Mixins
+@mixin upload-configs {
+  // @include upload-tokens;
+  @include upload-default;
+  @include upload-list;
+  @include upload-states;
+}
+
+// @mixin upload-tokens {
+// }
+
+@mixin upload-default {
+  brx-loading {
+    display: block;
+    width: 100%;
+  }
+
+  input {
+    display: none;
+  }
+
+  .upload-button {
+    @include button-tokens;
+    @include button-default;
+
+    .brx-button-native {
+      border: var(--surface-width-sm) dashed var(--interactive);
+      border-radius: var(--surface-rounder-sm);
+      display: block;
+      font-size: var(--font-size-scale-base);
+      font-style: italic;
+      font-weight: var(--font-weight-regular);
+      margin-top: var(--spacing-scale-half);
+      max-width: 550px;
+      min-height: var(--button-size);
+      padding-left: var(--spacing-scale-2x);
+      padding-right: var(--spacing-scale-2x);
+      text-align: left;
+      width: 100%;
+      @include icon {
+        margin-right: var(--spacing-scale-base);
+      }
+    }
+  }
+}
+
+@mixin upload-list {
+  .upload-list {
+    max-width: 550px;
+    position: relative;
+
+    brx-tooltip {
+      overflow: hidden;
+      max-width: 100%;
+
+      display: flex;
+      flex: 1 1;
+
+      padding-right: 1rem;
+
+      .content {
+        max-width: 100%;
+        overflow: hidden;
+
+        span {
+          display: block;
+          align-self: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .support {
+      flex: 0 1;
+
+      align-items: center;
+      display: flex;
+
+      white-space: nowrap;
+    }
+  }
+
+  brx-tooltip-content {
+    max-width: 93%;
+  }
+}
+
+@mixin upload-states {
+  .upload-button {
+    @include button-states;
+  }
+
+  @each $state in success, danger, warning, info {
+    &[status='#{$state}'] {
+      .upload-button {
+        .brx-button-native {
+          border-color: var(--#{$state});
+        }
+      }
+    }
+  }
+
+  &.dragging {
+    .upload-button {
+      .brx-button-native {
+        background-image: linear-gradient(rgba(var(--interactive-rgb), var(--hover)), rgba(var(--interactive-rgb), var(--hover)));
+      }
+    }
+  }
+}
+
+@mixin upload-state {
+  @include upload-states;
+}

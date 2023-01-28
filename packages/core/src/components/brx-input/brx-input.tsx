@@ -1,6 +1,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { AutocompleteTypes, TextFieldTypes } from '../../interfaces';
 import { generateUniqueId } from '../../utils/helpers';
+import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attributes';
 import { InputChangeEventDetail } from './brx-input.interface';
 
 @Component({
@@ -236,6 +237,10 @@ export class BrxInput implements ComponentInterface {
     }
   }
 
+  get inheritedAttributes() {
+    return inheritAriaAttributes(this.el);
+  }
+
   componentWillLoad() {
     // If the my-input has a tabindex attribute we get the value
     // and pass it down to the native input, then remove it from the
@@ -279,7 +284,7 @@ export class BrxInput implements ComponentInterface {
   }
 
   render() {
-    const { disabled, hiddenLabel, labelClass, startIconName, inputId, enablePasswordToggle, showPassword } = this;
+    const { disabled, hiddenLabel, labelClass, startIconName, inputId, enablePasswordToggle, showPassword, inheritedAttributes } = this;
 
     const value = this.getValue();
     const labelId = inputId + '-lbl';
@@ -304,7 +309,6 @@ export class BrxInput implements ComponentInterface {
 
             <input
               id={inputId}
-              ref={input => (this.nativeInput = input)}
               aria-labelledby={labelId}
               disabled={disabled}
               accept={this.accept}
@@ -334,7 +338,8 @@ export class BrxInput implements ComponentInterface {
               onBlur={this.onBlur}
               onFocus={this.onFocus}
               onKeyDown={this.onKeydown}
-              // {...this.inheritedAttributes}
+              ref={input => (this.nativeInput = input)}
+              {...inheritedAttributes}
             />
 
             {this.clearInput && !this.readonly && !this.disabled && (
@@ -381,7 +386,8 @@ export class BrxInput implements ComponentInterface {
    */
   @Watch('value')
   protected valueChanged() {
-    this.brxChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+    const value = this.value == null ? this.value : this.value.toString();
+    this.brxChange.emit({ value });
   }
 
   private shouldClearOnEdit() {

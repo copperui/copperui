@@ -12,5 +12,7 @@ export class CleanupManager {
       callback();
       this.#callbacks.delete(callback);
     }
+
+    return Promise.resolve();
   }
 }
