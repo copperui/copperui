@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/copperui/copperui/compare/v0.2.0...v0.3.0) (2023-01-29)
+
+### Features
+
+- **core:** components: brx-upload ([#58](https://github.com/copperui/copperui/issues/58)) ([c526a2f](https://github.com/copperui/copperui/commit/c526a2f35fd66b2f1137bda6f89d1b0e8bbb9621))
+
 # [0.2.0](https://github.com/copperui/copperui/compare/v0.1.1...v0.2.0) (2023-01-25)
 
 ### Bug Fixes
