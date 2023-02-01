@@ -84,9 +84,9 @@ export class BrxBreadcrumb implements ComponentInterface {
     this.setView();
   }
 
-  async componentWillLoad() {
+  componentWillLoad() {
     if (!this.dropdownId) {
-      this.dropdownId = await generateUniqueId();
+      this.dropdownId = generateUniqueId();
     }
   }
 

@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "@stencil/core": "^2.13.0",
-    "focus-visible": "^5.2.0",
-    "nanoid": "^4.0.0"
+    "focus-visible": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",

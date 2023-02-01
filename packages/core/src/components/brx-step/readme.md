@@ -9,6 +9,7 @@
 
 | Property       | Attribute       | Description | Type                           | Default     |
 | -------------- | --------------- | ----------- | ------------------------------ | ----------- |
+| `controlled`   | `controlled`    |             | `boolean`                      | `false`     |
 | `defaultValue` | `default-value` |             | `number`                       | `undefined` |
 | `type`         | `type`          |             | `"simple" \| "text" \| "void"` | `undefined` |
 | `value`        | `value`         |             | `number`                       | `null`      |

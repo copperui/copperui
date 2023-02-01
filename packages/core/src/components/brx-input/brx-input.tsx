@@ -231,17 +231,15 @@ export class BrxInput implements ComponentInterface {
   private didBlurAfterEdit = false;
   private tabindex?: string | number;
 
-  async componentDidLoad() {
-    if (!this.inputId) {
-      this.inputId = await generateUniqueId();
-    }
-  }
-
   get inheritedAttributes() {
     return inheritAriaAttributes(this.el);
   }
 
   componentWillLoad() {
+    if (!this.inputId) {
+      this.inputId = generateUniqueId();
+    }
+
     // If the my-input has a tabindex attribute we get the value
     // and pass it down to the native input, then remove it from the
     // my-input to avoid causing tabbing twice on the same element
@@ -349,11 +347,6 @@ export class BrxInput implements ComponentInterface {
                 onTouchStart={this.clearTextInput}
                 onMouseDown={this.clearTextInput}
                 onPointerDown={ev => {
-                  /**
-                   * This prevents mobile browsers from
-                   * blurring the input when the clear
-                   * button is activated.
-                   */
                   ev.preventDefault();
                 }}
                 onClick={this.clearTextInput}
@@ -417,7 +410,6 @@ export class BrxInput implements ComponentInterface {
   private onFocus = () => {
     this.hasFocus = true;
     this.focusChanged();
-
     this.brxFocus.emit();
   };
 

@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
-import { calcSize, generateWeakId, getFileListFromFiles, preventDefaults, wait } from '../../utils/helpers';
+import { calcSize, generateUniqueId, getFileListFromFiles, preventDefaults, wait } from '../../utils/helpers';
 import { inheritAriaAttributes } from '../../utils/inherited-attributes';
 import { BrxMessage } from '../brx-message/brx-message';
 import { IHandleUploadFiles, AttachmentAsset, IMessage, UploadChangeEventDetail } from './brx-upload-interfaces';
@@ -232,7 +232,7 @@ export class BrxUpload implements ComponentInterface {
       text,
       severity,
       variant: 'feedback',
-      id: `${generateWeakId()}`,
+      id: `${generateUniqueId()}`,
     };
 
     this.addMessage(message);
@@ -245,7 +245,7 @@ export class BrxUpload implements ComponentInterface {
       draft instanceof Blob
         ? {
             file: draft,
-            id: generateWeakId(),
+            id: generateUniqueId(),
           }
         : draft,
     );
@@ -377,7 +377,7 @@ export class BrxUpload implements ComponentInterface {
 
   componentWillLoad() {
     if (!this.inputId) {
-      this.inputId = generateWeakId();
+      this.inputId = generateUniqueId();
     }
   }
 

@@ -24,6 +24,9 @@ export class BrxStep implements ComponentInterface {
   type: 'simple' | 'text' | 'void' | undefined;
 
   @Prop()
+  controlled = false;
+
+  @Prop()
   value: number | null = null;
 
   @Prop()

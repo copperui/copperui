@@ -64,15 +64,14 @@ export const hasShadowDom = (el: HTMLElement) => {
   return !!el.shadowRoot && !!(el as any).attachShadow;
 };
 
-export const generateWeakId = (intensity: number = 0) => {
-  return `wid_${parseInt((Math.random() * 10 ** (15 + intensity)).toString())
-    .toString(16)
-    .toUpperCase()}`;
-};
+let uniqueIdCount = 0;
 
-export const generateUniqueId = async (): Promise<string> => {
-  const { nanoid } = await import('nanoid');
-  return `gid_${nanoid()}`;
+export const generateUniqueId = (intensity: number = 0) => {
+  const randSeed = parseInt((Math.random() * 10 ** (15 + intensity)).toString())
+    .toString(16)
+    .toUpperCase();
+
+  return `wid_${++uniqueIdCount}-${Date.now()}-${randSeed}`;
 };
 
 export const tryParseJSON = (payload: any): any => {
