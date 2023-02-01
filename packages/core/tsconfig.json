@@ -5,7 +5,7 @@
     "declaration": false,
     "experimentalDecorators": true,
     "downlevelIteration": true,
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "ESNext"],
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",

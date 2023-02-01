@@ -293,9 +293,9 @@ export class BrxTextarea implements ComponentInterface {
   @Prop({ reflect: true, mutable: true })
   inputId: string;
 
-  async componentWillLoad() {
+  componentWillLoad() {
     if (!this.inputId) {
-      this.inputId = await generateUniqueId();
+      this.inputId = generateUniqueId();
     }
 
     this.inheritedAttributes = {

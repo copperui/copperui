@@ -19,9 +19,9 @@ export class BrxTooltipAuto implements ComponentInterface {
   @State()
   tooltipContentId: string | undefined;
 
-  async componentWillLoad() {
+  componentWillLoad() {
     if (!this.tooltipContentId) {
-      this.tooltipContentId = await generateUniqueId();
+      this.tooltipContentId = generateUniqueId();
     }
   }
 

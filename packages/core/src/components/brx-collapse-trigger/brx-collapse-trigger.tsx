@@ -73,7 +73,7 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
     if (triggerEl && targetEl) {
       if (!triggerEl.hasAttribute('aria-controls')) {
         if (!targetEl.id) {
-          targetEl.id = await generateUniqueId();
+          targetEl.id = generateUniqueId();
         }
 
         triggerEl.setAttribute('aria-controls', targetEl.id);

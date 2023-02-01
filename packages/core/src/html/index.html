@@ -211,7 +211,11 @@
       <brx-accordion-legacy id="acc-lgcy-js"></brx-accordion-legacy>
 
       <script type="text/javascript">
-        document.querySelector('#acc-lgcy-js').entries = [{ id: '02', title: '02', content: '02' }];
+        const generateEntry = key => ({ id: String(key).padStart(2, '0'), title: String(key).padStart(2, '0'), content: String(key).padStart(2, '0') });
+
+        document.querySelector('#acc-lgcy-js').entries = Array.from({ length: 3 })
+          .map((_, i) => i)
+          .map(generateEntry);
       </script>
     </section>
 
@@ -245,16 +249,16 @@
           <brx-list hidden="hidden" id="avatar-menu">
             <brx-item pass-styles></brx-item>
             <brx-item pass-styles>
-              <a href="javascript:void(0)">Dados pessoais</a>
+              <a href="#">Dados pessoais</a>
             </brx-item>
             <brx-item pass-styles>
-              <a href="javascript:void(0)">Privacidade</a>
+              <a href="#">Privacidade</a>
             </brx-item>
             <brx-item pass-styles>
-              <a href="javascript:void(0)">Notificações</a>
+              <a href="#">Notificações</a>
             </brx-item>
             <brx-item pass-styles>
-              <a href="javascript:void(0)">Perguntas frequentes</a>
+              <a href="#">Perguntas frequentes</a>
             </brx-item>
           </brx-list>
         </brx-dropdown>
@@ -1094,11 +1098,10 @@
 
       <div>
         <brx-checkbox label="Opção 1"></brx-checkbox>
-        <brx-checkbox disabled checked label="Opção 2"></brx-checkbox>
-        <brx-checkbox invalid label="Opção 3"></brx-checkbox>
-        <brx-checkbox valid label="Opção 4"></brx-checkbox>
-
-        <brx-checkbox checked indeterminate label="Opção 5"></brx-checkbox>
+        <brx-checkbox label="Opção 2" checked disabled></brx-checkbox>
+        <brx-checkbox label="Opção 3" invalid></brx-checkbox>
+        <brx-checkbox label="Opção 4" valid></brx-checkbox>
+        <brx-checkbox label="Opção 5" checked indeterminate></brx-checkbox>
       </div>
 
       <div>
@@ -1137,6 +1140,7 @@
           <div class="mb-1 ml-2">
             <brx-checkbox label="Opção 1"></brx-checkbox>
           </div>
+
           <div class="mb-1 ml-2">
             <brx-checkbox label="Opção 2"></brx-checkbox>
           </div>
@@ -1153,6 +1157,14 @@
             </div>
           </brx-checkgroup>
         </brx-checkgroup>
+      </div>
+
+      <div>
+        <h2>Controlado</h2>
+
+        <brx-checkbox label="Opção 1" controlled-checked="false"></brx-checkbox>
+        <brx-checkbox label="Opção 2" controlled-checked></brx-checkbox>
+        <brx-checkbox label="Opção 2" controlled-checked indeterminate></brx-checkbox>
       </div>
     </section>
 
@@ -2816,6 +2828,83 @@
 
     <hr />
 
+    <!-- Select -->
+
+    <section>
+      <h1>Select</h1>
+
+      <div>
+        <h2>Simples</h2>
+
+        <brx-select id="sel1" label="Label" placeholder="Selecione o item">
+          <brx-select-option name="estados-simples" value="rb21" label="Rondônia"></brx-select-option>
+          <brx-select-option name="estados-simples" value="rb23" label="São Paulo"></brx-select-option>
+          <brx-select-option name="estados-simples" value="rb27" label="Exterior"></brx-select-option>
+        </brx-select>
+
+        <script>
+          {
+            const select = document.querySelector('#sel1');
+            select.value = ['rb27'];
+          }
+        </script>
+
+        <brx-message variant="feedback" severity="warning"> Texto auxiliar Função de prevenir erros. </brx-message>
+      </div>
+
+      <div>
+        <h2>Múltiplo</h2>
+
+        <brx-select id="sel2" multiple label="Label" placeholder="Selecione o item">
+          <brx-select-option value="cb21" label="Rondônia"></brx-select-option>
+          <brx-select-option value="cb23" label="São Paulo"></brx-select-option>
+          <brx-select-option value="cb27" label="Exterior"></brx-select-option>
+        </brx-select>
+
+        <script>
+          {
+            const select = document.querySelector('#sel2');
+            select.value = ['cb21', 'cb23'];
+          }
+        </script>
+
+        <brx-message variant="feedback" severity="warning"> Texto auxiliar Função de prevenir erros. </brx-message>
+      </div>
+
+      <div>
+        <h2>Controlled</h2>
+
+        <brx-select name="siiu" id="sel3" multiple disable-toggle-all label="Label" placeholder="Selecione até 2 itens.">
+          <brx-select-option value="cb21" label="Rondônia"></brx-select-option>
+          <brx-select-option value="cb23" label="São Paulo"></brx-select-option>
+          <brx-select-option value="cb27" label="Exterior"></brx-select-option>
+        </brx-select>
+
+        <script>
+          {
+            const select = document.querySelector('#sel3');
+            select.controlledValue = ['cb21'];
+
+            select.addEventListener('brxChange', event => {
+              if (event.target !== select) {
+                return;
+              }
+
+              const { value } = event.detail;
+
+              const VALUE_EXTERIOR = 'cb27';
+
+              select.controlledValue = value[value.length - 1] === VALUE_EXTERIOR ? [VALUE_EXTERIOR] : value.filter(i => i !== VALUE_EXTERIOR);
+            });
+          }
+        </script>
+
+        <brx-message variant="feedback" severity="warning"> Texto auxiliar Função de prevenir erros. </brx-message>
+      </div>
+    </section>
+
+    <hr />
+
     <!-- Sign-in -->
 
     <section>
@@ -3064,7 +3153,7 @@
 
         <div class="row">
           <div class="col-auto mx-5">
-            <brx-step vertical default-avalue="0" label-position="right">
+            <brx-step vertical default-value="0" label-position="right">
               <brx-step-progress>
                 <brx-step-progress-btn>
                   <span slot="step-info">Exemplo de Rótulo 1</span>
@@ -3866,6 +3955,8 @@
     </section>
 
     <hr />
+
+    <!-- Upload -->
 
     <section>
       <h1>Upload</h1>

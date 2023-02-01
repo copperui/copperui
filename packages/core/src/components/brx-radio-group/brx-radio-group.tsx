@@ -50,7 +50,7 @@ export class BrxRadioGroup implements ComponentInterface {
     const label = findTarget(this.label);
 
     if (!label.id) {
-      label.id = await generateUniqueId();
+      label.id = generateUniqueId();
     }
 
     this.labelId = label.id;

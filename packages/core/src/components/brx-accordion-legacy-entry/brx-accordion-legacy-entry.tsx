@@ -16,9 +16,9 @@ export class BrxAccordionLegacyEntry {
   @Prop({ reflect: true })
   headerTitle: string | undefined;
 
-  async componentWillLoad() {
+  componentWillLoad() {
     if (this.entryId === undefined) {
-      this.entryId = await generateUniqueId();
+      this.entryId = generateUniqueId();
     }
   }
 

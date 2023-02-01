@@ -30,7 +30,7 @@ export class BrxBreadcrumbCard implements ComponentInterface {
 
     const targetItems = allItems.filter(i => !i.home && !i.active && !i.matches('.menu-mobil'));
 
-    return Promise.all(targetItems.map(async item => ({ id: item.id ?? (await generateUniqueId()), content: item.querySelector('a')?.outerHTML })));
+    return Promise.all(targetItems.map(async item => ({ id: item.id ?? generateUniqueId(), content: item.querySelector('a')?.outerHTML })));
   }
 
   @Watch('hidden')

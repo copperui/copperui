@@ -91,6 +91,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [brx-select](../brx-select)
+
 ### Depends on
 
 - [brx-icon](../brx-icon)
@@ -102,6 +106,7 @@ graph TD;
   brx-input --> brx-icon
   brx-input --> brx-button
   brx-button --> brx-loading
+  brx-select --> brx-input
   style brx-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

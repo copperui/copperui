@@ -200,7 +200,7 @@ export class BrxTabs implements ComponentInterface {
       event.stopPropagation();
     };
 
-    const rotateFocusToIndex = (direction: number) => {
+    const rotateFocus = (direction: number) => {
       event.preventDefault();
 
       const { currentFocusedIndex } = this;
@@ -227,15 +227,15 @@ export class BrxTabs implements ComponentInterface {
         break;
       }
       case 'ArrowLeft': {
-        rotateFocusToIndex(-1);
+        rotateFocus(-1);
         break;
       }
       case 'ArrowRight': {
-        rotateFocusToIndex(1);
+        rotateFocus(1);
         break;
       }
       case 'Tab': {
-        rotateFocusToIndex(0);
+        rotateFocus(0);
         break;
       }
 
