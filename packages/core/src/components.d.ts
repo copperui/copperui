@@ -11,7 +11,7 @@ import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
-import { SelectChangeEventDetail } from "./components/brx-select/brx-select-interface";
+import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
 import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
@@ -423,6 +423,11 @@ export namespace Components {
         "inputId": string | undefined;
         "label": string | undefined;
         "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string | undefined;
+        "nativeSelect": boolean | null;
         "selectAllLabel": string;
         "unselectAllLabel": string;
         "value": string[];
@@ -1534,7 +1539,13 @@ declare namespace LocalJSX {
         "inputId"?: string | undefined;
         "label"?: string | undefined;
         "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string | undefined;
+        "nativeSelect"?: boolean | null;
         "onBrxChange"?: (event: BrxSelectCustomEvent<SelectChangeEventDetail>) => void;
+        "onBrxFilterInputChange"?: (event: BrxSelectCustomEvent<SelectFilterInputChangeEventDetail>) => void;
         "selectAllLabel"?: string;
         "unselectAllLabel"?: string;
         "value"?: string[];

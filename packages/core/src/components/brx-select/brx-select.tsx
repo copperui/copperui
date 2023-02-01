@@ -1,8 +1,9 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { TOKEN_UNCONTROLLED } from '../../tokens';
 import { enqueueIdleCallback, findTarget, findTargets, generateUniqueId, minmax, toggleItem } from '../../utils/helpers';
+import { InputChangeEventDetail } from '../brx-input/brx-input.interface';
 import { SelectOptionChangeEventDetail } from '../brx-select-option/brx-select-option-interface';
-import { SelectChangeEventDetail } from './brx-select-interface';
+import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from './brx-select-interface';
 import { DEFAULT_NOT_FOUND_IMAGE, mountSelectInputContent } from './brx-select-utils';
 
 const DOMStrings = {
@@ -26,6 +27,9 @@ export class BrxSelect implements ComponentInterface {
   @Event()
   brxChange: EventEmitter<SelectChangeEventDetail>;
 
+  @Event()
+  brxFilterInputChange: EventEmitter<SelectFilterInputChangeEventDetail>;
+
   get inputEl() {
     return this.el.querySelector<HTMLInputElement>(DOMStrings.brxInputNative);
   }
@@ -40,6 +44,15 @@ export class BrxSelect implements ComponentInterface {
 
   @Prop({ reflect: true })
   darkMode = false;
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop({ reflect: true })
+  name: string | undefined;
+
+  @Prop()
+  nativeSelect: boolean | null = null;
 
   @Prop()
   label: string | undefined;
@@ -131,6 +144,10 @@ export class BrxSelect implements ComponentInterface {
   set inputValue(value: string | null) {
     if (this.inputEl) {
       this.inputEl.value = value;
+
+      if (value === null || value === '') {
+        this.brxFilterInputChange.emit({ query: '' });
+      }
     }
   }
 
@@ -290,6 +307,18 @@ export class BrxSelect implements ComponentInterface {
     this.handleOptionChange(option, event.detail);
   }
 
+  @Listen('brxChange')
+  handleInputChange(event: CustomEvent<unknown>) {
+    const target = event.target as HTMLElement;
+
+    const brxInput = target.closest<HTMLBrxInputElement>('brx-input');
+
+    if (brxInput) {
+      const detail = event.detail as InputChangeEventDetail;
+      this.brxFilterInputChange.emit({ query: String(detail.value) });
+    }
+  }
+
   getRotatedFocusedOptionIndex(direction: number) {
     return minmax(this.focusedOptionIndex + direction, 0, this.allOptions.length - 1);
   }
@@ -393,6 +422,10 @@ export class BrxSelect implements ComponentInterface {
     this.setInput();
   }
 
+  get isNativeSelectEnabled() {
+    return this.nativeSelect ?? typeof this.name === 'string';
+  }
+
   render() {
     return (
       <Host>
@@ -423,6 +456,18 @@ export class BrxSelect implements ComponentInterface {
               </div>
             </slot>
           )}
+
+          <div class={'d-none'}>
+            {this.isNativeSelectEnabled && (
+              <select name={this.name}>
+                {this.definedOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label ?? option.value}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
         </div>
       </Host>
     );
