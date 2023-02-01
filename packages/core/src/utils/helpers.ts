@@ -1,6 +1,10 @@
 export const wait = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms));
 
+export const minmax = (value: number, min: number, max: number) => Math.max(Math.min(value, max), min);
+
 export const getWindow = (): Window | null => window;
+
+export const toggleItem = <T>(arr: T[], value: T) => (arr.includes(value) ? arr.filter(i => i !== value) : [...arr, value]);
 
 export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestOptions) => {
   const win = getWindow();
@@ -12,10 +16,11 @@ export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestO
   }
 };
 
-export const findTarget = <R extends T | null, T extends HTMLElement = HTMLElement>(target: T | string): R => {
+export const findTarget = <R extends T | null, T extends HTMLElement = HTMLElement>(target: T | string, baseElement?: HTMLElement): R => {
   if (target) {
     if (typeof target === 'string') {
-      return getWindow()?.document.querySelector(target) as R;
+      const base = baseElement ?? getWindow()?.document;
+      return base.querySelector(target) as R;
     } else {
       return target as R;
     }
@@ -24,8 +29,9 @@ export const findTarget = <R extends T | null, T extends HTMLElement = HTMLEleme
   return null;
 };
 
-export const findTargets = <E extends Element, S extends string = string>(selector: S): E[] => {
-  return Array.from(getWindow()?.document.querySelectorAll(selector) ?? []);
+export const findTargets = <E extends Element, S extends string = string>(selector: S, baseElement?: HTMLElement): E[] => {
+  const base = baseElement ?? getWindow()?.document;
+  return Array.from(base.querySelectorAll(selector) ?? []);
 };
 
 export const toggleAttribute = (element: HTMLElement, name: string) => {

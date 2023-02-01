@@ -5,11 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CheckboxChangeEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
+import { TOKEN_UNCONTROLLED } from "./tokens";
+import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
-import { RadioChangeEventDetail } from "./components/brx-radio/brx-radio-interface";
+import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { SelectChangeEventDetail } from "./components/brx-select/brx-select-interface";
+import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
 import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
@@ -124,19 +127,20 @@ export namespace Components {
     interface BrxCardHeader {
     }
     interface BrxCheckbox {
-        "_parent": string | boolean | undefined;
         "checkAllLabel": string;
         /**
           * If `true`, the checkbox is selected.
          */
-        "checked": boolean | undefined;
+        "checked": boolean | null;
         "child": string | undefined;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
         "danger": boolean | undefined;
         "darkMode": boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
+        "getCurrentState": () => Promise<{ value: any; checked: boolean; indeterminate: boolean; }>;
         "getNativeChecked": () => Promise<boolean>;
         "hiddenLabel": boolean;
         /**
@@ -150,8 +154,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        "propParent": string | boolean | undefined;
+        "setState": (checked: boolean, indeterminate: boolean) => Promise<void>;
         "size": 'small' | 'medium';
-        "state": 'invalid' | 'danger' | undefined;
+        "state": 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel": string;
         "valid": boolean | undefined;
         /**
@@ -365,12 +371,13 @@ export namespace Components {
         /**
           * If `true`, the radio is selected.
          */
-        "checked": boolean;
+        "checked": boolean | undefined;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
         "disabled": boolean;
-        "getNativeChecked": () => Promise<boolean>;
+        "getCurrentState": () => Promise<{ value: any; checked: boolean; }>;
         "inputId": string | undefined;
         "label": string;
         /**
@@ -378,7 +385,7 @@ export namespace Components {
          */
         "name": string;
         "setButtonTabindex": (value: number) => Promise<void>;
-        "setFocus": (ev: any) => Promise<void>;
+        "setFocus": () => Promise<void>;
         /**
           * the value of the radio.
          */
@@ -409,6 +416,25 @@ export namespace Components {
     interface BrxScrimTrigger {
         "target": HTMLBrxScrimElement | string;
     }
+    interface BrxSelect {
+        "controlledValue": string[] | TOKEN_UNCONTROLLED;
+        "filter": (query: string, options: { value: string; label: string }[], brxSelect: HTMLBrxSelectElement) => Promise<{ data: { value: string; label: string }[] }>;
+        "inputId": string | undefined;
+        "label": string | undefined;
+        "multiple": boolean;
+        "value": string[];
+    }
+    interface BrxSelectOption {
+        "checked": boolean;
+        "inputId": string;
+        "label": string;
+        "multiple": boolean;
+        "value": string;
+        "visible": boolean;
+    }
+    interface BrxSelectToggle {
+        "expanded": boolean;
+    }
     interface BrxSignin {
         "iconName": string;
         "label": string;
@@ -419,6 +445,7 @@ export namespace Components {
         "full": boolean;
     }
     interface BrxStep {
+        "controlled": boolean;
         "defaultValue": number | undefined;
         "type": 'simple' | 'text' | 'void' | undefined;
         "updateActiveStep": (value: number | undefined) => Promise<void>;
@@ -652,6 +679,14 @@ export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioGroupElement;
+}
+export interface BrxSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxSelectElement;
+}
+export interface BrxSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxSelectOptionElement;
 }
 export interface BrxStepCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -892,6 +927,24 @@ declare global {
         prototype: HTMLBrxScrimTriggerElement;
         new (): HTMLBrxScrimTriggerElement;
     };
+    interface HTMLBrxSelectElement extends Components.BrxSelect, HTMLStencilElement {
+    }
+    var HTMLBrxSelectElement: {
+        prototype: HTMLBrxSelectElement;
+        new (): HTMLBrxSelectElement;
+    };
+    interface HTMLBrxSelectOptionElement extends Components.BrxSelectOption, HTMLStencilElement {
+    }
+    var HTMLBrxSelectOptionElement: {
+        prototype: HTMLBrxSelectOptionElement;
+        new (): HTMLBrxSelectOptionElement;
+    };
+    interface HTMLBrxSelectToggleElement extends Components.BrxSelectToggle, HTMLStencilElement {
+    }
+    var HTMLBrxSelectToggleElement: {
+        prototype: HTMLBrxSelectToggleElement;
+        new (): HTMLBrxSelectToggleElement;
+    };
     interface HTMLBrxSigninElement extends Components.BrxSignin, HTMLStencilElement {
     }
     var HTMLBrxSigninElement: {
@@ -1020,6 +1073,9 @@ declare global {
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
         "brx-scrim-trigger": HTMLBrxScrimTriggerElement;
+        "brx-select": HTMLBrxSelectElement;
+        "brx-select-option": HTMLBrxSelectOptionElement;
+        "brx-select-toggle": HTMLBrxSelectToggleElement;
         "brx-signin": HTMLBrxSigninElement;
         "brx-skiplink": HTMLBrxSkiplinkElement;
         "brx-step": HTMLBrxStepElement;
@@ -1153,13 +1209,13 @@ declare namespace LocalJSX {
     interface BrxCardHeader {
     }
     interface BrxCheckbox {
-        "_parent"?: string | boolean | undefined;
         "checkAllLabel"?: string;
         /**
           * If `true`, the checkbox is selected.
          */
-        "checked"?: boolean | undefined;
+        "checked"?: boolean | null;
         "child"?: string | undefined;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
         "danger"?: boolean | undefined;
         "darkMode"?: boolean;
         /**
@@ -1190,8 +1246,13 @@ declare namespace LocalJSX {
           * Emitted when the checkbox has focus.
          */
         "onBrxFocus"?: (event: BrxCheckboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the state has changed.
+         */
+        "onBrxUpdate"?: (event: BrxCheckboxCustomEvent<CheckboxUpdateEventDetail>) => void;
+        "propParent"?: string | boolean | undefined;
         "size"?: 'small' | 'medium';
-        "state"?: 'invalid' | 'danger' | undefined;
+        "state"?: 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel"?: string;
         "valid"?: boolean | undefined;
         /**
@@ -1407,7 +1468,8 @@ declare namespace LocalJSX {
         /**
           * If `true`, the radio is selected.
          */
-        "checked"?: boolean;
+        "checked"?: boolean | undefined;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -1427,6 +1489,7 @@ declare namespace LocalJSX {
           * Emitted when the radio button has focus.
          */
         "onBrxFocus"?: (event: BrxRadioCustomEvent<void>) => void;
+        "onBrxUpdate"?: (event: BrxRadioCustomEvent<RadioUpdateEventDetail>) => void;
         /**
           * the value of the radio.
          */
@@ -1459,6 +1522,27 @@ declare namespace LocalJSX {
     interface BrxScrimTrigger {
         "target"?: HTMLBrxScrimElement | string;
     }
+    interface BrxSelect {
+        "controlledValue"?: string[] | TOKEN_UNCONTROLLED;
+        "filter"?: (query: string, options: { value: string; label: string }[], brxSelect: HTMLBrxSelectElement) => Promise<{ data: { value: string; label: string }[] }>;
+        "inputId"?: string | undefined;
+        "label"?: string | undefined;
+        "multiple"?: boolean;
+        "onBrxChange"?: (event: BrxSelectCustomEvent<SelectChangeEventDetail>) => void;
+        "value"?: string[];
+    }
+    interface BrxSelectOption {
+        "checked"?: boolean;
+        "inputId"?: string;
+        "label"?: string;
+        "multiple"?: boolean;
+        "onBrxSelectOptionChange"?: (event: BrxSelectOptionCustomEvent<SelectOptionChangeEventDetail>) => void;
+        "value"?: string;
+        "visible"?: boolean;
+    }
+    interface BrxSelectToggle {
+        "expanded"?: boolean;
+    }
     interface BrxSignin {
         "iconName"?: string;
         "label"?: string;
@@ -1469,6 +1553,7 @@ declare namespace LocalJSX {
         "full"?: boolean;
     }
     interface BrxStep {
+        "controlled"?: boolean;
         "defaultValue"?: number | undefined;
         "onBrxStepChange"?: (event: BrxStepCustomEvent<StepChangeEventDetail>) => void;
         "type"?: 'simple' | 'text' | 'void' | undefined;
@@ -1715,6 +1800,9 @@ declare namespace LocalJSX {
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
         "brx-scrim-trigger": BrxScrimTrigger;
+        "brx-select": BrxSelect;
+        "brx-select-option": BrxSelectOption;
+        "brx-select-toggle": BrxSelectToggle;
         "brx-signin": BrxSignin;
         "brx-skiplink": BrxSkiplink;
         "brx-step": BrxStep;
@@ -1773,6 +1861,9 @@ declare module "@stencil/core" {
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;
             "brx-scrim-trigger": LocalJSX.BrxScrimTrigger & JSXBase.HTMLAttributes<HTMLBrxScrimTriggerElement>;
+            "brx-select": LocalJSX.BrxSelect & JSXBase.HTMLAttributes<HTMLBrxSelectElement>;
+            "brx-select-option": LocalJSX.BrxSelectOption & JSXBase.HTMLAttributes<HTMLBrxSelectOptionElement>;
+            "brx-select-toggle": LocalJSX.BrxSelectToggle & JSXBase.HTMLAttributes<HTMLBrxSelectToggleElement>;
             "brx-signin": LocalJSX.BrxSignin & JSXBase.HTMLAttributes<HTMLBrxSigninElement>;
             "brx-skiplink": LocalJSX.BrxSkiplink & JSXBase.HTMLAttributes<HTMLBrxSkiplinkElement>;
             "brx-step": LocalJSX.BrxStep & JSXBase.HTMLAttributes<HTMLBrxStepElement>;
