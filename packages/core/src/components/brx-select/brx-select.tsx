@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { TOKEN_UNCONTROLLED } from '../../tokens';
-import { findTarget, findTargets, generateUniqueId, minmax, toggleItem } from '../../utils/helpers';
+import { enqueueIdleCallback, findTarget, findTargets, generateUniqueId, minmax, toggleItem } from '../../utils/helpers';
 import { SelectOptionChangeEventDetail } from '../brx-select-option/brx-select-option-interface';
 import { SelectChangeEventDetail } from './brx-select-interface';
 import { DEFAULT_NOT_FOUND_IMAGE, mountSelectInputContent } from './brx-select-utils';
@@ -38,6 +38,9 @@ export class BrxSelect implements ComponentInterface {
     return this.el.querySelector<HTMLBrxListElement>(DOMStrings.optionsList);
   }
 
+  @Prop({ reflect: true })
+  darkMode = false;
+
   @Prop()
   label: string | undefined;
 
@@ -51,7 +54,16 @@ export class BrxSelect implements ComponentInterface {
   expanded = false;
 
   @State()
-  notFound: boolean = false;
+  showFeedbackNotFound: boolean = false;
+
+  @Prop()
+  disableToggleAll = false;
+
+  @Prop()
+  selectAllLabel = 'Selecionar Todos';
+
+  @Prop()
+  unselectAllLabel = 'Deselecionar Todos';
 
   @Prop()
   value: string[] = [];
@@ -62,8 +74,8 @@ export class BrxSelect implements ComponentInterface {
   @State()
   currentValue: string[] = [];
 
-  @Listen('value')
-  @Listen('controlledValue')
+  @Watch('value')
+  @Watch('controlledValue')
   syncCurrentValue() {
     const incomingValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
     this.currentValue = incomingValue ?? [];
@@ -78,11 +90,11 @@ export class BrxSelect implements ComponentInterface {
   }
 
   get focusedOption() {
-    return this.definedOptions[this.focusedOptionIndex] ?? null;
+    return this.allOptions[this.focusedOptionIndex] ?? null;
   }
 
   get focusedOptionIndex() {
-    return this.definedOptions.findIndex(selectOption => selectOption.querySelector('.focus-visible, :focus-visible'));
+    return this.allOptions.findIndex(option => option.contains(document.activeElement));
   }
 
   get currentValueLabels(): string[] {
@@ -104,8 +116,8 @@ export class BrxSelect implements ComponentInterface {
     return this.multiple ? 'Selecione os itens.' : 'Selecione o item.';
   }
 
-  get showToggleAll() {
-    return this.multiple;
+  get isToggleAllEnabled() {
+    return this.multiple && !this.disableToggleAll;
   }
 
   get isAllSelected() {
@@ -113,7 +125,7 @@ export class BrxSelect implements ComponentInterface {
   }
 
   get toggleAllLabel() {
-    return this.isAllSelected ? 'Deselecionar Todos' : 'Selecionar Todos';
+    return this.isAllSelected ? this.unselectAllLabel : this.selectAllLabel;
   }
 
   set inputValue(value: string | null) {
@@ -133,6 +145,14 @@ export class BrxSelect implements ComponentInterface {
   changeValue(optionValue: string) {
     const currentValue = this.multiple ? this.currentValue : this.currentValue.filter(i => i === optionValue);
     this.setValue(toggleItem(currentValue, optionValue));
+  }
+
+  focusOption(option: HTMLBrxSelectOptionElement | null = null) {
+    const item = option && findTarget<HTMLBrxItemElement>('brx-item', option);
+
+    if (item) {
+      item.focus();
+    }
   }
 
   selectAll() {
@@ -173,17 +193,6 @@ export class BrxSelect implements ComponentInterface {
     this.inputValue = null;
   }
 
-  /**
-   * Reseta o focus dos elementos
-   */
-  resetFocus() {
-    // const focusedItems = Array.from(this.el.querySelectorAll<HTMLElement>(':focus-visible, .focus-visible'));
-    // for (const option of focusedItems) {
-    //   option.blur();
-    //   option.classList.remove('.focus-visible');
-    // }
-  }
-
   resetVisible() {
     for (const option of this.allOptions) {
       option.visible = true;
@@ -222,7 +231,6 @@ export class BrxSelect implements ComponentInterface {
       this.resetInput();
     } else {
       this.setInput();
-      this.resetFocus();
     }
   }
 
@@ -254,17 +262,15 @@ export class BrxSelect implements ComponentInterface {
 
     if (trigger) {
       this.openSelect();
-      this.resetFocus();
     }
   }
 
-  @Listen('brxSelectOptionChange')
-  handleCheckboxChange(event: CustomEvent<SelectOptionChangeEventDetail>) {
-    const target = event.target as HTMLElement;
+  async handleOptionChange(option: HTMLBrxSelectOptionElement, incomingDetail?: SelectOptionChangeEventDetail) {
+    const isToggleAll = option.closest(DOMStrings.optionToggleAll);
 
-    const { value, checked } = event.detail;
+    const { value, checked } = incomingDetail;
 
-    if (target.closest(DOMStrings.optionToggleAll)) {
+    if (isToggleAll) {
       if (checked) {
         this.selectAll();
       } else {
@@ -275,25 +281,104 @@ export class BrxSelect implements ComponentInterface {
     }
   }
 
-  getNextItem() {
-    const options = this.definedOptions;
-    const targetIndex = minmax(this.focusedOptionIndex + 1, 0, options.length - 1);
-    return this.definedOptions[targetIndex];
+  @Listen('brxSelectOptionChange')
+  handleOptionChangeEvent(event: CustomEvent<SelectOptionChangeEventDetail>) {
+    const target = event.target as HTMLElement;
+
+    const option = target.closest<HTMLBrxSelectOptionElement>(DOMStrings.option);
+
+    this.handleOptionChange(option, event.detail);
   }
 
-  getPreviousItem() {
-    const options = this.definedOptions;
-    const targetIndex = minmax(this.focusedOptionIndex - 1, 0, options.length - 1);
-    return this.definedOptions[targetIndex];
+  getRotatedFocusedOptionIndex(direction: number) {
+    return minmax(this.focusedOptionIndex + direction, 0, this.allOptions.length - 1);
   }
 
+  getRotatedFocusedOption(direction: number) {
+    const targetIndex = this.getRotatedFocusedOptionIndex(direction);
+    return this.allOptions[targetIndex];
+  }
+
+  rotateOptionFocus(direction: number) {
+    this.focusOption(this.getRotatedFocusedOption(direction));
+  }
+
+  handleKeydownOnInput(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab': {
+        if (event.shiftKey) {
+          this.closeSelect();
+        } else {
+          this.toggleEl.focus();
+        }
+
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
+
+    if (event.code === 'ArrowDown') {
+      event.preventDefault();
+      this.rotateOptionFocus(1);
+    }
+  }
 
   /**
    * Define comportamentos de teclado no option
    */
-  setKeyClickOnOption() {
+  async setKeyboardClickOnActiveOption() {
     const option = this.focusedOption;
-    this.changeValue(option.value);
+    option.toggleChecked();
+  }
+
+  handleKeydownOnList(event: KeyboardEvent) {
+    const handledCodes = ['Tab', 'Escape', 'Space', 'ArrowUp', 'ArrowDown'];
+
+    if (handledCodes.includes(event.code)) {
+      event.preventDefault();
+    }
+
+    switch (event.code) {
+      case 'Tab': {
+        this.closeSelect();
+        break;
+      }
+      case 'Escape': {
+        this.closeSelect();
+        break;
+      }
+      case 'Space': {
+        this.setKeyboardClickOnActiveOption();
+        break;
+      }
+      case 'ArrowUp': {
+        this.rotateOptionFocus(-1);
+        break;
+      }
+      case 'ArrowDown': {
+        this.rotateOptionFocus(1);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
+  @Listen('keydown')
+  handleKeydownEvent(event: KeyboardEvent) {
+    const target = event.target as HTMLElement;
+
+    if (target.closest('brx-input')) {
+      this.handleKeydownOnInput(event);
+    }
+
+    if (target.closest('.brx-select-options')) {
+      this.handleKeydownOnList(event);
+    }
   }
 
   componentWillLoad() {
@@ -309,20 +394,18 @@ export class BrxSelect implements ComponentInterface {
   }
 
   render() {
-    const { inputPlaceholder, isAllSelected, toggleAllLabel, showToggleAll, notFound, label } = this;
-
     return (
       <Host>
-        <brx-input type="text" label={label} data-select-input placeholder={inputPlaceholder} start-icon-name="fa5/fas/search">
+        <brx-input type="text" label={this.label} data-select-input placeholder={this.inputPlaceholder} start-icon-name="fa5/fas/search">
           <brx-select-toggle slot="end-button"></brx-select-toggle>
         </brx-input>
 
         <div tabindex="0" class="brx-select-options">
-          {showToggleAll && <brx-select-option data-select-toggle-all multiple checked={isAllSelected} label={toggleAllLabel}></brx-select-option>}
+          {this.isToggleAllEnabled && <brx-select-option data-select-toggle-all highlighted multiple checked={this.isAllSelected} label={this.toggleAllLabel}></brx-select-option>}
 
           <slot></slot>
 
-          {notFound && (
+          {this.showFeedbackNotFound && (
             <slot name="not-found">
               <div class="br-item not-found">
                 <div class="container pl-0 pr-0">

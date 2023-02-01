@@ -343,8 +343,8 @@ export class BrxCheckbox implements ComponentInterface {
         role="checkbox"
         data-checked={this.currentChecked}
         aria-checked={`${this.currentChecked}`}
-        data-indeterminate={this.currentIndeterminate}
         aria-hidden={this.disabled ? 'true' : null}
+        data-indeterminate={this.currentIndeterminate}
       >
         <input
           type="checkbox"

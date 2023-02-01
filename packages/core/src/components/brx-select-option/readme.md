@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `checked`  | `checked`  |             | `boolean` | `false`     |
-| `inputId`  | `input-id` |             | `string`  | `undefined` |
-| `label`    | `label`    |             | `string`  | `undefined` |
-| `multiple` | `multiple` |             | `boolean` | `false`     |
-| `value`    | `value`    |             | `string`  | `undefined` |
-| `visible`  | `visible`  |             | `boolean` | `true`      |
+| Property      | Attribute     | Description | Type      | Default     |
+| ------------- | ------------- | ----------- | --------- | ----------- |
+| `checked`     | `checked`     |             | `boolean` | `false`     |
+| `highlighted` | `highlighted` |             | `boolean` | `false`     |
+| `inputId`     | `input-id`    |             | `string`  | `undefined` |
+| `label`       | `label`       |             | `string`  | `undefined` |
+| `multiple`    | `multiple`    |             | `boolean` | `false`     |
+| `value`       | `value`       |             | `string`  | `undefined` |
+| `visible`     | `visible`     |             | `boolean` | `true`      |
 
 
 ## Events
@@ -22,6 +23,19 @@
 | Event                   | Description | Type                                         |
 | ----------------------- | ----------- | -------------------------------------------- |
 | `brxSelectOptionChange` |             | `CustomEvent<SelectOptionChangeEventDetail>` |
+
+
+## Methods
+
+### `toggleChecked() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

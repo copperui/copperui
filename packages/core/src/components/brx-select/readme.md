@@ -7,14 +7,17 @@
 
 ## Properties
 
-| Property          | Attribute  | Description | Type                                                                                                                                                        | Default              |
-| ----------------- | ---------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `controlledValue` | --         |             | `string[]`                                                                                                                                                  | `TOKEN_UNCONTROLLED` |
-| `filter`          | --         |             | `(query: string, options: { value: string; label: string; }[], brxSelect: HTMLBrxSelectElement) => Promise<{ data: { value: string; label: string; }[]; }>` | `undefined`          |
-| `inputId`         | `input-id` |             | `string`                                                                                                                                                    | `undefined`          |
-| `label`           | `label`    |             | `string`                                                                                                                                                    | `undefined`          |
-| `multiple`        | `multiple` |             | `boolean`                                                                                                                                                   | `false`              |
-| `value`           | --         |             | `string[]`                                                                                                                                                  | `[]`                 |
+| Property           | Attribute            | Description | Type       | Default                |
+| ------------------ | -------------------- | ----------- | ---------- | ---------------------- |
+| `controlledValue`  | --                   |             | `string[]` | `TOKEN_UNCONTROLLED`   |
+| `darkMode`         | `dark-mode`          |             | `boolean`  | `false`                |
+| `disableToggleAll` | `disable-toggle-all` |             | `boolean`  | `false`                |
+| `inputId`          | `input-id`           |             | `string`   | `undefined`            |
+| `label`            | `label`              |             | `string`   | `undefined`            |
+| `multiple`         | `multiple`           |             | `boolean`  | `false`                |
+| `selectAllLabel`   | `select-all-label`   |             | `string`   | `'Selecionar Todos'`   |
+| `unselectAllLabel` | `unselect-all-label` |             | `string`   | `'Deselecionar Todos'` |
+| `value`            | --                   |             | `string[]` | `[]`                   |
 
 
 ## Events

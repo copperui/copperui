@@ -1,5 +1,6 @@
-import { Component, Host, h, Prop, ComponentInterface, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, ComponentInterface, Event, EventEmitter, Listen, Element, Method } from '@stencil/core';
 import { check } from 'prettier';
+import { ClickOptions } from 'puppeteer';
 import { generateUniqueId } from '../../utils/helpers';
 import { CheckboxChangeEventDetail } from '../brx-checkbox/brx-checkbox-interface';
 import { RadioChangeEventDetail } from '../brx-radio/brx-radio-interface';
@@ -11,6 +12,9 @@ import { SelectOptionChangeEventDetail } from './brx-select-option-interface';
   shadow: false,
 })
 export class BrxSelectOption implements ComponentInterface {
+  @Element()
+  el: HTMLBrxSelectOptionElement;
+
   @Event()
   brxSelectOptionChange: EventEmitter<SelectOptionChangeEventDetail>;
 
@@ -22,6 +26,9 @@ export class BrxSelectOption implements ComponentInterface {
 
   @Prop()
   multiple = false;
+
+  @Prop({ reflect: true })
+  highlighted: boolean = false;
 
   @Prop()
   value: string;
@@ -40,6 +47,12 @@ export class BrxSelectOption implements ComponentInterface {
     }
   }
 
+  @Method()
+  toggleChecked() {
+    this.changeChecked(!this.checked);
+    return Promise.resolve();
+  }
+
   componentWillLoad() {
     if (!this.inputId) {
       this.inputId = generateUniqueId();
@@ -55,6 +68,15 @@ export class BrxSelectOption implements ComponentInterface {
     if (trigger) {
       const detail = event.detail as CheckboxChangeEventDetail | RadioChangeEventDetail;
       this.changeChecked(detail.checked);
+    }
+  }
+
+  @Listen('click')
+  handleClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    if (target === this.el) {
+      this.toggleChecked();
     }
   }
 

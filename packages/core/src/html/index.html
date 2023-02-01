@@ -2874,7 +2874,7 @@
       <div>
         <h2>Controlled</h2>
 
-        <brx-select id="sel3" multiple label="Label" placeholder="Selecione o item">
+        <brx-select id="sel3" multiple disable-toggle-all label="Label" placeholder="Selecione até 2 itens.">
           <brx-select-option value="cb21" label="Rondônia"></brx-select-option>
           <brx-select-option value="cb23" label="São Paulo"></brx-select-option>
           <brx-select-option value="cb27" label="Exterior"></brx-select-option>
@@ -2884,6 +2884,18 @@
           {
             const select = document.querySelector('#sel3');
             select.controlledValue = ['cb21'];
+
+            select.addEventListener('brxChange', event => {
+              if (event.target !== select) {
+                return;
+              }
+
+              const { value } = event.detail;
+
+              const VALUE_EXTERIOR = 'cb27';
+
+              select.controlledValue = value[value.length - 1] === VALUE_EXTERIOR ? [VALUE_EXTERIOR] : value.filter(i => i !== VALUE_EXTERIOR);
+            });
           }
         </script>
 

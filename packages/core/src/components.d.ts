@@ -418,17 +418,22 @@ export namespace Components {
     }
     interface BrxSelect {
         "controlledValue": string[] | TOKEN_UNCONTROLLED;
-        "filter": (query: string, options: { value: string; label: string }[], brxSelect: HTMLBrxSelectElement) => Promise<{ data: { value: string; label: string }[] }>;
+        "darkMode": boolean;
+        "disableToggleAll": boolean;
         "inputId": string | undefined;
         "label": string | undefined;
         "multiple": boolean;
+        "selectAllLabel": string;
+        "unselectAllLabel": string;
         "value": string[];
     }
     interface BrxSelectOption {
         "checked": boolean;
+        "highlighted": boolean;
         "inputId": string;
         "label": string;
         "multiple": boolean;
+        "toggleChecked": () => Promise<void>;
         "value": string;
         "visible": boolean;
     }
@@ -1524,15 +1529,19 @@ declare namespace LocalJSX {
     }
     interface BrxSelect {
         "controlledValue"?: string[] | TOKEN_UNCONTROLLED;
-        "filter"?: (query: string, options: { value: string; label: string }[], brxSelect: HTMLBrxSelectElement) => Promise<{ data: { value: string; label: string }[] }>;
+        "darkMode"?: boolean;
+        "disableToggleAll"?: boolean;
         "inputId"?: string | undefined;
         "label"?: string | undefined;
         "multiple"?: boolean;
         "onBrxChange"?: (event: BrxSelectCustomEvent<SelectChangeEventDetail>) => void;
+        "selectAllLabel"?: string;
+        "unselectAllLabel"?: string;
         "value"?: string[];
     }
     interface BrxSelectOption {
         "checked"?: boolean;
+        "highlighted"?: boolean;
         "inputId"?: string;
         "label"?: string;
         "multiple"?: boolean;
