@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { enqueueIdleCallback } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-item',
@@ -24,31 +23,27 @@ export class BrxItem implements ComponentInterface {
 
   syncInProgress: boolean = false;
 
-  findInputItem(): HTMLBrxRadioElement | HTMLBrxCheckboxElement | null {
-    return this.el.querySelector('brx-radio, brx-checkbox') ?? null;
-  }
-
-  async findInputItemChecked() {
-    const inputItem = this.findInputItem();
-    return inputItem?.getNativeChecked();
+  async getBrxInput() {
+    return this.el.querySelector<HTMLBrxRadioElement | HTMLBrxCheckboxElement>('brx-radio, brx-checkbox') ?? null;
   }
 
   async syncSelectedState() {
-    this.selected = await this.findInputItemChecked();
-    this.syncInProgress = false;
+    const brxInput = await this.getBrxInput();
+
+    if (brxInput) {
+      const { checked } = await brxInput.getCurrentState();
+      this.selected = checked;
+    }
   }
 
-  @Listen('brxChange', { target: 'window', passive: true })
+  @Listen('brxUpdate')
   watchChange() {
     if (!this.syncInProgress) {
       this.syncInProgress = true;
 
-      enqueueIdleCallback(
-        () => {
-          this.syncSelectedState();
-        },
-        { timeout: 100 },
-      );
+      this.syncSelectedState().then(() => {
+        this.syncInProgress = false;
+      });
     }
   }
 

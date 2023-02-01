@@ -79,7 +79,7 @@
 }
 
 @mixin checkbox-checked {
-  &[checked] {
+  &[data-checked] {
     input {
       + label {
         &::after {
@@ -99,7 +99,7 @@
 }
 
 @mixin checkbox-indeterminate {
-  &[indeterminate] {
+  &[data-indeterminate] {
     input {
       + label {
         &::before {
@@ -116,7 +116,7 @@
       }
     }
 
-    &[checked] {
+    &[data-checked] {
       input {
         + label {
           &::after {
@@ -133,7 +133,7 @@
 
 @mixin checkbox-states {
   &,
-  &[checked] {
+  &[data-checked] {
     input:focus-visible,
     &[focus-visible] input {
       + label::before {
@@ -173,7 +173,7 @@
     &[#{$state}],
     &[state~='#{$state}'] {
       &,
-      &[checked] {
+      &[data-checked] {
         input:focus-visible,
         &[focus-visible] input {
           + label::before {
@@ -182,7 +182,7 @@
         }
       }
 
-      &[checked] {
+      &[data-checked] {
         // Checado
         input + label::before {
           --border-color: var(--#{$color});
@@ -216,7 +216,7 @@
       }
     }
 
-    &[checked] {
+    &[data-checked] {
       input {
         + label::after {
           border-width: 0 2px 2px 0;
@@ -227,7 +227,7 @@
         }
       }
 
-      &[indeterminate] {
+      &[data-indeterminate] {
         input + label::after {
           border-color: var(--background-light);
           border-width: 0 0 3px;

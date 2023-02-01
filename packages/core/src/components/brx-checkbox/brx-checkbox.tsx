@@ -1,9 +1,10 @@
 // This file was based on the <ion-checkbox /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/checkbox/checkbox.tsx
 
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
-import { CheckboxChangeEventDetail } from './brx-checkbox-interface';
-import { findTargets, generateUniqueId, getWindow } from '../../utils/helpers';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { findTargets, generateUniqueId } from '../../utils/helpers';
+import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from './brx-checkbox-interface';
 
 @Component({
   tag: 'brx-checkbox',
@@ -14,24 +15,34 @@ export class BrxCheckbox implements ComponentInterface {
   private syncInProgress = false;
   private nativeInput?: HTMLInputElement;
 
-  @Element() el!: HTMLElement;
+  @Element()
+  el!: HTMLElement;
+
   /**
    * Emitted when the checked property has changed.
    */
   @Event()
   brxChange!: EventEmitter<CheckboxChangeEventDetail>;
+
+  /**
+   * Emitted when the state has changed.
+   */
+  @Event()
+  brxUpdate!: EventEmitter<CheckboxUpdateEventDetail>;
+
   /**
    * Emitted when the checkbox has focus.
    */
   @Event()
   brxFocus!: EventEmitter<void>;
+
   /**
    * Emitted when the checkbox loses focus.
    */
   @Event()
   brxBlur!: EventEmitter<void>;
 
-  @Prop({ reflect: true })
+  @Prop()
   label: string | undefined;
 
   /**
@@ -43,14 +54,58 @@ export class BrxCheckbox implements ComponentInterface {
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ reflect: true, mutable: true })
-  checked: boolean | undefined = false;
+  @Prop()
+  checked: boolean | null = null;
+
+  @Prop()
+  controlledChecked: boolean | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   /**
    * If `true`, the checkbox will visually appear as indeterminate.
    */
-  @Prop({ reflect: true, mutable: true })
+  @Prop()
   indeterminate = false;
+
+  @State()
+  currentChecked = false;
+
+  @State()
+  currentIndeterminate = false;
+
+  @Watch('value')
+  @Watch('currentChecked')
+  @Watch('currentIndeterminate')
+  emitUpdateEvent() {
+    const value = this.value;
+    const checked = this.currentChecked;
+    const indeterminate = this.currentIndeterminate;
+
+    this.brxUpdate.emit({ checked, indeterminate, value });
+  }
+
+  @Watch('value')
+  @Watch('currentChecked')
+  @Watch('currentIndeterminate')
+  emitChangeEvent(checked = this.currentChecked, indeterminate = this.currentIndeterminate) {
+    const { value } = this;
+    this.brxChange.emit({ checked, indeterminate, value });
+  }
+
+  @Watch('checked')
+  @Watch('controlledChecked')
+  syncCurrentChecked() {
+    this.currentChecked = this.controlledChecked !== TOKEN_UNCONTROLLED ? this.controlledChecked : this.checked;
+  }
+
+  @Watch('indeterminate')
+  syncCurrentIndeterminate() {
+    this.currentIndeterminate = this.indeterminate;
+  }
+
+  syncCurrent() {
+    this.syncCurrentChecked();
+    this.syncCurrentIndeterminate();
+  }
 
   /**
    * If `true`, the user cannot interact with the checkbox.
@@ -59,19 +114,19 @@ export class BrxCheckbox implements ComponentInterface {
   disabled = false;
 
   @Prop({ reflect: true })
-  valid: boolean | undefined;
+  size: 'small' | 'medium' = 'medium';
 
   @Prop({ reflect: true })
-  invalid: boolean | undefined;
+  valid: boolean | undefined;
 
   @Prop({ reflect: true })
   danger: boolean | undefined;
 
   @Prop({ reflect: true })
-  size: 'small' | 'medium' = 'medium';
+  invalid: boolean | undefined;
 
   @Prop({ reflect: true })
-  state: 'invalid' | 'danger' | undefined = undefined;
+  state: 'valid' | 'invalid' | 'danger' | undefined = undefined;
 
   @Prop({ reflect: true })
   darkMode = false;
@@ -79,7 +134,7 @@ export class BrxCheckbox implements ComponentInterface {
   @Prop({ reflect: true })
   hiddenLabel = false;
 
-  @Prop({ reflect: true, mutable: true })
+  @Prop({ mutable: true })
   inputId: string | undefined;
 
   /**
@@ -96,16 +151,37 @@ export class BrxCheckbox implements ComponentInterface {
   child: string | undefined;
 
   @Prop({ reflect: true, attribute: 'parent' })
-  _parent: string | boolean | undefined;
+  propParent: string | boolean | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   checkAllLabel: string = 'Selecionar tudo';
 
-  @Prop({ reflect: true })
+  @Prop()
   uncheckAllLabel: string = 'Desselecionar tudo';
 
+  @Method()
+  async getCurrentState() {
+    return {
+      value: this.value,
+      checked: this.currentChecked,
+      indeterminate: this.currentIndeterminate,
+    };
+  }
+
+  @Method()
+  setState(checked: boolean, indeterminate: boolean) {
+    if (this.controlledChecked === TOKEN_UNCONTROLLED) {
+      this.currentChecked = checked;
+      this.currentIndeterminate = indeterminate;
+    }
+
+    this.emitChangeEvent(checked, indeterminate);
+
+    return Promise.resolve();
+  }
+
   get parent() {
-    const { _parent } = this;
+    const { propParent: _parent } = this;
     return _parent === '' ? true : _parent;
   }
 
@@ -118,16 +194,16 @@ export class BrxCheckbox implements ComponentInterface {
   }
 
   getCheckgroupChildren(): HTMLBrxCheckboxElement[] {
-    const { el, parent } = this;
+    const parent = this.parent;
 
     if (parent) {
       const documentChildren = typeof parent === 'string' ? findTargets<HTMLBrxCheckboxElement>(`brx-checkbox[child="${parent}"]`) : [];
 
-      const parentGroup = el.closest('brx-checkgroup');
+      const parentGroup = this.el.closest('brx-checkgroup');
       const parentGroupAllCheckboxes = Array.from(parentGroup?.querySelectorAll('brx-checkbox') ?? []);
 
       const observableCheckboxes = parentGroupAllCheckboxes
-        .filter(checkbox => checkbox !== el)
+        .filter(checkbox => checkbox !== this.el)
         .filter(checkbox => {
           const groupLevel1 = checkbox.closest('brx-checkgroup');
           const groupLevel2 = groupLevel1.parentElement.closest('brx-checkgroup');
@@ -140,12 +216,14 @@ export class BrxCheckbox implements ComponentInterface {
     return [];
   }
 
-  getCheckgroupState() {
-    const children = this.getCheckgroupChildren();
-    const childrenStates = new Set(children.map(checkbox => (checkbox.indeterminate ? 'indeterminate' : checkbox.checked ? 'checked' : 'unchecked')));
+  async getCheckgroupState() {
+    const allStates = await Promise.all(this.getCheckgroupChildren().map(i => i.getCurrentState()));
 
-    const isChecked = childrenStates.has('checked') || childrenStates.has('indeterminate');
-    const isIndeterminate = childrenStates.size > 1;
+    const currentStates = new Set(allStates.map(state => (state.indeterminate ? 'indeterminate' : state.checked ? 'checked' : 'unchecked')));
+
+    const isChecked = currentStates.has('checked') || currentStates.has('indeterminate');
+
+    const isIndeterminate = currentStates.size > 1;
 
     const status = isIndeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked';
 
@@ -159,12 +237,10 @@ export class BrxCheckbox implements ComponentInterface {
 
     this.syncInProgress = true;
 
-    const { isChecked, isIndeterminate } = this.getCheckgroupState();
-
-    this.indeterminate = isIndeterminate;
-    this.checked = isChecked;
-
-    this.syncInProgress = false;
+    this.getCheckgroupState().then(({ isChecked, isIndeterminate }) => {
+      this.setState(isChecked, isIndeterminate);
+      this.syncInProgress = false;
+    });
   }
 
   syncCheckgroupChilds() {
@@ -174,12 +250,11 @@ export class BrxCheckbox implements ComponentInterface {
 
     this.syncInProgress = true;
 
-    if (!this.indeterminate) {
+    if (!this.currentIndeterminate) {
       const children = this.getCheckgroupChildren();
 
       for (const checkbox of children) {
-        checkbox.indeterminate = false;
-        checkbox.checked = this.checked;
+        checkbox.setState(this.currentChecked, false);
       }
     }
 
@@ -208,27 +283,17 @@ export class BrxCheckbox implements ComponentInterface {
     }
   }
 
-  @Watch('checked')
-  @Watch('indeterminate')
-  checkedStateChanged() {
-    const { value, checked, indeterminate } = this;
-
-    this.brxChange.emit({
-      value,
-      checked,
-      indeterminate,
-    });
-  }
-
   @Method()
   async getNativeChecked() {
     return this.nativeInput?.checked;
   }
 
-  async componentWillLoad() {
+  componentWillLoad() {
     if (this.inputId === undefined) {
-      this.inputId = await generateUniqueId();
+      this.inputId = generateUniqueId();
     }
+
+    this.syncCurrent();
 
     if (this.isParent) {
       this.syncCheckgroupParent();
@@ -241,45 +306,61 @@ export class BrxCheckbox implements ComponentInterface {
     }
   }
 
-  private onChange = (ev: any) => {
-    ev.preventDefault();
+  private onChange = (event: Event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const target = event.target as HTMLInputElement;
+    target.checked = this.currentChecked;
 
     this.setFocus();
-
-    this.indeterminate = false;
-    this.checked = !this.checked;
-  };
-
-  private onFocus = () => {
-    this.brxFocus.emit();
+    this.setState(!this.currentChecked, false);
   };
 
   private onBlur = () => {
     this.brxBlur.emit();
   };
 
+  private onFocus = () => {
+    this.brxFocus.emit();
+  };
+
+  get labelText() {
+    if (this.parent) {
+      if (this.currentChecked && !this.currentIndeterminate) {
+        return this.uncheckAllLabel;
+      } else {
+        return this.checkAllLabel;
+      }
+    }
+
+    return this.label;
+  }
+
   render() {
-    const { name, checked, disabled, inputId, indeterminate } = this;
-
-    const label = this.parent ? (this.checked && !this.indeterminate ? this.uncheckAllLabel : this.checkAllLabel) : this.label;
-
     return (
-      <Host aria-checked={`${checked}`} aria-hidden={disabled ? 'true' : null} indeterminate={indeterminate} checked={checked} role="checkbox">
+      <Host
+        role="checkbox"
+        data-checked={this.currentChecked}
+        aria-checked={`${this.currentChecked}`}
+        data-indeterminate={this.currentIndeterminate}
+        aria-hidden={this.disabled ? 'true' : null}
+      >
         <input
-          id={inputId}
           type="checkbox"
-          checked={checked}
-          disabled={disabled}
-          name={name ?? inputId}
+          id={this.inputId}
+          disabled={this.disabled}
+          checked={this.currentChecked}
+          name={this.name ?? this.inputId}
+          indeterminate={this.currentIndeterminate}
+          aria-checked={`${this.currentChecked}`}
           onChange={this.onChange}
-          aria-checked={`${checked}`}
-          indeterminate={indeterminate}
           onBlur={() => this.onBlur()}
           onFocus={() => this.onFocus()}
           ref={focusEl => (this.nativeInput = focusEl)}
         />
 
-        <label htmlFor={inputId}>{label}</label>
+        <label htmlFor={this.inputId}>{this.labelText}</label>
 
         <slot></slot>
       </Host>

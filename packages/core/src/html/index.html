@@ -1094,11 +1094,10 @@
 
       <div>
         <brx-checkbox label="Opção 1"></brx-checkbox>
-        <brx-checkbox disabled checked label="Opção 2"></brx-checkbox>
-        <brx-checkbox invalid label="Opção 3"></brx-checkbox>
-        <brx-checkbox valid label="Opção 4"></brx-checkbox>
-
-        <brx-checkbox checked indeterminate label="Opção 5"></brx-checkbox>
+        <brx-checkbox label="Opção 2" checked disabled></brx-checkbox>
+        <brx-checkbox label="Opção 3" invalid></brx-checkbox>
+        <brx-checkbox label="Opção 4" valid></brx-checkbox>
+        <brx-checkbox label="Opção 5" checked indeterminate></brx-checkbox>
       </div>
 
       <div>
@@ -1137,6 +1136,7 @@
           <div class="mb-1 ml-2">
             <brx-checkbox label="Opção 1"></brx-checkbox>
           </div>
+
           <div class="mb-1 ml-2">
             <brx-checkbox label="Opção 2"></brx-checkbox>
           </div>
@@ -1153,6 +1153,14 @@
             </div>
           </brx-checkgroup>
         </brx-checkgroup>
+      </div>
+
+      <div>
+        <h2>Controlado</h2>
+
+        <brx-checkbox label="Opção 1" controlled-checked="false"></brx-checkbox>
+        <brx-checkbox label="Opção 2" controlled-checked></brx-checkbox>
+        <brx-checkbox label="Opção 2" controlled-checked indeterminate></brx-checkbox>
       </div>
     </section>
 
@@ -3064,7 +3072,7 @@
 
         <div class="row">
           <div class="col-auto mx-5">
-            <brx-step vertical default-avalue="0" label-position="right">
+            <brx-step vertical default-value="0" label-position="right">
               <brx-step-progress>
                 <brx-step-progress-btn>
                   <span slot="step-info">Exemplo de Rótulo 1</span>
@@ -3866,6 +3874,8 @@
     </section>
 
     <hr />
+
+    <!-- Upload -->
 
     <section>
       <h1>Upload</h1>
