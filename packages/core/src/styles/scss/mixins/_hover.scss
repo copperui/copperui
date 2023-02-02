@@ -4,13 +4,12 @@
 ///  a {
 ///    @include hover;
 ///  }
-@mixin hover($color: "interactive") {
-  &:not(:disabled) {
-    &:hover {
-      background-image: linear-gradient(
-          rgba(var(--#{$color}-rgb), var(--hover)),
-          rgba(var(--#{$color}-rgb), var(--hover))
-      );
+@mixin hover($color: 'interactive') {
+  &:not([data-disable-hover-interaction]) {
+    &:not(:disabled) {
+      &:hover {
+        background-image: linear-gradient(rgba(var(--#{$color}-rgb), var(--hover)), rgba(var(--#{$color}-rgb), var(--hover)));
+      }
     }
   }
 }

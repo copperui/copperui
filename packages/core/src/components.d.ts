@@ -9,6 +9,7 @@ import { TOKEN_UNCONTROLLED } from "./tokens";
 import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
+import { IPaginationItemTarget } from "./components/brx-pagination-item/brx-pagination-item-interface";
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
@@ -363,6 +364,31 @@ export namespace Components {
     interface BrxNotification {
         "_dismiss": () => Promise<void>;
     }
+    interface BrxPagination {
+        "controlledPage": number | TOKEN_UNCONTROLLED;
+        "page": number | undefined;
+        "size": 'small' | 'medium' | 'large';
+        "total": number | undefined;
+    }
+    interface BrxPaginationArrows {
+    }
+    interface BrxPaginationEllipsis {
+        "dropdownId": string | undefined;
+    }
+    interface BrxPaginationGoToPage {
+    }
+    interface BrxPaginationInformation {
+    }
+    interface BrxPaginationItem {
+        "_target": 'first' | 'prev' | 'next' | 'last' | number;
+        "active": boolean;
+        "disabled": boolean;
+        "getTarget": () => Promise<number | "first" | "prev" | "next" | "last">;
+    }
+    interface BrxPaginationItems {
+    }
+    interface BrxPaginationPerPage {
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -417,9 +443,10 @@ export namespace Components {
         "target": HTMLBrxScrimElement | string;
     }
     interface BrxSelect {
-        "controlledValue": string[] | TOKEN_UNCONTROLLED;
+        "controlledValue": string | string[] | TOKEN_UNCONTROLLED;
         "darkMode": boolean;
         "disableToggleAll": boolean;
+        "hideSearchIcon": boolean;
         "inputId": string | undefined;
         "label": string | undefined;
         "multiple": boolean;
@@ -428,9 +455,10 @@ export namespace Components {
          */
         "name": string | undefined;
         "nativeSelect": boolean | null;
+        "placeholder": string | undefined;
         "selectAllLabel": string;
         "unselectAllLabel": string;
-        "value": string[];
+        "value": string | string[];
     }
     interface BrxSelectOption {
         "checked": boolean;
@@ -682,6 +710,10 @@ export interface BrxInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxInputElement;
 }
+export interface BrxPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxPaginationElement;
+}
 export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioElement;
@@ -913,6 +945,54 @@ declare global {
         prototype: HTMLBrxNotificationElement;
         new (): HTMLBrxNotificationElement;
     };
+    interface HTMLBrxPaginationElement extends Components.BrxPagination, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationElement: {
+        prototype: HTMLBrxPaginationElement;
+        new (): HTMLBrxPaginationElement;
+    };
+    interface HTMLBrxPaginationArrowsElement extends Components.BrxPaginationArrows, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationArrowsElement: {
+        prototype: HTMLBrxPaginationArrowsElement;
+        new (): HTMLBrxPaginationArrowsElement;
+    };
+    interface HTMLBrxPaginationEllipsisElement extends Components.BrxPaginationEllipsis, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationEllipsisElement: {
+        prototype: HTMLBrxPaginationEllipsisElement;
+        new (): HTMLBrxPaginationEllipsisElement;
+    };
+    interface HTMLBrxPaginationGoToPageElement extends Components.BrxPaginationGoToPage, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationGoToPageElement: {
+        prototype: HTMLBrxPaginationGoToPageElement;
+        new (): HTMLBrxPaginationGoToPageElement;
+    };
+    interface HTMLBrxPaginationInformationElement extends Components.BrxPaginationInformation, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationInformationElement: {
+        prototype: HTMLBrxPaginationInformationElement;
+        new (): HTMLBrxPaginationInformationElement;
+    };
+    interface HTMLBrxPaginationItemElement extends Components.BrxPaginationItem, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationItemElement: {
+        prototype: HTMLBrxPaginationItemElement;
+        new (): HTMLBrxPaginationItemElement;
+    };
+    interface HTMLBrxPaginationItemsElement extends Components.BrxPaginationItems, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationItemsElement: {
+        prototype: HTMLBrxPaginationItemsElement;
+        new (): HTMLBrxPaginationItemsElement;
+    };
+    interface HTMLBrxPaginationPerPageElement extends Components.BrxPaginationPerPage, HTMLStencilElement {
+    }
+    var HTMLBrxPaginationPerPageElement: {
+        prototype: HTMLBrxPaginationPerPageElement;
+        new (): HTMLBrxPaginationPerPageElement;
+    };
     interface HTMLBrxRadioElement extends Components.BrxRadio, HTMLStencilElement {
     }
     var HTMLBrxRadioElement: {
@@ -1079,6 +1159,14 @@ declare global {
         "brx-modal-footer": HTMLBrxModalFooterElement;
         "brx-modal-header": HTMLBrxModalHeaderElement;
         "brx-notification": HTMLBrxNotificationElement;
+        "brx-pagination": HTMLBrxPaginationElement;
+        "brx-pagination-arrows": HTMLBrxPaginationArrowsElement;
+        "brx-pagination-ellipsis": HTMLBrxPaginationEllipsisElement;
+        "brx-pagination-go-to-page": HTMLBrxPaginationGoToPageElement;
+        "brx-pagination-information": HTMLBrxPaginationInformationElement;
+        "brx-pagination-item": HTMLBrxPaginationItemElement;
+        "brx-pagination-items": HTMLBrxPaginationItemsElement;
+        "brx-pagination-per-page": HTMLBrxPaginationPerPageElement;
         "brx-radio": HTMLBrxRadioElement;
         "brx-radio-group": HTMLBrxRadioGroupElement;
         "brx-scrim": HTMLBrxScrimElement;
@@ -1470,6 +1558,32 @@ declare namespace LocalJSX {
     }
     interface BrxNotification {
     }
+    interface BrxPagination {
+        "controlledPage"?: number | TOKEN_UNCONTROLLED;
+        "onBrxChange"?: (event: BrxPaginationCustomEvent<{ target: IPaginationItemTarget }>) => void;
+        "onBrxUpdate"?: (event: BrxPaginationCustomEvent<{ page: number }>) => void;
+        "page"?: number | undefined;
+        "size"?: 'small' | 'medium' | 'large';
+        "total"?: number | undefined;
+    }
+    interface BrxPaginationArrows {
+    }
+    interface BrxPaginationEllipsis {
+        "dropdownId"?: string | undefined;
+    }
+    interface BrxPaginationGoToPage {
+    }
+    interface BrxPaginationInformation {
+    }
+    interface BrxPaginationItem {
+        "_target"?: 'first' | 'prev' | 'next' | 'last' | number;
+        "active"?: boolean;
+        "disabled"?: boolean;
+    }
+    interface BrxPaginationItems {
+    }
+    interface BrxPaginationPerPage {
+    }
     interface BrxRadio {
         /**
           * The tabindex of the radio button.
@@ -1533,9 +1647,10 @@ declare namespace LocalJSX {
         "target"?: HTMLBrxScrimElement | string;
     }
     interface BrxSelect {
-        "controlledValue"?: string[] | TOKEN_UNCONTROLLED;
+        "controlledValue"?: string | string[] | TOKEN_UNCONTROLLED;
         "darkMode"?: boolean;
         "disableToggleAll"?: boolean;
+        "hideSearchIcon"?: boolean;
         "inputId"?: string | undefined;
         "label"?: string | undefined;
         "multiple"?: boolean;
@@ -1546,9 +1661,10 @@ declare namespace LocalJSX {
         "nativeSelect"?: boolean | null;
         "onBrxChange"?: (event: BrxSelectCustomEvent<SelectChangeEventDetail>) => void;
         "onBrxFilterInputChange"?: (event: BrxSelectCustomEvent<SelectFilterInputChangeEventDetail>) => void;
+        "placeholder"?: string | undefined;
         "selectAllLabel"?: string;
         "unselectAllLabel"?: string;
-        "value"?: string[];
+        "value"?: string | string[];
     }
     interface BrxSelectOption {
         "checked"?: boolean;
@@ -1816,6 +1932,14 @@ declare namespace LocalJSX {
         "brx-modal-footer": BrxModalFooter;
         "brx-modal-header": BrxModalHeader;
         "brx-notification": BrxNotification;
+        "brx-pagination": BrxPagination;
+        "brx-pagination-arrows": BrxPaginationArrows;
+        "brx-pagination-ellipsis": BrxPaginationEllipsis;
+        "brx-pagination-go-to-page": BrxPaginationGoToPage;
+        "brx-pagination-information": BrxPaginationInformation;
+        "brx-pagination-item": BrxPaginationItem;
+        "brx-pagination-items": BrxPaginationItems;
+        "brx-pagination-per-page": BrxPaginationPerPage;
         "brx-radio": BrxRadio;
         "brx-radio-group": BrxRadioGroup;
         "brx-scrim": BrxScrim;
@@ -1877,6 +2001,14 @@ declare module "@stencil/core" {
             "brx-modal-footer": LocalJSX.BrxModalFooter & JSXBase.HTMLAttributes<HTMLBrxModalFooterElement>;
             "brx-modal-header": LocalJSX.BrxModalHeader & JSXBase.HTMLAttributes<HTMLBrxModalHeaderElement>;
             "brx-notification": LocalJSX.BrxNotification & JSXBase.HTMLAttributes<HTMLBrxNotificationElement>;
+            "brx-pagination": LocalJSX.BrxPagination & JSXBase.HTMLAttributes<HTMLBrxPaginationElement>;
+            "brx-pagination-arrows": LocalJSX.BrxPaginationArrows & JSXBase.HTMLAttributes<HTMLBrxPaginationArrowsElement>;
+            "brx-pagination-ellipsis": LocalJSX.BrxPaginationEllipsis & JSXBase.HTMLAttributes<HTMLBrxPaginationEllipsisElement>;
+            "brx-pagination-go-to-page": LocalJSX.BrxPaginationGoToPage & JSXBase.HTMLAttributes<HTMLBrxPaginationGoToPageElement>;
+            "brx-pagination-information": LocalJSX.BrxPaginationInformation & JSXBase.HTMLAttributes<HTMLBrxPaginationInformationElement>;
+            "brx-pagination-item": LocalJSX.BrxPaginationItem & JSXBase.HTMLAttributes<HTMLBrxPaginationItemElement>;
+            "brx-pagination-items": LocalJSX.BrxPaginationItems & JSXBase.HTMLAttributes<HTMLBrxPaginationItemsElement>;
+            "brx-pagination-per-page": LocalJSX.BrxPaginationPerPage & JSXBase.HTMLAttributes<HTMLBrxPaginationPerPageElement>;
             "brx-radio": LocalJSX.BrxRadio & JSXBase.HTMLAttributes<HTMLBrxRadioElement>;
             "brx-radio-group": LocalJSX.BrxRadioGroup & JSXBase.HTMLAttributes<HTMLBrxRadioGroupElement>;
             "brx-scrim": LocalJSX.BrxScrim & JSXBase.HTMLAttributes<HTMLBrxScrimElement>;

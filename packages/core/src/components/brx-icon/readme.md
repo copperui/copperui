@@ -22,6 +22,8 @@
  - [brx-breadcrumb-item](../brx-breadcrumb-item)
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
+ - [brx-pagination-ellipsis](../brx-pagination-ellipsis)
+ - [brx-pagination-item](../brx-pagination-item)
  - [brx-select-toggle](../brx-select-toggle)
  - [brx-signin](../brx-signin)
  - [brx-tab](../brx-tab)
@@ -37,6 +39,8 @@ graph TD;
   brx-breadcrumb-item --> brx-icon
   brx-input --> brx-icon
   brx-message --> brx-icon
+  brx-pagination-ellipsis --> brx-icon
+  brx-pagination-item --> brx-icon
   brx-select-toggle --> brx-icon
   brx-signin --> brx-icon
   brx-tab --> brx-icon

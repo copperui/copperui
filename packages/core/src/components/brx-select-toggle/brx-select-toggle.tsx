@@ -18,7 +18,7 @@ export class BrxSelectToggle {
 
     return (
       <Host>
-        <brx-button aria-label={label} title={label} tabindex="-1">
+        <brx-button aria-label={label} size="small" title={label} tabindex="-1">
           <brx-icon name={expanded ? 'fa5/fas/angle-up' : 'fa5/fas/angle-down'} aria-hidden="true"></brx-icon>
           <slot></slot>
         </brx-button>

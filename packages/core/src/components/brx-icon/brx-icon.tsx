@@ -33,7 +33,7 @@ export class BrxIcon {
         <Host>
           {this.loadResources && (
             <Fragment>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+              <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
             </Fragment>
           )}
 

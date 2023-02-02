@@ -6,6 +6,8 @@ export const getWindow = (): Window | null => window;
 
 export const toggleItem = <T>(arr: T[], value: T) => (arr.includes(value) ? arr.filter(i => i !== value) : [...arr, value]);
 
+export const castArray = <T>(arr: T | T[]): T[] => (Array.isArray(arr) ? arr : [arr]);
+
 export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestOptions) => {
   const win = getWindow();
 
@@ -29,9 +31,40 @@ export const findTarget = <R extends T | null, T extends HTMLElement = HTMLEleme
   return null;
 };
 
-export const findTargets = <E extends Element, S extends string = string>(selector: S, baseElement?: HTMLElement): E[] => {
-  const base = baseElement ?? getWindow()?.document;
-  return Array.from(base.querySelectorAll(selector) ?? []);
+export const findTargets = <E extends HTMLElement, S extends string = string>(
+  selector: S,
+  baseElement?: HTMLElement,
+  traversal: ('child' | 'parent' | 'self')[] = ['child'],
+): E[] => {
+  const matches: E[] = [];
+
+  const base: HTMLElement = baseElement ?? getWindow()?.document.documentElement;
+
+  if (traversal.includes('child')) {
+    matches.push(...Array.from(base.querySelectorAll<E>(selector) ?? []));
+  }
+
+  if (traversal.includes('parent')) {
+    let searchElement: HTMLElement | null = base;
+
+    while (searchElement !== null) {
+      const current = searchElement.closest<E>(selector) ?? null;
+
+      searchElement = current;
+
+      if (searchElement) {
+        matches.push(current);
+      }
+    }
+  }
+
+  if (traversal.includes('self')) {
+    if (base.matches(selector)) {
+      matches.push(base as E);
+    }
+  }
+
+  return matches;
 };
 
 export const toggleAttribute = (element: HTMLElement, name: string) => {

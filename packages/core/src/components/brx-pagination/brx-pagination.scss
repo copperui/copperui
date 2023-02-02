@@ -1,0 +1,25 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-pagination {
+  display: block;
+
+  @include pagination-configs;
+
+  a {
+    display: inline-block;
+
+    &[data-pagination-target] {
+      &:hover {
+        &,
+        &:not(:disabled) {
+          background-image: unset;
+        }
+      }
+    }
+  }
+
+  &[data-pagination-target] {
+    @include focus;
+  }
+}
