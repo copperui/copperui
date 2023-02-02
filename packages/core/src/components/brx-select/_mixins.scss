@@ -16,6 +16,7 @@
 }
 
 @mixin select-default {
+  display: block;
   max-width: 400px;
   min-width: 100px;
   position: relative;
@@ -30,7 +31,7 @@
     margin-top: -2px;
     max-height: 404px;
     overflow: auto;
-    // position: absolute;
+    position: absolute;
     resize: none;
     width: 100%;
     z-index: 1;

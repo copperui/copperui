@@ -7,19 +7,21 @@
 
 ## Properties
 
-| Property           | Attribute            | Description                                                     | Type       | Default                |
-| ------------------ | -------------------- | --------------------------------------------------------------- | ---------- | ---------------------- |
-| `controlledValue`  | --                   |                                                                 | `string[]` | `TOKEN_UNCONTROLLED`   |
-| `darkMode`         | `dark-mode`          |                                                                 | `boolean`  | `false`                |
-| `disableToggleAll` | `disable-toggle-all` |                                                                 | `boolean`  | `false`                |
-| `inputId`          | `input-id`           |                                                                 | `string`   | `undefined`            |
-| `label`            | `label`              |                                                                 | `string`   | `undefined`            |
-| `multiple`         | `multiple`           |                                                                 | `boolean`  | `false`                |
-| `name`             | `name`               | The name of the control, which is submitted with the form data. | `string`   | `undefined`            |
-| `nativeSelect`     | `native-select`      |                                                                 | `boolean`  | `null`                 |
-| `selectAllLabel`   | `select-all-label`   |                                                                 | `string`   | `'Selecionar Todos'`   |
-| `unselectAllLabel` | `unselect-all-label` |                                                                 | `string`   | `'Deselecionar Todos'` |
-| `value`            | --                   |                                                                 | `string[]` | `[]`                   |
+| Property           | Attribute            | Description                                                     | Type                 | Default                |
+| ------------------ | -------------------- | --------------------------------------------------------------- | -------------------- | ---------------------- |
+| `controlledValue`  | `controlled-value`   |                                                                 | `string \| string[]` | `TOKEN_UNCONTROLLED`   |
+| `darkMode`         | `dark-mode`          |                                                                 | `boolean`            | `false`                |
+| `disableToggleAll` | `disable-toggle-all` |                                                                 | `boolean`            | `false`                |
+| `hideSearchIcon`   | `hide-search-icon`   |                                                                 | `boolean`            | `false`                |
+| `inputId`          | `input-id`           |                                                                 | `string`             | `undefined`            |
+| `label`            | `label`              |                                                                 | `string`             | `undefined`            |
+| `multiple`         | `multiple`           |                                                                 | `boolean`            | `false`                |
+| `name`             | `name`               | The name of the control, which is submitted with the form data. | `string`             | `undefined`            |
+| `nativeSelect`     | `native-select`      |                                                                 | `boolean`            | `null`                 |
+| `placeholder`      | `placeholder`        |                                                                 | `string`             | `undefined`            |
+| `selectAllLabel`   | `select-all-label`   |                                                                 | `string`             | `'Selecionar Todos'`   |
+| `unselectAllLabel` | `unselect-all-label` |                                                                 | `string`             | `'Deselecionar Todos'` |
+| `value`            | `value`              |                                                                 | `string \| string[]` | `[]`                   |
 
 
 ## Events

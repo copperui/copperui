@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { TOKEN_UNCONTROLLED } from '../../tokens';
-import { enqueueIdleCallback, findTarget, findTargets, generateUniqueId, minmax, toggleItem } from '../../utils/helpers';
+import { castArray, enqueueIdleCallback, findTarget, findTargets, generateUniqueId, minmax, toggleItem } from '../../utils/helpers';
 import { InputChangeEventDetail } from '../brx-input/brx-input.interface';
 import { SelectOptionChangeEventDetail } from '../brx-select-option/brx-select-option-interface';
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from './brx-select-interface';
@@ -45,6 +45,12 @@ export class BrxSelect implements ComponentInterface {
   @Prop({ reflect: true })
   darkMode = false;
 
+  @Prop()
+  hideSearchIcon = false;
+
+  @Prop()
+  placeholder: string | undefined;
+
   /**
    * The name of the control, which is submitted with the form data.
    */
@@ -79,19 +85,19 @@ export class BrxSelect implements ComponentInterface {
   unselectAllLabel = 'Deselecionar Todos';
 
   @Prop()
-  value: string[] = [];
+  value: string | string[] = [];
 
   @Prop()
-  controlledValue: string[] | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  controlledValue: string | string[] | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentValue: string[] = [];
 
   @Watch('value')
   @Watch('controlledValue')
-  syncCurrentValue() {
+  syncCurrentValueFromProps() {
     const incomingValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
-    this.currentValue = incomingValue ?? [];
+    this.currentValue = castArray(incomingValue ?? []);
   }
 
   get definedOptions() {
@@ -126,7 +132,7 @@ export class BrxSelect implements ComponentInterface {
   }
 
   get inputPlaceholder() {
-    return this.multiple ? 'Selecione os itens.' : 'Selecione o item.';
+    return this.placeholder ?? (this.multiple ? 'Selecione os itens.' : 'Selecione o item.');
   }
 
   get isToggleAllEnabled() {
@@ -415,7 +421,7 @@ export class BrxSelect implements ComponentInterface {
       this.inputId = generateUniqueId();
     }
 
-    this.syncCurrentValue();
+    this.syncCurrentValueFromProps();
   }
 
   componentDidLoad() {
@@ -429,7 +435,7 @@ export class BrxSelect implements ComponentInterface {
   render() {
     return (
       <Host>
-        <brx-input type="text" label={this.label} data-select-input placeholder={this.inputPlaceholder} start-icon-name="fa5/fas/search">
+        <brx-input type="text" label={this.label} data-select-input placeholder={this.inputPlaceholder} start-icon-name={this.hideSearchIcon ? undefined : 'fa5/fas/search'}>
           <brx-select-toggle slot="end-button"></brx-select-toggle>
         </brx-input>
 

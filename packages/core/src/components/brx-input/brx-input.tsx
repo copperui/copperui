@@ -362,9 +362,9 @@ export class BrxInput implements ComponentInterface {
                 </brx-button>
               </Fragment>
             )}
-
-            <slot name={'end-button'}></slot>
           </div>
+
+          <slot name={'end-button'}></slot>
         </div>
 
         <slot name="helper"></slot>
