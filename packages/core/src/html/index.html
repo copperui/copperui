@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
     <title>copperui components playground</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
     <script type="module" src="/build/copperui.esm.js"></script>
     <script nomodule src="/build/copperui.js"></script>
@@ -2791,6 +2791,556 @@
             </brx-tabs-panels>
           </div>
         </brx-notification>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Pagination -->
+
+    <section>
+      <h1>Pagination</h1>
+
+      <div>
+        <h2>Paginação padrão</h2>
+
+        <brx-pagination total="4" page="1">
+          <a tabindex="-1" data-pagination-target="first" href="#">
+            <brx-pagination-item target="first"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="prev" href="#">
+            <brx-pagination-item target="prev"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="1" href="#">
+            <brx-pagination-item target="1" active></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="2" href="#">
+            <brx-pagination-item target="2"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="3" href="#">
+            <brx-pagination-item target="3"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="4" href="#">
+            <brx-pagination-item target="4"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="next" href="#">
+            <brx-pagination-item target="next"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="last" href="#">
+            <brx-pagination-item target="last"></brx-pagination-item>
+          </a>
+        </brx-pagination>
+      </div>
+
+      <div>
+        <h2>Botão Reticências</h2>
+
+        <div>
+          <brx-pagination total="10" page="9">
+            <a tabindex="-1" data-pagination-target="first" href="#">
+              <brx-pagination-item target="first"></brx-pagination-item>
+            </a>
+            <a tabindex="-1" data-pagination-target="prev" href="#">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+            </a>
+
+            <a tabindex="-1" data-pagination-target="1" href="#">
+              <brx-pagination-item target="1" active></brx-pagination-item>
+            </a>
+            <a tabindex="-1" data-pagination-target="8" href="#">
+              <brx-pagination-item target="8"></brx-pagination-item>
+            </a>
+            <a tabindex="-1" data-pagination-target="9" href="#">
+              <brx-pagination-item target="9"></brx-pagination-item>
+            </a>
+            <a tabindex="-1" data-pagination-target="10" href="#">
+              <brx-pagination-item target="10"></brx-pagination-item>
+            </a>
+
+            <a tabindex="-1" data-pagination-target="next" href="#">
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </a>
+            <a tabindex="-1" data-pagination-target="last" href="#">
+              <brx-pagination-item target="last"></brx-pagination-item>
+            </a>
+          </brx-pagination>
+
+          <hr />
+
+          <brx-pagination class="d-none d-sm-flex" data-total="20" data-current="13">
+            <li>
+              <brx-button circle>
+                <brx-icon name="fa5/fas/angle-left" type="button" aria-label="Página anterior" data-previous-page="data-previous-page"></brx-icon>
+              </brx-button>
+            </li>
+            <li><a class="page" href="#">1</a></li>
+            <li class="pagination-ellipsis">
+              <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
+              <div class="br-list">
+                <a class="br-item" href="#">2</a><a class="br-item" href="#">3</a><a class="br-item" href="#">4</a><a class="br-item" href="#">5</a><a class="br-item" href="#">6</a
+                ><a class="br-item" href="#">7</a><a class="br-item" href="#">8</a><a class="br-item" href="#">9</a><a class="br-item" href="#">10</a>
+              </div>
+            </li>
+            <li><a class="page" href="#">11</a></li>
+            <li><a class="page" href="#">12</a></li>
+            <li><a class="page active" href="#">13</a></li>
+            <li><a class="page" href="#">14</a></li>
+            <li><a class="page" href="#">15</a></li>
+            <li class="pagination-ellipsis">
+              <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
+              <div class="br-list"><a class="br-item" href="#">16</a><a class="br-item" href="#">17</a><a class="br-item" href="#">18</a><a class="br-item" href="#">19</a></div>
+            </li>
+            <li><a class="page" href="#">20</a></li>
+            <li>
+              <brx-button circle>
+                <brx-icon name="fa5/fas/angle-right" type="button" aria-label="Página seguinte" data-next-page="data-next-page"></brx-icon>
+              </brx-button>
+            </li>
+          </brx-pagination>
+          <hr />
+          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="10" data-current="2">
+            <ul>
+              <li>
+                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
+                  <i class="fas fa-angle-left" aria-hidden="true"></i>
+                </button>
+              </li>
+              <li><a class="page" href="#">1</a></li>
+              <li><a class="page active" href="#">2</a></li>
+              <li><a class="page" href="#">3</a></li>
+              <li><a class="page" href="#">4</a></li>
+              <li class="pagination-ellipsis">
+                <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
+                <div class="br-list">
+                  <a class="br-item" href="#">5</a><a class="br-item" href="#">6</a><a class="br-item" href="#">7</a><a class="br-item" href="#">8</a
+                  ><a class="br-item" href="#">9</a>
+                </div>
+              </li>
+              <li><a class="page" href="#">10</a></li>
+              <li>
+                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
+                  <i class="fas fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <nav class="br-pagination small" aria-label="Paginação de resultados" data-total="5" data-current="1">
+            <ul>
+              <li>
+                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
+                  <i class="fas fa-angle-left" aria-hidden="true"></i>
+                </button>
+              </li>
+              <li><a class="page active" href="#">1</a></li>
+              <li><a class="page" href="#">2</a></li>
+              <li><a class="page" href="#">3</a></li>
+              <li><a class="page" href="#">4</a></li>
+              <li><a class="page" href="#">5</a></li>
+              <li>
+                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
+                  <i class="fas fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <hr />
+          <nav class="br-pagination large" aria-label="Paginação de resultados" data-total="3" data-current="1">
+            <ul>
+              <li>
+                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
+                  <i class="fas fa-angle-left" aria-hidden="true"></i>
+                </button>
+              </li>
+              <li><a class="page active" href="#">1</a></li>
+              <li><a class="page" href="#">2</a></li>
+              <li><a class="page" href="#">3</a></li>
+              <li>
+                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
+                  <i class="fas fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo Contextual</h2>
+
+        <div>
+          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="20">
+            <div class="pagination-per-page">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="per-page-selection-random-91003">Exibir</label>
+                  <input id="per-page-selection-random-91003" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-10-random-91003" type="radio" name="per-page-random-91003" value="per-page-10-random-91003" checked="checked" />
+                      <label for="per-page-10-random-91003">10</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-20-random-91003" type="radio" name="per-page-random-91003" value="per-page-20-random-91003" />
+                      <label for="per-page-20-random-91003">20</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-30-random-91003" type="radio" name="per-page-random-91003" value="per-page-30-random-91003" />
+                      <label for="per-page-30-random-91003">30</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-information d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+            </div>
+            <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="go-to-selection-random-32645">Página</label>
+                  <input id="go-to-selection-random-32645" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-1-random-32645" type="radio" name="go-to-random-32645" value="go-to-1-random-32645" checked="checked" />
+                      <label for="go-to-1-random-32645">1</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-2-random-32645" type="radio" name="go-to-random-32645" value="go-to-2-random-32645" />
+                      <label for="go-to-2-random-32645">2</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-3-random-32645" type="radio" name="go-to-random-32645" value="go-to-3-random-32645" />
+                      <label for="go-to-3-random-32645">3</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-arrows ml-auto ml-sm-0">
+              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+          </nav>
+          <hr />
+          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
+            <div class="pagination-arrows">
+              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-go-to-page d-none d-sm-flex">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="go-to-selection-random-53573">Página</label>
+                  <input id="go-to-selection-random-53573" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-1-random-53573" type="radio" name="go-to-random-53573" value="go-to-1-random-53573" checked="checked" />
+                      <label for="go-to-1-random-53573">1</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-2-random-53573" type="radio" name="go-to-random-53573" value="go-to-2-random-53573" />
+                      <label for="go-to-2-random-53573">2</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-3-random-53573" type="radio" name="go-to-random-53573" value="go-to-3-random-53573" />
+                      <label for="go-to-3-random-53573">3</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-4-random-53573" type="radio" name="go-to-random-53573" value="go-to-4-random-53573" />
+                      <label for="go-to-4-random-53573">4</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-5-random-53573" type="radio" name="go-to-random-53573" value="go-to-5-random-53573" />
+                      <label for="go-to-5-random-53573">5</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-per-page ml-auto">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="per-page-selection-random-41546">Exibir</label>
+                  <input id="per-page-selection-random-41546" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-10-random-41546" type="radio" name="per-page-random-41546" value="per-page-10-random-41546" checked="checked" />
+                      <label for="per-page-10-random-41546">10</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-20-random-41546" type="radio" name="per-page-random-41546" value="per-page-20-random-41546" />
+                      <label for="per-page-20-random-41546">20</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-30-random-41546" type="radio" name="per-page-random-41546" value="per-page-30-random-41546" />
+                      <label for="per-page-30-random-41546">30</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-information d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+            </div>
+          </nav>
+          <hr />
+          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
+            <div class="pagination-per-page">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="per-page-selection-random-5840">Exibir</label>
+                  <input id="per-page-selection-random-5840" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-10-random-5840" type="radio" name="per-page-random-5840" value="per-page-10-random-5840" checked="checked" />
+                      <label for="per-page-10-random-5840">10</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-20-random-5840" type="radio" name="per-page-random-5840" value="per-page-20-random-5840" />
+                      <label for="per-page-20-random-5840">20</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="per-page-30-random-5840" type="radio" name="per-page-random-5840" value="per-page-30-random-5840" />
+                      <label for="per-page-30-random-5840">30</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-information d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+            </div>
+            <span class="br-divider d-none d-sm-block mx-3"></span>
+            <div class="pagination-go-to-page d-none d-sm-flex">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="go-to-selection-random-71648">Página</label>
+                  <input id="go-to-selection-random-71648" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-1-random-71648" type="radio" name="go-to-random-71648" value="go-to-1-random-71648" checked="checked" />
+                      <label for="go-to-1-random-71648">1</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-2-random-71648" type="radio" name="go-to-random-71648" value="go-to-2-random-71648" />
+                      <label for="go-to-2-random-71648">2</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-3-random-71648" type="radio" name="go-to-random-71648" value="go-to-3-random-71648" />
+                      <label for="go-to-3-random-71648">3</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-4-random-71648" type="radio" name="go-to-random-71648" value="go-to-4-random-71648" />
+                      <label for="go-to-4-random-71648">4</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-5-random-71648" type="radio" name="go-to-random-71648" value="go-to-5-random-71648" />
+                      <label for="go-to-5-random-71648">5</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-arrows ml-auto">
+              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div>
+        <h2>Em fundo escuro</h2>
+
+        <div>
+          <div class="bg-gray-60 p-3">
+            <nav class="br-pagination dark-mode" aria-label="Paginação de resultados" data-total="10" data-current="9">
+              <ul>
+                <li>
+                  <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
+                    <i class="fas fa-angle-left" aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li><a class="page" href="#">1</a></li>
+                <li class="pagination-ellipsis">
+                  <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
+                  <div class="br-list">
+                    <a class="br-item" href="#">2</a><a class="br-item" href="#">3</a><a class="br-item" href="#">4</a><a class="br-item" href="#">5</a
+                    ><a class="br-item" href="#">6</a><a class="br-item" href="#">7</a>
+                  </div>
+                </li>
+                <li><a class="page" href="#">8</a></li>
+                <li><a class="page active" href="#">9</a></li>
+                <li><a class="page" href="#">10</a></li>
+                <li>
+                  <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+            <hr />
+            <nav class="br-pagination dark-mode" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
+              <div class="pagination-per-page">
+                <div class="br-select">
+                  <div class="br-input">
+                    <label for="per-page-selection-random-858">Exibir</label>
+                    <input id="per-page-selection-random-858" type="text" placeholder=" " />
+                    <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="br-list" tabindex="0">
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="per-page-10-random-858" type="radio" name="per-page-random-858" value="per-page-10-random-858" checked="checked" />
+                        <label for="per-page-10-random-858">10</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="per-page-20-random-858" type="radio" name="per-page-random-858" value="per-page-20-random-858" />
+                        <label for="per-page-20-random-858">20</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="per-page-30-random-858" type="radio" name="per-page-random-858" value="per-page-30-random-858" />
+                        <label for="per-page-30-random-858">30</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="br-divider d-none d-sm-block mx-3"></span>
+              <div class="pagination-information d-none d-sm-flex">
+                <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+              </div>
+              <span class="br-divider d-none d-sm-block mx-3"></span>
+              <div class="pagination-go-to-page d-none d-sm-flex">
+                <div class="br-select">
+                  <div class="br-input">
+                    <label for="go-to-selection-random-18933">Página</label>
+                    <input id="go-to-selection-random-18933" type="text" placeholder=" " />
+                    <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="br-list" tabindex="0">
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="go-to-1-random-18933" type="radio" name="go-to-random-18933" value="go-to-1-random-18933" checked="checked" />
+                        <label for="go-to-1-random-18933">1</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="go-to-2-random-18933" type="radio" name="go-to-random-18933" value="go-to-2-random-18933" />
+                        <label for="go-to-2-random-18933">2</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="go-to-3-random-18933" type="radio" name="go-to-random-18933" value="go-to-3-random-18933" />
+                        <label for="go-to-3-random-18933">3</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="go-to-4-random-18933" type="radio" name="go-to-random-18933" value="go-to-4-random-18933" />
+                        <label for="go-to-4-random-18933">4</label>
+                      </div>
+                    </div>
+                    <div class="br-item" tabindex="-1">
+                      <div class="br-radio">
+                        <input id="go-to-5-random-18933" type="radio" name="go-to-random-18933" value="go-to-5-random-18933" />
+                        <label for="go-to-5-random-18933">5</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pagination-arrows ml-auto">
+                <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+                <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+              </div>
+            </nav>
+          </div>
+        </div>
       </div>
     </section>
 

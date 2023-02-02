@@ -185,7 +185,7 @@ export class BrxTabs implements ComponentInterface {
     this.currentValue = this.value;
   }
 
-  handleKeyboardEvent(event: KeyboardEvent) {
+  handleKeyupEvent(event: KeyboardEvent) {
     const jumpToIndex = (targetIndex: number) => {
       event.preventDefault();
 
@@ -222,18 +222,22 @@ export class BrxTabs implements ComponentInterface {
         jumpToIndex(this.tabItems.length - 1);
         break;
       }
+
       case 'Home': {
         jumpToIndex(0);
         break;
       }
+
       case 'ArrowLeft': {
         rotateFocus(-1);
         break;
       }
+
       case 'ArrowRight': {
         rotateFocus(1);
         break;
       }
+
       case 'Tab': {
         rotateFocus(0);
         break;
@@ -280,7 +284,7 @@ export class BrxTabs implements ComponentInterface {
 
   @Listen('keyup')
   handleKeyUp(event: KeyboardEvent) {
-    this.handleKeyboardEvent(event);
+    this.handleKeyupEvent(event);
   }
 
   componentWillLoad() {
