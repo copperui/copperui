@@ -6,6 +6,8 @@ export const getWindow = (): Window | null => window;
 
 export const toggleItem = <T>(arr: T[], value: T) => (arr.includes(value) ? arr.filter(i => i !== value) : [...arr, value]);
 
+export const castArray = <T>(arr: T | T[]): T[] => (Array.isArray(arr) ? arr : [arr]);
+
 export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestOptions) => {
   const win = getWindow();
 

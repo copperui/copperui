@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type     | Default              |
-| ---------------- | ----------------- | ----------- | -------- | -------------------- |
-| `controlledPage` | `controlled-page` |             | `number` | `TOKEN_UNCONTROLLED` |
-| `page`           | `page`            |             | `number` | `undefined`          |
-| `total`          | `total`           |             | `number` | `undefined`          |
+| Property         | Attribute         | Description | Type                             | Default              |
+| ---------------- | ----------------- | ----------- | -------------------------------- | -------------------- |
+| `controlledPage` | `controlled-page` |             | `number`                         | `TOKEN_UNCONTROLLED` |
+| `page`           | `page`            |             | `number`                         | `undefined`          |
+| `size`           | `size`            |             | `"large" \| "medium" \| "small"` | `'medium'`           |
+| `total`          | `total`           |             | `number`                         | `undefined`          |
 
 
 ## Events

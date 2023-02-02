@@ -10,15 +10,6 @@
   @include pagination-sizes;
   @include pagination-contextual;
   @include pagination-dark-mode;
-  @include pagination-select-fix;
-}
-
-@mixin pagination-select-fix {
-  .input-group {
-    .input-icon {
-      display: none;
-    }
-  }
 }
 
 @mixin pagination-tokens {
@@ -37,7 +28,7 @@
   font-weight: var(--font-weight);
   justify-content: center;
 
-  .brx-pagination-items-list {
+  brx-pagination-items {
     align-items: center;
     display: flex;
     list-style: none;
@@ -92,7 +83,7 @@
       --button-size: var(--pagination-size);
     }
 
-    brx-list {
+    .brx-pagination-ellipsis-dropdown-content {
       @include scrollbar;
       max-height: 220px;
       min-width: 4em;
@@ -111,19 +102,21 @@
 }
 
 @mixin pagination-contextual {
-  .pagination-information {
+  brx-pagination-information {
     align-items: center;
     display: flex;
   }
 
-  .pagination-per-page,
-  .pagination-go-to-page {
+  brx-pagination-per-page,
+  brx-pagination-go-to-page {
     align-items: center;
     display: flex;
 
     brx-input {
       align-items: center;
       display: flex;
+
+      --input-size: var(--pagination-medium);
 
       label {
         font-weight: var(--font-weight-regular);
@@ -133,7 +126,6 @@
       }
 
       input {
-        --input-size: var(--pagination-medium);
         padding-left: var(--spacing-scale-base);
         padding-right: calc(var(--spacing-scale-baseh) + 32px);
         text-align: right;
@@ -145,14 +137,16 @@
       }
     }
 
-    brx-list {
-      min-width: 5em;
-      right: 0;
-      width: auto;
+    brx-select {
+      .brx-select-options {
+        min-width: 5em;
+        right: 0;
+        width: auto;
+      }
     }
   }
 
-  .pagination-arrows {
+  brx-pagination-arrows {
     align-items: center;
     display: flex;
   }
@@ -161,15 +155,20 @@
     brx-input {
       brx-button {
         bottom: auto;
-        margin-top: 0;
+
         position: absolute;
         right: var(--spacing-scale-half);
         top: auto;
         transform: none;
+
+        .brx-button-native {
+          margin-top: 0;
+        }
       }
     }
   }
-  brx-item {
+
+  brx-divider {
     border-right-width: var(--divider-size);
     border-top: 0;
   }

@@ -5,11 +5,17 @@
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
     <title>copperui components playground</title>
 
+    <!-- Font Rawline-->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <!-- Font Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <link href="/build/copperui.css" rel="stylesheet" />
 
     <script type="module" src="/build/copperui.esm.js"></script>
     <script nomodule src="/build/copperui.js"></script>
-    <link href="/build/copperui.css" rel="stylesheet" />
 
     <script>
       document.addEventListener('click', e => {
@@ -40,7 +46,7 @@
   </head>
 
   <body>
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Accordion -->
 
@@ -184,14 +190,14 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Accordion (legado) -->
 
     <section>
       <h1>Accordion (legado)</h1>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <brx-accordion-legacy negative="negative" single>
         <brx-accordion-legacy-entry header-title="Assuntos #01">
@@ -206,7 +212,7 @@
         </brx-accordion-legacy-entry>
       </brx-accordion-legacy>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <brx-accordion-legacy id="acc-lgcy-js"></brx-accordion-legacy>
 
@@ -219,14 +225,14 @@
       </script>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Avatar -->
 
     <section>
       <h1>Avatar</h1>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <brx-avatar></brx-avatar>
       <brx-avatar name="Frederico" size="medium"></brx-avatar>
@@ -265,7 +271,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Breadcrumb -->
 
@@ -341,14 +347,14 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Button -->
 
     <section>
       <h1>Button</h1>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Ênfases</h2>
@@ -366,7 +372,7 @@
         </div>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Tipo Circular</h2>
@@ -396,7 +402,7 @@
         </div>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Tipo Bloco</h2>
@@ -414,7 +420,7 @@
         </div>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Densidades</h2>
@@ -449,7 +455,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Card -->
 
@@ -732,7 +738,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Carousel -->
 
@@ -1089,7 +1095,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Checkbox -->
 
@@ -1168,7 +1174,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Collapse -->
 
@@ -1312,7 +1318,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Divider -->
 
@@ -1401,7 +1407,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Dropdown -->
 
@@ -1467,21 +1473,21 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Ícone -->
 
     <section>
       <h1>Ícone</h1>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <brx-icon name="camera"></brx-icon>
 
       <brx-icon name="bicycle"></brx-icon>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Input -->
 
@@ -1646,7 +1652,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Item -->
 
@@ -1656,7 +1662,7 @@
       <div>
         <h2>Exemplos de itens</h2>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <brx-item>
           <div class="row align-items-center">
@@ -1665,7 +1671,7 @@
           </div>
         </brx-item>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <brx-item>
           <div class="row align-items-center">
@@ -1679,20 +1685,20 @@
           </div>
         </brx-item>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <brx-item pass-styles>
           <a href="#">Item link</a>
         </brx-item>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <brx-item pass-styles>
           <button type="button">Item botão</button>
         </brx-item>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Itens de seleção</h2>
@@ -1716,12 +1722,12 @@
         </div>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div>
         <h2>Item Desativado</h2>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <div>
           <brx-item disabled="disabled">
@@ -1734,7 +1740,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- List -->
 
@@ -2038,7 +2044,7 @@
           </brx-list>
         </div>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <div>
           <brx-list>
@@ -2122,7 +2128,7 @@
           </brx-list>
         </div>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <div>
           <brx-list>
@@ -2441,7 +2447,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Loading -->
 
@@ -2472,7 +2478,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Magic Button -->
 
@@ -2512,7 +2518,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Message -->
 
@@ -2561,7 +2567,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Modal -->
 
@@ -2679,7 +2685,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Notification -->
 
@@ -2794,7 +2800,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Pagination -->
 
@@ -2837,93 +2843,225 @@
 
         <div>
           <brx-pagination total="10" page="9">
-            <a tabindex="-1" data-pagination-target="first" href="#">
-              <brx-pagination-item target="first"></brx-pagination-item>
-            </a>
-            <a tabindex="-1" data-pagination-target="prev" href="#">
-              <brx-pagination-item target="prev"></brx-pagination-item>
-            </a>
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1" active></brx-pagination-item>
+              </a>
 
-            <a tabindex="-1" data-pagination-target="1" href="#">
-              <brx-pagination-item target="1" active></brx-pagination-item>
-            </a>
-            <a tabindex="-1" data-pagination-target="8" href="#">
-              <brx-pagination-item target="8"></brx-pagination-item>
-            </a>
-            <a tabindex="-1" data-pagination-target="9" href="#">
-              <brx-pagination-item target="9"></brx-pagination-item>
-            </a>
-            <a tabindex="-1" data-pagination-target="10" href="#">
-              <brx-pagination-item target="10"></brx-pagination-item>
-            </a>
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
 
-            <a tabindex="-1" data-pagination-target="next" href="#">
-              <brx-pagination-item target="next"></brx-pagination-item>
-            </a>
-            <a tabindex="-1" data-pagination-target="last" href="#">
-              <brx-pagination-item target="last"></brx-pagination-item>
-            </a>
+              <a tabindex="-1" data-pagination-target="8" href="#">
+                <brx-pagination-item target="8"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="9" href="#">
+                <brx-pagination-item target="9"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="10" href="#">
+                <brx-pagination-item target="10"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
           </brx-pagination>
 
-          <hr />
+          <brx-divider></brx-divider>
 
-          <brx-pagination class="d-none d-sm-flex" data-total="20" data-current="13">
-            <li>
-              <brx-button circle>
-                <brx-icon name="fa5/fas/angle-left" type="button" aria-label="Página anterior" data-previous-page="data-previous-page"></brx-icon>
-              </brx-button>
-            </li>
-            <li><a class="page" href="#">1</a></li>
-            <li class="pagination-ellipsis">
-              <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
-              <div class="br-list">
-                <a class="br-item" href="#">2</a><a class="br-item" href="#">3</a><a class="br-item" href="#">4</a><a class="br-item" href="#">5</a><a class="br-item" href="#">6</a
-                ><a class="br-item" href="#">7</a><a class="br-item" href="#">8</a><a class="br-item" href="#">9</a><a class="br-item" href="#">10</a>
-              </div>
-            </li>
-            <li><a class="page" href="#">11</a></li>
-            <li><a class="page" href="#">12</a></li>
-            <li><a class="page active" href="#">13</a></li>
-            <li><a class="page" href="#">14</a></li>
-            <li><a class="page" href="#">15</a></li>
-            <li class="pagination-ellipsis">
-              <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
-              <div class="br-list"><a class="br-item" href="#">16</a><a class="br-item" href="#">17</a><a class="br-item" href="#">18</a><a class="br-item" href="#">19</a></div>
-            </li>
-            <li><a class="page" href="#">20</a></li>
-            <li>
-              <brx-button circle>
-                <brx-icon name="fa5/fas/angle-right" type="button" aria-label="Página seguinte" data-next-page="data-next-page"></brx-icon>
-              </brx-button>
-            </li>
+          <brx-pagination class="d-none d-sm-flex" total="20" page="13">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="8">8</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="9">9</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="10">10</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="11" href="#">
+                <brx-pagination-item target="11"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="12" href="#">
+                <brx-pagination-item target="12"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="13" href="#">
+                <brx-pagination-item target="13" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="14" href="#">
+                <brx-pagination-item target="14"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="15" href="#">
+                <brx-pagination-item target="15"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="16">16</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="17">17</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="18">18</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="19">19</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="20" href="#">
+                <brx-pagination-item target="20"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
           </brx-pagination>
-          <hr />
-          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="10" data-current="2">
-            <ul>
-              <li>
-                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
-                  <i class="fas fa-angle-left" aria-hidden="true"></i>
-                </button>
-              </li>
-              <li><a class="page" href="#">1</a></li>
-              <li><a class="page active" href="#">2</a></li>
-              <li><a class="page" href="#">3</a></li>
-              <li><a class="page" href="#">4</a></li>
-              <li class="pagination-ellipsis">
-                <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
-                <div class="br-list">
-                  <a class="br-item" href="#">5</a><a class="br-item" href="#">6</a><a class="br-item" href="#">7</a><a class="br-item" href="#">8</a
-                  ><a class="br-item" href="#">9</a>
-                </div>
-              </li>
-              <li><a class="page" href="#">10</a></li>
-              <li>
-                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
-                  <i class="fas fa-angle-right" aria-hidden="true"></i>
-                </button>
-              </li>
-            </ul>
-          </nav>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination total="10" page="2">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="4" href="#">
+                <brx-pagination-item target="4"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="8">8</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="9">9</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="10" href="#">
+                <brx-pagination-item target="10"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
         </div>
       </div>
 
@@ -2931,43 +3069,53 @@
         <h2>Densidades</h2>
 
         <div>
-          <nav class="br-pagination small" aria-label="Paginação de resultados" data-total="5" data-current="1">
-            <ul>
-              <li>
-                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
-                  <i class="fas fa-angle-left" aria-hidden="true"></i>
-                </button>
-              </li>
-              <li><a class="page active" href="#">1</a></li>
-              <li><a class="page" href="#">2</a></li>
-              <li><a class="page" href="#">3</a></li>
-              <li><a class="page" href="#">4</a></li>
-              <li><a class="page" href="#">5</a></li>
-              <li>
-                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
-                  <i class="fas fa-angle-right" aria-hidden="true"></i>
-                </button>
-              </li>
-            </ul>
-          </nav>
-          <hr />
-          <nav class="br-pagination large" aria-label="Paginação de resultados" data-total="3" data-current="1">
-            <ul>
-              <li>
-                <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
-                  <i class="fas fa-angle-left" aria-hidden="true"></i>
-                </button>
-              </li>
-              <li><a class="page active" href="#">1</a></li>
-              <li><a class="page" href="#">2</a></li>
-              <li><a class="page" href="#">3</a></li>
-              <li>
-                <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
-                  <i class="fas fa-angle-right" aria-hidden="true"></i>
-                </button>
-              </li>
-            </ul>
-          </nav>
+          <brx-pagination size="small" total="5" page="1">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="4" href="#">
+                <brx-pagination-item target="4"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="5" href="#">
+                <brx-pagination-item target="5"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination size="large" total="3" page="3">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
         </div>
       </div>
 
@@ -2975,203 +3123,107 @@
         <h2>Tipo Contextual</h2>
 
         <div>
-          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="20">
-            <div class="pagination-per-page">
-              <div class="br-select">
-                <div class="br-input">
-                  <label for="per-page-selection-random-91003">Exibir</label>
-                  <input id="per-page-selection-random-91003" type="text" placeholder=" " />
-                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="br-list" tabindex="0">
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-10-random-91003" type="radio" name="per-page-random-91003" value="per-page-10-random-91003" checked="checked" />
-                      <label for="per-page-10-random-91003">10</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-20-random-91003" type="radio" name="per-page-random-91003" value="per-page-20-random-91003" />
-                      <label for="per-page-20-random-91003">20</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-30-random-91003" type="radio" name="per-page-random-91003" value="per-page-30-random-91003" />
-                      <label for="per-page-30-random-91003">30</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
-            <div class="pagination-information d-none d-sm-flex">
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-per-page>
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
               <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
-            </div>
-            <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
-              <div class="br-select">
-                <div class="br-input">
-                  <label for="go-to-selection-random-32645">Página</label>
-                  <input id="go-to-selection-random-32645" type="text" placeholder=" " />
-                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="br-list" tabindex="0">
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-1-random-32645" type="radio" name="go-to-random-32645" value="go-to-1-random-32645" checked="checked" />
-                      <label for="go-to-1-random-32645">1</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-2-random-32645" type="radio" name="go-to-random-32645" value="go-to-2-random-32645" />
-                      <label for="go-to-2-random-32645">2</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-3-random-32645" type="radio" name="go-to-random-32645" value="go-to-3-random-32645" />
-                      <label for="go-to-3-random-32645">3</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
-            <div class="pagination-arrows ml-auto ml-sm-0">
-              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
-              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
-            </div>
-          </nav>
-          <hr />
+            </brx-pagination-information>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex ml-auto">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-arrows class="ml-auto ml-sm-0">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-arrows class="ml-auto ml-sm-0">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-pagination-per-page class="ml-auto">
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+            </brx-pagination-information>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-per-page>
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+            </brx-pagination-information>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-pagination-arrows class="ml-auto">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+          </brx-pagination>
+
+          <!-- 
           <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
-            <div class="pagination-arrows">
-              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
-              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
-            <div class="pagination-go-to-page d-none d-sm-flex">
-              <div class="br-select">
-                <div class="br-input">
-                  <label for="go-to-selection-random-53573">Página</label>
-                  <input id="go-to-selection-random-53573" type="text" placeholder=" " />
-                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="br-list" tabindex="0">
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-1-random-53573" type="radio" name="go-to-random-53573" value="go-to-1-random-53573" checked="checked" />
-                      <label for="go-to-1-random-53573">1</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-2-random-53573" type="radio" name="go-to-random-53573" value="go-to-2-random-53573" />
-                      <label for="go-to-2-random-53573">2</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-3-random-53573" type="radio" name="go-to-random-53573" value="go-to-3-random-53573" />
-                      <label for="go-to-3-random-53573">3</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-4-random-53573" type="radio" name="go-to-random-53573" value="go-to-4-random-53573" />
-                      <label for="go-to-4-random-53573">4</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="go-to-5-random-53573" type="radio" name="go-to-random-53573" value="go-to-5-random-53573" />
-                      <label for="go-to-5-random-53573">5</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="pagination-per-page ml-auto">
-              <div class="br-select">
-                <div class="br-input">
-                  <label for="per-page-selection-random-41546">Exibir</label>
-                  <input id="per-page-selection-random-41546" type="text" placeholder=" " />
-                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="br-list" tabindex="0">
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-10-random-41546" type="radio" name="per-page-random-41546" value="per-page-10-random-41546" checked="checked" />
-                      <label for="per-page-10-random-41546">10</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-20-random-41546" type="radio" name="per-page-random-41546" value="per-page-20-random-41546" />
-                      <label for="per-page-20-random-41546">20</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-30-random-41546" type="radio" name="per-page-random-41546" value="per-page-30-random-41546" />
-                      <label for="per-page-30-random-41546">30</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
-            <div class="pagination-information d-none d-sm-flex">
-              <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
-            </div>
-          </nav>
-          <hr />
-          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
-            <div class="pagination-per-page">
-              <div class="br-select">
-                <div class="br-input">
-                  <label for="per-page-selection-random-5840">Exibir</label>
-                  <input id="per-page-selection-random-5840" type="text" placeholder=" " />
-                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="br-list" tabindex="0">
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-10-random-5840" type="radio" name="per-page-random-5840" value="per-page-10-random-5840" checked="checked" />
-                      <label for="per-page-10-random-5840">10</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-20-random-5840" type="radio" name="per-page-random-5840" value="per-page-20-random-5840" />
-                      <label for="per-page-20-random-5840">20</label>
-                    </div>
-                  </div>
-                  <div class="br-item" tabindex="-1">
-                    <div class="br-radio">
-                      <input id="per-page-30-random-5840" type="radio" name="per-page-random-5840" value="per-page-30-random-5840" />
-                      <label for="per-page-30-random-5840">30</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
-            <div class="pagination-information d-none d-sm-flex">
-              <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
-            </div>
-            <span class="br-divider d-none d-sm-block mx-3"></span>
+            
+      
             <div class="pagination-go-to-page d-none d-sm-flex">
               <div class="br-select">
                 <div class="br-input">
@@ -3219,7 +3271,7 @@
               <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
               <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
             </div>
-          </nav>
+          </nav> -->
         </div>
       </div>
 
@@ -3228,130 +3280,122 @@
 
         <div>
           <div class="bg-gray-60 p-3">
-            <nav class="br-pagination dark-mode" aria-label="Paginação de resultados" data-total="10" data-current="9">
-              <ul>
-                <li>
-                  <button class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Página anterior">
-                    <i class="fas fa-angle-left" aria-hidden="true"></i>
-                  </button>
-                </li>
-                <li><a class="page" href="#">1</a></li>
-                <li class="pagination-ellipsis">
-                  <button class="br-button circle" type="button" data-toggle="dropdown" aria-label="Abrir listagem"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></button>
-                  <div class="br-list">
-                    <a class="br-item" href="#">2</a><a class="br-item" href="#">3</a><a class="br-item" href="#">4</a><a class="br-item" href="#">5</a
-                    ><a class="br-item" href="#">6</a><a class="br-item" href="#">7</a>
-                  </div>
-                </li>
-                <li><a class="page" href="#">8</a></li>
-                <li><a class="page active" href="#">9</a></li>
-                <li><a class="page" href="#">10</a></li>
-                <li>
-                  <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte">
-                    <i class="fas fa-angle-right" aria-hidden="true"></i>
-                  </button>
-                </li>
-              </ul>
-            </nav>
-            <hr />
-            <nav class="br-pagination dark-mode" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
-              <div class="pagination-per-page">
-                <div class="br-select">
-                  <div class="br-input">
-                    <label for="per-page-selection-random-858">Exibir</label>
-                    <input id="per-page-selection-random-858" type="text" placeholder=" " />
-                    <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  <div class="br-list" tabindex="0">
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="per-page-10-random-858" type="radio" name="per-page-random-858" value="per-page-10-random-858" checked="checked" />
-                        <label for="per-page-10-random-858">10</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="per-page-20-random-858" type="radio" name="per-page-random-858" value="per-page-20-random-858" />
-                        <label for="per-page-20-random-858">20</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="per-page-30-random-858" type="radio" name="per-page-random-858" value="per-page-30-random-858" />
-                        <label for="per-page-30-random-858">30</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <span class="br-divider d-none d-sm-block mx-3"></span>
-              <div class="pagination-information d-none d-sm-flex">
-                <span class="current">1</span>&ndash;<span class="per-page">10</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
-              </div>
-              <span class="br-divider d-none d-sm-block mx-3"></span>
-              <div class="pagination-go-to-page d-none d-sm-flex">
-                <div class="br-select">
-                  <div class="br-input">
-                    <label for="go-to-selection-random-18933">Página</label>
-                    <input id="go-to-selection-random-18933" type="text" placeholder=" " />
-                    <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  <div class="br-list" tabindex="0">
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="go-to-1-random-18933" type="radio" name="go-to-random-18933" value="go-to-1-random-18933" checked="checked" />
-                        <label for="go-to-1-random-18933">1</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="go-to-2-random-18933" type="radio" name="go-to-random-18933" value="go-to-2-random-18933" />
-                        <label for="go-to-2-random-18933">2</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="go-to-3-random-18933" type="radio" name="go-to-random-18933" value="go-to-3-random-18933" />
-                        <label for="go-to-3-random-18933">3</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="go-to-4-random-18933" type="radio" name="go-to-random-18933" value="go-to-4-random-18933" />
-                        <label for="go-to-4-random-18933">4</label>
-                      </div>
-                    </div>
-                    <div class="br-item" tabindex="-1">
-                      <div class="br-radio">
-                        <input id="go-to-5-random-18933" type="radio" name="go-to-random-18933" value="go-to-5-random-18933" />
-                        <label for="go-to-5-random-18933">5</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="pagination-arrows ml-auto">
-                <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
-                <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
-              </div>
-            </nav>
+            <brx-pagination dark-mode total="10" page="9">
+              <brx-pagination-items>
+                <a tabindex="-1" data-pagination-target="first" href="#">
+                  <brx-pagination-item target="first"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="prev" href="#">
+                  <brx-pagination-item target="prev"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="1" href="#">
+                  <brx-pagination-item target="1" active></brx-pagination-item>
+                </a>
+
+                <brx-pagination-ellipsis>
+                  <brx-list>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="2">2</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="3">3</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="4">4</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="5">5</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="6">6</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="7">7</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="2">2</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="3">3</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="4">4</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="5">5</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="6">6</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="7">7</a>
+                    </brx-item>
+                  </brx-list>
+                </brx-pagination-ellipsis>
+
+                <a tabindex="-1" data-pagination-target="8" href="#">
+                  <brx-pagination-item target="8"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="9" href="#">
+                  <brx-pagination-item target="9"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="10" href="#">
+                  <brx-pagination-item target="10"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="next" href="#">
+                  <brx-pagination-item target="next"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="last" href="#">
+                  <brx-pagination-item target="last"></brx-pagination-item>
+                </a>
+              </brx-pagination-items>
+            </brx-pagination>
+
+            <brx-divider></brx-divider>
+
+            <brx-pagination dark-mode aria-label="Paginação de resultados" total="50" page="1">
+              <brx-pagination-per-page>
+                <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                  <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                  <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                  <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+                </brx-select>
+              </brx-pagination-per-page>
+
+              <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+              <brx-pagination-information class="d-none d-sm-flex">
+                <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+              </brx-pagination-information>
+
+              <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+              <brx-pagination-go-to-page class="d-none d-sm-flex">
+                <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                  <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                  <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                  <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+                </brx-select>
+              </brx-pagination-go-to-page>
+
+              <brx-pagination-arrows class="ml-auto">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </brx-pagination-arrows>
+            </brx-pagination>
           </div>
         </div>
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Rádio -->
 
     <section>
       <h1>Radio</h1>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div class="py-3">
         <h2>Largado</h2>
@@ -3362,7 +3406,7 @@
         <brx-radio label="Oi" name="rex1" valid value="d"></brx-radio>
       </div>
 
-      <hr />
+      <brx-divider></brx-divider>
 
       <div class="py-3">
         <h2>Radio Group</h2>
@@ -3376,7 +3420,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Select -->
 
@@ -3453,7 +3497,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Sign-in -->
 
@@ -3593,7 +3637,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Scrim -->
 
@@ -3614,7 +3658,7 @@
       </brx-scrim-trigger>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Skip Link -->
 
@@ -3691,7 +3735,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Step -->
 
@@ -3897,7 +3941,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Tab -->
 
@@ -4151,7 +4195,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Tag -->
 
@@ -4336,7 +4380,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Textarea -->
 
@@ -4432,7 +4476,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Tooltip -->
 
@@ -4451,7 +4495,7 @@
           </brx-tooltip-content>
         </div>
 
-        <hr />
+        <brx-divider></brx-divider>
 
         <div>
           <brx-tooltip text="Texto de Informação!">
@@ -4504,7 +4548,7 @@
       </div>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
 
     <!-- Upload -->
 
@@ -4556,6 +4600,6 @@
       </script>
     </section>
 
-    <hr />
+    <brx-divider></brx-divider>
   </body>
 </html>

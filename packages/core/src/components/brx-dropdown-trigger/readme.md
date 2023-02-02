@@ -19,6 +19,7 @@
 ### Used by
 
  - [brx-breadcrumb](../brx-breadcrumb)
+ - [brx-pagination-ellipsis](../brx-pagination-ellipsis)
 
 ### Depends on
 
@@ -29,6 +30,7 @@
 graph TD;
   brx-dropdown-trigger --> brx-collapse-trigger
   brx-breadcrumb --> brx-dropdown-trigger
+  brx-pagination-ellipsis --> brx-dropdown-trigger
   style brx-dropdown-trigger fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

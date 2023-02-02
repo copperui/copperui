@@ -25,6 +25,9 @@ export class BrxPagination implements ComponentInterface {
   @Prop()
   page: number | undefined;
 
+  @Prop({ reflect: true })
+  size: 'small' | 'medium' | 'large' = 'medium';
+
   @Prop()
   controlledPage: number | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
@@ -161,7 +164,7 @@ export class BrxPagination implements ComponentInterface {
   }
 
   connectedCallback() {
-    this.handleCurrentPageChange();
+    this.handlePageChange();
   }
 
   // @Prop()
@@ -198,12 +201,8 @@ export class BrxPagination implements ComponentInterface {
   // count: number | null = null;
   render() {
     return (
-      <Host>
-        <nav aria-label="Paginação de resultados.">
-          <ul class={'brx-pagination-items-list'}>
-            <slot></slot>
-          </ul>
-        </nav>
+      <Host role="navigation" aria-label="Paginação de resultados.">
+        <slot></slot>
       </Host>
     );
   }
