@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Button</h1>
+
+      <brx-divider></brx-divider>
+
+      <div>
+        <h2>Ênfases</h2>
+
+        <div class="my-1 p-3">
+          <brx-button variant="primary">Primário</brx-button>
+          <brx-button variant="secondary">Secundário</brx-button>
+          <brx-button>Terciário</brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button dark-mode variant="primary">Primário</brx-button>
+          <brx-button dark-mode variant="secondary">Secundário</brx-button>
+          <brx-button dark-mode>Terciário</brx-button>
+        </div>
+      </div>
+
+      <brx-divider></brx-divider>
+
+      <div>
+        <h2>Tipo Circular</h2>
+
+        <div class="my-1 p-3">
+          <brx-button aria-label="Ícone ilustrativo" circle variant="primary">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle variant="secondary">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle>
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="primary">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="secondary">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle dark-mode variant="">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+      </div>
+
+      <brx-divider></brx-divider>
+
+      <div>
+        <h2>Tipo Bloco</h2>
+
+        <div class="my-1 p-3">
+          <brx-button block class="my-3" variant="primary">Primário</brx-button>
+          <brx-button block class="my-3" variant="secondary">Secundário</brx-button>
+          <brx-button block class="my-3">Terciário</brx-button>
+        </div>
+
+        <div class="my-1 p-3 bg-gray-60">
+          <brx-button block class="my-3" dark-mode variant="primary">Primário</brx-button>
+          <brx-button block class="my-3" dark-mode variant="secondary">Secundário</brx-button>
+          <brx-button block class="my-3" dark-mode>Terciário</brx-button>
+        </div>
+      </div>
+
+      <brx-divider></brx-divider>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div class="my-1 p-3">
+          <brx-button class="mr-3" size="large" variant="secondary">Baixa densidade</brx-button>
+          <brx-button class="mr-3" size="medium" variant="secondary">Padrão</brx-button>
+          <brx-button size="small" variant="secondary">Alta densidade</brx-button>
+        </div>
+
+        <div class="my-1 p-3">
+          <brx-button aria-label="Ícone ilustrativo" circle size="large" variant="secondary" class="mr-3">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle size="medium" variant="secondary" class="mr-3">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+          <brx-button aria-label="Ícone ilustrativo" circle size="small" variant="secondary">
+            <brx-icon name="city"></brx-icon>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Estados</h2>
+
+        <div class="my-1 p-3">
+          <brx-button class="mr-3" disabled variant="primary">Desativado</brx-button>
+          <brx-button active class="mr-3" variant="primary">Ativo</brx-button>
+          <brx-button loading variant="primary"></brx-button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

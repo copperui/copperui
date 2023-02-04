@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Tag</h1>
+
+      <div>
+        <h2>Tag de Interação Dispensável</h2>
+
+        <div>
+          <brx-tag interaction>
+            <brx-icon name="fa5/fas/car"></brx-icon>
+
+            <span>Label</span>
+
+            <brx-button circle aria-label="Fechar" data-dismiss="">
+              <brx-icon name="fa5/fas/times"></brx-icon>
+            </brx-button>
+          </brx-tag>
+
+          <brx-tag interaction id="interaction02">
+            <brx-icon name="fa5/fas/car"></brx-icon>
+
+            <span>Label</span>
+
+            <brx-button aria-label="Fechar" data-dismiss="#interaction02">
+              <brx-icon name="fa5/fas/times"></brx-icon>
+            </brx-button>
+          </brx-tag>
+        </div>
+
+        <div>
+          <h2>Tag de Interação Persistente</h2>
+
+          <div>
+            <div class="row">
+              <div class="col-md">
+                <p class="h4">Seleção múltipla</p>
+
+                <brx-tag interaction interaction-select>
+                  <input id="tag01" type="checkbox" />
+
+                  <label for="tag01">
+                    <brx-icon name="fa5/fas/car"></brx-icon>
+                    <span>Label</span>
+                  </label>
+                </brx-tag>
+
+                <brx-tag interaction interaction-select>
+                  <input id="tag02" type="checkbox" checked="checked" />
+
+                  <label for="tag02">
+                    <brx-icon name="fa5/fas/ship"></brx-icon>
+                    <span>Label</span>
+                  </label>
+                </brx-tag>
+              </div>
+
+              <div class="col-md">
+                <p class="h4">Seleção única</p>
+
+                <brx-tag interaction-select>
+                  <input id="tag03" type="radio" name="vehicle" />
+
+                  <label for="tag03">
+                    <brx-icon name="fa5/fas/car"></brx-icon>
+                    <span>Label</span>
+                  </label>
+                </brx-tag>
+
+                <brx-tag interaction-select>
+                  <input id="tag04" type="radio" checked="checked" name="vehicle" />
+
+                  <label for="tag04">
+                    <brx-icon name="fa5/fas/ship"></brx-icon>
+                    <span>Label</span>
+                  </label>
+                </brx-tag>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Tag de Texto</h2>
+
+          <div>
+            <brx-tag class="bg-mint-cool-vivid-40">
+              <brx-icon name="fa5/fas/car"></brx-icon>
+              <span>Label</span>
+            </brx-tag>
+            <brx-tag class="bg-violet-warm-vivid-70">
+              <span>Label</span>
+            </brx-tag>
+          </div>
+        </div>
+
+        <div>
+          <h2>Tag de Status</h2>
+
+          <div>
+            <div class="d-flex align-items-center">
+              <brx-tag status size="large" class="bg-danger"></brx-tag>
+              <brx-tag status size="medium" class="bg-warning"></brx-tag>
+              <brx-tag status size="small" class="bg-success"></brx-tag>
+            </div>
+
+            <div class="d-flex align-items-center mt-1">
+              <div class="d-inline-flex align-items-center mr-3">
+                <brx-tag status size="large" class="bg-danger"></brx-tag>
+                <span class="ml-1">Offline</span>
+              </div>
+              <div class="d-inline-flex align-items-center mr-3">
+                <brx-tag status class="bg-warning"></brx-tag>
+                <span class="ml-1">Ausente</span>
+              </div>
+              <div class="d-inline-flex align-items-center mr-3">
+                <brx-tag status size="small" class="bg-success"></brx-tag>
+                <span class="ml-1">Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Tag de Contagem</h2>
+
+          <div>
+            <brx-tag count class="bg-danger">
+              <span>1</span>
+            </brx-tag>
+            <brx-tag count class="bg-danger">
+              <span>10</span>
+            </brx-tag>
+            <brx-tag count class="bg-danger">
+              <span>130</span>
+            </brx-tag>
+
+            <brx-tooltip target="#asdf" color="info" place="right">
+              <brx-tag count class="bg-danger">
+                <span>999+</span>
+              </brx-tag>
+            </brx-tooltip>
+
+            <brx-tooltip-content id="asdf">
+              <span class="text">99957</span>
+            </brx-tooltip-content>
+          </div>
+        </div>
+
+        <div>
+          <h2>Tag de Ícone</h2>
+
+          <div>
+            <brx-tag icon class="bg-magenta-vivid-50">
+              <brx-icon name="fa5/fas/car"></brx-icon>
+            </brx-tag>
+
+            <brx-tag icon class="bg-orange-50">
+              <brx-icon name="fa5/fas/search"></brx-icon>
+            </brx-tag>
+
+            <brx-tag icon class="bg-violet-warm-vivid-70">
+              <brx-icon name="fa5/fas/user"></brx-icon>
+            </brx-tag>
+          </div>
+        </div>
+
+        <div>
+          <h2>Densidades</h2>
+
+          <brx-tag size="small" class="bg-orange-vivid-40">
+            <span>Alta</span>
+          </brx-tag>
+          <brx-tag size="medium" class="bg-green-warm-vivid-40">
+            <span>Padrão</span>
+          </brx-tag>
+          <brx-tag size="large" class="bg-indigo-warm-vivid-50">
+            <span>Baixa</span>
+          </brx-tag>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

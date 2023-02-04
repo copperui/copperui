@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Message</h1>
+
+      <div>
+        <h2>Tipo Padrão</h2>
+
+        <div>
+          <brx-message dismissable message-title="Data de início do afastamento inválida." severity="danger" variant="message">
+            <span>A data não pode ser superior à data atual.</span>
+          </brx-message>
+
+          <brx-message dismissable message-title="Sucesso." severity="success" variant="message">
+            <span>Seus dados foram alterados conforme preencimento do formulário.</span>
+          </brx-message>
+
+          <brx-message dismissable message-title="Informação." severity="info" variant="message">
+            <span>Seus dados só serão salvos após o preenchimento do primeiro campo do formulário.</span>
+          </brx-message>
+
+          <brx-message dismissable message-title="Atenção." severity="warning" variant="message">
+            <span>Em caso de dúvida, não compartilhe sua senha com terceiros. Ligue para a Central de atendimento.</span>
+          </brx-message>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo contextual</h2>
+
+        <div>
+          <div class="mb-3">
+            <brx-message severity="danger" variant="feedback">O CPF deve conter apenas dígitos.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message severity="success" variant="feedback">Campo correto.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message severity="warning" variant="feedback">A tecla CAPS-LOCK está ativada.</brx-message>
+          </div>
+          <div class="mb-3">
+            <brx-message severity="info" variant="feedback">Os arquivos devem ser no formato PNG, JPG, PDF e ter no máximo 1GB. </brx-message>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
