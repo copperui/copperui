@@ -16,6 +16,29 @@
 | `tooltipText` | `tooltip-text` |             | `string`                                       | `undefined` |
 
 
+## Methods
+
+### `setActive(active: boolean) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setDisabled(disabled: boolean) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

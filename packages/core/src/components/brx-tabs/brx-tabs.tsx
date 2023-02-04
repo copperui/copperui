@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { getWindow } from '../../utils/helpers';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { findTarget, findTargets, getWindow } from '../../utils/helpers';
 import { TabChangeEventDetail, TabClickEventDetail } from './brx-tabs-interface';
 
 @Component({
@@ -17,6 +18,14 @@ export class BrxTabs implements ComponentInterface {
   @Event()
   brxTabChange: EventEmitter<TabChangeEventDetail>;
 
+  get navEl() {
+    return findTarget<HTMLDivElement>('.brx-tabs-nav', this.el);
+  }
+
+  get tabItems() {
+    return findTargets<HTMLBrxTabElement>('brx-tab', this.el);
+  }
+
   @Prop({ reflect: true })
   name: string;
 
@@ -29,14 +38,29 @@ export class BrxTabs implements ComponentInterface {
   @Prop({ reflect: true })
   darkMode: boolean = false;
 
-  @Prop({ reflect: true })
-  value: string | undefined | null = null;
-
   @Prop({})
-  defaultValue: string | undefined = undefined;
+  value: string | undefined = undefined;
+
+  @Prop()
+  controlledValue: string | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentValue: string | undefined = undefined;
+
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    const incomingValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+    this.currentValue = incomingValue ?? this.activeTabItem?.value;
+  }
+
+  setCurrentValue(value: string | undefined) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = value;
+    }
+
+    this.brxTabChange.emit({ value: this.currentValue });
+  }
 
   @Method()
   async getCurrentValue() {
@@ -47,10 +71,6 @@ export class BrxTabs implements ComponentInterface {
   private navigationRight: number;
   private lastItemPosition: number;
 
-  get navEl() {
-    return this.el.querySelector<HTMLDivElement>('.brx-tabs-nav');
-  }
-
   get height() {
     return this.navEl.clientHeight;
   }
@@ -59,23 +79,18 @@ export class BrxTabs implements ComponentInterface {
     return this.navEl.scrollHeight - this.navEl.clientHeight;
   }
 
-  get tabItems() {
-    return Array.from(this.el.querySelectorAll('brx-tab'));
-  }
-
-  get activeTabItem(): HTMLBrxTabElement | null {
-    const { activeTabItemIndex } = this;
-
-    return this.tabItems[activeTabItemIndex] ?? null;
-  }
-
   get activeTabItemIndex() {
     return this.tabItems.findIndex(tab => tab.hasAttribute('active'));
   }
 
-  get currentFocusedIndex() {
+  get activeTabItem(): HTMLBrxTabElement | null {
+    const { activeTabItemIndex } = this;
+    return this.tabItems[activeTabItemIndex] ?? null;
+  }
+
+  get focusedTabItemIndex() {
     return Math.max(
-      Array.from(this.el.querySelectorAll('brx-tab')).findIndex(i => i.querySelector('.focus-visible') !== null),
+      this.tabItems.findIndex(i => i.querySelector('.focus-visible') !== null),
       0,
     );
   }
@@ -130,14 +145,9 @@ export class BrxTabs implements ComponentInterface {
 
   positionScroll(anchor: HTMLElement) {
     const tabItems = this.tabItems;
-
     this.lastItemPosition = Math.ceil(tabItems[tabItems.length - 1].getBoundingClientRect().right);
     this.navigationLeft = Math.floor(tabItems[0].getBoundingClientRect().left);
     this.navigationRight = Math.floor(anchor.getBoundingClientRect().right);
-  }
-
-  syncTabs() {
-    this.openTab(this.currentValue);
   }
 
   openTab(value: string | undefined) {
@@ -148,14 +158,13 @@ export class BrxTabs implements ComponentInterface {
     }
   }
 
-  updateValue(value: string | undefined) {
-    if (this.value === null) {
-      this.currentValue = value;
-    }
+  syncTabs() {
+    this.openTab(this.currentValue);
   }
 
-  getInitialValue() {
-    return this.value ?? this.defaultValue ?? this.activeTabItem?.value;
+  @Watch('currentValue')
+  handleCurrentValueChange() {
+    this.syncTabs();
   }
 
   clean() {
@@ -167,22 +176,11 @@ export class BrxTabs implements ComponentInterface {
   }
 
   hiddenTooltips() {
-    const tooltips = Array.from(this.el.querySelectorAll('brx-tooltip'));
+    const tooltips = findTargets<HTMLBrxTooltipElement>('brx-tooltip', this.el);
 
     for (const tooltip of tooltips) {
       tooltip.hide();
     }
-  }
-
-  @Watch('currentValue')
-  handleCurrentValueChange() {
-    this.syncTabs();
-    this.brxTabChange.emit({ value: this.currentValue });
-  }
-
-  @Watch('value')
-  handleValueChange() {
-    this.currentValue = this.value;
   }
 
   handleKeyupEvent(event: KeyboardEvent) {
@@ -193,6 +191,7 @@ export class BrxTabs implements ComponentInterface {
 
       if (tab) {
         this.openTab(tab.value);
+
         const button = tab.querySelector('button');
         button.focus();
       }
@@ -203,9 +202,8 @@ export class BrxTabs implements ComponentInterface {
     const rotateFocus = (direction: number) => {
       event.preventDefault();
 
-      const { currentFocusedIndex } = this;
-
-      const targetIndex = currentFocusedIndex + direction;
+      const { focusedTabItemIndex } = this;
+      const targetIndex = focusedTabItemIndex + direction;
 
       const tab = this.tabItems[targetIndex];
 
@@ -247,6 +245,7 @@ export class BrxTabs implements ComponentInterface {
         event.preventDefault();
 
         this.hiddenTooltips();
+
         const target = event.target as HTMLElement;
         target.click();
 
@@ -270,8 +269,7 @@ export class BrxTabs implements ComponentInterface {
       const tab = tabTrigger.closest('brx-tab');
 
       const { value } = tab;
-
-      this.updateValue(value);
+      this.setCurrentValue(value);
 
       this.brxTabClick.emit({ value });
     }
@@ -288,12 +286,19 @@ export class BrxTabs implements ComponentInterface {
   }
 
   componentWillLoad() {
-    this.currentValue = this.getInitialValue();
-    this.syncTabs();
+    this.syncCurrentValueFromProps();
   }
 
-  componentShouldUpdate(newVal: any, oldVal: any, propName: string): boolean | void {
-    return propName !== 'currentValue';
+  componentShouldUpdate(_: any, __: any, propName: string): boolean | void {
+    switch (propName) {
+      case 'currentValue': {
+        return false;
+      }
+
+      default: {
+        return true;
+      }
+    }
   }
 
   render() {

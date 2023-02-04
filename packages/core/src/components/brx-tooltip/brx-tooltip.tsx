@@ -1,13 +1,13 @@
+import { Instance as PopperInstance } from '@popperjs/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { CleanupManager } from '../../utils/cleanup';
-import { Instance as PopperInstance } from '@popperjs/core';
 import { enqueueIdleCallback, findTarget } from '../../utils/helpers';
 
 const POSITIONS = ['top', 'right', 'bottom', 'left'];
 
-const HIDE_EVENTS = ['mouseleave', 'blur'];
+const HIDE_EVENTS = ['mouseleave' /* , 'blur' */, 'focusout'];
 
-const SHOW_EVENTS = ['mouseenter', 'click', 'focus'];
+const SHOW_EVENTS = ['mouseenter', 'click' /* , 'focus', */, 'focusin'];
 
 @Component({
   tag: 'brx-tooltip',
@@ -262,8 +262,8 @@ export class BrxTooltip {
 
     // Ação de abrir padrao ao entrar no ativador
     if (this.activator) {
-      const handleEvent = (otherEvent: Event) => {
-        this.show(otherEvent);
+      const handleEvent = (event: Event) => {
+        this.show(event);
       };
 
       for (const eventName of SHOW_EVENTS) {
@@ -284,7 +284,7 @@ export class BrxTooltip {
 
       // Ação de fechar padrao ao sair do ativador
     } else {
-      const handleHideEvent = () => {
+      const handleHideEvent = (event: Event) => {
         this.hide();
       };
 

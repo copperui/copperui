@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type                             | Default     |
-| -------------- | --------------- | ----------- | -------------------------------- | ----------- |
-| `counter`      | `counter`       |             | `boolean`                        | `false`     |
-| `darkMode`     | `dark-mode`     |             | `boolean`                        | `false`     |
-| `defaultValue` | `default-value` |             | `string`                         | `undefined` |
-| `name`         | `name`          |             | `string`                         | `undefined` |
-| `size`         | `size`          |             | `"large" \| "medium" \| "small"` | `'medium'`  |
-| `value`        | `value`         |             | `string`                         | `null`      |
+| Property          | Attribute          | Description | Type                             | Default              |
+| ----------------- | ------------------ | ----------- | -------------------------------- | -------------------- |
+| `controlledValue` | `controlled-value` |             | `string`                         | `TOKEN_UNCONTROLLED` |
+| `counter`         | `counter`          |             | `boolean`                        | `false`              |
+| `darkMode`        | `dark-mode`        |             | `boolean`                        | `false`              |
+| `name`            | `name`             |             | `string`                         | `undefined`          |
+| `size`            | `size`             |             | `"large" \| "medium" \| "small"` | `'medium'`           |
+| `value`           | `value`            |             | `string`                         | `undefined`          |
 
 
 ## Events

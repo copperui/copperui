@@ -62,7 +62,7 @@ export class BrxRadioGroup implements ComponentInterface {
     this.brxChange.emit({ value });
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.setRadioTabindex(this.value);
   }
 

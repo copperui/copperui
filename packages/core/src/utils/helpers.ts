@@ -14,9 +14,11 @@ export const enqueueIdleCallback = (callback: () => void, options?: IdleRequestO
   if (win && 'requestIdleCallback' in win) {
     win.requestIdleCallback(callback, options);
   } else {
-    setTimeout(callback, options?.timeout + 20);
+    setTimeout(callback, options?.timeout + 1);
   }
 };
+
+export const isDirectChild = (parent: HTMLElement, node: HTMLElement) => Array.from(parent.childNodes).findIndex(i => i === node) !== -1;
 
 export const findTarget = <R extends T | null, T extends HTMLElement = HTMLElement>(target: T | string, baseElement?: HTMLElement): R => {
   if (target) {

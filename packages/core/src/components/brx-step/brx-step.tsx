@@ -1,11 +1,13 @@
 import { Component, Host, h, State, Element, Listen, ComponentInterface, Prop, Watch, Method, Event, EventEmitter } from '@stencil/core';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { enqueueIdleCallback, findTargets } from '../../utils/helpers';
 import { StepChangeEventDetail } from './brx-step-interface';
 
 const DOMstrings = {
   step: 'brx-step',
-  stepProgress: 'brx-step-progress',
-  stepProgressBtn: 'brx-step-progress-btn',
-  stepProgressBtnTrigger: 'brx-step-progress-btn button',
+  progress: 'brx-step-progress',
+  progressButton: 'brx-step-progress-btn',
+  progressButtonTrigger: 'brx-step-progress-btn button',
 } as const;
 
 @Component({
@@ -20,78 +22,40 @@ export class BrxStep implements ComponentInterface {
   @Event()
   brxStepChange: EventEmitter<StepChangeEventDetail>;
 
+  get progressItems() {
+    return findTargets<HTMLBrxStepProgressBtnElement>(DOMstrings.progressButton, this.el, ['child']);
+  }
+
+  get currentFocusedIndex() {
+    return Math.max(
+      this.progressItems.findIndex(i => i.contains(document.activeElement)),
+      0,
+    );
+  }
+
   @Prop()
   type: 'simple' | 'text' | 'void' | undefined;
 
   @Prop()
-  controlled = false;
+  value: number | undefined;
 
   @Prop()
-  value: number | null = null;
-
-  @Prop()
-  defaultValue: number | undefined;
+  controlledValue: number | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
-  activeStep = 0;
+  currentValue: number | undefined;
 
-  get progressBtns() {
-    return Array.from<HTMLBrxStepProgressBtnElement>(this.el.querySelectorAll(DOMstrings.stepProgressBtn));
-  }
-
-  clean() {
-    const activeableElements = Array.from(this.el.querySelectorAll('button'));
-
-    for (const element of activeableElements) {
-      element.classList.remove('focus-visible');
-    }
-  }
-
-  hiddenTooltips() {
-    const tooltips = Array.from(this.el.querySelectorAll('brx-tooltip'));
-
-    for (const tooltip of tooltips) {
-      tooltip.hide();
-    }
-  }
-
-  openStep(targetIndex: number) {
-    const { progressBtns } = this;
-
-    for (const btn of progressBtns) {
-      const index = progressBtns.indexOf(btn);
-
-      btn.active = index === targetIndex;
-
-      if (btn.active) {
-        btn.disabled = false;
-      }
-    }
-  }
-
-  syncSteps() {
-    this.openStep(this.activeStep);
-  }
-
-  renderStepsContent() {
-    const { progressBtns } = this;
-
-    for (const element of progressBtns) {
-      const index = progressBtns.indexOf(element);
-
-      const isTypeText = this.type === 'text';
-      const isTypeImg = element.querySelector('.step-icon');
-
-      const stepNum = isTypeText ? `${index + 1}/${this.progressBtns.length}` : isTypeImg ? '' : `${index + 1}`;
-
-      element.setAttribute('step-num', stepNum);
-    }
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    const targetValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+    this.currentValue = targetValue ?? 0;
   }
 
   @Method()
-  updateActiveStep(value: number | undefined) {
-    if (this.value === null) {
-      this.activeStep = value;
+  setCurrentValue(value: number | undefined) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = value;
     }
 
     this.brxStepChange.emit({ value });
@@ -99,41 +63,68 @@ export class BrxStep implements ComponentInterface {
     return Promise.resolve();
   }
 
-  @Watch('value')
-  handleValueChange() {
-    this.activeStep = this.value;
-  }
+  openStep(stepIndex: number) {
+    const { progressItems: progressButtons } = this;
 
-  @Watch('activeStep')
-  handleActiveStepChange() {
-    this.syncSteps();
-  }
-
-  @Listen('click')
-  handleClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-
-    const trigger = target.closest<HTMLButtonElement>(DOMstrings.stepProgressBtnTrigger);
-    const progressBtn = trigger?.closest<HTMLBrxStepProgressBtnElement>(DOMstrings.stepProgressBtn);
-
-    if (trigger && !trigger.disabled && !progressBtn.disabled) {
-      const activeStepNum = this.progressBtns.indexOf(progressBtn);
-      this.updateActiveStep(activeStepNum);
+    for (const [index, button] of progressButtons.entries()) {
+      const active = index === stepIndex;
+      button.setActive(active);
     }
   }
 
-  @Listen('focusout')
-  handleFocusOut() {
-    this.clean();
-    this.hiddenTooltips();
+  @Watch('currentValue')
+  syncSteps() {
+    this.openStep(this.currentValue);
+  }
+
+  @Watch('type')
+  renderStepsContent() {
+    const { progressItems: progressButtons } = this;
+
+    for (const [index, element] of progressButtons.entries()) {
+      const isTypeText = this.type === 'text';
+      const isTypeImg = element.querySelector('.step-icon');
+
+      const stepNum = isTypeText ? `${index + 1}/${progressButtons.length}` : isTypeImg ? '' : `${index + 1}`;
+      element.setAttribute('step-num', stepNum);
+    }
+  }
+
+  get focusedTabItemIndex() {
+    return this.progressItems.findIndex(i => i.contains(document.activeElement));
+  }
+
+  @Listen('click')
+  handleProgressButtonClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+
+    const trigger = target.closest<HTMLButtonElement>(DOMstrings.progressButtonTrigger);
+
+    if (trigger) {
+      const button = trigger.closest<HTMLBrxStepProgressBtnElement>(DOMstrings.progressButton);
+
+      const disabled = trigger?.disabled || button.disabled;
+
+      if (!disabled) {
+        const targetIndex = this.progressItems.indexOf(button);
+
+        this.setCurrentValue(targetIndex);
+
+        enqueueIdleCallback(() => {
+          trigger.focus();
+        });
+      }
+    }
   }
 
   componentWillLoad() {
-    this.renderStepsContent();
+    this.syncCurrentValueFromProps();
+  }
 
-    this.updateActiveStep(this.defaultValue ?? 0);
-
-    this.syncSteps();
+  connectedCallback() {
+    enqueueIdleCallback(() => {
+      this.renderStepsContent();
+    });
   }
 
   render() {
