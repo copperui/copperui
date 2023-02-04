@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TOKEN_UNCONTROLLED } from "./tokens";
 import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
+import { Options } from "flatpickr/dist/types/options";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { IPaginationItemTarget } from "./components/brx-pagination-item/brx-pagination-item-interface";
@@ -179,6 +180,12 @@ export namespace Components {
         "open": (emitEvent?: boolean) => Promise<void>;
         "target": HTMLElement | string;
         "useIcons": boolean;
+    }
+    interface BrxDatetimepicker {
+        "config": string | Options | undefined;
+        "mode": 'single' | 'range';
+        "placeholder": string | undefined;
+        "type": Type;
     }
     interface BrxDivider {
         "darkMode": boolean;
@@ -855,6 +862,12 @@ declare global {
         prototype: HTMLBrxCollapseTriggerElement;
         new (): HTMLBrxCollapseTriggerElement;
     };
+    interface HTMLBrxDatetimepickerElement extends Components.BrxDatetimepicker, HTMLStencilElement {
+    }
+    var HTMLBrxDatetimepickerElement: {
+        prototype: HTMLBrxDatetimepickerElement;
+        new (): HTMLBrxDatetimepickerElement;
+    };
     interface HTMLBrxDividerElement extends Components.BrxDivider, HTMLStencilElement {
     }
     var HTMLBrxDividerElement: {
@@ -1144,6 +1157,7 @@ declare global {
         "brx-checkbox": HTMLBrxCheckboxElement;
         "brx-checkgroup": HTMLBrxCheckgroupElement;
         "brx-collapse-trigger": HTMLBrxCollapseTriggerElement;
+        "brx-datetimepicker": HTMLBrxDatetimepickerElement;
         "brx-divider": HTMLBrxDividerElement;
         "brx-dropdown": HTMLBrxDropdownElement;
         "brx-dropdown-trigger": HTMLBrxDropdownTriggerElement;
@@ -1368,6 +1382,12 @@ declare namespace LocalJSX {
         "onBrxTriggerClick"?: (event: BrxCollapseTriggerCustomEvent<void>) => void;
         "target"?: HTMLElement | string;
         "useIcons"?: boolean;
+    }
+    interface BrxDatetimepicker {
+        "config"?: string | Options | undefined;
+        "mode"?: 'single' | 'range';
+        "placeholder"?: string | undefined;
+        "type"?: Type;
     }
     interface BrxDivider {
         "darkMode"?: boolean;
@@ -1917,6 +1937,7 @@ declare namespace LocalJSX {
         "brx-checkbox": BrxCheckbox;
         "brx-checkgroup": BrxCheckgroup;
         "brx-collapse-trigger": BrxCollapseTrigger;
+        "brx-datetimepicker": BrxDatetimepicker;
         "brx-divider": BrxDivider;
         "brx-dropdown": BrxDropdown;
         "brx-dropdown-trigger": BrxDropdownTrigger;
@@ -1986,6 +2007,7 @@ declare module "@stencil/core" {
             "brx-checkbox": LocalJSX.BrxCheckbox & JSXBase.HTMLAttributes<HTMLBrxCheckboxElement>;
             "brx-checkgroup": LocalJSX.BrxCheckgroup & JSXBase.HTMLAttributes<HTMLBrxCheckgroupElement>;
             "brx-collapse-trigger": LocalJSX.BrxCollapseTrigger & JSXBase.HTMLAttributes<HTMLBrxCollapseTriggerElement>;
+            "brx-datetimepicker": LocalJSX.BrxDatetimepicker & JSXBase.HTMLAttributes<HTMLBrxDatetimepickerElement>;
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-dropdown": LocalJSX.BrxDropdown & JSXBase.HTMLAttributes<HTMLBrxDropdownElement>;
             "brx-dropdown-trigger": LocalJSX.BrxDropdownTrigger & JSXBase.HTMLAttributes<HTMLBrxDropdownTriggerElement>;

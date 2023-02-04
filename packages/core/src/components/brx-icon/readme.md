@@ -20,6 +20,7 @@
  - [brx-avatar](../brx-avatar)
  - [brx-breadcrumb](../brx-breadcrumb)
  - [brx-breadcrumb-item](../brx-breadcrumb-item)
+ - [brx-datetimepicker](../brx-datetimepicker)
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
  - [brx-pagination-ellipsis](../brx-pagination-ellipsis)
@@ -37,6 +38,7 @@ graph TD;
   brx-avatar --> brx-icon
   brx-breadcrumb --> brx-icon
   brx-breadcrumb-item --> brx-icon
+  brx-datetimepicker --> brx-icon
   brx-input --> brx-icon
   brx-message --> brx-icon
   brx-pagination-ellipsis --> brx-icon

@@ -46,7 +46,8 @@
     "access": "public"
   },
   "optionalDependencies": {
-    "@popperjs/core": "^2.11.6"
+    "@popperjs/core": "^2.11.6",
+    "flatpickr": "^4.6.13"
   },
   "gitHead": "5c8653f5e581bc3ddd7af2db76d26950f6803dad"
 }

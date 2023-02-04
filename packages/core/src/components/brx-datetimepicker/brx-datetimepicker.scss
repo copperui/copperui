@@ -1,0 +1,13 @@
+@import '../../styles/component-base';
+@import 'mixins';
+@import '~flatpickr/dist/flatpickr.min.css';
+
+brx-datetimepicker {
+  display: block;
+
+  @include datetimepicker-configs;
+}
+
+.flatpickr-calendar {
+  @include flatpicker-configs;
+}

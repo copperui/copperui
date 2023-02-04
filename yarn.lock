@@ -1915,12 +1915,15 @@ __metadata:
     "@stencil/sass": ^2.0.1
     "@types/jest": ^27.0.3
     babel-loader: ^8.3.0
+    flatpickr: ^4.6.13
     focus-visible: ^5.2.0
     jest: ^27.4.5
     jest-cli: ^27.4.5
     puppeteer: ^10.0.0
   dependenciesMeta:
     "@popperjs/core":
+      optional: true
+    flatpickr:
       optional: true
   languageName: unknown
   linkType: soft
@@ -8506,6 +8509,13 @@ __metadata:
   bin:
     flat: cli.js
   checksum: 12a1536ac746db74881316a181499a78ef953632ddd28050b7a3a43c62ef5462e3357c8c29d76072bb635f147f7a9a1f0c02efef6b4be28f8db62ceb3d5c7f5d
+  languageName: node
+  linkType: hard
+
+"flatpickr@npm:^4.6.13":
+  version: 4.6.13
+  resolution: "flatpickr@npm:4.6.13"
+  checksum: 2cca1b8dc974e7673b51174ee3f0679ae3a6b79525a0c53bf49b87455ef358354e64acfd60b312e44cef208aab9750a1a48df32a0914046a53de6d9403742304
   languageName: node
   linkType: hard
 

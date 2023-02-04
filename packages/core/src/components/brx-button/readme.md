@@ -41,6 +41,7 @@
 ### Used by
 
  - [brx-breadcrumb](../brx-breadcrumb)
+ - [brx-datetimepicker](../brx-datetimepicker)
  - [brx-input](../brx-input)
  - [brx-message](../brx-message)
  - [brx-pagination-ellipsis](../brx-pagination-ellipsis)
@@ -57,6 +58,7 @@
 graph TD;
   brx-button --> brx-loading
   brx-breadcrumb --> brx-button
+  brx-datetimepicker --> brx-button
   brx-input --> brx-button
   brx-message --> brx-button
   brx-pagination-ellipsis --> brx-button
