@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Input</h1>
+
+      <div>
+        <h2>Input padrão</h2>
+
+        <div>
+          <div class="col-sm-8 col-lg-5">
+            <brx-input label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="helper">
+                <p>Texto auxiliar. Função de previnir erros.</p>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="medium" label="Densidade padrão" placeholder="Placeholder"></brx-input>
+          </div>
+
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="small" label="Densidade alta" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-4 col-lg-3 mb-3">
+            <brx-input density="large" label="Densidade baixa" placeholder="Placeholder"></brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com ícones</h2>
+
+        <div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="medium" label="Login" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="small" label="Nome" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input density="large" label="Grupo" start-icon-name="fa5/fas/user-tie" placeholder="Placeholder"></brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com botões</h2>
+
+        <div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button type="password" enable-password-toggle density="medium" label="Senha" placeholder="Digite a sua senha"></brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button density="small" label="Logar" placeholder="Digite o seu usuário">
+              <div slot="end-button">
+                <brx-button size="small" aria-label="Botão de ação">
+                  <brx-icon name="fa5/fas/arrow-right"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+          <div class="col-sm-6 col-lg-4 mb-3">
+            <brx-input button density="large" label="Buscar" placeholder="Digite uma palavra">
+              <div slot="end-button">
+                <brx-button size="small" aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com Destaque</h2>
+
+        <div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search" aria-hidden="true"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-8 mb-3">
+            <brx-input highlight hidden-label start-icon-name="fa5/fas/user" label="Label / Rótulo" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button aria-label="Buscar">
+                  <brx-icon name="fa5/fas/search" aria-hidden="true"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com validações e estados</h2>
+
+        <div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="success" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="success"> Mensagem de Sucesso </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="danger" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="danger"> Mensagem de Erro </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="info" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="info"> Mensagem informativa </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input color="warning" label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="warning"> Mensagem de alerta </brx-message>
+            </brx-input>
+          </div>
+          <div class="col-sm-4 mb-3">
+            <brx-input disabled label="Label / Rótulo" placeholder="Digite somente números">
+              <brx-message variant="feedback" severity="warning"> Campo Desabilitado </brx-message>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Input com rótulo lateral</h2>
+
+        <div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Label / Rótulo" label-class="text-nowrap" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Com ícone" label-class="text-nowrap" start-icon-name="fa5/fas/edit" placeholder="Placeholder"></brx-input>
+          </div>
+          <div class="col-sm-10 col-lg-7 mb-3">
+            <brx-input inline label="Com botão" label-class="text-nowrap" placeholder="Placeholder">
+              <div slot="end-button">
+                <brx-button>
+                  <brx-icon name="fa5/fas/heart"></brx-icon>
+                </brx-button>
+              </div>
+            </brx-input>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

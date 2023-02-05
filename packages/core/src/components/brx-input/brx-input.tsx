@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { AutocompleteTypes, TextFieldTypes } from '../../interfaces';
 import { generateUniqueId } from '../../utils/helpers';
-import { Attributes, inheritAriaAttributes } from '../../utils/inherited-attributes';
+import { inheritAriaAttributes } from '../../utils/inherited-attributes';
 import { InputChangeEventDetail } from './brx-input.interface';
 
 @Component({
@@ -378,7 +378,7 @@ export class BrxInput implements ComponentInterface {
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged() {
+  handleValueChange() {
     const value = this.value == null ? this.value : this.value.toString();
     this.brxChange.emit({ value });
   }
@@ -392,12 +392,14 @@ export class BrxInput implements ComponentInterface {
     return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
   }
 
-  private onInput = (ev: Event) => {
-    const input = ev.target as HTMLInputElement | null;
+  private onInput = (event: Event) => {
+    const input = event.target as HTMLInputElement | null;
+
     if (input) {
       this.value = input.value || '';
     }
-    this.brxInput.emit(ev as KeyboardEvent);
+
+    this.brxInput.emit(event as KeyboardEvent);
   };
 
   private onBlur = () => {

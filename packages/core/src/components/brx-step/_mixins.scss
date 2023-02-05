@@ -59,6 +59,7 @@
 @mixin step-button {
   brx-step-progress-btn {
     flex-grow: 1;
+
     button {
       align-items: center;
       background-color: transparent;
@@ -598,17 +599,22 @@
     justify-content: center;
 
     brx-step-progress {
-      align-items: center;
+      align-items: stretch;
       display: flex;
       justify-content: center;
     }
 
     brx-step-progress-btn {
+      position: absolute;
+
+      brx-tooltip-content {
+        min-width: max-content;
+      }
+
       button {
         height: 0;
         min-height: var(--font-size-scale-base);
         overflow: hidden;
-        position: absolute;
         width: 0;
 
         &::before {
@@ -805,6 +811,8 @@
       &.active,
       &[active] {
         width: auto;
+
+        position: static;
 
         button {
           height: auto;

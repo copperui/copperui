@@ -7,10 +7,10 @@ import { generateUniqueId } from '../../utils/helpers';
   shadow: false,
 })
 export class BrxPaginationEllipsis implements ComponentInterface {
-  @Prop()
+  @Prop({ mutable: true })
   dropdownId: string | undefined;
 
-  componentDidLoad() {
+  componentWillLoad() {
     if (!this.dropdownId) {
       this.dropdownId = generateUniqueId();
     }

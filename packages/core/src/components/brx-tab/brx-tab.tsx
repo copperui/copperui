@@ -12,16 +12,16 @@ export class BrxTab implements ComponentInterface {
   @Prop({ reflect: true })
   counter: boolean;
 
-  @Prop({ reflect: true })
+  @Prop()
   label: string | undefined;
 
   @Prop({ reflect: true })
   value: string | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   iconName: string;
 
-  @Prop({ reflect: true })
+  @Prop()
   tabTitle: string;
 
   @Prop()
@@ -54,14 +54,11 @@ export class BrxTab implements ComponentInterface {
                     </span>
                   )}
                 </slot>
-
                 {tabTitle && <span class="name">{tabTitle}</span>}
               </span>
             </span>
           </button>
-
           <slot></slot>
-
           <span class="brx-tab-results">
             <slot name="results"></slot>
           </span>

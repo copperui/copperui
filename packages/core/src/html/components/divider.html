@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Divider</h1>
+
+      <div>
+        <h2>Horizontal tracejado</h2>
+
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <brx-divider class="my-3" dashed></brx-divider>
+        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+      </div>
+
+      <div>
+        <h2>Horizontal</h2>
+
+        <div class="my-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3"></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+
+        <div class="my-3 bg-gray-60 text-pure-0 p-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3" dark-mode></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+
+        <div class="my-3 bg-gray-60 text-pure-0 p-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3" dark-mode dashed></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Vertical Tracejado</h2>
+
+        <div class="my-3">
+          <div class="d-flex">
+            <div>Voluptate ipsa iure placeat praesentium, sint deleniti consectetur quisquam neque veniam possimus, hic commodi?</div>
+            <brx-divider class="mx-3" dashed vertical></brx-divider>
+            <div>A adipisci mollitia blanditiis itaque velit laudantium voluptatum molestiae quasi.</div>
+          </div>
+        </div>
+
+        <div class="my-3">
+          <div class="d-flex">
+            <div>Voluptate ipsa iure placeat praesentium, sint deleniti consectetur quisquam neque veniam possimus, hic commodi?</div>
+            <brx-divider class="mx-3" vertical></brx-divider>
+            <div>A adipisci mollitia blanditiis itaque velit laudantium voluptatum molestiae quasi.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Espessuras</h2>
+
+        <h3>
+          sm
+          <code>(padrão)</code>
+        </h3>
+
+        <div class="my-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3" size="sm"></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+
+        <h3>md</h3>
+
+        <div class="my-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3" size="md"></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+
+        <h3>lg</h3>
+
+        <div class="my-3">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <brx-divider class="my-3" size="lg"></brx-divider>
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

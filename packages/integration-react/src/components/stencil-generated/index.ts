@@ -26,6 +26,7 @@ export const BrxCardHeader = /*@__PURE__*/createReactComponent<JSX.BrxCardHeader
 export const BrxCheckbox = /*@__PURE__*/createReactComponent<JSX.BrxCheckbox, HTMLBrxCheckboxElement>('brx-checkbox');
 export const BrxCheckgroup = /*@__PURE__*/createReactComponent<JSX.BrxCheckgroup, HTMLBrxCheckgroupElement>('brx-checkgroup');
 export const BrxCollapseTrigger = /*@__PURE__*/createReactComponent<JSX.BrxCollapseTrigger, HTMLBrxCollapseTriggerElement>('brx-collapse-trigger');
+export const BrxDatetimepicker = /*@__PURE__*/createReactComponent<JSX.BrxDatetimepicker, HTMLBrxDatetimepickerElement>('brx-datetimepicker');
 export const BrxDivider = /*@__PURE__*/createReactComponent<JSX.BrxDivider, HTMLBrxDividerElement>('brx-divider');
 export const BrxDropdown = /*@__PURE__*/createReactComponent<JSX.BrxDropdown, HTMLBrxDropdownElement>('brx-dropdown');
 export const BrxDropdownTrigger = /*@__PURE__*/createReactComponent<JSX.BrxDropdownTrigger, HTMLBrxDropdownTriggerElement>('brx-dropdown-trigger');

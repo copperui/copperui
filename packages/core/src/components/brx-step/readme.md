@@ -7,12 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type                           | Default     |
-| -------------- | --------------- | ----------- | ------------------------------ | ----------- |
-| `controlled`   | `controlled`    |             | `boolean`                      | `false`     |
-| `defaultValue` | `default-value` |             | `number`                       | `undefined` |
-| `type`         | `type`          |             | `"simple" \| "text" \| "void"` | `undefined` |
-| `value`        | `value`         |             | `number`                       | `null`      |
+| Property          | Attribute          | Description | Type                           | Default              |
+| ----------------- | ------------------ | ----------- | ------------------------------ | -------------------- |
+| `controlledValue` | `controlled-value` |             | `number`                       | `TOKEN_UNCONTROLLED` |
+| `type`            | `type`             |             | `"simple" \| "text" \| "void"` | `undefined`          |
+| `value`           | `value`            |             | `number`                       | `undefined`          |
 
 
 ## Events
@@ -24,7 +23,7 @@
 
 ## Methods
 
-### `updateActiveStep(value: number | undefined) => Promise<void>`
+### `setCurrentValue(value: number | undefined) => Promise<void>`
 
 
 

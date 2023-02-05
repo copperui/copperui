@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/build/copperui.esm.js"></script>
+    <script nomodule src="/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Upload</h1>
+
+      <div>
+        <h2>Envio de 1 arquivo</h2>
+
+        <brx-upload label="Envio de arquivo."></brx-upload>
+      </div>
+
+      <div>
+        <h2>Envio de vários arquivos.</h2>
+
+        <brx-upload label="Envio de arquivos." multiple></brx-upload>
+
+        <p class="text-base mt-1">Clique ou arraste os arquivos para cima do componente Upload.</p>
+      </div>
+
+      <div>
+        <h2>Upload com mensagem de feedback</h2>
+
+        <brx-upload label="Envio de arquivo." data-danger="data-danger"></brx-upload>
+
+        <brx-message class="mt-1" variant="feedback" severity="danger"> Os arquivos devem ser no formato PNG ou JPG e ter no máximo 100MB. </brx-message>
+      </div>
+
+      <div>
+        <h2>Upload desabilitado</h2>
+
+        <brx-upload label="Envio de arquivo" disabled></brx-upload>
+
+        <brx-message variant="feedback" severity="warning" class="mt-1">
+          <span>Upload desabilitado</span>
+        </brx-message>
+      </div>
+
+      <script>
+        const uploads = Array.from(document.querySelectorAll('brx-upload'));
+
+        const mockUpload = () => {
+          return new Promise(resolve => setTimeout(resolve, 3 * 1000));
+        };
+
+        for (const upload of uploads) {
+          upload.handleUploadFiles = mockUpload;
+        }
+      </script>
+    </section>
+  </body>
+</html>
