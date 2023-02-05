@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TOKEN_UNCONTROLLED } from "./tokens";
 import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
+import { Type } from "./components/brx-datetimepicker/brx-datetimepicker-helpers";
 import { Options } from "flatpickr/dist/types/options";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
@@ -183,9 +184,11 @@ export namespace Components {
     }
     interface BrxDatetimepicker {
         "config": string | Options | undefined;
+        "controlledValue": string | undefined | TOKEN_UNCONTROLLED;
         "mode": 'single' | 'range';
         "placeholder": string | undefined;
         "type": Type;
+        "value": string | undefined;
     }
     interface BrxDivider {
         "darkMode": boolean;
@@ -490,11 +493,10 @@ export namespace Components {
         "full": boolean;
     }
     interface BrxStep {
-        "controlled": boolean;
-        "defaultValue": number | undefined;
+        "controlledValue": number | undefined | TOKEN_UNCONTROLLED;
+        "setCurrentValue": (value: number | undefined) => Promise<void>;
         "type": 'simple' | 'text' | 'void' | undefined;
-        "updateActiveStep": (value: number | undefined) => Promise<void>;
-        "value": number | null;
+        "value": number | undefined;
     }
     interface BrxStepProgress {
     }
@@ -502,6 +504,8 @@ export namespace Components {
         "active": boolean;
         "alert": 'success' | 'info' | 'warning' | 'danger' | undefined;
         "disabled": boolean;
+        "setActive": (active: boolean) => Promise<void>;
+        "setDisabled": (disabled: boolean) => Promise<void>;
         "stepNum": string;
         "tooltipText": string | undefined;
     }
@@ -515,13 +519,13 @@ export namespace Components {
         "value": string | undefined;
     }
     interface BrxTabs {
+        "controlledValue": string | undefined | TOKEN_UNCONTROLLED;
         "counter": boolean;
         "darkMode": boolean;
-        "defaultValue": string | undefined;
         "getCurrentValue": () => Promise<string>;
         "name": string;
         "size": 'small' | 'medium' | 'large';
-        "value": string | undefined | null;
+        "value": string | undefined;
     }
     interface BrxTabsPanel {
         "active": boolean;
@@ -1385,9 +1389,11 @@ declare namespace LocalJSX {
     }
     interface BrxDatetimepicker {
         "config"?: string | Options | undefined;
+        "controlledValue"?: string | undefined | TOKEN_UNCONTROLLED;
         "mode"?: 'single' | 'range';
         "placeholder"?: string | undefined;
         "type"?: Type;
+        "value"?: string | undefined;
     }
     interface BrxDivider {
         "darkMode"?: boolean;
@@ -1709,11 +1715,10 @@ declare namespace LocalJSX {
         "full"?: boolean;
     }
     interface BrxStep {
-        "controlled"?: boolean;
-        "defaultValue"?: number | undefined;
+        "controlledValue"?: number | undefined | TOKEN_UNCONTROLLED;
         "onBrxStepChange"?: (event: BrxStepCustomEvent<StepChangeEventDetail>) => void;
         "type"?: 'simple' | 'text' | 'void' | undefined;
-        "value"?: number | null;
+        "value"?: number | undefined;
     }
     interface BrxStepProgress {
     }
@@ -1733,14 +1738,14 @@ declare namespace LocalJSX {
         "value"?: string | undefined;
     }
     interface BrxTabs {
+        "controlledValue"?: string | undefined | TOKEN_UNCONTROLLED;
         "counter"?: boolean;
         "darkMode"?: boolean;
-        "defaultValue"?: string | undefined;
         "name"?: string;
         "onBrxTabChange"?: (event: BrxTabsCustomEvent<TabChangeEventDetail>) => void;
         "onBrxTabClick"?: (event: BrxTabsCustomEvent<TabClickEventDetail>) => void;
         "size"?: 'small' | 'medium' | 'large';
-        "value"?: string | undefined | null;
+        "value"?: string | undefined;
     }
     interface BrxTabsPanel {
         "active"?: boolean;

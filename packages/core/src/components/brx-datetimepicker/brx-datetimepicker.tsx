@@ -1,66 +1,10 @@
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop, Watch } from '@stencil/core';
-import type flatpickr from 'flatpickr';
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { Instance } from 'flatpickr/dist/types/instance';
-import { CustomLocale } from 'flatpickr/dist/types/locale';
-import { BaseOptions, Options } from 'flatpickr/dist/types/options';
-import { findTarget, tryParseJSON } from '../../utils/helpers';
+import { BaseOptions, Hook, Options } from 'flatpickr/dist/types/options';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { enqueueIdleCallback, findTarget, tryParseJSON } from '../../utils/helpers';
 import { BrxInput } from '../brx-input/brx-input';
-
-enum Type {
-  DATE = 'date',
-  TIME = 'time',
-  DATETIME_LOCAL = 'datetime-local',
-}
-
-const DOMStrings = {
-  coponent: '',
-};
-
-const getFlatpickr = async () => {
-  const mod = await import('flatpickr');
-  return mod.default;
-};
-
-const getDefaultLocale = async () => {
-  const mod = await import('flatpickr/dist/l10n/pt');
-  return mod.default.pt;
-};
-
-const getConfigForType = (type: Type) => {
-  switch (type) {
-    case Type.DATE: {
-      return {
-        format: 'd/m/Y',
-        time: false,
-        noCalendar: false,
-      };
-    }
-
-    case Type.TIME: {
-      return {
-        format: 'H:i',
-        time: true,
-        noCalendar: true,
-      };
-    }
-
-    case Type.DATETIME_LOCAL: {
-      return {
-        format: 'd/m/Y H:i',
-        time: true,
-        noCalendar: false,
-      };
-    }
-
-    default: {
-      return {
-        format: 'd/m/Y',
-        time: false,
-        noCalendar: false,
-      };
-    }
-  }
-};
+import { getConfigSetupForType, getDefaultLocale, getFlatpickr, Type } from './brx-datetimepicker-helpers';
 
 @Component({
   tag: 'brx-datetimepicker',
@@ -77,6 +21,14 @@ export class BrxDatetimepicker implements ComponentInterface {
     return findTarget<HTMLInputElement>('input', this.el);
   }
 
+  get selectionStart() {
+    return this.inputEl.selectionStart;
+  }
+
+  get inputValue() {
+    return this.inputEl.value;
+  }
+
   @Prop()
   type: Type;
 
@@ -89,31 +41,52 @@ export class BrxDatetimepicker implements ComponentInterface {
   @Prop()
   config: string | Options | undefined;
 
-  get configParsed(): Partial<BaseOptions> {
+  @Prop()
+  value: string | undefined;
+
+  @Prop()
+  controlledValue: string | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+
+  @State()
+  currentValue: string | undefined;
+
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    this.currentValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+  }
+
+  get parsedConfigProp(): Partial<BaseOptions> {
     const config = tryParseJSON(this.config ?? {});
     return typeof config !== 'string' ? config : {};
   }
 
+  get configSetup() {
+    return getConfigSetupForType(this.type);
+  }
+
   get configNative() {
-    const { format, noCalendar, time } = getConfigForType(this.type);
+    const { mode } = this;
+
+    const { dateFormat, noCalendar, enableTime } = this.configSetup;
 
     return {
-      allowInput: true,
-      dateFormat: format,
-      disableMobile: 'true',
-      enableTime: time,
-      minuteIncrement: 1,
-      mode: this.mode,
-      nextArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-right"></brx-icon></brx-button>',
-      noCalendar: noCalendar,
-      prevArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-left"></brx-icon></brx-button>',
-      time_24hr: true,
+      mode,
+      dateFormat,
+      enableTime,
+      noCalendar,
       wrap: true,
+      time_24hr: true,
+      allowInput: true,
+      minuteIncrement: 1,
+      disableMobile: 'true',
+      nextArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-right"></brx-icon></brx-button>',
+      prevArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-left"></brx-icon></brx-button>',
     };
   }
 
   get configFlatpick() {
-    return Object.assign({}, this.configParsed, this.configNative);
+    return Object.assign({}, this.parsedConfigProp, this.configNative);
   }
 
   get iconName() {
@@ -133,7 +106,7 @@ export class BrxDatetimepicker implements ComponentInterface {
     }
   }
 
-  get inputType(): BrxInput['type'] {
+  get inputInitialType(): BrxInput['type'] {
     switch (this.type) {
       case Type.TIME: {
         return 'time';
@@ -158,164 +131,198 @@ export class BrxDatetimepicker implements ComponentInterface {
     return getDefaultLocale();
   }
 
-  get value() {
-    return '';
-  }
-
   /**
    * Adiciona máscara de data no input
-   * @param {*} elm
    */
-  _dateInputMask(elm: HTMLInputElement) {
-    elm.setAttribute('maxlength', '10');
-    elm.addEventListener('keypress', e => {
-      if (e.keyCode < 47 || e.keyCode > 57) {
+  dateInputMask(input: HTMLInputElement) {
+    input.setAttribute('maxlength', '10');
+
+    input.addEventListener('keypress', e => {
+      if (!e.code.startsWith('Digit')) {
         e.preventDefault();
       }
 
-      const len = elm.value.length;
+      const length = input.value.length;
 
       // TODO: ????
       // if (len !== 1 || len !== 3) {
-      if (len !== 1 && len !== 3) {
-        if (e.keyCode == 47) {
+      if (length !== 1 && length !== 3) {
+        if (e.code == 'Help') {
           e.preventDefault();
         }
       }
 
-      if (len === 2) {
-        elm.value += '/';
+      if (length === 2) {
+        input.value += '/';
       }
 
-      if (len === 5) {
-        elm.value += '/';
+      if (length === 5) {
+        input.value += '/';
       }
     });
   }
 
   /**
    *  Adiciona máscara de hora no input
-   * @param {*} elm * Dom do elemento input
    */
-  _dateTimeInputMask(elm: HTMLInputElement) {
-    elm.setAttribute('maxlength', '16');
-    elm.addEventListener('keypress', e => {
-      if (e.keyCode < 47 || e.keyCode > 57) {
+  dateTimeInputMask(input: HTMLInputElement) {
+    input.setAttribute('maxlength', '16');
+
+    input.addEventListener('keypress', e => {
+      if (!e.code.startsWith('Digit')) {
         e.preventDefault();
       }
 
-      const len = elm.value.length;
+      const length = input.value.length;
 
       // TODO: ????
-      if (len !== 1 && len !== 3) {
-        if (e.keyCode == 47) {
+      if (length !== 1 && length !== 3) {
+        if (e.code == 'Help') {
           e.preventDefault();
         }
       }
-      switch (len) {
-        case 2:
-          elm.value += '/';
-          break;
-        case 5:
-          elm.value += '/';
-          break;
-        case 10:
-          elm.value += ' ';
-          break;
-        case 13:
-          elm.value += ':';
-          break;
 
-        default:
+      switch (length) {
+        case 2: {
+          input.value += '/';
           break;
+        }
+        case 5: {
+          input.value += '/';
+          break;
+        }
+        case 10: {
+          input.value += ' ';
+          break;
+        }
+        case 13: {
+          input.value += ':';
+          break;
+        }
+        default: {
+          break;
+        }
       }
     });
   }
+
   /**
    * Coloca máscara com range de data no input
-   * @param {*} elm * Dom do elemento input
    */
-  _dateRangeInputMask(elm: HTMLInputElement) {
-    elm.setAttribute('maxlength', '25');
+  dateRangeInputMask(input: HTMLInputElement) {
+    input.setAttribute('maxlength', '25');
 
-    elm.addEventListener('keypress', e => {
-      if (e.keyCode < 47 || e.keyCode > 57) {
+    input.addEventListener('keypress', e => {
+      if (!e.code.startsWith('Digit')) {
         e.preventDefault();
       }
 
-      const len = elm.value.length;
+      const length = input.value.length;
 
       // TODO: ????
       // if (len !== 1 || len !== 3) {
-      if (len !== 1 && len !== 3) {
-        if (e.keyCode === 47) {
+      if (length !== 1 && length !== 3) {
+        if (e.code === 'Help') {
           e.preventDefault();
         }
       }
 
-      this._positionRangeMask(elm, len);
+      this.positionRangeMask(input, length);
     });
   }
+
   /**
    * Insere a máscara na Dom
-   * @param {*} elm Dom do elemento input
-   * @param {*} len Tamanho do elemento inserido
    */
-  async _positionRangeMask(elm, len) {
+  async positionRangeMask(input: HTMLInputElement, length: number) {
     const language = await this.language;
 
     const tamSeparator = language.rangeSeparator.length;
     const daySeparator = 10 + tamSeparator + 2;
     const monthSeparator = 10 + tamSeparator + 5;
-    elm.setAttribute('maxlength', 20 + tamSeparator);
 
-    switch (len) {
-      case 2:
-        elm.value += '/';
-        break;
-      case 5:
-        elm.value += '/';
-        break;
-      case 10:
-        elm.value += language.rangeSeparator;
-        break;
-      case daySeparator:
-        elm.value += '/';
-        break;
-      case monthSeparator:
-        elm.value += '/';
-        break;
+    input.setAttribute('maxlength', `${20 + tamSeparator}`);
 
-      default:
+    switch (length) {
+      case 2: {
+        input.value += '/';
         break;
+      }
+      case 5: {
+        input.value += '/';
+        break;
+      }
+      case 10: {
+        input.value += language.rangeSeparator;
+        break;
+      }
+      case daySeparator: {
+        input.value += '/';
+        break;
+      }
+      case monthSeparator: {
+        input.value += '/';
+        break;
+      }
+      default: {
+        break;
+      }
     }
   }
+
   /**
    * Insere máscara de hora
-   *
-   * @param {*} elm dom do elemento input
    */
-  _timeInputMask(elm: HTMLInputElement) {
-    elm.setAttribute('maxlength', '5');
-    elm.addEventListener('keypress', e => {
-      if (e.keyCode < 47 || e.keyCode > 57) {
+  timeInputMask(input: HTMLInputElement) {
+    input.setAttribute('maxlength', '5');
+
+    input.addEventListener('keypress', e => {
+      if (!e.code.startsWith('Digit')) {
         e.preventDefault();
       }
 
-      const len = elm.value.length;
+      const length = input.value.length;
 
       // TODO: ????
       // if (len !== 1 || len !== 3) {
-      if (len !== 1 && len !== 3) {
-        if (e.keyCode === 47) {
+      if (length !== 1 && length !== 3) {
+        if (e.code === 'Help') {
           e.preventDefault();
         }
       }
 
-      if (len === 2) {
-        elm.value += ':';
+      if (length === 2) {
+        input.value += ':';
       }
     });
+  }
+
+  async setupMask() {
+    switch (this.type) {
+      case Type.DATE: {
+        this.dateInputMask(this.inputEl);
+        break;
+      }
+
+      case Type.TIME: {
+        this.timeInputMask(this.inputEl);
+        break;
+      }
+
+      case Type.DATETIME_LOCAL: {
+        this.dateTimeInputMask(this.inputEl);
+        break;
+      }
+
+      default: {
+        if (this.mode === 'range') {
+          this.dateRangeInputMask(this.inputEl);
+        } else {
+          this.dateInputMask(this.inputEl);
+        }
+        break;
+      }
+    }
   }
 
   @Watch('type')
@@ -331,35 +338,11 @@ export class BrxDatetimepicker implements ComponentInterface {
     const language = await this.language;
     flatpickr.localize(language);
 
-    switch (this.type) {
-      case Type.DATE: {
-        this._dateInputMask(this.inputEl);
-        break;
-      }
-
-      case Type.TIME: {
-        this._timeInputMask(this.inputEl);
-        break;
-      }
-
-      case Type.DATETIME_LOCAL: {
-        this._dateTimeInputMask(this.inputEl);
-        break;
-      }
-
-      default: {
-        if (this.mode === 'range') {
-          this._dateRangeInputMask(this.inputEl);
-        } else {
-          this._dateInputMask(this.inputEl);
-        }
-        break;
-      }
-    }
+    await this.setupMask();
 
     this.fp = flatpickr(this.el, this.configFlatpick);
 
-    this.fp.config.onOpen.push(() => {
+    const handleOpen = () => {
       document.querySelectorAll('.arrowUp').forEach(element => {
         element.classList.add('fas', 'fa-chevron-up');
       });
@@ -367,23 +350,28 @@ export class BrxDatetimepicker implements ComponentInterface {
       document.querySelectorAll('.arrowDown').forEach(element => {
         element.classList.add('fas', 'fa-chevron-down');
       });
-    });
+    };
+
+    this.fp.config.onOpen.push(handleOpen);
+
+    const handleChange: Hook = () => {
+      console.log('fp#config#onChange');
+    };
+
+    this.fp.config.onChange.push(handleChange);
   }
 
   @Listen('keyup')
   handleKeyup() {
-    const { fp, value } = this;
-
-    // TODO: ???
-    const selectionStart = -1;
+    const { fp, inputValue } = this;
 
     if (fp) {
-      if (!Number.isNaN(new Date(value))) {
+      if (!Number.isNaN(new Date(inputValue))) {
         // if the cursor is at the end of the edit and we have a full sized date, allow the date to immediately change, otherwise just move to the correct month without actually changing it
-        if (selectionStart >= 10) {
-          fp.setDate(value);
+        if (this.selectionStart >= 10) {
+          fp.setDate(inputValue);
         } else {
-          fp.jumpToDate(value);
+          fp.jumpToDate(inputValue);
         }
       }
     }
@@ -391,17 +379,19 @@ export class BrxDatetimepicker implements ComponentInterface {
 
   @Listen('blur')
   handleBlur() {
-    const { fp, value } = this;
+    const { fp, inputValue } = this;
 
     if (fp) {
-      if (!Number.isNaN(new Date(value))) {
-        fp.setDate(value);
+      if (!Number.isNaN(new Date(inputValue))) {
+        fp.setDate(inputValue);
       }
     }
   }
 
-  async componentDidLoad() {
-    await this.buildDateTimePicker();
+  componentDidLoad() {
+    enqueueIdleCallback(() => {
+      this.buildDateTimePicker();
+    });
   }
 
   componentShouldUpdate(_: any, __: any, propName: string) {
@@ -419,7 +409,7 @@ export class BrxDatetimepicker implements ComponentInterface {
   }
 
   render() {
-    const { placeholder, inputType, iconName } = this;
+    const { placeholder, inputInitialType: inputType, iconName } = this;
 
     return (
       <Host>
@@ -430,6 +420,7 @@ export class BrxDatetimepicker implements ComponentInterface {
             </brx-button>
           )}
         </brx-input>
+
         <slot></slot>
       </Host>
     );
