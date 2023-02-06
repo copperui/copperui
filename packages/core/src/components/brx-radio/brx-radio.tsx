@@ -1,11 +1,11 @@
 // This file was based on the <ion-radio /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/radio/radio.tsx
 
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { isControlled, TOKEN_UNCONTROLLED } from '../../tokens';
+import { enqueueIdleCallback, findTarget, findTargets, generateUniqueId } from '../../utils/helpers';
+import { RadioGroupUpdateEventDetail } from '../brx-radio-group/brx-radio-group-interface';
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from './brx-radio-interface';
-import { enqueueIdleCallback, generateUniqueId } from '../../utils/helpers';
-import { State } from '@stencil/core';
-import { TOKEN_UNCONTROLLED } from '../../tokens';
 
 @Component({
   tag: 'brx-radio',
@@ -13,11 +13,31 @@ import { TOKEN_UNCONTROLLED } from '../../tokens';
   shadow: false,
 })
 export class BrxRadio implements ComponentInterface {
-  private nativeInput!: HTMLInputElement;
-  private radioGroup: HTMLBrxRadioGroupElement | null = null;
-
   @Element()
   el!: HTMLBrxRadioElement;
+
+  get nativeInput() {
+    return findTarget<HTMLInputElement>('input', this.el);
+  }
+
+  get nativeInputChecked() {
+    return this.nativeInput?.checked ?? false;
+  }
+
+  set nativeInputChecked(value) {
+    if (this.nativeInput) {
+      this.nativeInput.checked = value;
+    }
+  }
+
+  get radioGroup() {
+    return this.el.closest('brx-radio-group') ?? null;
+  }
+
+  get isStandaloneFamilyControlled() {
+    const standaloneGroupRadios = findTargets<HTMLBrxRadioElement>(`brx-radio[name="${this.name}"]`);
+    return standaloneGroupRadios.some(brxRadio => isControlled(brxRadio.controlledChecked));
+  }
 
   /**
    * Emitted when the radio button has focus.
@@ -44,16 +64,52 @@ export class BrxRadio implements ComponentInterface {
   checked: boolean | undefined;
 
   @Prop()
-  controlledChecked: boolean | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  controlledChecked: boolean | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentChecked = false;
+
+  emitChange(checked = this.currentChecked, force = false) {
+    const value = this.value;
+
+    if (checked || force) {
+      this.brxChange.emit({ value, checked });
+    }
+  }
 
   @Watch('checked')
   @Watch('controlledChecked')
   syncCurrentChecked() {
     const incomingChecked = this.controlledChecked !== TOKEN_UNCONTROLLED ? this.controlledChecked : this.checked;
     this.currentChecked = incomingChecked;
+  }
+
+  @Watch('value')
+  @Watch('currentChecked')
+  handleStateChange() {
+    this.emitChange();
+  }
+
+  @Watch('currentChecked')
+  handleCurrentCheckedChange() {
+    this.nativeInputChecked = this.currentChecked;
+  }
+
+  setChecked(checked: boolean = false) {
+    if (!isControlled(this.controlledChecked) && !this.radioGroup && !this.isStandaloneFamilyControlled) {
+      // Unecessary to emit change because the watch of currentChecked will handle it
+      this.currentChecked = checked;
+    } else {
+      this.emitChange(checked);
+    }
+  }
+
+  @Watch('value')
+  @Watch('currentChecked')
+  emitUpdateEvent() {
+    const value = this.value;
+    const checked = this.currentChecked;
+    this.brxUpdate.emit({ value, checked });
   }
 
   /**
@@ -99,36 +155,6 @@ export class BrxRadio implements ComponentInterface {
     this.buttonTabindex = value;
   }
 
-  @Watch('value')
-  @Watch('currentChecked')
-  emitUpdateEvent() {
-    const value = this.value;
-    const checked = this.currentChecked;
-    this.brxUpdate.emit({ value, checked });
-  }
-
-  emitChangeEvent(checked = this.currentChecked, force = false) {
-    const value = this.value;
-
-    if (checked || force) {
-      this.brxChange.emit({ checked, value });
-    }
-  }
-
-  @Watch('value')
-  @Watch('currentChecked')
-  handleStateChange() {
-    this.emitChangeEvent();
-  }
-
-  setState(checked: boolean) {
-    if (this.controlledChecked === TOKEN_UNCONTROLLED) {
-      this.currentChecked = checked;
-    }
-
-    this.emitChangeEvent(checked);
-  }
-
   @Method()
   async getCurrentState() {
     return {
@@ -137,38 +163,20 @@ export class BrxRadio implements ComponentInterface {
     };
   }
 
-  @Listen('brxChange', { target: 'window', passive: true })
-  watchGlobalChange(event: CustomEvent<any>) {
-    const target = event.target as HTMLElement | null;
+  private syncCheckedFromRadioGroup = async () => {
+    const radioGroup = this.radioGroup;
 
-    const brxRadioTrigger = target?.closest('brx-radio');
+    if (radioGroup) {
+      const radioGroupValue = await radioGroup.getCurrentValue();
+      const isChecked = radioGroupValue === this.value;
 
-    if (brxRadioTrigger && brxRadioTrigger !== this.el) {
-      const detail = event.detail as RadioChangeEventDetail;
-
-      if (detail.checked) {
-        enqueueIdleCallback(() => {
-          this.syncCheckedFromNative();
-        });
-      }
-    }
-  }
-
-  private updateState = () => {
-    if (this.radioGroup) {
-      this.currentChecked = this.radioGroup.value === this.value;
+      this.currentChecked = isChecked;
+      this.nativeInputChecked = isChecked;
     }
   };
 
   private syncCheckedFromNative = () => {
-    if (this.nativeInput) {
-      this.setState(this.nativeInput?.checked);
-    }
-  };
-
-  private onChange = (event: Event) => {
-    event.preventDefault();
-    this.syncCheckedFromNative();
+    this.setChecked(this.nativeInputChecked);
   };
 
   private onFocus = () => {
@@ -179,27 +187,50 @@ export class BrxRadio implements ComponentInterface {
     this.brxBlur.emit();
   };
 
-  connectedCallback() {
-    this.radioGroup = this.el.closest('brx-radio-group');
-    const radioGroup = this.radioGroup;
+  private onChange = (event: Event) => {
+    event.preventDefault();
 
-    if (radioGroup) {
-      this.updateState();
-      radioGroup.addEventListener('brxChange', this.updateState);
+    const oldChecked = this.currentChecked;
+    const newChecked = this.nativeInputChecked;
+
+    this.nativeInputChecked = oldChecked;
+    this.setChecked(newChecked);
+  };
+
+  @Listen('brxChange', { target: 'window', passive: true })
+  handleGlobalRadioChange(event: CustomEvent<any>) {
+    const target = event.target as HTMLElement | null;
+
+    const brxRadio = target?.closest('brx-radio');
+
+    if (brxRadio) {
+      this.nativeInputChecked = this.currentChecked;
+
+      if (!this.radioGroup) {
+        enqueueIdleCallback(() => {
+          this.syncCheckedFromNative();
+        });
+      }
     }
   }
 
-  disconnectedCallback() {
-    const radioGroup = this.radioGroup;
+  @Listen('brxRadioGroupUpdate', { target: 'window', passive: true })
+  handleGlobalRadioGroupUpdate(event: CustomEvent<RadioGroupUpdateEventDetail>) {
+    const target = event.target as HTMLElement | null;
 
-    if (radioGroup) {
-      radioGroup.removeEventListener('brxChange', this.updateState);
-      this.radioGroup = null;
+    const brxRadioGroup = target?.closest('brx-radio-group');
+
+    if (brxRadioGroup && brxRadioGroup === this.radioGroup) {
+      this.syncCheckedFromRadioGroup();
     }
+  }
+
+  connectedCallback() {
+    this.syncCheckedFromRadioGroup();
   }
 
   componentWillLoad() {
-    if (this.inputId === undefined) {
+    if (!this.inputId) {
       this.inputId = generateUniqueId();
     }
 
@@ -221,16 +252,7 @@ export class BrxRadio implements ComponentInterface {
         aria-checked={`${this.currentChecked}`}
         aria-hidden={this.disabled ? 'true' : null}
       >
-        <input
-          id={this.inputId}
-          type="radio"
-          name={this.name}
-          value={this.value}
-          disabled={this.disabled}
-          onChange={this.onChange}
-          checked={this.currentChecked}
-          ref={nativeEl => (this.nativeInput = nativeEl as HTMLInputElement)}
-        />
+        <input type="radio" name={this.name} id={this.inputId} value={this.value} disabled={this.disabled} onChange={this.onChange} checked={this.currentChecked} />
 
         <label htmlFor={this.inputId} id={labelId}>
           {this.label}

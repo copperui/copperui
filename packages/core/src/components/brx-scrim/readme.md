@@ -5,11 +5,19 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type                                     | Default                  |
-| -------------- | --------------- | ----------- | ---------------------------------------- | ------------------------ |
-| `active`       | `active`        |             | `boolean`                                | `false`                  |
-| `closeElement` | `close-element` |             | `string`                                 | `'[data-scrim-dismiss]'` |
-| `type`         | `type`          |             | `"foco" \| "inibicao" \| "legibilidade"` | `'foco'`                 |
+| Property           | Attribute           | Description | Type                                     | Default                  |
+| ------------------ | ------------------- | ----------- | ---------------------------------------- | ------------------------ |
+| `active`           | `active`            |             | `boolean`                                | `undefined`              |
+| `closeElement`     | `close-element`     |             | `string`                                 | `'[data-scrim-dismiss]'` |
+| `controlledActive` | `controlled-active` |             | `boolean`                                | `undefined`              |
+| `type`             | `type`              |             | `"foco" \| "inibicao" \| "legibilidade"` | `'foco'`                 |
+
+
+## Events
+
+| Event            | Description | Type                                  |
+| ---------------- | ----------- | ------------------------------------- |
+| `brxScrimChange` |             | `CustomEvent<ScrimChangeEventDetail>` |
 
 
 ## Methods

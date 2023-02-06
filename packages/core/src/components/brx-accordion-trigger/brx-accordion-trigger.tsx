@@ -8,20 +8,22 @@ import { getCollapseTriggerProps, IBrxCollapseTriggerState } from '../brx-collap
   shadow: false,
 })
 export class BrxAccordionTrigger implements ComponentInterface, IBrxCollapseTriggerState {
+  private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
+
   @Element()
   el: HTMLBrxAccordionTriggerElement;
 
   // brx-collapse-trigger props
-  @Prop({ reflect: true })
+  @Prop()
   useIcons: boolean = true;
 
-  @Prop({ reflect: true })
+  @Prop()
   breakpoint: string | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   iconToHide: string = 'fa5/fas/chevron-up';
 
-  @Prop({ reflect: true })
+  @Prop()
   iconToShow: string = 'fa5/fas/chevron-down';
 
   @Prop({ reflect: true, attribute: 'target' })
@@ -30,8 +32,6 @@ export class BrxAccordionTrigger implements ComponentInterface, IBrxCollapseTrig
 
   @Prop({ reflect: true })
   group: string;
-
-  private collapseTriggerEl: HTMLBrxCollapseTriggerElement;
 
   getGroupAccordionTriggers() {
     return findTargets<HTMLBrxAccordionTriggerElement>(`brx-accordion-trigger[group="${this.group}"]`);
@@ -63,12 +63,14 @@ export class BrxAccordionTrigger implements ComponentInterface, IBrxCollapseTrig
     await this.collapseTriggerEl.close(false);
   }
 
-  render() {
-    const collapseTriggerProps = getCollapseTriggerProps(this);
+  get collapseTriggerProps() {
+    return getCollapseTriggerProps(this);
+  }
 
+  render() {
     return (
       <Host>
-        <brx-collapse-trigger {...collapseTriggerProps} onBrxTriggerClick={() => this.handleClick()} ref={el => void (this.collapseTriggerEl = el)}>
+        <brx-collapse-trigger {...this.collapseTriggerProps} onBrxTriggerClick={() => this.handleClick()} ref={el => void (this.collapseTriggerEl = el)}>
           <slot></slot>
         </brx-collapse-trigger>
       </Host>

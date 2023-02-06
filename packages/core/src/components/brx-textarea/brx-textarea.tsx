@@ -1,6 +1,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
 import { generateUniqueId } from '../../utils/helpers';
-import { Attributes, inheritAriaAttributes, inheritAttributes } from '../../utils/inherited-attributes';
+import { inheritAriaAttributes, inheritAttributes } from '../../utils/inherited-attributes';
 import { TextareaChangeEventDetail } from './brx-textarea-interface';
 
 @Component({
@@ -9,15 +10,73 @@ import { TextareaChangeEventDetail } from './brx-textarea-interface';
   shadow: false,
 })
 export class BrxTextarea implements ComponentInterface {
-  private nativeInput?: HTMLTextAreaElement;
   private didBlurAfterEdit = false;
-  private inheritedAttributes: Attributes = {};
-
-  @Prop()
-  darkMode: boolean;
+  private nativeInput: HTMLTextAreaElement | null = null;
 
   @Element()
   el!: HTMLElement;
+
+  hasValue(): boolean {
+    return this.getValue() !== '';
+  }
+
+  getValue(): string {
+    return String(this.currentValue ?? '');
+  }
+
+  /**
+   * Emitted when the input value has changed.
+   */
+  @Event()
+  brxChange!: EventEmitter<TextareaChangeEventDetail>;
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event()
+  brxInput!: EventEmitter<InputEvent>;
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event()
+  brxBlur!: EventEmitter<FocusEvent>;
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event()
+  brxFocus!: EventEmitter<FocusEvent>;
+
+  @Prop({ mutable: true })
+  inputId: string;
+
+  @Prop()
+  value: string | null | undefined = undefined;
+
+  @Prop()
+  controlledValue: string | null | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+
+  @State()
+  currentValue: string | null = '';
+
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    const targetValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+    this.currentValue = String(targetValue ?? '');
+  }
+
+  setValue(value: string) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = value;
+    }
+
+    this.brxChange.emit({ value: value });
+  }
+
+  @Prop()
+  darkMode: boolean;
 
   @Prop()
   label: string;
@@ -143,59 +202,8 @@ export class BrxTextarea implements ComponentInterface {
   @Prop()
   wrap?: 'hard' | 'soft' | 'off';
 
-  /**
-   * If `true`, the textarea container will grow and shrink based
-   * on the contents of the textarea.
-   */
-  @Prop({ reflect: true })
-  autoGrow = false;
-
-  /**
-   * The value of the textarea.
-   */
-  @Prop({ mutable: true })
-  value?: string | null = '';
-
   @State()
   hasFocus = false;
-
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected valueChanged() {
-    const nativeInput = this.nativeInput;
-    const value = this.getValue();
-    if (nativeInput && nativeInput.value !== value) {
-      nativeInput.value = value;
-    }
-
-    this.brxChange.emit({ value });
-  }
-
-  /**
-   * Emitted when the input value has changed.
-   */
-  @Event()
-  brxChange!: EventEmitter<TextareaChangeEventDetail>;
-
-  /**
-   * Emitted when a keyboard input occurred.
-   */
-  @Event()
-  brxInput!: EventEmitter<InputEvent>;
-
-  /**
-   * Emitted when the input loses focus.
-   */
-  @Event()
-  brxBlur!: EventEmitter<FocusEvent>;
-
-  /**
-   * Emitted when the input has focus.
-   */
-  @Event()
-  brxFocus!: EventEmitter<FocusEvent>;
 
   /**
    * Sets focus on the native `textarea` in `brx-textarea`. Use this method instead of the global
@@ -231,7 +239,7 @@ export class BrxTextarea implements ComponentInterface {
   /**
    * Check if we need to clear the text input if clearOnEdit is enabled
    */
-  private checkClearOnEdit() {
+  checkClearOnEdit() {
     if (!this.clearOnEdit) {
       return;
     }
@@ -239,45 +247,40 @@ export class BrxTextarea implements ComponentInterface {
     // Did the input value change after it was blurred and edited?
     if (this.didBlurAfterEdit && this.hasValue()) {
       // Clear the input
-      this.value = '';
+      this.currentValue = '';
     }
 
     // Reset the flag
     this.didBlurAfterEdit = false;
   }
 
-  private focusChange() {
+  focusChange() {
     // If clearOnEdit is enabled and the input blurred but has a value, set a flag
     if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
       this.didBlurAfterEdit = true;
     }
   }
 
-  private hasValue(): boolean {
-    return this.getValue() !== '';
-  }
+  onInput = (event: Event) => {
+    const oldValue = this.getValue();
+    const newValue = this.nativeInput.value;
 
-  private getValue(): string {
-    return this.value || '';
-  }
+    this.nativeInput.value = oldValue;
+    this.setValue(newValue);
 
-  private onInput = (ev: Event) => {
-    if (this.nativeInput) {
-      this.value = this.nativeInput.value;
-    }
-    this.brxInput.emit(ev as InputEvent);
+    this.brxInput.emit(event as InputEvent);
   };
 
-  private onFocus = (ev: FocusEvent) => {
+  onFocus = (event: FocusEvent) => {
     this.hasFocus = true;
     this.focusChange();
 
     if (this.fireFocusEvents) {
-      this.brxFocus.emit(ev);
+      this.brxFocus.emit(event);
     }
   };
 
-  private onBlur = (ev: FocusEvent) => {
+  onBlur = (ev: FocusEvent) => {
     this.hasFocus = false;
     this.focusChange();
 
@@ -286,19 +289,20 @@ export class BrxTextarea implements ComponentInterface {
     }
   };
 
-  private onKeyDown = () => {
+  onKeyDown = () => {
     this.checkClearOnEdit();
   };
-
-  @Prop({ reflect: true, mutable: true })
-  inputId: string;
 
   componentWillLoad() {
     if (!this.inputId) {
       this.inputId = generateUniqueId();
     }
 
-    this.inheritedAttributes = {
+    this.syncCurrentValueFromProps();
+  }
+
+  get inheritedAttributes() {
+    return {
       ...inheritAriaAttributes(this.el),
       ...inheritAttributes(this.el, ['data-form-type', 'title']),
     };
@@ -306,38 +310,36 @@ export class BrxTextarea implements ComponentInterface {
 
   render() {
     const value = this.getValue();
-
-    const { inputId, label, inline, counter } = this;
-
-    const labelId = inputId + '-lbl';
+    const labelId = this.inputId + '-lbl';
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
-        <div class={inline ? 'row' : ''}>
+        <div class={this.inline ? 'row' : ''}>
           <div class="col-auto pt-half">
-            <label htmlFor={inputId}>{label}</label>
+            <label htmlFor={this.inputId}>{this.label}</label>
           </div>
 
           <div class="col">
             <textarea
-              id={inputId}
-              aria-labelledby={labelId ?? null}
-              ref={el => (this.nativeInput = el)}
-              autoCapitalize={this.autocapitalize}
-              autoFocus={this.autofocus}
-              enterKeyHint={this.enterkeyhint}
-              inputMode={this.inputmode}
-              disabled={this.disabled}
-              maxLength={this.maxlength}
-              minLength={this.minlength}
-              name={this.name}
-              placeholder={this.placeholder || ''}
-              readOnly={this.readonly}
-              required={this.required}
-              spellcheck={this.spellcheck}
+              value={value}
               cols={this.cols}
               rows={this.rows}
               wrap={this.wrap}
+              name={this.name}
+              id={this.inputId}
+              required={this.required}
+              readOnly={this.readonly}
+              disabled={this.disabled}
+              minLength={this.minlength}
+              maxLength={this.maxlength}
+              autoFocus={this.autofocus}
+              inputMode={this.inputmode}
+              spellcheck={this.spellcheck}
+              enterKeyHint={this.enterkeyhint}
+              aria-labelledby={labelId ?? null}
+              autoCapitalize={this.autocapitalize}
+              ref={el => (this.nativeInput = el)}
+              placeholder={this.placeholder || ''}
               onInput={this.onInput}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
@@ -347,7 +349,7 @@ export class BrxTextarea implements ComponentInterface {
               {value}
             </textarea>
 
-            {counter === 'limit' && typeof this.maxlength === 'number' && (
+            {this.counter === 'limit' && typeof this.maxlength === 'number' && (
               <div class="text-base mt-1">
                 {value.length === 0 && (
                   <span class="limit">
@@ -359,7 +361,7 @@ export class BrxTextarea implements ComponentInterface {
               </div>
             )}
 
-            {counter === 'total' && (
+            {this.counter === 'total' && (
               <div class="text-base mt-1">
                 <span class="characters">
                   <strong>{value.length}</strong> caracteres digitados.

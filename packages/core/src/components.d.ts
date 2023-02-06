@@ -13,7 +13,8 @@ import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { IPaginationItemTarget } from "./components/brx-pagination-item/brx-pagination-item-interface";
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
-import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { RadioGroupChangeEventDetail, RadioGroupUpdateEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interface";
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
@@ -23,7 +24,7 @@ import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 import { AttachmentAsset, IHandleUploadFiles, UploadChangeEventDetail } from "./components/brx-upload/brx-upload-interfaces";
 export namespace Components {
     interface BrxAccordionLegacy {
-        "entries": any;
+        "entries": any | undefined;
         "negative": boolean;
         "single": boolean;
     }
@@ -246,6 +247,7 @@ export namespace Components {
          */
         "clearOnEdit"?: boolean;
         "color": 'success' | 'danger' | 'warning' | 'info' | undefined;
+        "controlledValue": string | number | undefined | TOKEN_UNCONTROLLED;
         "density": 'small' | 'medium' | 'large' | undefined;
         /**
           * If `true`, the user cannot interact with the input.
@@ -331,10 +333,7 @@ export namespace Components {
           * The type of control to display. The default type is text.
          */
         "type": TextFieldTypes;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number | null;
+        "value": string | number | undefined;
     }
     interface BrxItem {
         "button": boolean;
@@ -408,7 +407,7 @@ export namespace Components {
           * If `true`, the radio is selected.
          */
         "checked": boolean | undefined;
-        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
+        "controlledChecked": boolean | undefined | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -432,19 +431,20 @@ export namespace Components {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        "controlledValue": any | undefined | null | TOKEN_UNCONTROLLED;
+        "getCurrentValue": () => Promise<any>;
         "label"?: HTMLLabelElement | string | null;
+        "labelId": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
+        "value": any | undefined | null;
     }
     interface BrxScrim {
-        "active": boolean;
+        "active": boolean | undefined;
         "closeElement": string | undefined;
+        "controlledActive": boolean | undefined;
         "hideScrim": () => Promise<void>;
         "showScrim": () => Promise<void>;
         "type": 'foco' | 'legibilidade' | 'inibicao';
@@ -542,10 +542,6 @@ export namespace Components {
     }
     interface BrxTextarea {
         /**
-          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
-         */
-        "autoGrow": boolean;
-        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize": string;
@@ -562,6 +558,7 @@ export namespace Components {
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
+        "controlledValue": string | null | undefined | TOKEN_UNCONTROLLED;
         "counter"?: 'limit' | 'total';
         "darkMode": boolean;
         /**
@@ -627,10 +624,7 @@ export namespace Components {
           * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck": boolean;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string | null;
+        "value": string | null | undefined;
         /**
           * Indicates how the control wraps text.
          */
@@ -736,6 +730,10 @@ export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioGroupElement;
+}
+export interface BrxScrimCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxScrimElement;
 }
 export interface BrxSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1215,7 +1213,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BrxAccordionLegacy {
-        "entries"?: any;
+        "entries"?: any | undefined;
         "negative"?: boolean;
         "single"?: boolean;
     }
@@ -1456,6 +1454,7 @@ declare namespace LocalJSX {
          */
         "clearOnEdit"?: boolean;
         "color"?: 'success' | 'danger' | 'warning' | 'info' | undefined;
+        "controlledValue"?: string | number | undefined | TOKEN_UNCONTROLLED;
         "density"?: 'small' | 'medium' | 'large' | undefined;
         /**
           * If `true`, the user cannot interact with the input.
@@ -1548,10 +1547,7 @@ declare namespace LocalJSX {
           * The type of control to display. The default type is text.
          */
         "type"?: TextFieldTypes;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number | null;
+        "value"?: string | number | undefined;
     }
     interface BrxItem {
         "button"?: boolean;
@@ -1624,7 +1620,7 @@ declare namespace LocalJSX {
           * If `true`, the radio is selected.
          */
         "checked"?: boolean | undefined;
-        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
+        "controlledChecked"?: boolean | undefined | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -1655,23 +1651,22 @@ declare namespace LocalJSX {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        "controlledValue"?: any | undefined | null | TOKEN_UNCONTROLLED;
         "label"?: HTMLLabelElement | string | null;
+        "labelId"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onBrxChange"?: (event: BrxRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
+        "onBrxRadioGroupChange"?: (event: BrxRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
+        "onBrxRadioGroupUpdate"?: (event: BrxRadioGroupCustomEvent<RadioGroupUpdateEventDetail>) => void;
+        "value"?: any | undefined | null;
     }
     interface BrxScrim {
-        "active"?: boolean;
+        "active"?: boolean | undefined;
         "closeElement"?: string | undefined;
+        "controlledActive"?: boolean | undefined;
+        "onBrxScrimChange"?: (event: BrxScrimCustomEvent<ScrimChangeEventDetail>) => void;
         "type"?: 'foco' | 'legibilidade' | 'inibicao';
     }
     interface BrxScrimTrigger {
@@ -1767,10 +1762,6 @@ declare namespace LocalJSX {
     }
     interface BrxTextarea {
         /**
-          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
-         */
-        "autoGrow"?: boolean;
-        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize"?: string;
@@ -1787,6 +1778,7 @@ declare namespace LocalJSX {
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
+        "controlledValue"?: string | null | undefined | TOKEN_UNCONTROLLED;
         "counter"?: 'limit' | 'total';
         "darkMode"?: boolean;
         /**
@@ -1856,10 +1848,7 @@ declare namespace LocalJSX {
           * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck"?: boolean;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string | null;
+        "value"?: string | null | undefined;
         /**
           * Indicates how the control wraps text.
          */

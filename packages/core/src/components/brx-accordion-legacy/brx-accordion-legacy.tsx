@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 import { IAccordionLegacyEntryDefinition } from '../../interfaces/IAccordionLegacyEntryDefinition';
-import { tryParseJSON } from '../../utils/helpers';
+import { findTargets, tryParseJSON } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-accordion-legacy',
@@ -17,11 +17,11 @@ export class BrxAccordionLegacy {
   @Prop({ reflect: true })
   negative: boolean = false;
 
-  @Prop({ reflect: true, mutable: true, attribute: 'entries' })
-  entries: any;
+  @Prop({ reflect: false, attribute: 'entries' })
+  entries: any | undefined;
 
   get childEntryItems() {
-    return Array.from(this.el.querySelectorAll('brx-accordion-legacy-entry-item'));
+    return findTargets<HTMLBrxAccordionLegacyEntryItemElement>('brx-accordion-legacy-entry-item', this.el);
   }
 
   get parsedEntries(): IAccordionLegacyEntryDefinition[] {
@@ -35,13 +35,12 @@ export class BrxAccordionLegacy {
   }
 
   @Listen('collapseChange')
-  handleCollapseChange(ev: CustomEvent<HTMLBrxAccordionLegacyEntryItemElement>) {
-    const targetItem = ev.detail;
-
-    const active = targetItem.active;
+  handleCollapseChange(event: CustomEvent<HTMLBrxAccordionLegacyEntryItemElement>) {
+    const detail = event.detail;
+    const { active } = detail;
 
     if (this.single && active) {
-      this.handleCollapseSingle(targetItem);
+      this.handleCollapseSingle(detail);
     }
   }
 
