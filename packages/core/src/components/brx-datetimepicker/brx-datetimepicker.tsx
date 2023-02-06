@@ -1,32 +1,36 @@
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { Instance } from 'flatpickr/dist/types/instance';
 import { BaseOptions, Hook, Options } from 'flatpickr/dist/types/options';
 import { TOKEN_UNCONTROLLED } from '../../tokens';
 import { enqueueIdleCallback, findTarget, tryParseJSON } from '../../utils/helpers';
 import { BrxInput } from '../brx-input/brx-input';
-import { getConfigSetupForType, getDefaultLocale, getFlatpickr, Type } from './brx-datetimepicker-helpers';
+import { getDefaultLocale, getFlatpickr, getIconForType, getInitialInputType, getSetupForType } from './brx-datetimepicker-helpers';
+import { DateTimePickerChangeEventDetail, Type } from './brx-datetimepicker-interface';
 
 @Component({
   tag: 'brx-datetimepicker',
   styleUrl: 'brx-datetimepicker.scss',
   shadow: false,
 })
-export class BrxDatetimepicker implements ComponentInterface {
+export class BrxDateTimePicker implements ComponentInterface {
   private fp: Instance | null;
 
   @Element()
   el: HTMLElement;
 
+  @Event()
+  brxChange: EventEmitter<DateTimePickerChangeEventDetail>;
+
   get inputEl() {
     return findTarget<HTMLInputElement>('input', this.el);
   }
 
-  get selectionStart() {
-    return this.inputEl.selectionStart;
-  }
-
   get inputValue() {
     return this.inputEl.value;
+  }
+
+  get selectionStart() {
+    return this.inputEl.selectionStart;
   }
 
   @Prop()
@@ -41,14 +45,19 @@ export class BrxDatetimepicker implements ComponentInterface {
   @Prop()
   config: string | Options | undefined;
 
-  @Prop()
-  value: string | undefined;
+  get parsedConfig(): Partial<BaseOptions> {
+    const config = tryParseJSON(this.config ?? {});
+    return typeof config !== 'string' ? config : {};
+  }
 
   @Prop()
-  controlledValue: string | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  value: Date[] | string[] | number[] | Date | string | number | undefined;
+
+  @Prop()
+  controlledValue: Date[] | string[] | number[] | Date | string | number | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
-  currentValue: string | undefined;
+  currentValue: Date[] | string[] | number[] | Date | string | number | undefined;
 
   @Watch('value')
   @Watch('controlledValue')
@@ -56,19 +65,29 @@ export class BrxDatetimepicker implements ComponentInterface {
     this.currentValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
   }
 
-  get parsedConfigProp(): Partial<BaseOptions> {
-    const config = tryParseJSON(this.config ?? {});
-    return typeof config !== 'string' ? config : {};
+  @Watch('currentValue')
+  syncFlatpickerDateFromCurrentValue() {
+    this.fp.setDate(this.currentValue, false);
   }
 
-  get configSetup() {
-    return getConfigSetupForType(this.type);
+  setCurrentValue(selectedDates: Date[], dateStr: string) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = selectedDates;
+    } else {
+      this.syncFlatpickerDateFromCurrentValue();
+    }
+
+    this.brxChange.emit({ selectedDates, dateStr });
   }
 
-  get configNative() {
+  get setup() {
+    return getSetupForType(this.type);
+  }
+
+  get configNative(): Partial<BaseOptions> {
     const { mode } = this;
 
-    const { dateFormat, noCalendar, enableTime } = this.configSetup;
+    const { dateFormat, noCalendar, enableTime } = this.setup;
 
     return {
       mode,
@@ -79,48 +98,22 @@ export class BrxDatetimepicker implements ComponentInterface {
       time_24hr: true,
       allowInput: true,
       minuteIncrement: 1,
-      disableMobile: 'true',
+      disableMobile: true,
       nextArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-right"></brx-icon></brx-button>',
       prevArrow: '<brx-button circle size="small" type="button"><brx-icon name="fa5/fas/chevron-left"></brx-icon></brx-button>',
     };
   }
 
-  get configFlatpick() {
-    return Object.assign({}, this.parsedConfigProp, this.configNative);
+  get completeConfig(): Partial<BaseOptions> {
+    return Object.assign({}, this.parsedConfig, this.configNative);
   }
 
   get iconName() {
-    switch (this.type) {
-      case Type.DATE:
-      case Type.DATETIME_LOCAL: {
-        return 'fa5/fas/calendar-alt';
-      }
-
-      case Type.TIME: {
-        return 'fa5/fas/clock';
-      }
-
-      default: {
-        return null;
-      }
-    }
+    return getIconForType(this.type);
   }
 
   get inputInitialType(): BrxInput['type'] {
-    switch (this.type) {
-      case Type.TIME: {
-        return 'time';
-      }
-
-      case Type.DATETIME_LOCAL: {
-        return 'datetime-local';
-      }
-
-      case Type.DATE:
-      default: {
-        return 'text';
-      }
-    }
+    return getInitialInputType(this.type);
   }
 
   get flatpickr() {
@@ -340,7 +333,7 @@ export class BrxDatetimepicker implements ComponentInterface {
 
     await this.setupMask();
 
-    this.fp = flatpickr(this.el, this.configFlatpick);
+    this.fp = flatpickr(this.el, this.completeConfig);
 
     const handleOpen = () => {
       document.querySelectorAll('.arrowUp').forEach(element => {
@@ -354,8 +347,8 @@ export class BrxDatetimepicker implements ComponentInterface {
 
     this.fp.config.onOpen.push(handleOpen);
 
-    const handleChange: Hook = () => {
-      console.log('fp#config#onChange');
+    const handleChange: Hook = (selectedDates, dateStr) => {
+      this.setCurrentValue(selectedDates, dateStr);
     };
 
     this.fp.config.onChange.push(handleChange);
@@ -369,7 +362,7 @@ export class BrxDatetimepicker implements ComponentInterface {
       if (!Number.isNaN(new Date(inputValue))) {
         // if the cursor is at the end of the edit and we have a full sized date, allow the date to immediately change, otherwise just move to the correct month without actually changing it
         if (this.selectionStart >= 10) {
-          fp.setDate(inputValue);
+          fp.setDate(inputValue, true);
         } else {
           fp.jumpToDate(inputValue);
         }
@@ -383,14 +376,16 @@ export class BrxDatetimepicker implements ComponentInterface {
 
     if (fp) {
       if (!Number.isNaN(new Date(inputValue))) {
-        fp.setDate(inputValue);
+        fp.setDate(inputValue, true);
       }
     }
   }
 
   componentDidLoad() {
     enqueueIdleCallback(() => {
-      this.buildDateTimePicker();
+      this.buildDateTimePicker().then(() => {
+        this.syncCurrentValueFromProps();
+      });
     });
   }
 

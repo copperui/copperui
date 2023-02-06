@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TOKEN_UNCONTROLLED } from "./tokens";
 import { CheckboxChangeEventDetail, CheckboxUpdateEventDetail } from "./components/brx-checkbox/brx-checkbox-interface";
-import { Type } from "./components/brx-datetimepicker/brx-datetimepicker-helpers";
+import { DateTimePickerChangeEventDetail, Type } from "./components/brx-datetimepicker/brx-datetimepicker-interface";
 import { Options } from "flatpickr/dist/types/options";
 import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
@@ -184,11 +184,11 @@ export namespace Components {
     }
     interface BrxDatetimepicker {
         "config": string | Options | undefined;
-        "controlledValue": string | undefined | TOKEN_UNCONTROLLED;
+        "controlledValue": Date[] | string[] | number[] | Date | string | number | undefined | TOKEN_UNCONTROLLED;
         "mode": 'single' | 'range';
         "placeholder": string | undefined;
         "type": Type;
-        "value": string | undefined;
+        "value": Date[] | string[] | number[] | Date | string | number | undefined;
     }
     interface BrxDivider {
         "darkMode": boolean;
@@ -716,6 +716,10 @@ export interface BrxCheckboxCustomEvent<T> extends CustomEvent<T> {
 export interface BrxCollapseTriggerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxCollapseTriggerElement;
+}
+export interface BrxDatetimepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxDatetimepickerElement;
 }
 export interface BrxInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1389,11 +1393,12 @@ declare namespace LocalJSX {
     }
     interface BrxDatetimepicker {
         "config"?: string | Options | undefined;
-        "controlledValue"?: string | undefined | TOKEN_UNCONTROLLED;
+        "controlledValue"?: Date[] | string[] | number[] | Date | string | number | undefined | TOKEN_UNCONTROLLED;
         "mode"?: 'single' | 'range';
+        "onBrxChange"?: (event: BrxDatetimepickerCustomEvent<DateTimePickerChangeEventDetail>) => void;
         "placeholder"?: string | undefined;
         "type"?: Type;
-        "value"?: string | undefined;
+        "value"?: Date[] | string[] | number[] | Date | string | number | undefined;
     }
     interface BrxDivider {
         "darkMode"?: boolean;

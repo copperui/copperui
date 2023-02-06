@@ -3,7 +3,7 @@ import { CleanupManager } from '../../utils/cleanup';
 import { calcSize, generateUniqueId, getFileListFromFiles, preventDefaults, wait } from '../../utils/helpers';
 import { inheritAriaAttributes } from '../../utils/inherited-attributes';
 import { BrxMessage } from '../brx-message/brx-message';
-import { IHandleUploadFiles, AttachmentAsset, IMessage, UploadChangeEventDetail } from './brx-upload-interfaces';
+import { AttachmentAsset, IHandleUploadFiles, IMessage, UploadChangeEventDetail } from './brx-upload-interfaces';
 
 const EVENTS_TO_HIGHLIGHT = ['dragenter', 'dragover'] as const;
 const EVENTS_TO_REMOVE_HIGHLIGHT = ['dragleave', 'drop'] as const;
@@ -17,7 +17,6 @@ const DOMStrings = {
 } as const;
 
 const DEFAULT_HANDLE_UPLOAD_FILES = () => {
-  console.log('brx-upload#handleUploadFiles padrão | noop');
   return wait(0);
 };
 
