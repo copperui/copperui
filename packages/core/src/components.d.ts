@@ -246,6 +246,7 @@ export namespace Components {
          */
         "clearOnEdit"?: boolean;
         "color": 'success' | 'danger' | 'warning' | 'info' | undefined;
+        "controlledValue": string | number | undefined | TOKEN_UNCONTROLLED;
         "density": 'small' | 'medium' | 'large' | undefined;
         /**
           * If `true`, the user cannot interact with the input.
@@ -331,10 +332,7 @@ export namespace Components {
           * The type of control to display. The default type is text.
          */
         "type": TextFieldTypes;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number | null;
+        "value": string | number | undefined;
     }
     interface BrxItem {
         "button": boolean;
@@ -1456,6 +1454,7 @@ declare namespace LocalJSX {
          */
         "clearOnEdit"?: boolean;
         "color"?: 'success' | 'danger' | 'warning' | 'info' | undefined;
+        "controlledValue"?: string | number | undefined | TOKEN_UNCONTROLLED;
         "density"?: 'small' | 'medium' | 'large' | undefined;
         /**
           * If `true`, the user cannot interact with the input.
@@ -1548,10 +1547,7 @@ declare namespace LocalJSX {
           * The type of control to display. The default type is text.
          */
         "type"?: TextFieldTypes;
-        /**
-          * The value of the input.
-         */
-        "value"?: string | number | null;
+        "value"?: string | number | undefined;
     }
     interface BrxItem {
         "button"?: boolean;
@@ -1766,10 +1762,6 @@ declare namespace LocalJSX {
         "selected"?: boolean;
     }
     interface BrxTextarea {
-        /**
-          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
-         */
-        "autoGrow"?: boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */

@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { AutocompleteTypes, TextFieldTypes } from '../../interfaces';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
 import { generateUniqueId } from '../../utils/helpers';
 import { inheritAriaAttributes } from '../../utils/inherited-attributes';
 import { InputChangeEventDetail } from './brx-input.interface';
@@ -10,6 +11,10 @@ import { InputChangeEventDetail } from './brx-input.interface';
   shadow: false,
 })
 export class BrxInput implements ComponentInterface {
+  private nativeInput?: HTMLInputElement;
+  private didBlurAfterEdit = false;
+  private tabindex?: string | number;
+
   @Element()
   el!: HTMLElement;
 
@@ -36,6 +41,30 @@ export class BrxInput implements ComponentInterface {
    */
   @Event()
   brxFocus!: EventEmitter<void>;
+
+  @Prop()
+  value: string | number | undefined;
+
+  @Prop()
+  controlledValue: string | number | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+
+  @State()
+  currentValue: string | number | undefined;
+
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    const targetValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+    this.currentValue = String(targetValue ?? '');
+  }
+
+  setValue(value: string | number) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = value;
+    }
+
+    this.brxChange.emit({ value: value });
+  }
 
   @State()
   hasFocus = false;
@@ -189,66 +218,37 @@ export class BrxInput implements ComponentInterface {
   @Prop()
   type: TextFieldTypes = 'text';
 
-  /**
-   * The value of the input.
-   */
-  @Prop({ mutable: true })
-  value?: string | number | null = '';
-
   //
 
-  @Prop({ reflect: true })
+  @Prop()
   label: string;
 
   @Prop({ reflect: true })
   hiddenLabel: boolean;
 
-  @Prop({ reflect: true })
+  @Prop()
   labelClass: string;
 
   @Prop({ reflect: true })
   inline: boolean;
 
-  @Prop({ reflect: true, mutable: true })
+  @Prop({ mutable: true })
   inputId: string | undefined = undefined;
 
   @Prop({ reflect: true })
   density: 'small' | 'medium' | 'large' | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   startIconName: string | undefined;
 
   @Prop({ reflect: true })
   color: 'success' | 'danger' | 'warning' | 'info' | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   enablePasswordToggle = false;
 
   @State()
   showPassword = false;
-
-  private nativeInput?: HTMLInputElement;
-  private didBlurAfterEdit = false;
-  private tabindex?: string | number;
-
-  get inheritedAttributes() {
-    return inheritAriaAttributes(this.el);
-  }
-
-  componentWillLoad() {
-    if (!this.inputId) {
-      this.inputId = generateUniqueId();
-    }
-
-    // If the my-input has a tabindex attribute we get the value
-    // and pass it down to the native input, then remove it from the
-    // my-input to avoid causing tabbing twice on the same element
-    if (this.el.hasAttribute('tabindex')) {
-      const tabindex = this.el.getAttribute('tabindex');
-      this.tabindex = tabindex !== null ? tabindex : undefined;
-      this.el.removeAttribute('tabindex');
-    }
-  }
 
   /**
    * Sets focus on the specified `my-input`. Use this method instead of the global
@@ -281,6 +281,92 @@ export class BrxInput implements ComponentInterface {
     }
   }
 
+  shouldClearOnEdit() {
+    const { type, clearOnEdit } = this;
+    return clearOnEdit === undefined ? type === 'password' : clearOnEdit;
+  }
+
+  getValue(): string {
+    return String(this.currentValue ?? '');
+  }
+
+  onInput = (event: Event) => {
+    const oldValue = this.getValue();
+    const newValue = this.nativeInput.value;
+
+    this.nativeInput.value = oldValue;
+    this.setValue(newValue);
+
+    this.brxInput.emit(event as KeyboardEvent);
+  };
+
+  onBlur = () => {
+    this.hasFocus = false;
+    this.focusChanged();
+    this.brxBlur.emit();
+  };
+
+  onFocus = () => {
+    this.hasFocus = true;
+    this.focusChanged();
+    this.brxFocus.emit();
+  };
+
+  onKeydown = (ev: KeyboardEvent) => {
+    if (this.shouldClearOnEdit()) {
+      // Did the input value change after it was blurred and edited?
+      // Do not clear if user is hitting Enter to submit form
+      if (this.didBlurAfterEdit && this.hasValue() && ev.key !== 'Enter') {
+        // Clear the input
+        this.clearTextInput();
+      }
+
+      // Reset the flag
+      this.didBlurAfterEdit = false;
+    }
+  };
+
+  clearTextInput = (event?: Event) => {
+    if (this.clearInput && !this.readonly && !this.disabled && event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    this.setValue('');
+  };
+
+  focusChanged() {
+    // If clearOnEdit is enabled and the input blurred but has a value, set a flag
+    if (!this.hasFocus && this.shouldClearOnEdit() && this.hasValue()) {
+      this.didBlurAfterEdit = true;
+    }
+  }
+
+  hasValue(): boolean {
+    return this.getValue().length > 0;
+  }
+
+  get inheritedAttributes() {
+    return inheritAriaAttributes(this.el);
+  }
+
+  componentWillLoad() {
+    if (!this.inputId) {
+      this.inputId = generateUniqueId();
+    }
+
+    this.syncCurrentValueFromProps();
+
+    // If the my-input has a tabindex attribute we get the value
+    // and pass it down to the native input, then remove it from the
+    // my-input to avoid causing tabbing twice on the same element
+    if (this.el.hasAttribute('tabindex')) {
+      const tabindex = this.el.getAttribute('tabindex');
+      this.tabindex = tabindex !== null ? tabindex : undefined;
+      this.el.removeAttribute('tabindex');
+    }
+  }
+
   render() {
     const { disabled, hiddenLabel, labelClass, startIconName, inputId, enablePasswordToggle, showPassword, inheritedAttributes } = this;
 
@@ -306,37 +392,37 @@ export class BrxInput implements ComponentInterface {
             )}
 
             <input
+              type={type}
               id={inputId}
-              aria-labelledby={labelId}
-              disabled={disabled}
-              accept={this.accept}
-              autoCapitalize={this.autocapitalize}
-              autoComplete={this.autocomplete}
-              autoCorrect={this.autocorrect}
-              autoFocus={this.autofocus}
-              enterKeyHint={this.enterkeyhint}
-              inputMode={this.inputmode}
+              value={value}
               min={this.min}
               max={this.max}
-              minLength={this.minlength}
-              maxLength={this.maxlength}
-              multiple={this.multiple}
-              name={this.name}
-              pattern={this.pattern}
-              placeholder={this.placeholder || ''}
-              readOnly={this.readonly}
-              required={this.required}
-              spellcheck={this.spellcheck ? 'true' : undefined}
               step={this.step}
               size={this.size}
+              name={this.name}
+              disabled={disabled}
+              accept={this.accept}
+              pattern={this.pattern}
               tabindex={this.tabindex}
-              type={type}
-              value={value}
-              onInput={this.onInput}
+              multiple={this.multiple}
+              readOnly={this.readonly}
+              required={this.required}
+              aria-labelledby={labelId}
+              minLength={this.minlength}
+              maxLength={this.maxlength}
+              inputMode={this.inputmode}
+              autoFocus={this.autofocus}
+              autoCorrect={this.autocorrect}
+              autoComplete={this.autocomplete}
+              enterKeyHint={this.enterkeyhint}
+              autoCapitalize={this.autocapitalize}
+              placeholder={this.placeholder || ''}
+              spellcheck={this.spellcheck ? 'true' : undefined}
               onBlur={this.onBlur}
+              onInput={this.onInput}
               onFocus={this.onFocus}
               onKeyDown={this.onKeydown}
-              ref={input => (this.nativeInput = input)}
+              ref={input => void (this.nativeInput = input)}
               {...inheritedAttributes}
             />
 
@@ -344,12 +430,10 @@ export class BrxInput implements ComponentInterface {
               <button
                 type="button"
                 tabindex="-1"
-                onTouchStart={this.clearTextInput}
-                onMouseDown={this.clearTextInput}
-                onPointerDown={ev => {
-                  ev.preventDefault();
-                }}
                 onClick={this.clearTextInput}
+                onMouseDown={this.clearTextInput}
+                onTouchStart={this.clearTextInput}
+                onPointerDown={event => void event.preventDefault()}
               >
                 <brx-icon name="fa5/fas/times"></brx-icon>
               </button>
@@ -372,89 +456,5 @@ export class BrxInput implements ComponentInterface {
         <slot></slot>
       </Host>
     );
-  }
-
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  handleValueChange() {
-    const value = this.value == null ? this.value : this.value.toString();
-    this.brxChange.emit({ value });
-  }
-
-  private shouldClearOnEdit() {
-    const { type, clearOnEdit } = this;
-    return clearOnEdit === undefined ? type === 'password' : clearOnEdit;
-  }
-
-  private getValue(): string {
-    return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
-  }
-
-  private onInput = (event: Event) => {
-    const input = event.target as HTMLInputElement | null;
-
-    if (input) {
-      this.value = input.value || '';
-    }
-
-    this.brxInput.emit(event as KeyboardEvent);
-  };
-
-  private onBlur = () => {
-    this.hasFocus = false;
-    this.focusChanged();
-
-    this.brxBlur.emit();
-  };
-
-  private onFocus = () => {
-    this.hasFocus = true;
-    this.focusChanged();
-    this.brxFocus.emit();
-  };
-
-  private onKeydown = (ev: KeyboardEvent) => {
-    if (this.shouldClearOnEdit()) {
-      // Did the input value change after it was blurred and edited?
-      // Do not clear if user is hitting Enter to submit form
-      if (this.didBlurAfterEdit && this.hasValue() && ev.key !== 'Enter') {
-        // Clear the input
-        this.clearTextInput();
-      }
-
-      // Reset the flag
-      this.didBlurAfterEdit = false;
-    }
-  };
-
-  private clearTextInput = (ev?: Event) => {
-    if (this.clearInput && !this.readonly && !this.disabled && ev) {
-      ev.preventDefault();
-      ev.stopPropagation();
-    }
-
-    this.value = '';
-
-    /**
-     * This is needed for clearOnEdit
-     * Otherwise the value will not be cleared
-     * if user is inside the input
-     */
-    if (this.nativeInput) {
-      this.nativeInput.value = '';
-    }
-  };
-
-  private focusChanged() {
-    // If clearOnEdit is enabled and the input blurred but has a value, set a flag
-    if (!this.hasFocus && this.shouldClearOnEdit() && this.hasValue()) {
-      this.didBlurAfterEdit = true;
-    }
-  }
-
-  private hasValue(): boolean {
-    return this.getValue().length > 0;
   }
 }
