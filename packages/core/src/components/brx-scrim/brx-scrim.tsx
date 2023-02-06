@@ -1,4 +1,6 @@
-import { Component, Element, h, Host, Listen, Method, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { ScrimChangeEventDetail } from './brx-scrim-interface';
 
 @Component({
   tag: 'brx-scrim',
@@ -9,14 +11,48 @@ export class BrxScrim {
   @Element()
   el: HTMLElement;
 
+  @Event()
+  brxScrimChange: EventEmitter<ScrimChangeEventDetail>;
+
+  @Prop()
+  active: boolean | undefined;
+
+  @Prop()
+  controlledActive: boolean | undefined;
+
+  @State()
+  currentActive = false;
+
+  @Watch('active')
+  @Watch('controlledActive')
+  syncCurrentActiveFromProps() {
+    const targetValue = this.controlledActive !== TOKEN_UNCONTROLLED ? this.controlledActive : this.active;
+    this.currentActive = targetValue ?? false;
+  }
+
+  setActive(isActive: boolean) {
+    if (this.controlledActive === TOKEN_UNCONTROLLED) {
+      this.currentActive = isActive;
+    }
+
+    this.brxScrimChange.emit({ active: isActive });
+  }
+
   @Prop({ reflect: true })
   type: 'foco' | 'legibilidade' | 'inibicao' = 'foco';
 
-  @Prop({ reflect: true })
-  active = false;
-
-  @Prop({ reflect: true })
+  @Prop()
   closeElement: string | undefined = '[data-scrim-dismiss]';
+
+  @Method()
+  async showScrim() {
+    this.setActive(true);
+  }
+
+  @Method()
+  async hideScrim() {
+    this.setActive(false);
+  }
 
   handleClickFoco(event: MouseEvent) {
     const closeElement = this.closeElement;
@@ -44,29 +80,25 @@ export class BrxScrim {
     }
   }
 
-  @Method()
-  async showScrim() {
-    this.active = true;
-  }
+  get baseAttributes() {
+    switch (this.type) {
+      case 'foco': {
+        return {
+          ['data-scrim']: 'true',
+          ['data-visible']: this.currentActive,
+          ['aria-expanded']: this.currentActive,
+        };
+      }
 
-  @Method()
-  async hideScrim() {
-    this.active = false;
+      default: {
+        return {};
+      }
+    }
   }
 
   render() {
-    const attrs = {
-      ...(this.type === 'foco'
-        ? {
-            ['data-scrim']: 'true',
-            ['data-visible']: this.active,
-            ['aria-expanded']: this.active,
-          }
-        : {}),
-    };
-
     return (
-      <Host {...attrs}>
+      <Host {...this.baseAttributes}>
         <slot></slot>
       </Host>
     );

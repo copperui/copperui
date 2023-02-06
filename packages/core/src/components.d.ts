@@ -14,6 +14,7 @@ import { InputChangeEventDetail } from "./components/brx-input/brx-input.interfa
 import { IPaginationItemTarget } from "./components/brx-pagination-item/brx-pagination-item-interface";
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
 import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interface";
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
@@ -441,8 +442,9 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BrxScrim {
-        "active": boolean;
+        "active": boolean | undefined;
         "closeElement": string | undefined;
+        "controlledActive": boolean | undefined;
         "hideScrim": () => Promise<void>;
         "showScrim": () => Promise<void>;
         "type": 'foco' | 'legibilidade' | 'inibicao';
@@ -728,6 +730,10 @@ export interface BrxRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BrxRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxRadioGroupElement;
+}
+export interface BrxScrimCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxScrimElement;
 }
 export interface BrxSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1660,8 +1666,10 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BrxScrim {
-        "active"?: boolean;
+        "active"?: boolean | undefined;
         "closeElement"?: string | undefined;
+        "controlledActive"?: boolean | undefined;
+        "onBrxScrimChange"?: (event: BrxScrimCustomEvent<ScrimChangeEventDetail>) => void;
         "type"?: 'foco' | 'legibilidade' | 'inibicao';
     }
     interface BrxScrimTrigger {
