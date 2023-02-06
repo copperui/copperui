@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Scrim</h1>
+
+      <brx-scrim id="scrim-1">
+        <div class="bg-gray-10 p-4">
+          <p>Conteúdo!</p>
+
+          <brx-button data-scrim-dismiss variant="secondary">Fechar</brx-button>
+          <brx-button variant="primary">noop</brx-button>
+        </div>
+      </brx-scrim>
+
+      <brx-scrim-trigger target="#scrim-1">
+        <brx-button variant="primary">Testar Scrim</brx-button>
+      </brx-scrim-trigger>
+    </section>
+  </body>
+</html>

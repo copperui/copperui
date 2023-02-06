@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Pagination</h1>
+
+      <div>
+        <h2>Paginação padrão</h2>
+
+        <brx-pagination total="4" page="1">
+          <a tabindex="-1" data-pagination-target="first" href="#">
+            <brx-pagination-item target="first"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="prev" href="#">
+            <brx-pagination-item target="prev"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="1" href="#">
+            <brx-pagination-item target="1" active></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="2" href="#">
+            <brx-pagination-item target="2"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="3" href="#">
+            <brx-pagination-item target="3"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="4" href="#">
+            <brx-pagination-item target="4"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="next" href="#">
+            <brx-pagination-item target="next"></brx-pagination-item>
+          </a>
+          <a tabindex="-1" data-pagination-target="last" href="#">
+            <brx-pagination-item target="last"></brx-pagination-item>
+          </a>
+        </brx-pagination>
+      </div>
+
+      <div>
+        <h2>Botão Reticências</h2>
+
+        <div>
+          <brx-pagination total="10" page="9">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1" active></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="8" href="#">
+                <brx-pagination-item target="8"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="9" href="#">
+                <brx-pagination-item target="9"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="10" href="#">
+                <brx-pagination-item target="10"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination class="d-none d-sm-flex" total="20" page="13">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="2">2</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="3">3</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="4">4</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="8">8</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="9">9</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="10">10</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="11" href="#">
+                <brx-pagination-item target="11"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="12" href="#">
+                <brx-pagination-item target="12"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="13" href="#">
+                <brx-pagination-item target="13" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="14" href="#">
+                <brx-pagination-item target="14"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="15" href="#">
+                <brx-pagination-item target="15"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="16">16</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="17">17</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="18">18</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="19">19</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="20" href="#">
+                <brx-pagination-item target="20"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination total="10" page="2">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="first" href="#">
+                <brx-pagination-item target="first"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="4" href="#">
+                <brx-pagination-item target="4"></brx-pagination-item>
+              </a>
+
+              <brx-pagination-ellipsis>
+                <brx-list>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="5">5</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="6">6</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="7">7</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="8">8</a>
+                  </brx-item>
+                  <brx-item pass-styles="">
+                    <a href="#" data-pagination-target="9">9</a>
+                  </brx-item>
+                </brx-list>
+              </brx-pagination-ellipsis>
+
+              <a tabindex="-1" data-pagination-target="10" href="#">
+                <brx-pagination-item target="10"></brx-pagination-item>
+              </a>
+
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="last" href="#">
+                <brx-pagination-item target="last"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <brx-pagination size="small" total="5" page="1">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="4" href="#">
+                <brx-pagination-item target="4"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="5" href="#">
+                <brx-pagination-item target="5"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination size="large" total="3" page="3">
+            <brx-pagination-items>
+              <a tabindex="-1" data-pagination-target="prev" href="#">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="1" href="#">
+                <brx-pagination-item target="1"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="2" href="#">
+                <brx-pagination-item target="2"></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="3" href="#">
+                <brx-pagination-item target="3" active></brx-pagination-item>
+              </a>
+              <a tabindex="-1" data-pagination-target="next" href="#">
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </a>
+            </brx-pagination-items>
+          </brx-pagination>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo Contextual</h2>
+
+        <div>
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-per-page>
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total"
+                >50</span
+              >&nbsp;itens
+            </brx-pagination-information>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex ml-auto">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-arrows class="ml-auto ml-sm-0">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-arrows class="ml-auto ml-sm-0">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-pagination-per-page class="ml-auto">
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total"
+                >50</span
+              >&nbsp;itens
+            </brx-pagination-information>
+          </brx-pagination>
+
+          <brx-divider></brx-divider>
+
+          <brx-pagination aria-label="Paginação de resultados" total="50" page="1">
+            <brx-pagination-per-page>
+              <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+              </brx-select>
+            </brx-pagination-per-page>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-information class="d-none d-sm-flex">
+              <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total"
+                >50</span
+              >&nbsp;itens
+            </brx-pagination-information>
+
+            <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+            <brx-pagination-go-to-page class="d-none d-sm-flex">
+              <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+              </brx-select>
+            </brx-pagination-go-to-page>
+
+            <brx-pagination-arrows class="ml-auto">
+              <brx-pagination-item target="prev"></brx-pagination-item>
+              <brx-pagination-item target="next"></brx-pagination-item>
+            </brx-pagination-arrows>
+          </brx-pagination>
+
+          <!-- 
+          <nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="10">
+            
+      
+            <div class="pagination-go-to-page d-none d-sm-flex">
+              <div class="br-select">
+                <div class="br-input">
+                  <label for="go-to-selection-random-71648">Página</label>
+                  <input id="go-to-selection-random-71648" type="text" placeholder=" " />
+                  <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="br-list" tabindex="0">
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-1-random-71648" type="radio" name="go-to-random-71648" value="go-to-1-random-71648" checked="checked" />
+                      <label for="go-to-1-random-71648">1</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-2-random-71648" type="radio" name="go-to-random-71648" value="go-to-2-random-71648" />
+                      <label for="go-to-2-random-71648">2</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-3-random-71648" type="radio" name="go-to-random-71648" value="go-to-3-random-71648" />
+                      <label for="go-to-3-random-71648">3</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-4-random-71648" type="radio" name="go-to-random-71648" value="go-to-4-random-71648" />
+                      <label for="go-to-4-random-71648">4</label>
+                    </div>
+                  </div>
+                  <div class="br-item" tabindex="-1">
+                    <div class="br-radio">
+                      <input id="go-to-5-random-71648" type="radio" name="go-to-random-71648" value="go-to-5-random-71648" />
+                      <label for="go-to-5-random-71648">5</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-arrows ml-auto">
+              <button class="br-button circle" type="button" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+              <button class="br-button circle" type="button" aria-label="Avançar página"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+          </nav> -->
+        </div>
+      </div>
+
+      <div>
+        <h2>Em fundo escuro</h2>
+
+        <div>
+          <div class="bg-gray-60 p-3">
+            <brx-pagination dark-mode total="10" page="9">
+              <brx-pagination-items>
+                <a tabindex="-1" data-pagination-target="first" href="#">
+                  <brx-pagination-item target="first"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="prev" href="#">
+                  <brx-pagination-item target="prev"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="1" href="#">
+                  <brx-pagination-item target="1" active></brx-pagination-item>
+                </a>
+
+                <brx-pagination-ellipsis>
+                  <brx-list>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="2">2</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="3">3</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="4">4</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="5">5</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="6">6</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="7">7</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="2">2</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="3">3</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="4">4</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="5">5</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="6">6</a>
+                    </brx-item>
+                    <brx-item pass-styles="">
+                      <a href="#" data-pagination-target="7">7</a>
+                    </brx-item>
+                  </brx-list>
+                </brx-pagination-ellipsis>
+
+                <a tabindex="-1" data-pagination-target="8" href="#">
+                  <brx-pagination-item target="8"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="9" href="#">
+                  <brx-pagination-item target="9"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="10" href="#">
+                  <brx-pagination-item target="10"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="next" href="#">
+                  <brx-pagination-item target="next"></brx-pagination-item>
+                </a>
+                <a tabindex="-1" data-pagination-target="last" href="#">
+                  <brx-pagination-item target="last"></brx-pagination-item>
+                </a>
+              </brx-pagination-items>
+            </brx-pagination>
+
+            <brx-divider></brx-divider>
+
+            <brx-pagination dark-mode aria-label="Paginação de resultados" total="50" page="1">
+              <brx-pagination-per-page>
+                <brx-select hide-search-icon label="Exibir" placeholder=" " value="10">
+                  <brx-select-option name="per-page-1" value="10" label="10" checked></brx-select-option>
+                  <brx-select-option name="per-page-1" value="20" label="20"></brx-select-option>
+                  <brx-select-option name="per-page-1" value="30" label="30"></brx-select-option>
+                </brx-select>
+              </brx-pagination-per-page>
+
+              <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+              <brx-pagination-information class="d-none d-sm-flex">
+                <span class="current">1</span>&ndash;<span class="per-page">20</span>&nbsp;de&nbsp;<span class="total"
+                  >50</span
+                >&nbsp;itens
+              </brx-pagination-information>
+
+              <brx-divider class="d-none d-sm-block mx-3"></brx-divider>
+
+              <brx-pagination-go-to-page class="d-none d-sm-flex">
+                <brx-select hide-search-icon label="Página" placeholder=" " value="1">
+                  <brx-select-option name="per-page-1" value="1" label="1" checked></brx-select-option>
+                  <brx-select-option name="per-page-1" value="2" label="2"></brx-select-option>
+                  <brx-select-option name="per-page-1" value="3" label="3"></brx-select-option>
+                </brx-select>
+              </brx-pagination-go-to-page>
+
+              <brx-pagination-arrows class="ml-auto">
+                <brx-pagination-item target="prev"></brx-pagination-item>
+                <brx-pagination-item target="next"></brx-pagination-item>
+              </brx-pagination-arrows>
+            </brx-pagination>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Radio</h1>
+
+      <brx-divider></brx-divider>
+
+      <div class="py-3">
+        <h2>Simples</h2>
+
+        <brx-radio value="a" name="exemplo-radio-simples" label="A"></brx-radio>
+        <brx-radio value="b" name="exemplo-radio-simples" label="B" disabled></brx-radio>
+        <brx-radio value="c" name="exemplo-radio-simples" label="C" invalid></brx-radio>
+        <brx-radio value="d" name="exemplo-radio-simples" label="D" valid></brx-radio>
+      </div>
+
+      <brx-divider></brx-divider>
+
+      <div class="py-3">
+        <h2>Controlado</h2>
+
+        <p>Não recomendado. Prefira o brx-radio-group.</p>
+
+        <brx-radio value="a" name="exemplo-radio-controlado" label="A" controlled-checked></brx-radio>
+        <brx-radio value="b" name="exemplo-radio-controlado" label="B" disabled></brx-radio>
+        <brx-radio value="c" name="exemplo-radio-controlado" label="C" invalid></brx-radio>
+        <brx-radio value="d" name="exemplo-radio-controlado" label="D" valid></brx-radio>
+      </div>
+
+      <brx-divider></brx-divider>
+
+      <div class="py-3">
+        <h2>Radio Group</h2>
+
+        <brx-radio-group value="c">
+          <brx-radio value="a" name="exemplo-radio-group-simples" label="Oi"></brx-radio>
+          <brx-radio value="b" name="exemplo-radio-group-simples" label="Oi" disabled></brx-radio>
+          <brx-radio value="c" name="exemplo-radio-group-simples" label="Oi" invalid></brx-radio>
+          <brx-radio value="d" name="exemplo-radio-group-simples" label="Oi" valid></brx-radio>
+        </brx-radio-group>
+      </div>
+
+      <div class="py-3">
+        <h2>Controlled Radio Group</h2>
+
+        <p>Não será possível selecionar novamente a opção C.</p>
+
+        <brx-radio-group id="controlled" controlled-value="c">
+          <brx-radio value="a" label="A" name="exemplo-radio-group-controlado"></brx-radio>
+          <brx-radio value="b" label="B" name="exemplo-radio-group-controlado" disabled></brx-radio>
+          <brx-radio value="c" label="C" name="exemplo-radio-group-controlado" invalid></brx-radio>
+          <brx-radio value="d" label="D" name="exemplo-radio-group-controlado" valid></brx-radio>
+        </brx-radio-group>
+
+        <script>
+          {
+            const radioGroup = document.querySelector('#controlled');
+
+            radioGroup.addEventListener('brxRadioGroupChange', (e) => {
+              const { value } = e.detail;
+
+              if (value !== 'c') {
+                radioGroup.controlledValue = value;
+              }
+            });
+          }
+        </script>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport" />
+
+    <title>copperui components playground</title>
+
+    <style media="screen, print" type="text/css">
+      html,
+      ul,
+      li,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      html,
+      body,
+      .app {
+        max-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+      }
+
+      .app {
+        display: grid;
+
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr;
+
+        gap: 2rem;
+
+        padding: 2rem;
+      }
+
+      .components-nav {
+        display: block;
+        overflow: hidden;
+
+        min-width: 200px;
+      }
+
+      .components-list {
+        overflow: auto;
+        max-height: 100%;
+
+        display: block;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+      }
+
+      .component-item {
+        display: block;
+      }
+
+      .component-button {
+        display: block;
+
+        padding: 0.5rem;
+
+        background-color: #ddd;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+
+        color: black;
+        text-decoration: none;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      iframe {
+        border: 2px solid black;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media screen and (max-width: 780px) {
+        .app {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+
+          gap: 1rem;
+          padding: 1rem;
+        }
+
+        .components-list {
+          flex-direction: row;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <nav class="components-nav">
+        <ul class="components-list"></ul>
+      </nav>
+      <iframe name="demo" src="about:blank" frameborder="0"></iframe>
+    </div>
+
+    <script>
+      {
+        const IFRAME_DEMO = 'demo';
+
+        const COMPONENTS = [
+          {
+            path: 'accordion.html',
+            name: 'Accordion',
+          },
+          {
+            path: 'accordion-legacy.html',
+            name: 'Accordion (legado)',
+          },
+          {
+            path: 'avatar.html',
+            name: 'Avatar',
+          },
+          {
+            path: 'breadcrumb.html',
+            name: 'Breadcrumb',
+          },
+          {
+            path: 'button.html',
+            name: 'Button',
+          },
+          {
+            path: 'card.html',
+            name: 'Card',
+          },
+          {
+            path: 'checkbox.html',
+            name: 'Checkbox',
+          },
+          {
+            path: 'collapse.html',
+            name: 'Collapse',
+          },
+          {
+            path: 'datetimepicker.html',
+            name: 'DateTimePicker',
+          },
+          {
+            path: 'divider.html',
+            name: 'Divider',
+          },
+          {
+            path: 'dropdown.html',
+            name: 'Dropdown',
+          },
+          {
+            path: 'icon.html',
+            name: 'Ícone',
+          },
+          {
+            path: 'input.html',
+            name: 'Input',
+          },
+          {
+            path: 'item.html',
+            name: 'Item',
+          },
+          {
+            path: 'list.html',
+            name: 'List',
+          },
+          {
+            path: 'loading.html',
+            name: 'Loading',
+          },
+          {
+            path: 'magic-button.html',
+            name: 'Magic Button',
+          },
+          {
+            path: 'message.html',
+            name: 'Message',
+          },
+          {
+            path: 'modal.html',
+            name: 'Modal',
+          },
+          {
+            path: 'notification.html',
+            name: 'Notification',
+          },
+          {
+            path: 'pagination.html',
+            name: 'Pagination',
+          },
+          {
+            path: 'radio.html',
+            name: 'Radio',
+          },
+          {
+            path: 'scrim.html',
+            name: 'Scrim',
+          },
+          {
+            path: 'select.html',
+            name: 'Select',
+          },
+          {
+            path: 'sign-in.html',
+            name: 'Sign-in',
+          },
+          {
+            path: 'skip-link.html',
+            name: 'Skip Link',
+          },
+          {
+            path: 'step.html',
+            name: 'Step',
+          },
+          {
+            path: 'tab.html',
+            name: 'Tab',
+          },
+          {
+            path: 'tag.html',
+            name: 'Tag',
+          },
+          {
+            path: 'textarea.html',
+            name: 'Textarea',
+          },
+          {
+            path: 'tooltip.html',
+            name: 'Tooltip',
+          },
+          {
+            path: 'upload.html',
+            name: 'Upload',
+          },
+        ];
+
+        renderComponents(COMPONENTS);
+
+        function renderComponents(components) {
+          const list = document.querySelector('nav ul');
+
+          list.innerHTML = '';
+
+          for (const component of components) {
+            const { path, name } = component;
+
+            const li = document.createElement('li');
+            li.classList.add('component-item');
+
+            const anchor = document.createElement('a');
+            anchor.classList.add('component-button');
+
+            anchor.innerText = `${name}`;
+            anchor.href = `${path}`;
+            anchor.target = `${IFRAME_DEMO}`;
+
+            li.appendChild(anchor);
+            list.appendChild(li);
+          }
+        }
+
+        const firstComponent = document.querySelector('.component-button');
+
+        if (firstComponent) {
+          firstComponent.click();
+        }
+      }
+    </script>
+  </body>
+</html>

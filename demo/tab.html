@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1 id="tab">Tab</h1>
+
+      <div>
+        <h2>Tab simples</h2>
+
+        <div>
+          <brx-tabs name="panel-1">
+            <!-- fa-1x -->
+            <brx-tab value="tab-1" tab-title="ITEM" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-2" tab-title="TODOS" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-3" tab-title="Notícias" icon-name="fa5/fas/image" active></brx-tab>
+            <brx-tab value="tab-4" tab-title="Serviços" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-5" tab-title="APLICATIVOS" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-6" tab-title="Mídias" icon-name="fa5/fas/image"></brx-tab>
+          </brx-tabs>
+
+          <brx-tabs-panels name="panel-1">
+            <brx-tabs-panel value="tab-1">
+              <p>Painel Sobre</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-2">
+              <p>Painel Todos</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-3" active>
+              <p>Painel Noticias</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-4">
+              <p>Painel Serviços</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-5">
+              <p>Painel Aplicativos</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-6">
+              <p>Painel Mídias</p>
+            </brx-tabs-panel>
+          </brx-tabs-panels>
+        </div>
+      </div>
+
+      <div>
+        <h2>Somente Ícones</h2>
+
+        <div>
+          <brx-tabs name="panel-2">
+            <brx-tab value="tab-1" tooltip-text="sobre" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-2" tooltip-text="Todos" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-3" tooltip-text="Notícias" icon-name="fa5/fas/image" active></brx-tab>
+            <brx-tab value="tab-4" tooltip-text="Serviços" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-5" tooltip-text="Aplicativos" icon-name="fa5/fas/image"></brx-tab>
+            <brx-tab value="tab-6" tooltip-text="Mídias" icon-name="fa5/fas/image"></brx-tab>
+          </brx-tabs>
+
+          <brx-tabs-panels name="panel-2">
+            <brx-tabs-panel value="tab-1">
+              <p>Painel Sobre</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-2">
+              <p>Painel Todos</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-3" active>
+              <p>Painel Noticias</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-4">
+              <p>Painel Serviços</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-5">
+              <p>Painel Aplicativos</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-6">
+              <p>Painel Mídias</p>
+            </brx-tabs-panel>
+          </brx-tabs-panels>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tab com Contadores</h2>
+
+        <div>
+          <brx-tabs name="panel-3" counter>
+            <brx-tab value="tab-1" tab-title="Todos"><span slot="results">(124)</span></brx-tab>
+            <brx-tab value="tab-2" tab-title="Notícias" active><span slot="results">(74)</span></brx-tab>
+            <brx-tab value="tab-3" tab-title="Serviços"><span slot="results">(16)</span></brx-tab>
+            <brx-tab value="tab-4" tab-title="Aplicativos"><span slot="results">(12)</span></brx-tab>
+          </brx-tabs>
+
+          <brx-tabs-panels name="panel-3">
+            <brx-tabs-panel value="tab-1">
+              <p>Painel Todos</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-2" active>
+              <p>Painel Notícias</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-3">
+              <p>Painel Serviços</p>
+            </brx-tabs-panel>
+            <brx-tabs-panel value="tab-4">
+              <p>Painel Aplicativos</p>
+            </brx-tabs-panel>
+          </brx-tabs-panels>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <p class="h4">Densidade alta</p>
+
+          <div>
+            <brx-tabs name="panel-4" size="small">
+              <brx-tab value="tab-1" tab-title="Sobre"></brx-tab>
+              <brx-tab value="tab-2" tab-title="Todos"></brx-tab>
+              <brx-tab value="tab-3" tab-title="Notícias" active></brx-tab>
+              <brx-tab value="tab-4" tab-title="Serviços"></brx-tab>
+              <brx-tab value="tab-5" tab-title="Aplicativos"></brx-tab>
+              <brx-tab value="tab-6" tab-title="Mídias"></brx-tab>
+            </brx-tabs>
+
+            <brx-tabs-panels name="panel-4">
+              <brx-tabs-panel value="tab-1">
+                <p>Painel Sobre</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-2">
+                <p>Painel Todos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-3" active>
+                <p>Painel Noticias</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-4">
+                <p>Painel Serviços</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-5">
+                <p>Painel Aplicativos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-6">
+                <p>Painel Mídias</p>
+              </brx-tabs-panel>
+            </brx-tabs-panels>
+          </div>
+
+          <p class="h4 mt-5">Densidade padrão</p>
+          <div>
+            <brx-tabs name="panel-5">
+              <brx-tab value="tab-1" tab-title="Sobre"></brx-tab>
+              <brx-tab value="tab-2" tab-title="Todos"></brx-tab>
+              <brx-tab value="tab-3" tab-title="Notícias" active></brx-tab>
+              <brx-tab value="tab-4" tab-title="Serviços"></brx-tab>
+              <brx-tab value="tab-5" tab-title="Aplicativos"></brx-tab>
+              <brx-tab value="tab-6" tab-title="Mídias"></brx-tab>
+            </brx-tabs>
+
+            <brx-tabs-panels name="panel-5">
+              <brx-tabs-panel value="tab-1">
+                <p>Painel Sobre</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-2">
+                <p>Painel Todos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-3" active>
+                <p>Painel Noticias</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-4">
+                <p>Painel Serviços</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-5">
+                <p>Painel Aplicativos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-6">
+                <p>Painel Mídias</p>
+              </brx-tabs-panel>
+            </brx-tabs-panels>
+          </div>
+
+          <p class="h4 mt-5">Densidade baixa</p>
+
+          <div>
+            <brx-tabs name="panel-6" size="large">
+              <brx-tab value="tab-1" tab-title="Sobre"></brx-tab>
+              <brx-tab value="tab-2" tab-title="Todos"></brx-tab>
+              <brx-tab value="tab-3" tab-title="Notícias" active></brx-tab>
+              <brx-tab value="tab-4" tab-title="Serviços"></brx-tab>
+              <brx-tab value="tab-5" tab-title="Aplicativos"></brx-tab>
+              <brx-tab value="tab-6" tab-title="Mídias"></brx-tab>
+            </brx-tabs>
+
+            <brx-tabs-panels name="panel-6">
+              <brx-tabs-panel value="tab-1">
+                <p>Painel Sobre</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-2">
+                <p>Painel Todos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-3" active>
+                <p>Painel Noticias</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-4">
+                <p>Painel Serviços</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-5">
+                <p>Painel Aplicativos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-6">
+                <p>Painel Mídias</p>
+              </brx-tabs-panel>
+            </brx-tabs-panels>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tab em fundo escuro</h2>
+
+        <div>
+          <div class="bg-gray-60 p-3">
+            <brx-tabs name="panel-7" dark-mode>
+              <brx-tab value="tab-1" tab-title="Sobre"></brx-tab>
+              <brx-tab value="tab-2" tab-title="Todos"></brx-tab>
+              <brx-tab value="tab-3" tab-title="Notícias" active></brx-tab>
+              <brx-tab value="tab-4" tab-title="Serviços"></brx-tab>
+              <brx-tab value="tab-5" tab-title="Aplicativos"></brx-tab>
+              <brx-tab value="tab-6" tab-title="Mídias"></brx-tab>
+            </brx-tabs>
+
+            <brx-tabs-panels name="panel-7" dark-mode>
+              <brx-tabs-panel value="tab-1">
+                <p>Painel Sobre</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-2">
+                <p>Painel Todos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-3" active>
+                <p>Painel Noticias</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-4">
+                <p>Painel Serviços</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-5">
+                <p>Painel Aplicativos</p>
+              </brx-tabs-panel>
+              <brx-tabs-panel value="tab-6">
+                <p>Painel Mídias</p>
+              </brx-tabs-panel>
+            </brx-tabs-panels>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

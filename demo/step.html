@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Step</h1>
+
+      <div>
+        <h2>Layout Vertical</h2>
+
+        <div class="row">
+          <div class="col-auto mx-5">
+            <brx-step vertical value="0" label-position="right">
+              <brx-step-progress>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="col-auto mx-5">
+            <brx-step vertical value="0" label-position="left">
+              <brx-step-progress>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Layout Horizontal</h2>
+
+        <div>
+          <div class="my-5">
+            <brx-step value="1" label-position="top" data-scroll="data-scroll">
+              <brx-step-progress>
+                <brx-step-progress-btn alert="success">
+                  <span slot="step-info">Acesse sua Conta</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn alert="info">
+                  <span slot="step-info">Dados da entrega</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn alert="danger">
+                  <span slot="step-info">Dados de Pagamento</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn disabled="disabled" alert="warning">
+                  <span slot="step-info">Finalizar</span>
+                  <brx-icon class="step-icon" name="fa5/fas/check"></brx-icon>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="0" label-position="bottom">
+              <brx-step-progress>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="0" label-position="right" data-scroll="data-scroll">
+              <brx-step-progress>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Acesse sua Conta</span>
+                  <brx-icon name="fa5/fas/lock" class="step-icon"></brx-icon>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Dados da entrega</span>
+                  <brx-icon name="fa5/fas/truck" class="step-icon"></brx-icon>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Dados de Pagamento</span>
+                  <brx-icon name="fa5/far/credit-card" class="step-icon"></brx-icon>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn disabled>
+                  <span slot="step-info">Finalizar</span>
+                  <brx-icon name="fa5/fas/check" class="step-icon"></brx-icon>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="0" label-position="left">
+              <brx-step-progress>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn>
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Step sem rótulo</h2>
+
+        <div>
+          <div class="my-5">
+            <brx-step value="0" type="void">
+              <brx-step-progress>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 1">
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 2">
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 3">
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="0" type="void">
+              <brx-step-progress>
+                <brx-step-progress-btn tooltip-text="Acesse sua Conta" alert="success">
+                  <span slot="step-info">Acesse sua Conta</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Dados da entrega" alert="info">
+                  <span slot="step-info">Dados da entrega</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Dados de Pagamento" alert="danger">
+                  <span slot="step-info">Dados de Pagamento</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Finalizar" disabled="disabled" alert="warning">
+                  <span slot="step-info">Finalizar</span>
+                  <brx-icon name="fa5/fas/check" class="step-icon"></brx-icon>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="0" type="simple">
+              <brx-step-progress>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 1">
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 2">
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 3">
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 4">
+                  <span slot="step-info">Exemplo de Rótulo 4</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 5">
+                  <span slot="step-info">Exemplo de Rótulo 5</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+          <div class="my-5">
+            <brx-step value="2" type="text">
+              <brx-step-progress>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 1">
+                  <span slot="step-info">Exemplo de Rótulo 1</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 2">
+                  <span slot="step-info">Exemplo de Rótulo 2</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 3">
+                  <span slot="step-info">Exemplo de Rótulo 3</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 4">
+                  <span slot="step-info">Exemplo de Rótulo 4</span>
+                </brx-step-progress-btn>
+                <brx-step-progress-btn tooltip-text="Exemplo de Rótulo 5">
+                  <span slot="step-info">Exemplo de Rótulo 5</span>
+                </brx-step-progress-btn>
+              </brx-step-progress>
+            </brx-step>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

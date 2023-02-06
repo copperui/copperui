@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Modal</h1>
+
+      <div>
+        <h2>Modal simples</h2>
+
+        <div>
+          <brx-modal size="medium">
+            <brx-modal-header>
+              Título da modal
+
+              <brx-button circle data-scrim-dismiss aria-label="Close">
+                <brx-icon name="fa5/fas/times"></brx-icon>
+              </brx-button>
+            </brx-modal-header>
+
+            <brx-modal-body>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus commodi laboriosam vel sequi quam
+                deleniti, laborum mollitia blanditiis dolores officiis nulla quos dolorem repellat in nisi alias
+                nesciunt fugit. Similique!
+              </p>
+            </brx-modal-body>
+
+            <brx-modal-footer class="justify-content-end">
+              <brx-button variant="secondary" type="button">Ação 1</brx-button>
+
+              <brx-button class="ml-2" variant="primary" type="button">Ação 2</brx-button>
+            </brx-modal-footer>
+          </brx-modal>
+        </div>
+      </div>
+
+      <div>
+        <h2>Modal carregando</h2>
+
+        <div>
+          <brx-modal size="xsmall">
+            <brx-modal-body>
+              <brx-loading size="medium"></brx-loading>
+            </brx-modal-body>
+
+            <brx-modal-footer class="justify-content-around">
+              <brx-button variant="secondary" type="button">Cancelar</brx-button>
+            </brx-modal-footer>
+          </brx-modal>
+        </div>
+      </div>
+
+      <div>
+        <h2>Modal com scroll</h2>
+
+        <div>
+          <brx-modal size="large" style="max-height: 400px">
+            <brx-modal-header>Concorda com os termos?</brx-modal-header>
+
+            <brx-modal-body>
+              <p>
+                Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Mauris id gravida nulla. Cras sagittis dapibus
+                felis vitae semper. Donec vel hendrerit ante. Etiam sed blandit nisi. Praesent iaculis, nisl eget rutrum
+                vehicula, lacus tortor feugiat diam, et euismod lacus metus eget nisi. Sed fermentum, nunc nec efficitur
+                pharetra, felis dolor feugiat massa, et semper turpis felis quis ligula. Quisque non metus at risus
+                maximus ultrices. Nam vel massa tellus. Vestibulum lobortis dui et pellentesque porta. Cras rhoncus
+                augue a mauris porttitor, in malesuada metus eleifend. Praesent ac lacinia lorem. Sed cursus nisl
+                ligula, vel ultrices ex pellentesque eu. Curabitur facilisis egestas libero, non pharetra lacus
+                ultricies quis. Mauris non finibus justo, eu varius metus. Donec nec eros semper, consequat turpis id,
+                fermentum dolor.
+              </p>
+              <p>
+                Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Mauris id gravida nulla. Cras sagittis dapibus
+                felis vitae semper. Donec vel hendrerit ante. Etiam sed blandit nisi. Praesent iaculis, nisl eget rutrum
+                vehicula, lacus tortor feugiat diam, et euismod lacus metus eget nisi. Sed fermentum, nunc nec efficitur
+                pharetra, felis dolor feugiat massa, et semper turpis felis quis ligula. Quisque non metus at risus
+                maximus ultrices. Nam vel massa tellus. Vestibulum lobortis dui et pellentesque porta. Cras rhoncus
+                augue a mauris porttitor, in malesuada metus eleifend. Praesent ac lacinia lorem. Sed cursus nisl
+                ligula, vel ultrices ex pellentesque eu. Curabitur facilisis egestas libero, non pharetra lacus
+                ultricies quis. Mauris non finibus justo, eu varius metus. Donec nec eros semper, consequat turpis id,
+                fermentum dolor.
+              </p>
+              <p>
+                Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Mauris id gravida nulla. Cras sagittis dapibus
+                felis vitae semper. Donec vel hendrerit ante. Etiam sed blandit nisi. Praesent iaculis, nisl eget rutrum
+                vehicula, lacus tortor feugiat diam, et euismod lacus metus eget nisi. Sed fermentum, nunc nec efficitur
+                pharetra, felis dolor feugiat massa, et semper turpis felis quis ligula. Quisque non metus at risus
+                maximus ultrices. Nam vel massa tellus. Vestibulum lobortis dui et pellentesque porta. Cras rhoncus
+                augue a mauris porttitor, in malesuada metus eleifend. Praesent ac lacinia lorem. Sed cursus nisl
+                ligula, vel ultrices ex pellentesque eu. Curabitur facilisis egestas libero, non pharetra lacus
+                ultricies quis. Mauris non finibus justo, eu varius metus. Donec nec eros semper, consequat turpis id,
+                fermentum dolor.
+              </p>
+            </brx-modal-body>
+
+            <brx-modal-footer class="justify-content-center">
+              <brx-button variant="secondary" type="button">Negar</brx-button>
+              <brx-button variant="primary" class="ml-2" type="button">Aceitar</brx-button>
+            </brx-modal-footer>
+          </brx-modal>
+        </div>
+      </div>
+
+      <div>
+        <h2>Exemplo de acionamento</h2>
+
+        <div>
+          <brx-scrim id="modal-acionador">
+            <brx-modal>
+              <brx-modal-header>Modal com scrim</brx-modal-header>
+              <brx-modal-body>
+                <p>Exemplo utilizando o componente scrim com FOCO</p>
+              </brx-modal-body>
+              <brx-modal-footer class="justify-content-center">
+                <brx-button variant="secondary" type="button" id="scrimfechar" data-scrim-dismiss=""
+                  >Cancelar</brx-button
+                >
+                <brx-button variant="primary" class="mt-3 mt-sm-0 ml-sm-3" type="button">Retornar</brx-button>
+              </brx-modal-footer>
+            </brx-modal>
+          </brx-scrim>
+
+          <brx-scrim-trigger target="#modal-acionador">
+            <brx-button variant="primary">Abrir modal</brx-button>
+          </brx-scrim-trigger>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

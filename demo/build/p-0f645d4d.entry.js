@@ -1,0 +1,1 @@
+import{r as s,h as r,a as t}from"./p-e5ae1b6e.js";const a=class{constructor(r){s(this,r),this.active=!1,this.value=void 0}render(){return r(t,null,r("slot",null))}};a.style="";export{a as brx_tabs_panel}

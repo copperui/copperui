@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Textarea</h1>
+
+      <div>
+        <h2>Textarea padrão</h2>
+
+        <brx-textarea label="Label" placeholder="Exemplo de textarea simples.">
+          <p class="text-base mt-1">Texto auxiliar ao preenchimento.</p>
+        </brx-textarea>
+      </div>
+
+      <div>
+        <h2>Label à esquerda</h2>
+
+        <brx-textarea inline label="Label" placeholder="Exemplo de textarea simples.">
+          <p class="text-base mt-1">Texto auxiliar ao preenchimento.</p>
+        </brx-textarea>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-sm-6">
+              <brx-textarea label="Densidade baixa" placeholder="Digite somente números." size="large"></brx-textarea>
+            </div>
+
+            <div class="col-sm-6 mt-5 mt-sm-0">
+              <brx-textarea label="Densidade alta" placeholder="Digite somente números." size="small"></brx-textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Validação e estados</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-sm-4">
+              <brx-textarea label="Label" placeholder="Exemplo de textarea com sucesso." color="success">
+                <brx-message variant="feedback" severity="success">
+                  <span>Campo correto</span>
+                </brx-message>
+              </brx-textarea>
+            </div>
+            <div class="col-sm-4 mt-5 mt-sm-0">
+              <brx-textarea label="Label" placeholder="Exemplo de textarea com erro." color="danger">
+                <brx-message variant="feedback" severity="danger">
+                  <span>Campo com erro.</span>
+                </brx-message>
+              </brx-textarea>
+            </div>
+            <div class="col-sm-4 mt-5 mt-sm-0">
+              <brx-textarea disabled label="Label" placeholder="Exemplo de textarea desabilitado.">
+                <brx-message variant="feedback" severity="warning">
+                  <span>Campo desabilitado.</span>
+                </brx-message>
+              </brx-textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Em fundo escuro</h2>
+
+        <div class="p-3 bg-gray-60">
+          <brx-textarea dark-mode label="Label" placeholder="Exemplo de textarea simples.">
+            <p class="text-base mt-1">Texto auxiliar ao preenchimento.</p>
+          </brx-textarea>
+        </div>
+      </div>
+
+      <div>
+        <h2>Com limite e contador de caracteres</h2>
+
+        <div>
+          <brx-textarea
+            label="Label"
+            placeholder="Exemplo de textarea com contador de caracteres"
+            counter="limit"
+            maxlength="200"
+          ></brx-textarea>
+        </div>
+      </div>
+
+      <div>
+        <h2>Sem limite com contador de caracteres</h2>
+
+        <div>
+          <brx-textarea
+            label="Label"
+            placeholder="Exemplo de textarea com contador e sem limite de caracteres"
+            counter="total"
+          ></brx-textarea>
+        </div>
+      </div>
+
+      <div>
+        <h2>Controlled</h2>
+        <brx-textarea controlled-value="Controlled." label="Label"></brx-textarea>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Sign-in</h1>
+
+      <div>
+        <h2>Ênfase Primária</h2>
+
+        <div>
+          <brx-button signin variant="primary">
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Ênfase Secundária</h2>
+
+        <div>
+          <brx-button signin>
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo Icônico Primário</h2>
+
+        <div>
+          <brx-button circle signin variant="primary">
+            <brx-signin show-icon show-label="false"></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Ênfase Primária, Secundária e Tipo Icônico com Fundo Escuro</h2>
+
+        <div class="p-3 mb-3 bg-primary-darken-02">
+          <brx-button dark-mode signin variant="primary">
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+
+        <div class="p-3 mb-3 bg-primary-darken-02">
+          <brx-button dark-mode signin>
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+
+        <div class="p-3 mb-3 bg-primary-darken-02">
+          <brx-button circle dark-mode signin>
+            <brx-signin show-icon show-label="false"></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipos Interno</h2>
+
+        <div>
+          <brx-button signin variant="primary">
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipos Externo com Texto</h2>
+
+        <div>
+          <brx-button signin variant="primary">
+            <brx-signin>
+              <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
+            </brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipos Externo com Imagem</h2>
+
+        <div>
+          <brx-button signin>
+            <brx-signin>
+              <div slot="content">
+                Entrar com&nbsp;<img
+                  alt="gov.br"
+                  src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png"
+                />
+              </div>
+            </brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidade - Alta</h2>
+
+        <div>
+          <brx-button signin size="small" variant="primary">
+            <brx-signin>
+              <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
+            </brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidade - Alta</h2>
+
+        <div>
+          <brx-button signin size="medium" variant="primary">
+            <brx-signin>
+              <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
+            </brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidade - Baixa</h2>
+
+        <div>
+          <brx-button signin size="large" variant="primary">
+            <brx-signin>
+              <div slot="content">Entrar com&nbsp;<span class="text-black">gov.br</span></div>
+            </brx-signin>
+          </brx-button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Tipo Bloco</h2>
+
+        <div>
+          <brx-button block signin>
+            <brx-signin show-icon show-label></brx-signin>
+          </brx-button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

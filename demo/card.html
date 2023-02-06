@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Card</h1>
+
+      <div>
+        <h2>Card desativado</h2>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <brx-card disabled>
+            <brx-card-header>
+              <div class="d-flex">
+                <brx-avatar name="Fulano da Silva" src="https://picsum.photos/id/823/400"></brx-avatar>
+
+                <div class="ml-3">
+                  <div class="text-weight-semi-bold text-up-02">Maria Amorim</div>
+                  <div>UX Designer</div>
+                </div>
+
+                <div class="ml-auto">
+                  <brx-button circle aria-label="Ícone ilustrativo">
+                    <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                  </brx-button>
+                </div>
+              </div>
+            </brx-card-header>
+
+            <brx-card-content>
+              <p>
+                Lorem ipsum doloris sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+              </p>
+            </brx-card-content>
+
+            <brx-card-footer class="card-footer">
+              <div class="d-flex">
+                <div>
+                  <brx-button>Button</brx-button>
+                </div>
+                <div class="ml-auto">
+                  <brx-button circle aria-label="Ícone ilustrativo">
+                    <brx-icon name="fa5/fas/heart"></brx-icon>
+                  </brx-button>
+                  <brx-button circle aria-label="Ícone ilustrativo 3">
+                    <brx-icon name="fa5/fas/share-alt"></brx-icon>
+                  </brx-button>
+                </div>
+              </div>
+            </brx-card-footer>
+          </brx-card>
+        </div>
+      </div>
+
+      <div>
+        <h2>Card com hover</h2>
+
+        <div class="row">
+          <div class="col-md">
+            <brx-card hover>
+              <brx-card-content>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                </p>
+              </brx-card-content>
+            </brx-card>
+          </div>
+          <div class="col-md">
+            <brx-card hover>
+              <brx-card-content>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                </p>
+              </brx-card-content>
+            </brx-card>
+          </div>
+          <div class="col-md">
+            <brx-card hover>
+              <brx-card-content>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                </p>
+              </brx-card-content>
+            </brx-card>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Card simples e completo</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <brx-card>
+                <brx-card-content>
+                  <img src="https://picsum.photos/id/0/500" alt="Imagem de exemplo" />
+                </brx-card-content>
+              </brx-card>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <brx-card>
+                <brx-card-header>
+                  <div class="d-flex">
+                    <brx-avatar class="mt-1" name="Fulano da Silva" src="https://picsum.photos/id/823/400"></brx-avatar>
+                    <div class="ml-3">
+                      <div class="text-weight-semi-bold text-up-02">Maria Amorim</div>
+                      <div>UX Designer</div>
+                    </div>
+                    <div class="ml-auto">
+                      <brx-button circle>
+                        <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                      </brx-button>
+                    </div>
+                  </div>
+                </brx-card-header>
+                <brx-card-content>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                    numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum?
+                    Assumenda.
+                  </p>
+                </brx-card-content>
+                <brx-card-footer>
+                  <div class="d-flex">
+                    <div>
+                      <brx-button>Button</brx-button>
+                    </div>
+                    <div class="ml-auto">
+                      <brx-button circle aria-label="Ícone ilustrativo">
+                        <brx-icon name="fa5/fas/heart"></brx-icon>
+                      </brx-button>
+                      <brx-button circle aria-label="Ícone ilustrativo 3">
+                        <brx-icon name="fa5/fas/share-alt"></brx-icon>
+                      </brx-button>
+                    </div>
+                  </div>
+                </brx-card-footer>
+              </brx-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Card com altura fixa</h2>
+
+        <div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <brx-card h-fixed>
+              <brx-card-header>
+                <div class="d-flex">
+                  <brx-avatar class="mt-1" name="Fulano da Silva" src="https://picsum.photos/id/823/400"></brx-avatar>
+                  <div class="ml-3">
+                    <div class="text-weight-semi-bold text-up-02">Maria Amorim</div>
+                    <div>UX Designer</div>
+                  </div>
+                  <div class="ml-auto">
+                    <brx-button circle aria-label="Ícone ilustrativo">
+                      <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                    </brx-button>
+                  </div>
+                </div>
+              </brx-card-header>
+              <brx-card-content tabindex="0">
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at,
+                  numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.
+                </p>
+              </brx-card-content>
+              <brx-card-footer>
+                <div class="d-flex">
+                  <div>
+                    <brx-button>Button</brx-button>
+                  </div>
+                  <div class="ml-auto">
+                    <brx-button circle aria-label="Ícone ilustrativo">
+                      <brx-icon name="fa5/fas/heart"></brx-icon>
+                    </brx-button>
+                    <brx-button circle aria-label="Ícone ilustrativo 3">
+                      <brx-icon name="fa5/fas/share-alt"></brx-icon>
+                    </brx-button>
+                  </div>
+                </div>
+              </brx-card-footer>
+            </brx-card>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Card com collapse</h2>
+
+        <div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <brx-card>
+              <brx-card-header>
+                <div class="d-flex">
+                  <brx-avatar class="mt-1" name="Fulano da Silva" src="https://picsum.photos/id/823/400"></brx-avatar>
+                  <div class="ml-3">
+                    <div class="text-weight-semi-bold text-up-02">Maria Amorim</div>
+                    <div>UX Designer</div>
+                  </div>
+                  <div class="ml-auto">
+                    <brx-button circle aria-label="Ícone ilustrativo">
+                      <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                    </brx-button>
+                  </div>
+                </div>
+              </brx-card-header>
+              <brx-card-content>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste sit dolor exercitationem asperiores
+                  voluptates tenetur consectetur error vero ut expedita, sapiente voluptate nulla esse! Veritatis
+                  aliquam consectetur quod harum expedita!
+                </p>
+              </brx-card-content>
+              <brx-card-footer>
+                <div class="text-right">
+                  <brx-collapse-trigger tabindex="0" target="#card-collapse" aria-label="Expandir o card">
+                    <brx-button circle>
+                      <brx-icon data-collapse-icon="" name="fa5/fas/chevron-down"></brx-icon>
+                    </brx-button>
+                  </brx-collapse-trigger>
+                </div>
+                <div id="card-collapse" hidden="hidden">
+                  <brx-list class="mt-3">
+                    <brx-item>
+                      <div class="row">
+                        <div class="col-auto">
+                          <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                        </div>
+                        <div class="col">
+                          <p class="m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                      </div>
+                    </brx-item>
+
+                    <brx-divider></brx-divider>
+
+                    <brx-item>
+                      <div class="row">
+                        <div class="col-auto">
+                          <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                        </div>
+                        <div class="col">
+                          <p class="m-0">
+                            Nesciunt, laudantium ea officiis hic tempora velit aperiam nemo accusamus nisi, eligendi
+                            ducimus! Incidunt ullam minima ratione amet sequi.
+                          </p>
+                        </div>
+                      </div>
+                    </brx-item>
+
+                    <brx-divider></brx-divider>
+
+                    <brx-item>
+                      <div class="row">
+                        <div class="col-auto">
+                          <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                        </div>
+                        <div class="col">
+                          <p class="m-0">Voluptates, iste recusandae.</p>
+                        </div>
+                      </div>
+                    </brx-item>
+                  </brx-list>
+                </div>
+              </brx-card-footer>
+            </brx-card>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

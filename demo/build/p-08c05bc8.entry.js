@@ -1,0 +1,1 @@
+import{r,h as s,a as t}from"./p-e5ae1b6e.js";import{b as i}from"./p-87f291fd.js";const e=class{constructor(s){r(this,s),this.target=void 0}get scrimElement(){return i(this.target)}handleClick(){const r=this.scrimElement;r&&r.showScrim()}render(){return s(t,null,s("slot",null))}};e.style="brx-scrim-trigger{display:inline-block}";export{e as brx_scrim_trigger}

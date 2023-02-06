@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>List</h1>
+
+      <div>
+        <h2>Lista Vertical</h2>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Título (opcional)"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+          </brx-list>
+        </div>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Itens selecionáveis"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">
+                  <brx-checkbox hidden-label />
+                </div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">
+                  <brx-checkbox hidden-label />
+                </div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">
+                  <brx-checkbox hidden-label />
+                </div>
+              </div>
+            </brx-item>
+          </brx-list>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Densidade alta (padrão)"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+        </div>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Densidade média"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-3">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-3">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-3">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+        </div>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Densidade baixa"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-4">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-4">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item class="py-4">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+          </brx-list>
+        </div>
+      </div>
+
+      <div>
+        <h2>Agrupamentos</h2>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Por rótulo"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>RÓTULO 01</brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>RÓTULO 02</brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+          </brx-list>
+        </div>
+
+        <brx-divider></brx-divider>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Por separador"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">Sub-item</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+          </brx-list>
+        </div>
+
+        <brx-divider></brx-divider>
+
+        <div>
+          <brx-list>
+            <brx-list-header header-title="Por expansão"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-collapse-trigger target="#l1">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 01</div>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
+
+            <brx-list hidden="hidden" id="l1">
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+            </brx-list>
+
+            <brx-collapse-trigger target="#l2">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 02</div>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
+
+            <brx-list hidden="hidden" id="l2">
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+            </brx-list>
+
+            <brx-collapse-trigger target="#l3">
+              <brx-item button>
+                <div class="content">
+                  <div class="flex-fill">RÓTULO 03</div>
+                  <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                </div>
+              </brx-item>
+            </brx-collapse-trigger>
+
+            <brx-list hidden="hidden" id="l3">
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+
+              <brx-item>
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                  </div>
+                  <div class="col">Sub-item</div>
+                </div>
+              </brx-item>
+
+              <brx-divider></brx-divider>
+            </brx-list>
+          </brx-list>
+        </div>
+      </div>
+
+      <div>
+        <h2>Lista Horizontal</h2>
+
+        <div>
+          <brx-list horizontal>
+            <brx-list-header header-title="Separadores são opcionais"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+
+            <brx-divider></brx-divider>
+
+            <brx-item>
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                </div>
+                <div class="col">ITEM Texto principal</div>
+                <div class="col-auto">META</div>
+              </div>
+            </brx-item>
+          </brx-list>
+        </div>
+
+        <div>
+          <brx-list class="horizontal mt-5">
+            <brx-list-header header-title="Versão com expansão"></brx-list-header>
+
+            <brx-divider></brx-divider>
+
+            <div class="group">
+              <brx-collapse-trigger target="#h1">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 01</div>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+
+              <brx-list hidden="hidden" id="h1">
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+              </brx-list>
+            </div>
+
+            <div class="group">
+              <brx-collapse-trigger target="#h2">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 02</div>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+              <brx-list hidden="hidden" id="h2">
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+              </brx-list>
+            </div>
+
+            <div class="group">
+              <brx-collapse-trigger target="#h3">
+                <brx-item button>
+                  <div class="content">
+                    <div class="flex-fill">RÓTULO 03</div>
+                    <brx-icon data-collapse-icon name="fa5/fas/angle-down"></brx-icon>
+                  </div>
+                </brx-item>
+              </brx-collapse-trigger>
+              <brx-list hidden="hidden" id="h3">
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+                <brx-item>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <brx-icon name="fa5/fas/heartbeat"></brx-icon>
+                    </div>
+                    <div class="col">Sub-item</div>
+                  </div>
+                </brx-item>
+                <brx-divider></brx-divider>
+              </brx-list>
+            </div>
+          </brx-list>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

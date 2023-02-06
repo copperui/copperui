@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Dropdown</h1>
+
+      <div>
+        <div class="row">
+          <div class="col">
+            <brx-dropdown>
+              <brx-dropdown-trigger target="#dropdown-target-1">
+                <brx-button aria-label="Abrir Acesso Rápido" circle size="small">
+                  <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                </brx-button>
+              </brx-dropdown-trigger>
+
+              <brx-list class="target" hidden="hidden" id="dropdown-target-1">
+                <brx-list-header header-title="Acesso Rápido"></brx-list-header>
+
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 1</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 2</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 3</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 4</a>
+                </brx-item>
+              </brx-list>
+            </brx-dropdown>
+          </div>
+
+          <div class="col">
+            <brx-dropdown>
+              <brx-dropdown-trigger target="#target2">
+                <brx-button aria-label="Abrir Acesso Rápido" circle size="small">
+                  <brx-icon name="fa5/fas/ellipsis-v"></brx-icon>
+                </brx-button>
+              </brx-dropdown-trigger>
+
+              <brx-list class="target" hidden="hidden" id="target2">
+                <brx-list-header header-title="Acesso Rápido"></brx-list-header>
+
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 1</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 2</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 3</a>
+                </brx-item>
+                <brx-item pass-styles>
+                  <a href="#">Link de acesso 4</a>
+                </brx-item>
+              </brx-list>
+            </brx-dropdown>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+System.register(["./p-ff939259.system.js"],(function(t){"use strict";var n,e,r;return{setters:[function(t){n=t.r;e=t.h;r=t.a}],execute:function(){var i="brx-pagination-per-page{display:block}";var s=t("brx_pagination_per_page",function(){function t(t){n(this,t)}t.prototype.render=function(){return e(r,null,e("slot",null))};return t}());s.style=i}}}));

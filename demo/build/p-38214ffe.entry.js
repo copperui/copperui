@@ -1,0 +1,1 @@
+import{r as s,h as r,a as e}from"./p-e5ae1b6e.js";const o=class{constructor(r){s(this,r)}render(){return r(e,null,r("slot",null))}};o.style="brx-step-progress{display:block}";export{o as brx_step_progress}
