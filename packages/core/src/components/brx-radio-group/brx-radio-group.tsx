@@ -1,11 +1,12 @@
 // This file was based on the <ion-radio-group /> from the Ionic Framework (MIT)
 // https://github.com/ionic-team/ionic-framework/blob/d13a14658df2723aff908a94181cb563cb1f5b43/core/src/components/radio-group/radio-group.tsx
 
-import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { TOKEN_UNCONTROLLED } from '../../tokens';
 
-import type { RadioGroupChangeEventDetail } from './brx-radio-group-interface';
-import { findTarget, generateUniqueId } from '../../utils/helpers';
+import { findTarget, findTargets, generateUniqueId } from '../../utils/helpers';
 import { RadioChangeEventDetail } from '../brx-radio/brx-radio-interface';
+import type { RadioGroupChangeEventDetail, RadioGroupUpdateEventDetail } from './brx-radio-group-interface';
 
 @Component({
   tag: 'brx-radio-group',
@@ -15,13 +16,17 @@ export class BrxRadioGroup implements ComponentInterface {
   @Element()
   el!: HTMLElement;
 
-  /**
-   * Emitted when the value has changed.
-   */
   @Event()
-  brxChange!: EventEmitter<RadioGroupChangeEventDetail>;
+  brxRadioGroupChange: EventEmitter<RadioGroupChangeEventDetail>;
 
-  @State()
+  @Event()
+  brxRadioGroupUpdate: EventEmitter<RadioGroupUpdateEventDetail>;
+
+  get radioElements(): HTMLBrxRadioElement[] {
+    return findTargets<HTMLBrxRadioElement>('brx-radio', this.el);
+  }
+
+  @Prop({ mutable: true })
   labelId: string;
 
   @Prop({ reflect: true })
@@ -33,11 +38,39 @@ export class BrxRadioGroup implements ComponentInterface {
   @Prop({ reflect: true })
   name: string;
 
-  /**
-   * the value of the radio group.
-   */
-  @Prop({ mutable: true })
-  value?: any | null;
+  @Prop()
+  value: any | undefined | null;
+
+  @Prop()
+  controlledValue: any | undefined | null | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+
+  @State()
+  currentValue: any | null;
+
+  @Watch('value')
+  @Watch('controlledValue')
+  syncCurrentValueFromProps() {
+    const targetValue = this.controlledValue !== TOKEN_UNCONTROLLED ? this.controlledValue : this.value;
+    this.currentValue = String(targetValue ?? '');
+  }
+
+  setValue(value: string | number) {
+    if (this.controlledValue === TOKEN_UNCONTROLLED) {
+      this.currentValue = value;
+    }
+
+    this.brxRadioGroupChange.emit({ value });
+  }
+
+  @Watch('currentValue')
+  handleCurrentValueChange() {
+    this.brxRadioGroupUpdate.emit({ value: this.currentValue });
+  }
+
+  @Method()
+  getCurrentValue() {
+    return Promise.resolve(this.currentValue);
+  }
 
   /**
    * If `true`, the radios can be deselected.
@@ -45,97 +78,42 @@ export class BrxRadioGroup implements ComponentInterface {
   @Prop({ reflect: true })
   allowEmptySelection = false;
 
-  @Watch('label')
-  async labelChanged() {
+  @Listen('brxChange')
+  handleRadioBrxChange(event: CustomEvent<unknown>) {
+    const target = event.target as HTMLElement | null;
+
+    const brxRadio = target?.closest('brx-radio');
+
+    if (brxRadio) {
+      const { checked } = event.detail as RadioChangeEventDetail;
+
+      if (checked) {
+        event.preventDefault();
+
+        const currentValue = this.currentValue;
+        const newValue = brxRadio.value;
+
+        if (newValue !== currentValue) {
+          this.setValue(newValue);
+        } else if (this.allowEmptySelection) {
+          this.setValue(undefined);
+        }
+      }
+    }
+  }
+
+  connectedCallback() {
     const label = findTarget(this.label);
 
-    if (!label.id) {
-      label.id = generateUniqueId();
+    if (label) {
+      if (!label.id) {
+        label.id = this.labelId ?? generateUniqueId();
+      }
+
+      this.labelId = label.id;
     }
 
-    this.labelId = label.id;
-  }
-
-  @Watch('value')
-  valueChanged(value: any | undefined, oldValue) {
-    this.setRadioTabindex(value);
-    this.brxChange.emit({ value });
-  }
-
-  componentWillLoad() {
-    this.setRadioTabindex(this.value);
-  }
-
-  @Listen('brxChange')
-  watchBrxChange(ev: CustomEvent<RadioChangeEventDetail | any>) {
-    /**
-     * The Radio Group component mandates that only one radio button
-     * within the group can be selected at any given time. Since `ion-radio`
-     * is a shadow DOM component, it cannot natively perform this behavior
-     * using the `name` attribute.
-     */
-
-    const target = ev.target as HTMLElement | null;
-
-    const selectedRadio = target?.closest('brx-radio');
-
-    if (selectedRadio) {
-      ev.preventDefault();
-
-      const currentValue = this.value;
-      const newValue = selectedRadio.value;
-
-      if (newValue !== currentValue) {
-        this.value = newValue;
-      } else if (this.allowEmptySelection) {
-        this.value = undefined;
-      }
-    }
-  }
-
-  @Listen('keydown', { target: 'document' })
-  onKeydown(ev: any) {
-    if (ev.target && !this.el.contains(ev.target)) {
-      return;
-    }
-
-    // Get all radios inside of the radio group and then
-    // filter out disabled radios since we need to skip those
-    const radios = this.getRadios().filter(radio => !radio.disabled);
-
-    // Only move the radio if the current focus is in the radio group
-    if (ev.target && radios.includes(ev.target)) {
-      const index = radios.findIndex(radio => radio === ev.target);
-      const current = radios[index];
-
-      let next;
-
-      // If hitting arrow down or arrow right, move to the next radio
-      // If we're on the last radio, move to the first radio
-      if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
-        next = index === radios.length - 1 ? radios[0] : radios[index + 1];
-      }
-
-      // If hitting arrow up or arrow left, move to the previous radio
-      // If we're on the first radio, move to the last radio
-      if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
-        next = index === 0 ? radios[radios.length - 1] : radios[index - 1];
-      }
-
-      if (next && radios.includes(next)) {
-        next.setFocus(ev);
-      }
-
-      // Update the radio group value when a user presses the
-      // space bar on top of a selected radio
-      if (['Space'].includes(ev.code)) {
-        this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value;
-
-        // Prevent browsers from jumping
-        // to the bottom of the screen
-        ev.preventDefault();
-      }
-    }
+    this.syncCurrentValueFromProps();
   }
 
   render() {
@@ -146,30 +124,5 @@ export class BrxRadioGroup implements ComponentInterface {
         <slot />
       </Host>
     );
-  }
-
-  private setRadioTabindex = (value: any | undefined) => {
-    const radios = this.getRadios();
-
-    // Get the first radio that is not disabled and the checked one
-    const first = radios.find(radio => !radio.disabled);
-    const checked = radios.find(radio => radio.value === value && !radio.disabled);
-
-    if (!first && !checked) {
-      return;
-    }
-
-    // If an enabled checked radio exists, set it to be the focusable radio
-    // otherwise we default to focus the first radio
-    const focusable = checked || first;
-
-    for (const radio of radios) {
-      const tabindex = radio === focusable ? 0 : -1;
-      radio.setButtonTabindex(tabindex);
-    }
-  };
-
-  private getRadios(): HTMLBrxRadioElement[] {
-    return Array.from(this.el.querySelectorAll('ion-radio'));
   }
 }

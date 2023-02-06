@@ -63,7 +63,7 @@ export class BrxInput implements ComponentInterface {
       this.currentValue = value;
     }
 
-    this.brxChange.emit({ value: value });
+    this.brxChange.emit({ value });
   }
 
   @State()

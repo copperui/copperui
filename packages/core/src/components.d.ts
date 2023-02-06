@@ -13,7 +13,7 @@ import { AutocompleteTypes, TextFieldTypes } from "./interfaces";
 import { InputChangeEventDetail } from "./components/brx-input/brx-input.interface";
 import { IPaginationItemTarget } from "./components/brx-pagination-item/brx-pagination-item-interface";
 import { RadioChangeEventDetail, RadioUpdateEventDetail } from "./components/brx-radio/brx-radio-interface";
-import { RadioGroupChangeEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
+import { RadioGroupChangeEventDetail, RadioGroupUpdateEventDetail } from "./components/brx-radio-group/brx-radio-group-interface";
 import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interface";
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
@@ -407,7 +407,7 @@ export namespace Components {
           * If `true`, the radio is selected.
          */
         "checked": boolean | undefined;
-        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
+        "controlledChecked": boolean | undefined | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -431,15 +431,15 @@ export namespace Components {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        "controlledValue": any | undefined | null | TOKEN_UNCONTROLLED;
+        "getCurrentValue": () => Promise<any>;
         "label"?: HTMLLabelElement | string | null;
+        "labelId": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
+        "value": any | undefined | null;
     }
     interface BrxScrim {
         "active": boolean | undefined;
@@ -1620,7 +1620,7 @@ declare namespace LocalJSX {
           * If `true`, the radio is selected.
          */
         "checked"?: boolean | undefined;
-        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
+        "controlledChecked"?: boolean | undefined | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -1651,19 +1651,16 @@ declare namespace LocalJSX {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        "controlledValue"?: any | undefined | null | TOKEN_UNCONTROLLED;
         "label"?: HTMLLabelElement | string | null;
+        "labelId"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onBrxChange"?: (event: BrxRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
-        /**
-          * the value of the radio group.
-         */
-        "value"?: any | null;
+        "onBrxRadioGroupChange"?: (event: BrxRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
+        "onBrxRadioGroupUpdate"?: (event: BrxRadioGroupCustomEvent<RadioGroupUpdateEventDetail>) => void;
+        "value"?: any | undefined | null;
     }
     interface BrxScrim {
         "active"?: boolean | undefined;
