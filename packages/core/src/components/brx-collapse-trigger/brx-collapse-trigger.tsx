@@ -17,16 +17,16 @@ export class BrxCollapseTrigger implements ComponentInterface, IBrxCollapseTrigg
   @Event()
   brxSetTargetVisibilityStatus: EventEmitter<void>;
 
-  @Prop({ reflect: true })
+  @Prop()
   useIcons: boolean = true;
 
-  @Prop({ reflect: true })
+  @Prop()
   breakpoint: string | undefined;
 
-  @Prop({ reflect: true })
+  @Prop()
   iconToHide: string = 'fa5/fas/chevron-up';
 
-  @Prop({ reflect: true })
+  @Prop()
   iconToShow: string = 'fa5/fas/chevron-down';
 
   @Prop({ reflect: true, attribute: 'target' })

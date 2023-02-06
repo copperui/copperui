@@ -24,7 +24,7 @@ import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 import { AttachmentAsset, IHandleUploadFiles, UploadChangeEventDetail } from "./components/brx-upload/brx-upload-interfaces";
 export namespace Components {
     interface BrxAccordionLegacy {
-        "entries": any;
+        "entries": any | undefined;
         "negative": boolean;
         "single": boolean;
     }
@@ -1213,7 +1213,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BrxAccordionLegacy {
-        "entries"?: any;
+        "entries"?: any | undefined;
         "negative"?: boolean;
         "single"?: boolean;
     }

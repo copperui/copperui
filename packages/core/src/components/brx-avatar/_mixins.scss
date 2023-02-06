@@ -78,7 +78,9 @@
 }
 
 @mixin avatar-change {
-  &-action {
+  .brx-avatar-action,
+  .br-avatar-action,
+  brx-avatar-action {
     background: transparent;
     border: 0;
     @include hover;

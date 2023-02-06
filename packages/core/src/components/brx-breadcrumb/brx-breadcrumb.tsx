@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, Element, Fragment, h, Host, Listen, Prop, State } from '@stencil/core';
-import { generateUniqueId, getWindow } from '../../utils/helpers';
+import { Component, ComponentInterface, Element, Fragment, h, Host, Listen, Prop } from '@stencil/core';
+import { findTargets, generateUniqueId, getWindow } from '../../utils/helpers';
 
 @Component({
   tag: 'brx-breadcrumb',
@@ -16,7 +16,7 @@ export class BrxBreadcrumb implements ComponentInterface {
   menuMobileEl: HTMLElement;
 
   getItems() {
-    return Array.from<HTMLBrxBreadcrumbItemElement>(this.el.querySelectorAll('brx-breadcrumb-list brx-breadcrumb-item'));
+    return findTargets<HTMLBrxBreadcrumbItemElement>('brx-breadcrumb-list brx-breadcrumb-item', this.el);
   }
 
   setMenuMobileVisibility(isVisible: boolean) {
@@ -75,6 +75,7 @@ export class BrxBreadcrumb implements ComponentInterface {
       if (item.matches('.menu-mobil')) {
         continue;
       }
+
       item.classList.remove('d-none');
     }
   }
