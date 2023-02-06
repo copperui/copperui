@@ -7,6 +7,7 @@ export const config: Config = {
   namespace: 'copperui',
   globalScript: 'src/global/copperui.ts',
   globalStyle: 'src/global/copperui.scss',
+
   plugins: [
     //
     sass(),
@@ -25,6 +26,10 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      generateTypeDeclarations: true,
+    },
+    {
+      type: 'dist-hydrate-script',
     },
     {
       type: 'docs-readme',
