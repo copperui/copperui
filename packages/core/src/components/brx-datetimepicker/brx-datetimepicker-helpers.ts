@@ -1,8 +1,4 @@
-export enum Type {
-  DATE = 'date',
-  TIME = 'time',
-  DATETIME_LOCAL = 'datetime-local',
-}
+import { Type } from './brx-datetimepicker-interface';
 
 export const getFlatpickr = async () => {
   const mod = await import('flatpickr');
@@ -14,7 +10,7 @@ export const getDefaultLocale = async () => {
   return mod.default.pt;
 };
 
-export const getConfigSetupForType = (type: Type) => {
+export const getSetupForType = (type: Type) => {
   switch (type) {
     case Type.DATE: {
       return {
@@ -46,6 +42,40 @@ export const getConfigSetupForType = (type: Type) => {
         enableTime: false,
         noCalendar: false,
       };
+    }
+  }
+};
+
+export const getInitialInputType = (type: Type) => {
+  switch (type) {
+    case Type.TIME: {
+      return 'time';
+    }
+
+    case Type.DATETIME_LOCAL: {
+      return 'datetime-local';
+    }
+
+    case Type.DATE:
+    default: {
+      return 'text';
+    }
+  }
+};
+
+export const getIconForType = (type: Type) => {
+  switch (type) {
+    case Type.DATE:
+    case Type.DATETIME_LOCAL: {
+      return 'fa5/fas/calendar-alt';
+    }
+
+    case Type.TIME: {
+      return 'fa5/fas/clock';
+    }
+
+    default: {
+      return null;
     }
   }
 };

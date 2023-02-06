@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { BrxDatetimepicker } from '../brx-datetimepicker';
+import { BrxDateTimePicker } from '../brx-datetimepicker';
 
 describe('brx-datetimepicker', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [BrxDatetimepicker],
+      components: [BrxDateTimePicker],
       html: `<brx-datetimepicker></brx-datetimepicker>`,
     });
     expect(page.root).toEqualHtml(`
