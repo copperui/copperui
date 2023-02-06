@@ -540,10 +540,6 @@ export namespace Components {
     }
     interface BrxTextarea {
         /**
-          * If `true`, the textarea container will grow and shrink based on the contents of the textarea.
-         */
-        "autoGrow": boolean;
-        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available optbrxs: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize": string;
@@ -560,6 +556,7 @@ export namespace Components {
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
+        "controlledValue": string | null | undefined | TOKEN_UNCONTROLLED;
         "counter"?: 'limit' | 'total';
         "darkMode": boolean;
         /**
@@ -625,10 +622,7 @@ export namespace Components {
           * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck": boolean;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string | null;
+        "value": string | null | undefined;
         /**
           * Indicates how the control wraps text.
          */
@@ -1779,6 +1773,7 @@ declare namespace LocalJSX {
           * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
+        "controlledValue"?: string | null | undefined | TOKEN_UNCONTROLLED;
         "counter"?: 'limit' | 'total';
         "darkMode"?: boolean;
         /**
@@ -1848,10 +1843,7 @@ declare namespace LocalJSX {
           * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck"?: boolean;
-        /**
-          * The value of the textarea.
-         */
-        "value"?: string | null;
+        "value"?: string | null | undefined;
         /**
           * Indicates how the control wraps text.
          */
