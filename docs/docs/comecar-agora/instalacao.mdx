@@ -7,15 +7,9 @@ import TabItem from '@theme/TabItem';
 
 # Instalação
 
-<Tabs>
+## Web Components / CDN
 
-<TabItem value="webcomponents" label="Web Components">
-
-Suporte: HTML (Vue.js suportado mas não testado).
-
-## Via CDN
-
-Adicione as seguintes declarações à tag `head` de seu projeto.
+O copperui pode ser instalado via CDN para uma rápida integração com seu projeto. Para ter acesso à última versão, adicione as seguintes declarações na tag `head` de seu projeto:
 
 ```html {3-5} showLineNumbers
 <html>
@@ -30,11 +24,7 @@ Adicione as seguintes declarações à tag `head` de seu projeto.
 </html>
 ```
 
-Já está pronto para o uso!
-
-## Via NPM
-
-Instale utilizando o gerenciador de pacotes de sua preferência.
+## Web Components / NPM
 
 <Tabs groupId="pkg">
   <TabItem value="npm">
@@ -54,7 +44,7 @@ yarn add @copperui/core
 
 </Tabs>
 
-### Modo 1: JavaScript
+### Iniciar via JavaScript
 
 ```js {2,3,6} showLineNumbers
 // Importar a lib de Web Components
@@ -65,7 +55,7 @@ import '@copperui/core/dist/copperui/copperui.css';
 defineCustomElements(window);
 ```
 
-### Modo 2: HTML
+### Iniciar no HTML
 
 ```sh
 cp node_modules/@copperui/core/dist/copperui/* {ASSETS_PATH}
@@ -84,11 +74,9 @@ cp node_modules/@copperui/core/dist/copperui/* {ASSETS_PATH}
 </html>
 ```
 
-</TabItem>
+## CopperUI + React
 
-<TabItem value="react" label="React">
-
-## Via NPM
+### Pacote
 
 <Tabs groupId="pkg">
   <TabItem value="npm">
@@ -108,8 +96,12 @@ yarn add @copperui/react
 
 </Tabs>
 
-</TabItem>
+## Iniciar estilos
 
-</Tabs>
+Em seu `App.js`, `_app.js` ou relacionados:
+
+```tsx
+import '@copperui/core/dist/copperui/copperui.css';
+```
 
 Siga para o [Uso](./uso.mdx).
