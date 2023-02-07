@@ -3,6 +3,7 @@ storybook-static
 dist/
 www/
 loader/
+hydrate/
 
 *~
 *.sw[mnpcod]

@@ -17,7 +17,8 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate/"
   ],
   "scripts": {
     "dev": "yarn run start",
