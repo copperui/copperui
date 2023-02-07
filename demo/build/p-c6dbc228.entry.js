@@ -1,0 +1,1 @@
+import{r as s,h as t,a as e}from"./p-e5ae1b6e.js";const r=class{constructor(t){s(this,t),this.headerTitle=void 0}render(){return t(e,null,t("slot",{name:"title"},t("div",{class:"brx-header-title"},this.headerTitle)))}};export{r as brx_list_header}

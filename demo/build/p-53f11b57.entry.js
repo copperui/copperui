@@ -1,0 +1,1 @@
+import{r as n,h as o,a as r}from"./p-e5ae1b6e.js";const a=class{constructor(o){n(this,o)}render(){return o(r,null,o("slot",null))}};a.style="brx-pagination-information{display:block}";export{a as brx_pagination_information}

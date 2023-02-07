@@ -1,0 +1,1 @@
+System.register([],(function(r){"use strict";return{execute:function(){var t=["first","prev","next","last"];var n=r("i",(function(r){return t.includes(r)}));var e=r("p",(function(r){if(n(r)){return r}return parseInt(String(r))}))}}}));

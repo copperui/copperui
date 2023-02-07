@@ -1,0 +1,1 @@
+import{r,h as s,a as o}from"./p-e5ae1b6e.js";const c=class{constructor(s){r(this,s)}render(){return s(o,null,s("slot",null))}};c.style="brx-checkgroup{display:block}";export{c as brx_checkgroup}

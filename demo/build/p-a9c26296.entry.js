@@ -1,0 +1,1 @@
+import{r,h as o,a as s}from"./p-e5ae1b6e.js";const t=class{constructor(o){r(this,o)}render(){return o(s,null,o("slot",null))}};export{t as brx_modal_footer}

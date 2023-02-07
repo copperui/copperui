@@ -1,0 +1,1 @@
+const o=o=>{const{useIcons:n,breakpoint:e,iconToHide:t,iconToShow:c,target:i}=o;return{useIcons:n,breakpoint:e,iconToHide:t,iconToShow:c,target:i}};export{o as g}
