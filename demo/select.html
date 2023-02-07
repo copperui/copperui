@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- start playground assets -->
-    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
+    />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-    <link href="build/copperui.css" rel="stylesheet" />
-    <script type="module" src="build/copperui.esm.js"></script>
-    <script nomodule src="build/copperui.js"></script>
+    <link href="/demo/build/copperui.css" rel="stylesheet" />
+    <script type="module" src="/demo/build/copperui.esm.js"></script>
+    <script nomodule src="/demo/build/copperui.js"></script>
     <style media="screen, print" type="text/css">
       html {
         margin: 0;
@@ -74,7 +80,14 @@
       <div>
         <h2>Controlled</h2>
 
-        <brx-select name="siiu" id="sel3" multiple disable-toggle-all label="Label" placeholder="Selecione até 2 itens.">
+        <brx-select
+          name="siiu"
+          id="sel3"
+          multiple
+          disable-toggle-all
+          label="Label"
+          placeholder="Selecione até 2 itens."
+        >
           <brx-select-option value="cb21" label="Rondônia"></brx-select-option>
           <brx-select-option value="cb23" label="São Paulo"></brx-select-option>
           <brx-select-option value="cb27" label="Exterior"></brx-select-option>
@@ -85,7 +98,7 @@
             const select = document.querySelector('#sel3');
             select.controlledValue = ['cb21'];
 
-            select.addEventListener('brxChange', event => {
+            select.addEventListener('brxChange', (event) => {
               if (event.target !== select) {
                 return;
               }
@@ -94,7 +107,10 @@
 
               const VALUE_EXTERIOR = 'cb27';
 
-              select.controlledValue = value[value.length - 1] === VALUE_EXTERIOR ? [VALUE_EXTERIOR] : value.filter(i => i !== VALUE_EXTERIOR);
+              select.controlledValue =
+                value[value.length - 1] === VALUE_EXTERIOR
+                  ? [VALUE_EXTERIOR]
+                  : value.filter((i) => i !== VALUE_EXTERIOR);
             });
           }
         </script>
