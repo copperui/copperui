@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/copperui/copperui/compare/v0.3.0...v0.4.0) (2023-02-07)
+
+### Bug Fixes
+
+- **core:** brx-select: fix select content float ([b57d123](https://github.com/copperui/copperui/commit/b57d123baf0da6070ec004a4b64703a5331ace0a))
+- **core:** improve tooltip behaviour in brx-tabs and brx-step; provide controlledValue for brx-step ([d2099a1](https://github.com/copperui/copperui/commit/d2099a18da76b822bbca7e977683ea40f4344f25))
+
+### Features
+
+- **core:** stencil.config.js: add `dist-hydrate-script` output target ([c6faceb](https://github.com/copperui/copperui/commit/c6facebaa8583b39187d8b3b864f74042cd2bc92))
+- **core:** [change] controlledChecked on brx-checkbox and brx-radio ([#72](https://github.com/copperui/copperui/issues/72)) ([2d445b2](https://github.com/copperui/copperui/commit/2d445b2e5a8f5d9e75d00f9bd9cd1a5476fa9893))
+- **core:** brx-datetimepicker: allow value of type Date, string and number; implement brxChange ([ebd19d0](https://github.com/copperui/copperui/commit/ebd19d00b525d5771a5c78801791b66654ccc6c3))
+- **core:** brx-input: controlled-value ([#76](https://github.com/copperui/copperui/issues/76)) ([83608fa](https://github.com/copperui/copperui/commit/83608fab8247cbbe732850bce7ed7d4f4bb8bb0d))
+- **core:** brx-pagination contextual ([#50](https://github.com/copperui/copperui/issues/50)) ([015550a](https://github.com/copperui/copperui/commit/015550aaa209dfb053822633c430a08bfe28f1d6))
+- **core:** brx-radio and brx-radio-group: controlled-checked and controlled-value ([#76](https://github.com/copperui/copperui/issues/76)) ([c13b53d](https://github.com/copperui/copperui/commit/c13b53de9376f5d5f285c21a7aa0f48afb4b7902))
+- **core:** brx-scrim: controlled-active ([#76](https://github.com/copperui/copperui/issues/76)) ([ff3ace5](https://github.com/copperui/copperui/commit/ff3ace55addbe5e43e6a03dfe6167bd449015767))
+- **core:** brx-select: brxFilterInputChange event ([#51](https://github.com/copperui/copperui/issues/51)) ([bf1f690](https://github.com/copperui/copperui/commit/bf1f6908d071085895c1859292372f83b693400e))
+- **core:** brx-select: keyboard events and focus ([#51](https://github.com/copperui/copperui/issues/51)) [WIP] ([846946f](https://github.com/copperui/copperui/commit/846946fcd775e1a59fc80b1dd69454a018207105))
+- **core:** brx-textarea: controlled-value ([#76](https://github.com/copperui/copperui/issues/76)) ([0d16b2c](https://github.com/copperui/copperui/commit/0d16b2c11f360eba75223366b22e9720dac3f9d6))
+- **core:** components: brx-datetimepicker ([#53](https://github.com/copperui/copperui/issues/53)) [WIP] ([b33f4b9](https://github.com/copperui/copperui/commit/b33f4b91d1f0a437d31b9eb5e2a4984b610b4f94))
+- **core:** components: brx-pagination ([#50](https://github.com/copperui/copperui/issues/50)) [WIP] ([02681bc](https://github.com/copperui/copperui/commit/02681bcba662ddae14a8bfec2c0ad46632cf6b14))
+- **core:** components: brx-select core logic ([#51](https://github.com/copperui/copperui/issues/51)) [WIP] ([74d6a5d](https://github.com/copperui/copperui/commit/74d6a5d35761069f422f6e68972f4ea20e2fd43e))
+- **core:** helpers: drop nanoid dependency from generateUniqueId logic ([1df865f](https://github.com/copperui/copperui/commit/1df865f7b7e9f1cbe2bc12d5b2c9fd21c7fbf1d9))
+
+### Performance Improvements
+
+- **core:** html: split demo playground in separate components files ([c98cff1](https://github.com/copperui/copperui/commit/c98cff1b9d2c084481a9b6c0b8d03d3682e1e56b))
+
 # [0.3.0](https://github.com/copperui/copperui/compare/v0.2.0...v0.3.0) (2023-01-29)
 
 ### Features

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/copperui/copperui/compare/v0.3.0...v0.4.0) (2023-02-07)
+
+### Features
+
+- **core:** components: brx-pagination ([#50](https://github.com/copperui/copperui/issues/50)) [WIP] ([02681bc](https://github.com/copperui/copperui/commit/02681bcba662ddae14a8bfec2c0ad46632cf6b14))
+- **docs:** add demo.html ([9fcc7c6](https://github.com/copperui/copperui/commit/9fcc7c6c489989b75ef4f8e1ecb172bdcc770632))
+
 # [0.3.0](https://github.com/copperui/copperui/compare/v0.2.0...v0.3.0) (2023-01-29)
 
 **Note:** Version bump only for package @copperui/docs

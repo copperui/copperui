@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/copperui/copperui/compare/v0.3.0...v0.4.0) (2023-02-07)
+
+### Features
+
+- **core:** brx-pagination contextual ([#50](https://github.com/copperui/copperui/issues/50)) ([015550a](https://github.com/copperui/copperui/commit/015550aaa209dfb053822633c430a08bfe28f1d6))
+- **core:** components: brx-datetimepicker ([#53](https://github.com/copperui/copperui/issues/53)) [WIP] ([b33f4b9](https://github.com/copperui/copperui/commit/b33f4b91d1f0a437d31b9eb5e2a4984b610b4f94))
+- **core:** components: brx-pagination ([#50](https://github.com/copperui/copperui/issues/50)) [WIP] ([02681bc](https://github.com/copperui/copperui/commit/02681bcba662ddae14a8bfec2c0ad46632cf6b14))
+- **core:** components: brx-select core logic ([#51](https://github.com/copperui/copperui/issues/51)) [WIP] ([74d6a5d](https://github.com/copperui/copperui/commit/74d6a5d35761069f422f6e68972f4ea20e2fd43e))
+
 # [0.3.0](https://github.com/copperui/copperui/compare/v0.2.0...v0.3.0) (2023-01-29)
 
 ### Features
