@@ -22,7 +22,7 @@
       z-index: 1000;
     }
 
-    &[active] {
+    &[data-active] {
       display: block;
     }
   }

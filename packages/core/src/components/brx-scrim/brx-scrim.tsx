@@ -1,6 +1,10 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { TOKEN_UNCONTROLLED } from '../../tokens';
+import { getControlledValue, TOKEN_UNCONTROLLED } from '../../tokens';
 import { ScrimChangeEventDetail } from './brx-scrim-interface';
+
+const DOMStrings = {
+  closeElement: '[data-scrim-dismiss]',
+};
 
 @Component({
   tag: 'brx-scrim',
@@ -18,7 +22,7 @@ export class BrxScrim {
   active: boolean | undefined;
 
   @Prop()
-  controlledActive: boolean | undefined;
+  controlledActive: boolean | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentActive = false;
@@ -26,8 +30,7 @@ export class BrxScrim {
   @Watch('active')
   @Watch('controlledActive')
   syncCurrentActiveFromProps() {
-    const targetValue = this.controlledActive !== TOKEN_UNCONTROLLED ? this.controlledActive : this.active;
-    this.currentActive = targetValue ?? false;
+    this.currentActive = getControlledValue(this.controlledActive, this.active, false);
   }
 
   setActive(isActive: boolean) {
@@ -42,7 +45,7 @@ export class BrxScrim {
   type: 'foco' | 'legibilidade' | 'inibicao' = 'foco';
 
   @Prop()
-  closeElement: string | undefined = '[data-scrim-dismiss]';
+  closeElement = DOMStrings.closeElement;
 
   @Method()
   async showScrim() {
@@ -98,7 +101,7 @@ export class BrxScrim {
 
   render() {
     return (
-      <Host {...this.baseAttributes}>
+      <Host {...this.baseAttributes} data-active={this.currentActive ? true : null}>
         <slot></slot>
       </Host>
     );

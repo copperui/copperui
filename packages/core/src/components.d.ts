@@ -443,8 +443,8 @@ export namespace Components {
     }
     interface BrxScrim {
         "active": boolean | undefined;
-        "closeElement": string | undefined;
-        "controlledActive": boolean | undefined;
+        "closeElement": string;
+        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
         "hideScrim": () => Promise<void>;
         "showScrim": () => Promise<void>;
         "type": 'foco' | 'legibilidade' | 'inibicao';
@@ -1664,8 +1664,8 @@ declare namespace LocalJSX {
     }
     interface BrxScrim {
         "active"?: boolean | undefined;
-        "closeElement"?: string | undefined;
-        "controlledActive"?: boolean | undefined;
+        "closeElement"?: string;
+        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
         "onBrxScrimChange"?: (event: BrxScrimCustomEvent<ScrimChangeEventDetail>) => void;
         "type"?: 'foco' | 'legibilidade' | 'inibicao';
     }
