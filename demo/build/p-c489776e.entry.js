@@ -1,1 +1,0 @@
-import{r,h as t,a as s}from"./p-e5ae1b6e.js";const n=class{constructor(t){r(this,t)}render(){return t(s,null,t("slot",null))}};n.style="brx-card-content{display:block}";export{n as brx_card_content}

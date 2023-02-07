@@ -1,1 +1,0 @@
-import{r,h as s,a as o}from"./p-e5ae1b6e.js";const t=class{constructor(s){r(this,s)}render(){return s(o,null,s("slot",null))}};export{t as brx_modal_body}

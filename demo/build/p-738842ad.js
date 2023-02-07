@@ -1,1 +1,0 @@
-const l=null,n=l=>null!==l;export{l as T,n as i}

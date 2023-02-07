@@ -1,1 +1,0 @@
-System.register([],(function(e){"use strict";return{execute:function(){var o=e("g",(function(e){var o=e.useIcons,n=e.breakpoint,t=e.iconToHide,i=e.iconToShow,r=e.target;return{useIcons:o,breakpoint:n,iconToHide:t,iconToShow:i,target:r}}))}}}));

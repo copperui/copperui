@@ -1,1 +1,0 @@
-const t=["first","prev","next","last"],s=s=>t.includes(s),r=t=>s(t)?t:parseInt(String(t));export{s as i,r as p}

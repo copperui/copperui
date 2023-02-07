@@ -1,1 +1,0 @@
-System.register(["./p-ff939259.system.js"],(function(t){"use strict";var e,n,r;return{setters:[function(t){e=t.r;n=t.h;r=t.a}],execute:function(){var s="";var u=t("brx_tabs_panel",function(){function t(t){e(this,t);this.active=false;this.value=undefined}t.prototype.render=function(){return n(r,null,n("slot",null))};return t}());u.style=s}}}));

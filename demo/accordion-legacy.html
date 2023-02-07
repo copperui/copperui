@@ -6,18 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- start playground assets -->
-    <link
-      rel="stylesheet"
-      href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"
-    />
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-    <link href="/demo/build/copperui.css" rel="stylesheet" />
-    <script type="module" src="/demo/build/copperui.esm.js"></script>
-    <script nomodule src="/demo/build/copperui.js"></script>
+    <link href="build/copperui.css" rel="stylesheet" />
+    <script type="module" src="build/copperui.esm.js"></script>
+    <script nomodule src="build/copperui.js"></script>
     <style media="screen, print" type="text/css">
       html {
         margin: 0;
@@ -46,10 +40,7 @@
           <div slot="content">Conteúdo #01 | (título: prop; conteúdo: slot)</div>
         </brx-accordion-legacy-entry>
 
-        <brx-accordion-legacy-entry
-          content="Conteúdo #02 | (título: prop; conteúdo: prop)"
-          header-title="Assuntos #02"
-        ></brx-accordion-legacy-entry>
+        <brx-accordion-legacy-entry content="Conteúdo #02 | (título: prop; conteúdo: prop)" header-title="Assuntos #02"></brx-accordion-legacy-entry>
 
         <brx-accordion-legacy-entry>
           <span slot="title">Assuntos #03</span>
@@ -62,11 +53,7 @@
       <brx-accordion-legacy id="acc-lgcy-js"></brx-accordion-legacy>
 
       <script type="text/javascript">
-        const generateEntry = (key) => ({
-          id: String(key).padStart(2, '0'),
-          title: String(key).padStart(2, '0'),
-          content: String(key).padStart(2, '0'),
-        });
+        const generateEntry = key => ({ id: String(key).padStart(2, '0'), title: String(key).padStart(2, '0'), content: String(key).padStart(2, '0') });
 
         document.querySelector('#acc-lgcy-js').entries = Array.from({ length: 3 })
           .map((_, i) => i)
