@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/copperui/copperui/compare/v0.4.2...v0.4.3) (2023-02-07)
+
+### Bug Fixes
+
+- **core:** brx-breadcrumb: remove list component ([4e84b51](https://github.com/copperui/copperui/commit/4e84b517f4e2666af9626df2befaf551f84cfcab))
+
 ## [0.4.2](https://github.com/copperui/copperui/compare/v0.4.1...v0.4.2) (2023-02-07)
 
 **Note:** Version bump only for package root
