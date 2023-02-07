@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/copperui/copperui/compare/v0.4.0...v0.4.1) (2023-02-07)
+
+### Bug Fixes
+
+- **core:** brx-scrim: set `data-active` and set default uncontrolled token ([fb13346](https://github.com/copperui/copperui/commit/fb133465a516f2c42844c15783e14a3793edcf36))
+- **core:** include hydrate in npm package and add to .gitignore ([c803623](https://github.com/copperui/copperui/commit/c803623578534109e94bac0ba15423ede8424e28))
+
 # [0.4.0](https://github.com/copperui/copperui/compare/v0.3.0...v0.4.0) (2023-02-07)
 
 ### Bug Fixes
