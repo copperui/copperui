@@ -16,7 +16,6 @@
 
 ### Depends on
 
-- [brx-breadcrumb-list](../brx-breadcrumb-list)
 - [brx-breadcrumb-item](../brx-breadcrumb-item)
 - [brx-dropdown-trigger](../brx-dropdown-trigger)
 - [brx-button](../brx-button)
@@ -26,7 +25,6 @@
 ### Graph
 ```mermaid
 graph TD;
-  brx-breadcrumb --> brx-breadcrumb-list
   brx-breadcrumb --> brx-breadcrumb-item
   brx-breadcrumb --> brx-dropdown-trigger
   brx-breadcrumb --> brx-button

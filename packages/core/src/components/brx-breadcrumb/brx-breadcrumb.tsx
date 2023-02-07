@@ -46,7 +46,7 @@ export class BrxBreadcrumb implements ComponentInterface {
 
     const hideAllBreakpoint = win.innerWidth < 575;
 
-    for (const list of Array.from(this.el.querySelectorAll('brx-breadcrumb-list'))) {
+    for (const list of findTargets('.brx-breadcrumb-list', this.el)) {
       const items = Array.from(list.querySelectorAll('brx-breadcrumb-item')).filter(item => !item.active && !item.matches('.menu-mobil'));
 
       const partialHideBreakpoint = (!hideAllBreakpoint && list.scrollWidth > list.offsetWidth) || items.length > 5;
@@ -100,7 +100,7 @@ export class BrxBreadcrumb implements ComponentInterface {
 
     return (
       <Host>
-        <brx-breadcrumb-list>
+        <div class="brx-breadcrumb-list">
           <brx-breadcrumb-item hidden class="menu-mobil">
             <brx-dropdown-trigger target={`#${dropdownId}`} iconToShow="fa5/fas/folder-plus" iconToHide="fa5/fas/folder-minus">
               <brx-button circle>
@@ -111,7 +111,7 @@ export class BrxBreadcrumb implements ComponentInterface {
           </brx-breadcrumb-item>
 
           <slot></slot>
-        </brx-breadcrumb-list>
+        </div>
 
         <brx-breadcrumb-card id={dropdownId} hidden></brx-breadcrumb-card>
       </Host>

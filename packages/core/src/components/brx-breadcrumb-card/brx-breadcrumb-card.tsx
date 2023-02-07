@@ -1,5 +1,5 @@
-import { Component, Host, h, Element, State, Prop, Watch, ComponentInterface } from '@stencil/core';
-import { generateUniqueId } from '../../utils/helpers';
+import { Component, ComponentInterface, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { findTargets, generateUniqueId } from '../../utils/helpers';
 
 type ICardItem = {
   id: string;
@@ -26,7 +26,7 @@ export class BrxBreadcrumbCard implements ComponentInterface {
   cardItems: ICardItem[] = [];
 
   async getCardItems() {
-    const allItems = Array.from<HTMLBrxBreadcrumbItemElement>(this.breadcrumbEl.querySelectorAll('brx-breadcrumb-list brx-breadcrumb-item'));
+    const allItems = findTargets<HTMLBrxBreadcrumbItemElement>('.brx-breadcrumb-list brx-breadcrumb-item', this.breadcrumbEl);
 
     const targetItems = allItems.filter(i => !i.home && !i.active && !i.matches('.menu-mobil'));
 
