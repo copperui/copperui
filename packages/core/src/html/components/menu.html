@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="build/copperui.css" rel="stylesheet" />
+    <script type="module" src="build/copperui.esm.js"></script>
+    <script nomodule src="build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Menu</h1>
+
+      <div>
+        <h2>Menu Principal Flutuando (Off Canvas)</h2>
+
+        <div>
+          <div class="row">
+            <brx-menu id="main-navigation">
+              <brx-menu-container>
+                <brx-menu-panel>
+                  <brx-menu-header>
+                    <brx-menu-title>
+                      <img src="https://via.placeholder.com/150" alt="Imagem ilustrativa" />
+                      <span>Identificação do site ou Sistema</span>
+                    </brx-menu-title>
+                    <brx-menu-close>
+                      <brx-button type="button" aria-label="Fechar o menu" data-dismiss="menu" circle>
+                        <brx-icon name="fa5/fas/times"> </brx-icon>
+                      </brx-button>
+                    </brx-menu-close>
+                  </brx-menu-header>
+                  <brx-menu-body>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+
+                    <brx-menu-item class="brx-menu-divider">
+                      <a class="brx-menu-item-container" href="#">
+                        <span class="icon">
+                          <brx-icon name="fa5/fas/bell"> </brx-icon>
+                        </span>
+                        <span class="content">Item de nível 1</span>
+                      </a>
+                    </brx-menu-item>
+
+                    <brx-menu-item class="brx-menu-divider">
+                      <a class="brx-menu-item-container" href="#">
+                        <span class="icon">
+                          <brx-icon name="fa5/fas/bell"> </brx-icon>
+                        </span>
+                        <span class="content">Item de nível 1</span>
+                      </a>
+                    </brx-menu-item>
+                  </brx-menu-body>
+
+                  <brx-menu-footer>
+                    <brx-menu-logos>
+                      <img src="https://via.placeholder.com/150" alt="Imagem ilustrativa" />
+                      <img src="https://via.placeholder.com/150" alt="Imagem ilustrativa" />
+                    </brx-menu-logos>
+                    <brx-menu-links>
+                      <a href="#">
+                        <span class="mr-1">Link externo 1</span>
+                        <brx-icon name="fa5/fas/external-link-square-alt"> </brx-icon>
+                      </a>
+                      <a href="#">
+                        <span class="mr-1">Link externo 2</span>
+                        <brx-icon name="fa5/fas/external-link-square-alt"> </brx-icon>
+                      </a>
+                    </brx-menu-links>
+                    <brx-menu-social-network>
+                      <div class="brx-menu-social-network-title">Redes Sociais</div>
+
+                      <div class="d-flex">
+                        <brx-button href="#" aria-label="Compartilhar por Facebook" circle>
+                          <brx-icon name="fa5/fab/facebook-f"> </brx-icon>
+                        </brx-button>
+                        <brx-button href="#" aria-label="Compartilhar por Twitter" circle>
+                          <brx-icon name="fa5/fab/twitter"> </brx-icon>
+                        </brx-button>
+                        <brx-button href="#" aria-label="Compartilhar por Linkedin" circle>
+                          <brx-icon name="fa5/fab/linkedin-in"> </brx-icon>
+                        </brx-button>
+                        <brx-button href="#" aria-label="Compartilhar por Whatsapp" circle>
+                          <brx-icon name="fa5/fab/whatsapp"> </brx-icon>
+                        </brx-button>
+                      </div>
+                    </brx-menu-social-network>
+                    <brx-menu-info>
+                      <div class="text-center text-down-01">
+                        Todo o conteúdo deste site está publicado sob a licença
+                        <strong>Creative Commons Atribuição-SemDerivações 3.0</strong>
+                      </div>
+                    </brx-menu-info>
+                  </brx-menu-footer>
+                </brx-menu-panel>
+                <brx-menu-scrim data-dismiss="menu" tabindex="0"> </brx-menu-scrim>
+              </brx-menu-container>
+            </brx-menu>
+            <div class="col">
+              <div class="d-flex align-items-center">
+                <div>
+                  <brx-menu-trigger target="#main-navigation">
+                    <brx-button type="button" aria-label="Menu" circle size="small">
+                      <brx-icon name="fa5/fas/bars"> </brx-icon>
+                    </brx-button>
+                  </brx-menu-trigger>
+                </div>
+                <div class="ml-3">Acionar menu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Menu Principal Empurrando (Push)</h2>
+
+        <div>
+          <div class="row">
+            <brx-menu variant="push" id="main-navigation-2">
+              <brx-menu-container>
+                <brx-menu-panel>
+                  <brx-menu-body>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+                    <brx-menu-folder>
+                      <brx-menu-item link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <ul>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/heart"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                          <ul>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/book"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                              <ul>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                                <li>
+                                  <brx-menu-item link>
+                                    <a class="brx-menu-item-container" href="#">
+                                      <span class="content">Nível 4</span>
+                                    </a>
+                                  </brx-menu-item>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <brx-menu-item link>
+                                <a class="brx-menu-item-container" href="#">
+                                  <span class="icon">
+                                    <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                  </span>
+                                  <span class="content">Nível 3</span>
+                                </a>
+                              </brx-menu-item>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <brx-menu-item link>
+                            <a class="brx-menu-item-container" href="#">
+                              <span class="icon">
+                                <brx-icon name="fa5/fas/archive"> </brx-icon>
+                              </span>
+                              <span class="content">Nível 2</span>
+                            </a>
+                          </brx-menu-item>
+                        </li>
+                      </ul>
+                    </brx-menu-folder>
+                    <brx-menu-item class="brx-menu-divider">
+                      <a class="brx-menu-item-container" href="#">
+                        <span class="icon">
+                          <brx-icon name="fa5/fas/bell"> </brx-icon>
+                        </span>
+                        <span class="content">Item de nível 1</span>
+                      </a>
+                    </brx-menu-item>
+                    <brx-menu-item class="brx-menu-divider">
+                      <a class="brx-menu-item-container" href="#">
+                        <span class="icon">
+                          <brx-icon name="fa5/fas/bell"> </brx-icon>
+                        </span>
+                        <span class="content">Item de nível 1</span>
+                      </a>
+                    </brx-menu-item>
+                  </brx-menu-body>
+                </brx-menu-panel>
+              </brx-menu-container>
+            </brx-menu>
+
+            <div class="col">
+              <div class="d-flex align-items-center">
+                <div>
+                  <brx-menu-trigger target="#main-navigation-2">
+                    <brx-button type="button" aria-label="Menu" circle size="small">
+                      <brx-icon name="fa5/fas/bars"> </brx-icon>
+                    </brx-button>
+                  </brx-menu-trigger>
+                </div>
+                <div class="ml-3">Acionar menu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Agrupamentos de items</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-sm-4 col-lg-3 mb-5">
+              <p>Agrupamento por Expansão</p>
+              <brx-menu variant="push" active>
+                <brx-menu-container class="position-static">
+                  <brx-menu-panel class="h-auto position-static shadow-lg-right">
+                    <brx-menu-body>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                    </brx-menu-body>
+                  </brx-menu-panel>
+                </brx-menu-container>
+              </brx-menu>
+            </div>
+            <div class="col-sm-4 col-lg-3 mb-5">
+              <p>Agrupamento por Rótulos</p>
+              <brx-menu variant="push" active>
+                <brx-menu-container class="position-static shadow-lg-right">
+                  <brx-menu-panel class="h-auto position-static">
+                    <brx-menu-body>
+                      <brx-menu-folder>
+                        <brx-menu-item initial-setup="false">
+                          <div class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </div>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"></brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item initial-setup="false">
+                          <div class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </div>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item initial-setup="false">
+                          <div class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </div>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                    </brx-menu-body>
+                  </brx-menu-panel>
+                </brx-menu-container>
+              </brx-menu>
+            </div>
+            <div class="col-sm-4 col-lg-3 mb-5">
+              <p>Agrupamento por Dividers</p>
+              <brx-menu variant="push" active>
+                <brx-menu-container class="position-static shadow-lg-right">
+                  <brx-menu-panel class="h-auto position-static">
+                    <brx-menu-body>
+                      <brx-menu-folder>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                    </brx-menu-body>
+                  </brx-menu-panel>
+                </brx-menu-container>
+              </brx-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <div class="row mb-5">
+            <div class="col-sm-4 col-lg-3 mb-5">
+              <p>Densidade alta</p>
+              <brx-menu variant="push" size="small" active>
+                <brx-menu-container class="position-static">
+                  <brx-menu-panel class="h-auto position-static shadow-lg-right">
+                    <brx-menu-body>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                    </brx-menu-body>
+                  </brx-menu-panel>
+                </brx-menu-container>
+              </brx-menu>
+            </div>
+            <div class="col-sm-4 col-lg-3 mb-5">
+              <p>Densidade baixa</p>
+              <brx-menu variant="push" size="large" active>
+                <brx-menu-container class="position-static">
+                  <brx-menu-panel class="h-auto position-static shadow-lg-right">
+                    <brx-menu-body>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-folder>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="icon">
+                              <brx-icon name="fa5/fas/bell"> </brx-icon>
+                            </span>
+                            <span class="content">Nível 1</span>
+                          </a>
+                        </brx-menu-item>
+                        <ul>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/heart"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/address-book"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                            <ul>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/book"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/tree"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                                <ul>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                  <li>
+                                    <brx-menu-item link>
+                                      <a href="#" class="brx-menu-item-container">
+                                        <span class="content">Nível 4</span>
+                                      </a>
+                                    </brx-menu-item>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <brx-menu-item link>
+                                  <a href="#" class="brx-menu-item-container">
+                                    <span class="icon">
+                                      <brx-icon name="fa5/fas/moon"> </brx-icon>
+                                    </span>
+                                    <span class="content">Nível 3</span>
+                                  </a>
+                                </brx-menu-item>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <brx-menu-item link>
+                              <a href="#" class="brx-menu-item-container">
+                                <span class="icon">
+                                  <brx-icon name="fa5/fas/archive"> </brx-icon>
+                                </span>
+                                <span class="content">Nível 2</span>
+                              </a>
+                            </brx-menu-item>
+                          </li>
+                        </ul>
+                      </brx-menu-folder>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                      <brx-menu-item class="brx-menu-item-divider" link>
+                        <a class="brx-menu-item-container" href="#">
+                          <span class="icon">
+                            <brx-icon name="fa5/fas/bell"> </brx-icon>
+                          </span>
+                          <span class="content">Item de nível 1</span>
+                        </a>
+                      </brx-menu-item>
+                    </brx-menu-body>
+                  </brx-menu-panel>
+                </brx-menu-container>
+              </brx-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Menu Contextual</h2>
+
+        <div>
+          <brx-menu variant="contextual" active>
+            <brx-menu-trigger>
+              <brx-button variant="primary" block native-class="py-4" type="button" data-toggle="contextual">
+                <span class="mr-1">Menu Contextual</span>
+                <brx-icon class="ml-5" name="fa5/fas/chevron-up"></brx-icon>
+              </brx-button>
+            </brx-menu-trigger>
+
+            <brx-menu-container>
+              <brx-menu-panel>
+                <brx-menu-body>
+                  <brx-menu-folder>
+                    <ul>
+                      <li>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="content">Item do menu 1</span>
+                          </a>
+                        </brx-menu-item>
+                      </li>
+                      <li>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="content">Item do menu 1</span>
+                          </a>
+                        </brx-menu-item>
+                      </li>
+                      <li>
+                        <brx-menu-item link>
+                          <a href="#" class="brx-menu-item-container">
+                            <span class="content">Item do menu 1</span>
+                          </a>
+                        </brx-menu-item>
+                      </li>
+                    </ul>
+                  </brx-menu-folder>
+                </brx-menu-body>
+              </brx-menu-panel>
+              <brx-menu-scrim data-dismiss="menu" tabindex="0"> </brx-menu-scrim>
+            </brx-menu-container>
+          </brx-menu>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -67,8 +67,6 @@ export namespace Components {
         "active": boolean;
         "home": boolean;
     }
-    interface BrxBreadcrumbList {
-    }
     interface BrxButton {
         "active": boolean;
         "block": boolean;
@@ -353,6 +351,51 @@ export namespace Components {
         "progress": string | number | undefined;
         "size": string | undefined;
         "variant": string | undefined;
+    }
+    interface BrxMenu {
+        "active": boolean | undefined;
+        "breakpoints": string[];
+        "closeMenu": () => Promise<void>;
+        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
+        "openMenu": () => Promise<void>;
+        "pushShadow": string;
+        "toggleMenu": () => Promise<void>;
+        "variant": 'push' | 'contextual' | undefined;
+    }
+    interface BrxMenuBody {
+    }
+    interface BrxMenuClose {
+    }
+    interface BrxMenuContainer {
+    }
+    interface BrxMenuFolder {
+    }
+    interface BrxMenuFooter {
+    }
+    interface BrxMenuHeader {
+    }
+    interface BrxMenuInfo {
+    }
+    interface BrxMenuItem {
+        "hide": () => Promise<void>;
+        "initialSetup": boolean;
+        "setupParent": () => Promise<void>;
+        "show": () => Promise<void>;
+    }
+    interface BrxMenuLinks {
+    }
+    interface BrxMenuLogos {
+    }
+    interface BrxMenuPanel {
+    }
+    interface BrxMenuScrim {
+    }
+    interface BrxMenuSocialNetwork {
+    }
+    interface BrxMenuTitle {
+    }
+    interface BrxMenuTrigger {
+        "target": string | HTMLMenuElement | null;
     }
     interface BrxMessage {
         "dismiss": () => Promise<void>;
@@ -719,6 +762,10 @@ export interface BrxInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxInputElement;
 }
+export interface BrxMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxMenuElement;
+}
 export interface BrxPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxPaginationElement;
@@ -813,12 +860,6 @@ declare global {
     var HTMLBrxBreadcrumbItemElement: {
         prototype: HTMLBrxBreadcrumbItemElement;
         new (): HTMLBrxBreadcrumbItemElement;
-    };
-    interface HTMLBrxBreadcrumbListElement extends Components.BrxBreadcrumbList, HTMLStencilElement {
-    }
-    var HTMLBrxBreadcrumbListElement: {
-        prototype: HTMLBrxBreadcrumbListElement;
-        new (): HTMLBrxBreadcrumbListElement;
     };
     interface HTMLBrxButtonElement extends Components.BrxButton, HTMLStencilElement {
     }
@@ -927,6 +968,102 @@ declare global {
     var HTMLBrxLoadingElement: {
         prototype: HTMLBrxLoadingElement;
         new (): HTMLBrxLoadingElement;
+    };
+    interface HTMLBrxMenuElement extends Components.BrxMenu, HTMLStencilElement {
+    }
+    var HTMLBrxMenuElement: {
+        prototype: HTMLBrxMenuElement;
+        new (): HTMLBrxMenuElement;
+    };
+    interface HTMLBrxMenuBodyElement extends Components.BrxMenuBody, HTMLStencilElement {
+    }
+    var HTMLBrxMenuBodyElement: {
+        prototype: HTMLBrxMenuBodyElement;
+        new (): HTMLBrxMenuBodyElement;
+    };
+    interface HTMLBrxMenuCloseElement extends Components.BrxMenuClose, HTMLStencilElement {
+    }
+    var HTMLBrxMenuCloseElement: {
+        prototype: HTMLBrxMenuCloseElement;
+        new (): HTMLBrxMenuCloseElement;
+    };
+    interface HTMLBrxMenuContainerElement extends Components.BrxMenuContainer, HTMLStencilElement {
+    }
+    var HTMLBrxMenuContainerElement: {
+        prototype: HTMLBrxMenuContainerElement;
+        new (): HTMLBrxMenuContainerElement;
+    };
+    interface HTMLBrxMenuFolderElement extends Components.BrxMenuFolder, HTMLStencilElement {
+    }
+    var HTMLBrxMenuFolderElement: {
+        prototype: HTMLBrxMenuFolderElement;
+        new (): HTMLBrxMenuFolderElement;
+    };
+    interface HTMLBrxMenuFooterElement extends Components.BrxMenuFooter, HTMLStencilElement {
+    }
+    var HTMLBrxMenuFooterElement: {
+        prototype: HTMLBrxMenuFooterElement;
+        new (): HTMLBrxMenuFooterElement;
+    };
+    interface HTMLBrxMenuHeaderElement extends Components.BrxMenuHeader, HTMLStencilElement {
+    }
+    var HTMLBrxMenuHeaderElement: {
+        prototype: HTMLBrxMenuHeaderElement;
+        new (): HTMLBrxMenuHeaderElement;
+    };
+    interface HTMLBrxMenuInfoElement extends Components.BrxMenuInfo, HTMLStencilElement {
+    }
+    var HTMLBrxMenuInfoElement: {
+        prototype: HTMLBrxMenuInfoElement;
+        new (): HTMLBrxMenuInfoElement;
+    };
+    interface HTMLBrxMenuItemElement extends Components.BrxMenuItem, HTMLStencilElement {
+    }
+    var HTMLBrxMenuItemElement: {
+        prototype: HTMLBrxMenuItemElement;
+        new (): HTMLBrxMenuItemElement;
+    };
+    interface HTMLBrxMenuLinksElement extends Components.BrxMenuLinks, HTMLStencilElement {
+    }
+    var HTMLBrxMenuLinksElement: {
+        prototype: HTMLBrxMenuLinksElement;
+        new (): HTMLBrxMenuLinksElement;
+    };
+    interface HTMLBrxMenuLogosElement extends Components.BrxMenuLogos, HTMLStencilElement {
+    }
+    var HTMLBrxMenuLogosElement: {
+        prototype: HTMLBrxMenuLogosElement;
+        new (): HTMLBrxMenuLogosElement;
+    };
+    interface HTMLBrxMenuPanelElement extends Components.BrxMenuPanel, HTMLStencilElement {
+    }
+    var HTMLBrxMenuPanelElement: {
+        prototype: HTMLBrxMenuPanelElement;
+        new (): HTMLBrxMenuPanelElement;
+    };
+    interface HTMLBrxMenuScrimElement extends Components.BrxMenuScrim, HTMLStencilElement {
+    }
+    var HTMLBrxMenuScrimElement: {
+        prototype: HTMLBrxMenuScrimElement;
+        new (): HTMLBrxMenuScrimElement;
+    };
+    interface HTMLBrxMenuSocialNetworkElement extends Components.BrxMenuSocialNetwork, HTMLStencilElement {
+    }
+    var HTMLBrxMenuSocialNetworkElement: {
+        prototype: HTMLBrxMenuSocialNetworkElement;
+        new (): HTMLBrxMenuSocialNetworkElement;
+    };
+    interface HTMLBrxMenuTitleElement extends Components.BrxMenuTitle, HTMLStencilElement {
+    }
+    var HTMLBrxMenuTitleElement: {
+        prototype: HTMLBrxMenuTitleElement;
+        new (): HTMLBrxMenuTitleElement;
+    };
+    interface HTMLBrxMenuTriggerElement extends Components.BrxMenuTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxMenuTriggerElement: {
+        prototype: HTMLBrxMenuTriggerElement;
+        new (): HTMLBrxMenuTriggerElement;
     };
     interface HTMLBrxMessageElement extends Components.BrxMessage, HTMLStencilElement {
     }
@@ -1154,7 +1291,6 @@ declare global {
         "brx-breadcrumb": HTMLBrxBreadcrumbElement;
         "brx-breadcrumb-card": HTMLBrxBreadcrumbCardElement;
         "brx-breadcrumb-item": HTMLBrxBreadcrumbItemElement;
-        "brx-breadcrumb-list": HTMLBrxBreadcrumbListElement;
         "brx-button": HTMLBrxButtonElement;
         "brx-card": HTMLBrxCardElement;
         "brx-card-content": HTMLBrxCardContentElement;
@@ -1173,6 +1309,22 @@ declare global {
         "brx-list": HTMLBrxListElement;
         "brx-list-header": HTMLBrxListHeaderElement;
         "brx-loading": HTMLBrxLoadingElement;
+        "brx-menu": HTMLBrxMenuElement;
+        "brx-menu-body": HTMLBrxMenuBodyElement;
+        "brx-menu-close": HTMLBrxMenuCloseElement;
+        "brx-menu-container": HTMLBrxMenuContainerElement;
+        "brx-menu-folder": HTMLBrxMenuFolderElement;
+        "brx-menu-footer": HTMLBrxMenuFooterElement;
+        "brx-menu-header": HTMLBrxMenuHeaderElement;
+        "brx-menu-info": HTMLBrxMenuInfoElement;
+        "brx-menu-item": HTMLBrxMenuItemElement;
+        "brx-menu-links": HTMLBrxMenuLinksElement;
+        "brx-menu-logos": HTMLBrxMenuLogosElement;
+        "brx-menu-panel": HTMLBrxMenuPanelElement;
+        "brx-menu-scrim": HTMLBrxMenuScrimElement;
+        "brx-menu-social-network": HTMLBrxMenuSocialNetworkElement;
+        "brx-menu-title": HTMLBrxMenuTitleElement;
+        "brx-menu-trigger": HTMLBrxMenuTriggerElement;
         "brx-message": HTMLBrxMessageElement;
         "brx-modal": HTMLBrxModalElement;
         "brx-modal-body": HTMLBrxModalBodyElement;
@@ -1255,8 +1407,6 @@ declare namespace LocalJSX {
     interface BrxBreadcrumbItem {
         "active"?: boolean;
         "home"?: boolean;
-    }
-    interface BrxBreadcrumbList {
     }
     interface BrxButton {
         "active"?: boolean;
@@ -1567,6 +1717,46 @@ declare namespace LocalJSX {
         "progress"?: string | number | undefined;
         "size"?: string | undefined;
         "variant"?: string | undefined;
+    }
+    interface BrxMenu {
+        "active"?: boolean | undefined;
+        "breakpoints"?: string[];
+        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "onBrxChange"?: (event: BrxMenuCustomEvent<boolean>) => void;
+        "pushShadow"?: string;
+        "variant"?: 'push' | 'contextual' | undefined;
+    }
+    interface BrxMenuBody {
+    }
+    interface BrxMenuClose {
+    }
+    interface BrxMenuContainer {
+    }
+    interface BrxMenuFolder {
+    }
+    interface BrxMenuFooter {
+    }
+    interface BrxMenuHeader {
+    }
+    interface BrxMenuInfo {
+    }
+    interface BrxMenuItem {
+        "initialSetup"?: boolean;
+    }
+    interface BrxMenuLinks {
+    }
+    interface BrxMenuLogos {
+    }
+    interface BrxMenuPanel {
+    }
+    interface BrxMenuScrim {
+    }
+    interface BrxMenuSocialNetwork {
+    }
+    interface BrxMenuTitle {
+    }
+    interface BrxMenuTrigger {
+        "target"?: string | HTMLMenuElement | null;
     }
     interface BrxMessage {
         "dismissable"?: boolean;
@@ -1927,7 +2117,6 @@ declare namespace LocalJSX {
         "brx-breadcrumb": BrxBreadcrumb;
         "brx-breadcrumb-card": BrxBreadcrumbCard;
         "brx-breadcrumb-item": BrxBreadcrumbItem;
-        "brx-breadcrumb-list": BrxBreadcrumbList;
         "brx-button": BrxButton;
         "brx-card": BrxCard;
         "brx-card-content": BrxCardContent;
@@ -1946,6 +2135,22 @@ declare namespace LocalJSX {
         "brx-list": BrxList;
         "brx-list-header": BrxListHeader;
         "brx-loading": BrxLoading;
+        "brx-menu": BrxMenu;
+        "brx-menu-body": BrxMenuBody;
+        "brx-menu-close": BrxMenuClose;
+        "brx-menu-container": BrxMenuContainer;
+        "brx-menu-folder": BrxMenuFolder;
+        "brx-menu-footer": BrxMenuFooter;
+        "brx-menu-header": BrxMenuHeader;
+        "brx-menu-info": BrxMenuInfo;
+        "brx-menu-item": BrxMenuItem;
+        "brx-menu-links": BrxMenuLinks;
+        "brx-menu-logos": BrxMenuLogos;
+        "brx-menu-panel": BrxMenuPanel;
+        "brx-menu-scrim": BrxMenuScrim;
+        "brx-menu-social-network": BrxMenuSocialNetwork;
+        "brx-menu-title": BrxMenuTitle;
+        "brx-menu-trigger": BrxMenuTrigger;
         "brx-message": BrxMessage;
         "brx-modal": BrxModal;
         "brx-modal-body": BrxModalBody;
@@ -1997,7 +2202,6 @@ declare module "@stencil/core" {
             "brx-breadcrumb": LocalJSX.BrxBreadcrumb & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbElement>;
             "brx-breadcrumb-card": LocalJSX.BrxBreadcrumbCard & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbCardElement>;
             "brx-breadcrumb-item": LocalJSX.BrxBreadcrumbItem & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbItemElement>;
-            "brx-breadcrumb-list": LocalJSX.BrxBreadcrumbList & JSXBase.HTMLAttributes<HTMLBrxBreadcrumbListElement>;
             "brx-button": LocalJSX.BrxButton & JSXBase.HTMLAttributes<HTMLBrxButtonElement>;
             "brx-card": LocalJSX.BrxCard & JSXBase.HTMLAttributes<HTMLBrxCardElement>;
             "brx-card-content": LocalJSX.BrxCardContent & JSXBase.HTMLAttributes<HTMLBrxCardContentElement>;
@@ -2016,6 +2220,22 @@ declare module "@stencil/core" {
             "brx-list": LocalJSX.BrxList & JSXBase.HTMLAttributes<HTMLBrxListElement>;
             "brx-list-header": LocalJSX.BrxListHeader & JSXBase.HTMLAttributes<HTMLBrxListHeaderElement>;
             "brx-loading": LocalJSX.BrxLoading & JSXBase.HTMLAttributes<HTMLBrxLoadingElement>;
+            "brx-menu": LocalJSX.BrxMenu & JSXBase.HTMLAttributes<HTMLBrxMenuElement>;
+            "brx-menu-body": LocalJSX.BrxMenuBody & JSXBase.HTMLAttributes<HTMLBrxMenuBodyElement>;
+            "brx-menu-close": LocalJSX.BrxMenuClose & JSXBase.HTMLAttributes<HTMLBrxMenuCloseElement>;
+            "brx-menu-container": LocalJSX.BrxMenuContainer & JSXBase.HTMLAttributes<HTMLBrxMenuContainerElement>;
+            "brx-menu-folder": LocalJSX.BrxMenuFolder & JSXBase.HTMLAttributes<HTMLBrxMenuFolderElement>;
+            "brx-menu-footer": LocalJSX.BrxMenuFooter & JSXBase.HTMLAttributes<HTMLBrxMenuFooterElement>;
+            "brx-menu-header": LocalJSX.BrxMenuHeader & JSXBase.HTMLAttributes<HTMLBrxMenuHeaderElement>;
+            "brx-menu-info": LocalJSX.BrxMenuInfo & JSXBase.HTMLAttributes<HTMLBrxMenuInfoElement>;
+            "brx-menu-item": LocalJSX.BrxMenuItem & JSXBase.HTMLAttributes<HTMLBrxMenuItemElement>;
+            "brx-menu-links": LocalJSX.BrxMenuLinks & JSXBase.HTMLAttributes<HTMLBrxMenuLinksElement>;
+            "brx-menu-logos": LocalJSX.BrxMenuLogos & JSXBase.HTMLAttributes<HTMLBrxMenuLogosElement>;
+            "brx-menu-panel": LocalJSX.BrxMenuPanel & JSXBase.HTMLAttributes<HTMLBrxMenuPanelElement>;
+            "brx-menu-scrim": LocalJSX.BrxMenuScrim & JSXBase.HTMLAttributes<HTMLBrxMenuScrimElement>;
+            "brx-menu-social-network": LocalJSX.BrxMenuSocialNetwork & JSXBase.HTMLAttributes<HTMLBrxMenuSocialNetworkElement>;
+            "brx-menu-title": LocalJSX.BrxMenuTitle & JSXBase.HTMLAttributes<HTMLBrxMenuTitleElement>;
+            "brx-menu-trigger": LocalJSX.BrxMenuTrigger & JSXBase.HTMLAttributes<HTMLBrxMenuTriggerElement>;
             "brx-message": LocalJSX.BrxMessage & JSXBase.HTMLAttributes<HTMLBrxMessageElement>;
             "brx-modal": LocalJSX.BrxModal & JSXBase.HTMLAttributes<HTMLBrxModalElement>;
             "brx-modal-body": LocalJSX.BrxModalBody & JSXBase.HTMLAttributes<HTMLBrxModalBodyElement>;
