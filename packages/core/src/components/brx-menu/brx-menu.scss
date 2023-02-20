@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import './mixins';
+
+brx-menu {
+  display: block;
+
+  @include menu-configs;
+}

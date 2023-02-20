@@ -1,0 +1,514 @@
+@mixin menu-configs {
+  @include menu-tokens;
+  @include menu-default;
+  @include menu-header;
+  @include menu-body;
+  @include menu-footer;
+  @include menu-items;
+  @include menu-side-menu;
+  @include menu-items-sizes;
+  @include menu-push;
+  @include menu-contextual;
+  @include menu-states;
+}
+
+@mixin menu-tokens {
+  --menu-zindex: var(--z-index-layer-3);
+  --menu-background-submenu: var(--gray-2);
+  --menu-logo: 40px;
+  --menu-item-ng: var(--menu-item-medium);
+  --menu-item-padding: var(--menu-item-medium);
+  --menu-item-small: var(--spacing-scale-base);
+  --menu-item-medium: var(--spacing-scale-2x);
+  --menu-item-large: var(--spacing-scale-3x);
+}
+
+@mixin menu-default {
+  // A base é aplicado no seguinte html:
+  // <brx-menu>
+  //   <brx-menu-trigger>
+  //   <brx-menu-container>
+  //     <brx-menu-scrim>
+  //     <brx-menu-panel>
+  brx-menu-container {
+    display: none;
+  }
+
+  brx-menu-scrim {
+    background: var(--surface-overlay-scrim);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  brx-menu-panel {
+    --focus-offset: calc(var(--spacing-scale-half) * -1);
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  // Menu ativo
+  &[data-active] {
+    brx-menu-container {
+      bottom: 0;
+      display: flex;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: var(--menu-zindex);
+    }
+
+    brx-menu-panel {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+      z-index: calc(var(--menu-zindex) + 1);
+    }
+
+    brx-menu-scrim {
+      position: absolute;
+    }
+  }
+}
+
+@mixin menu-header {
+  // O header é aplicado no seguinte html:
+  // <brx-menu-header>
+  //   <brx-menu-close>
+  //   <brx-menu-title>
+
+  brx-menu-header {
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    padding: var(--spacing-scale-base) var(--spacing-scale-base);
+
+    brx-menu-title {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      margin-left: var(--spacing-scale-base);
+
+      img {
+        max-height: var(--menu-logo);
+
+        + * {
+          margin-left: var(--spacing-scale-base);
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-body {
+  // O header é aplicado no seguinte html:
+  // <brx-menu-body>
+  //   <brx-menu-folder>
+
+  // stylelint-disable no-descending-specificity
+  brx-menu-body {
+    // Resetar estilos
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    // Aplica separador nos itens de primeiro nível
+    > .brx-menu-divider {
+      .brx-menu-item-container {
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+
+    brx-menu-folder {
+      // Aplica separador entre pastas
+      > ul {
+        > li:last-child {
+          > brx-menu-item {
+            .brx-menu-item-container {
+              border-bottom: 1px solid var(--border-color);
+            }
+          }
+        }
+      }
+
+      // Cor de fundo para nível 2
+      > brx-menu-item {
+        + ul {
+          background: var(--menu-background-submenu);
+
+          brx-menu-item {
+            .brx-menu-item-container {
+              padding-left: var(--spacing-scale-5x);
+            }
+          }
+        }
+      }
+    }
+
+    // Aplica separador no menu dropdown de primeiro nível
+    .brx-drop-menu {
+      > brx-menu-item {
+        .brx-menu-item-container {
+          border-bottom: 1px solid var(--border-color);
+        }
+      }
+
+      &[data-active] {
+        > brx-menu-item {
+          .brx-menu-item-container {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+
+    // Estilo padrão para menu dropdown e side menu
+    .brx-drop-menu {
+      > ul {
+        background: var(--menu-background-submenu);
+        display: none;
+      }
+
+      &[data-active] {
+        > brx-menu-item {
+          .brx-menu-item-container {
+            &:not(:hover) {
+              background-color: var(--background);
+            }
+
+            .support {
+              @include icon {
+                transform: rotate(180deg);
+              }
+            }
+          }
+        }
+
+        > ul {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // stylelint-enable no-descending-specificity
+}
+
+@mixin menu-footer {
+  // O header é aplicado no seguinte html:
+  // <brx-footer>
+  //   <brx-logos>
+  //   <brx-links>
+  //   <brx-social>
+  //   <brx-info>
+
+  brx-menu-footer {
+    // Adiciona borda automaticamente entre as sessões
+    > *:not(:last-child) {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    brx-menu-logos {
+      column-gap: var(--spacing-scale-2x);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: var(--spacing-scale-base) var(--spacing-scale-5x);
+      row-gap: var(--spacing-scale-2x);
+    }
+
+    brx-menu-links {
+      --focus-offset: var(--spacing-scale-half);
+
+      padding: var(--spacing-scale-2x) var(--spacing-scale-5x);
+
+      a {
+        display: block;
+
+        &:not(:last-child) {
+          margin-bottom: var(--spacing-scale-2x);
+        }
+
+        @include hover;
+      }
+    }
+
+    brx-menu-social-network {
+      padding: var(--spacing-scale-base) var(--spacing-scale-5x);
+
+      .brx-menu-social-network-title {
+        font-weight: var(--font-weight-semi-bold);
+        margin-bottom: var(--spacing-scale-half);
+      }
+    }
+
+    brx-menu-info {
+      padding: var(--spacing-scale-2x);
+    }
+  }
+}
+
+@mixin menu-items {
+  // O header é aplicado no seguinte html:
+  // <brx-menu-item>
+  //   <brx-menu-icon>
+  //   <brx-menu-content>
+  //   <brx-menu-support>
+
+  brx-menu-item {
+    --focus-offset: calc(var(--spacing-scale-half) * -1);
+
+    .brx-menu-item-container {
+      background: transparent;
+      display: flex;
+      padding: var(--menu-item-padding) var(--spacing-scale-2x);
+
+      .icon {
+        margin-right: var(--spacing-scale-2x);
+      }
+
+      .content {
+        flex: 1;
+      }
+    }
+  }
+
+  brx-menu-item a.brx-menu-item-container {
+    color: var(--interactive);
+  }
+}
+
+@mixin menu-side-menu {
+  .brx-side-menu {
+    > ul {
+      background: var(--menu-background-submenu);
+      display: none;
+    }
+
+    &[data-active] {
+      > brx-menu-item {
+        --interactive: var(--active);
+        --interactive-rgb: var(--active-rgb);
+
+        .brx-menu-item-container {
+          background-color: var(--background);
+          flex-direction: row-reverse;
+          font-weight: var(--font-weight-semi-bold);
+
+          .icon {
+            margin-right: 0;
+          }
+
+          .support {
+            margin-right: var(--spacing-scale-2x);
+
+            @include icon {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+
+      > ul {
+        display: block;
+      }
+
+      brx-menu-item {
+        .brx-menu-item-container {
+          padding-left: var(--spacing-scale-2x) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-items-sizes {
+  @each $size in 'small', 'medium', 'large' {
+    &[size='#{$size}'] {
+      brx-menu-item {
+        --menu-item-padding: var(--menu-item-#{$size});
+      }
+    }
+  }
+}
+
+@mixin menu-push {
+  // Mobile First
+
+  &[variant='push'] {
+    brx-menu-trigger,
+    brx-menu-scrim {
+      display: none;
+    }
+
+    @include media-breakpoint-up(sm) {
+      --menu-zindex: var(--z-index-layer-0);
+    }
+  }
+
+  // Tablet
+  @include media-breakpoint-up(sm) {
+    &[variant='push'] {
+      brx-menu-header {
+        display: none;
+      }
+
+      brx-menu-panel {
+        height: auto;
+      }
+
+      brx-menu-scrim {
+        display: none;
+      }
+
+      // Menu ativo
+      &[data-active] {
+        brx-menu-container {
+          position: static;
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-contextual {
+  // Mobile First
+  &[variant='contextual'] {
+    --menu-zindex: calc(var(--z-index-layer-3) - 10);
+
+    overflow: auto;
+
+    brx-menu-body brx-menu-folder {
+      > brx-menu-item + ul brx-menu-item {
+        .brx-menu-item-container {
+          padding-left: var(--spacing-scale-2x);
+        }
+      }
+
+      > ul > li:last-child > brx-menu-item {
+        .brx-menu-item-container {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    brx-menu-trigger {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: calc(var(--menu-zindex) - 1);
+
+      brx-button {
+        --button-radius: 0;
+      }
+    }
+
+    brx-menu-container {
+      display: none;
+      flex-direction: column-reverse;
+      position: static;
+    }
+
+    brx-menu-panel {
+      height: auto;
+    }
+
+    &[data-active] {
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: flex-end;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: var(--menu-zindex);
+
+      brx-menu-trigger {
+        position: relative;
+        z-index: calc(var(--menu-zindex) + 1);
+
+        @include icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      brx-menu-container {
+        display: flex;
+        overflow: auto;
+      }
+    }
+  }
+
+  // Tablet
+  @include media-breakpoint-up(md) {
+    &[variant='contextual'] {
+      brx-menu-trigger {
+        // position: absolute;
+      }
+
+      brx-menu-scrim {
+        // position: static;
+      }
+
+      &[data-active] {
+        height: 100%;
+        // position: absolute;
+
+        brx-menu-container {
+          // display: flex;
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-states {
+  // Aplicáveis para item texto e link
+  brx-menu-item,
+  brx-menu-item .brx-menu-item-container {
+    // Escondido
+    &[hidden] {
+      display: none;
+    }
+
+    // Desativado
+    &:disabled {
+      @include disabled;
+    }
+  }
+
+  // Aplicável somente para links
+  brx-menu-item[link] {
+    &:not(:disabled) {
+      // Ativo
+      &[data-active] {
+        --interactive: var(--color-dark);
+        --interactive-rgb: var(--color-dark-rgb);
+
+        a.brx-menu-item-container {
+          background-color: var(--active);
+
+          &:focus {
+            outline-color: var(--focus-color-dark);
+          }
+        }
+      }
+
+      a.brx-menu-item-container {
+        // Hover
+        @include hover;
+      }
+    }
+  }
+}
