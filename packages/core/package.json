@@ -1,6 +1,6 @@
 {
   "name": "@copperui/core",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "license": "MIT",
   "description": "Biblioteca de WebComponents do copperui.",
   "main": "dist/index.cjs.js",

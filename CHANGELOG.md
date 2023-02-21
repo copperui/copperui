@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/copperui/copperui/compare/v0.4.3...v0.5.0) (2023-02-21)
+
+### Features
+
+- **core:** brx-header ([#46](https://github.com/copperui/copperui/issues/46)) ([f2f672a](https://github.com/copperui/copperui/commit/f2f672acb4a7c90460557c9333c3a2dd7290ea2d))
+- **core:** brx-menu ([#48](https://github.com/copperui/copperui/issues/48)) ([74b0e1e](https://github.com/copperui/copperui/commit/74b0e1e2f785e3b9d61c75921f85ee9392073e57))
+- **core:** brx-table ([#55](https://github.com/copperui/copperui/issues/55)) ([d138412](https://github.com/copperui/copperui/commit/d138412e1ebd764d246c20c37e5541fbca27453a))
+
 ## [0.4.3](https://github.com/copperui/copperui/compare/v0.4.2...v0.4.3) (2023-02-07)
 
 ### Bug Fixes
