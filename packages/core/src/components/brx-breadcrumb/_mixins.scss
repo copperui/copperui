@@ -109,15 +109,19 @@
   }
 
   brx-item {
-    color: var(--color);
-    cursor: pointer;
-    padding: 0;
-
-    &:not(:last-child) {
-      border-bottom: 1px solid var(--border-color);
+    .brx-item-container {
+      color: var(--color);
+      cursor: pointer;
+      padding: 0;
     }
 
-    a {
+    &:not(:last-child) {
+      .brx-item-container {
+        border-bottom: 1px solid var(--border-color);
+      }
+    }
+
+    a.brx-item-container {
       --interactive: var(--color);
       --interactive-rgb: var(--color-rgb);
       display: block;

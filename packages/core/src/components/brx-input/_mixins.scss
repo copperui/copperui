@@ -28,6 +28,10 @@
   color: var(--color);
   position: relative;
 
+  .brx-input-content {
+    width: 100%;
+  }
+
   input {
     background-color: var(--background-light);
     border-color: var(--border-color-alternative);
@@ -194,11 +198,15 @@
     @include scrollbar;
 
     brx-item {
-      --item-padding-y: var(--spacing-scale-2x);
-      @include hover('color');
+      .brx-item-container {
+        --item-padding-y: var(--spacing-scale-2x);
+        @include hover('color');
+      }
 
       &:not(:first-child) {
-        border-top: var(--surface-width-sm) solid var(--border-color);
+        .brx-item-container {
+          border-top: var(--surface-width-sm) solid var(--border-color);
+        }
       }
     }
   }
@@ -226,7 +234,7 @@
     }
   }
   // Componente Message (Feedback)
-  brx-message[variant="feedback"] {
+  brx-message[variant='feedback'] {
     margin-bottom: var(--spacing-scale-half);
   }
 }

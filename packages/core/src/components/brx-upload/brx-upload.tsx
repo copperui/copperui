@@ -514,34 +514,36 @@ export class BrxUpload implements ComponentInterface {
 
             return (
               <brx-item key={id} class={'d-flex'}>
-                {!loading && (
-                  <Fragment>
-                    <brx-tooltip class={'mr-auto'} place="top" color="info" text={file.name}>
-                      <div class="content text-primary-default ">
-                        <span>{file.name}</span>
+                <div class="brx-item-container">
+                  {!loading && (
+                    <Fragment>
+                      <brx-tooltip class={'mr-auto'} place="top" color="info" text={file.name}>
+                        <div class="content text-primary-default ">
+                          <span>{file.name}</span>
+                        </div>
+                      </brx-tooltip>
+
+                      <div class="name"></div>
+
+                      <div class="support mr-n2">
+                        <span class="mr-1">{calcSize(file.size)}</span>
+
+                        <brx-button
+                          circle
+                          type="button"
+                          onClick={event => {
+                            preventDefaults(event);
+                            this.removeFileById(id);
+                          }}
+                        >
+                          <brx-icon name="fa5/fas/trash"></brx-icon>
+                        </brx-button>
                       </div>
-                    </brx-tooltip>
+                    </Fragment>
+                  )}
 
-                    <div class="name"></div>
-
-                    <div class="support mr-n2">
-                      <span class="mr-1">{calcSize(file.size)}</span>
-
-                      <brx-button
-                        circle
-                        type="button"
-                        onClick={event => {
-                          preventDefaults(event);
-                          this.removeFileById(id);
-                        }}
-                      >
-                        <brx-icon name="fa5/fas/trash"></brx-icon>
-                      </brx-button>
-                    </div>
-                  </Fragment>
-                )}
-
-                {loading && <brx-loading class={'d-flex mt-1'} size="small"></brx-loading>}
+                  {loading && <brx-loading class={'d-flex mt-1'} size="small"></brx-loading>}
+                </div>
               </brx-item>
             );
           })}

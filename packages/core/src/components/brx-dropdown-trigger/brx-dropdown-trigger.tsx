@@ -1,4 +1,5 @@
-import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { enqueueIdleCallback } from '../../utils/helpers';
 import { getCollapseTriggerProps, IBrxCollapseTriggerState } from '../brx-collapse-trigger/brx-collapse-trigger-interface';
 
 @Component({
@@ -7,7 +8,18 @@ import { getCollapseTriggerProps, IBrxCollapseTriggerState } from '../brx-collap
   shadow: false,
 })
 export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTriggerState {
+  @Element()
+  el: HTMLElement;
+
+  @Prop()
+  keepTargetVisibleWhenHidden: boolean = true;
+
+  private get isTriggerVisible() {
+    return this.el.offsetParent !== null;
+  }
+
   // brx-collapse-trigger props
+
   @Prop({ reflect: true })
   useIcons: boolean = true;
 
@@ -37,10 +49,42 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
       const collapseTargetEl = await this.collapseTriggerEl.getTarget();
       const collapseTriggerEl = await this.collapseTriggerEl.getTrigger();
 
-      if (!collapseTriggerEl.contains(evTargetEl) && !collapseTargetEl.hasAttribute('hidden') && !collapseTargetEl.contains(evTargetEl)) {
-        collapseTriggerEl.click();
+      const isTargetHidden = collapseTargetEl.hasAttribute('hidden');
+
+      if (!this.isTriggerVisible && this.keepTargetVisibleWhenHidden) {
+        if (isTargetHidden) {
+          collapseTriggerEl.click();
+        }
+      } else {
+        if (!collapseTriggerEl.contains(evTargetEl) && !isTargetHidden && !collapseTargetEl.contains(evTargetEl)) {
+          collapseTriggerEl.click();
+        }
       }
     }
+  }
+
+  private async syncDynamicActiveState() {
+    const collapseTriggerEl = await this.collapseTriggerEl.getTrigger();
+    const collapseTargetEl = await this.collapseTriggerEl.getTarget();
+
+    const isTargetHidden = collapseTargetEl.hasAttribute('hidden');
+
+    if (this.keepTargetVisibleWhenHidden) {
+      if (!this.isTriggerVisible) {
+        if (isTargetHidden) {
+          collapseTriggerEl.click();
+        }
+      } else {
+        if (!isTargetHidden) {
+          collapseTriggerEl.click();
+        }
+      }
+    }
+  }
+
+  @Listen('resize', { target: 'window', passive: true })
+  async handleWindowResize() {
+    this.syncDynamicActiveState();
   }
 
   async setTargetVisibilityStatus() {
@@ -60,6 +104,12 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
 
   handleTriggerClickBehavior() {
     this.setParentsTargetVisibilityStatus();
+  }
+
+  componentDidLoad(): void {
+    enqueueIdleCallback(() => {
+      this.syncDynamicActiveState();
+    });
   }
 
   render() {

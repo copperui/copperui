@@ -1,6 +1,4 @@
-import { Component, Host, h, Prop, ComponentInterface, Event, EventEmitter, Listen, Element, Method } from '@stencil/core';
-import { check } from 'prettier';
-import { ClickOptions } from 'puppeteer';
+import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { generateUniqueId } from '../../utils/helpers';
 import { CheckboxChangeEventDetail } from '../brx-checkbox/brx-checkbox-interface';
 import { RadioChangeEventDetail } from '../brx-radio/brx-radio-interface';
@@ -97,8 +95,10 @@ export class BrxSelectOption implements ComponentInterface {
     return (
       <Host class={!visible ? 'd-none' : ''}>
         <brx-item tabindex="-1" data-toggle="selection">
-          {this.multiple ? <brx-checkbox {...brxInputAttributes} /> : <brx-radio {...brxInputAttributes} />}
-          <slot></slot>
+          <div class="brx-item-container">
+            {this.multiple ? <brx-checkbox {...brxInputAttributes} /> : <brx-radio {...brxInputAttributes} />}
+            <slot></slot>
+          </div>
         </brx-item>
       </Host>
     );

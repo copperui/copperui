@@ -23,7 +23,9 @@
   background-color: var(--background);
 
   brx-item {
-    @include list-item-config;
+    .brx-item-container {
+      @include list-item-config;
+    }
   }
 }
 
@@ -53,7 +55,9 @@
 
     ~ brx-list {
       brx-item {
-        padding: var(--spacing-scale-base) var(--spacing-scale-3x);
+        .brx-item-container {
+          padding: var(--spacing-scale-base) var(--spacing-scale-3x);
+        }
       }
     }
   }
@@ -120,7 +124,10 @@
 
     &[data-toggle] > brx-item,
     &.toggle > brx-item {
-      display: block;
+      &,
+      .brx-item-container {
+        display: block;
+      }
     }
   }
 }
@@ -179,10 +186,12 @@
   &[data-one-line] & brx-item,
   &[lines='one'] brx-item,
   &[lines='one'] & brx-item {
-    height: 2em;
+    .brx-item-container {
+      height: 2em;
 
-    .content {
-      @include lista-data-lines-content;
+      .content {
+        @include lista-data-lines-content;
+      }
     }
   }
 
@@ -190,10 +199,12 @@
   &[data-two-lines] & brx-item,
   &[lines='two'] brx-item,
   &[lines='two'] & brx-item {
-    height: 4em;
+    .brx-item-container {
+      height: 4em;
 
-    .content {
-      @include lista-data-lines-content;
+      .content {
+        @include lista-data-lines-content;
+      }
     }
   }
 
@@ -201,10 +212,12 @@
   &[data-three-lines] & brx-item,
   &[lines='three'] brx-item,
   &[lines='three'] & brx-item {
-    height: 6em;
+    .brx-item-container {
+      height: 6em;
 
-    .content {
-      @include lista-data-lines-content;
+      .content {
+        @include lista-data-lines-content;
+      }
     }
   }
 }

@@ -53,70 +53,80 @@
     brx-select-option {
       &:not(:last-child) {
         brx-item {
-          border-bottom: var(--select-divider);
+          .brx-item-container {
+            border-bottom: var(--select-divider);
+          }
         }
       }
 
       brx-item {
-        @include light-mode;
-        --item-padding-y: var(--spacing-scale-2x);
-
-        .content {
-          padding: 0;
-        }
-
-        brx-checkbox,
-        brx-radio {
-          --item-padding-x: var(--spacing-scale-2x);
+        .brx-item-container {
+          @include light-mode;
           --item-padding-y: var(--spacing-scale-2x);
 
-          input {
-            &:hover:not(:disabled) {
-              + label::before {
-                background-image: none;
+          .content {
+            padding: 0;
+          }
+
+          brx-checkbox,
+          brx-radio {
+            --item-padding-x: var(--spacing-scale-2x);
+            --item-padding-y: var(--spacing-scale-2x);
+
+            input {
+              &:hover:not(:disabled) {
+                + label::before {
+                  background-image: none;
+                }
+              }
+
+              + label {
+                padding-left: calc(var(--checkbox-padding) + var(--checkbox-size) + var(--item-padding-x));
               }
             }
-
-            + label {
-              padding-left: calc(var(--checkbox-padding) + var(--checkbox-size) + var(--item-padding-x));
-            }
           }
-        }
 
-        brx-radio {
-          input,
-          input:checked {
-            + label {
-              color: var(--text-color);
-              display: block;
-              height: auto;
-              min-height: 0;
-              padding: var(--item-padding);
+          brx-radio {
+            input,
+            input:checked {
+              + label {
+                color: var(--text-color);
+                display: block;
+                height: auto;
+                min-height: 0;
+                padding: var(--item-padding);
 
-              &::before,
-              &::after {
-                display: none;
-                content: none;
+                &::before,
+                &::after {
+                  display: none;
+                  content: none;
+                }
               }
             }
           }
         }
 
         &:not([disabled]) {
-          --focus-offset: calc(var(--spacing-scale-half) * -1);
-          @include focus;
-          @include hover('color');
+          .brx-item-container {
+            --focus-offset: calc(var(--spacing-scale-half) * -1);
+            @include focus;
+            @include hover('color');
+          }
         }
 
         &[selected] {
-          @include dark-mode;
-          @include focus;
-          @include hover('color');
+          .brx-item-container {
+            @include dark-mode;
+            @include focus;
+            @include hover('color');
+          }
         }
 
         &[disabled] {
-          line-height: calc(var(--font-line-height-high) * 2);
-          padding-left: calc(var(--item-padding) + var(--spacing-scale-base));
+          .brx-item-container {
+            line-height: calc(var(--font-line-height-high) * 2);
+            padding-left: calc(var(--item-padding) + var(--spacing-scale-base));
+          }
         }
       }
     }
@@ -132,27 +142,31 @@
   brx-select-option {
     &[highlighted] {
       brx-item {
-        background-color: var(--gray-2);
-        padding-bottom: var(--spacing-scale-base);
-        padding-top: var(--spacing-scale-base);
-        // background: rgba(v(rgb-support-03), 0.16);
-        brx-checkbox,
-        brx-radio {
-          label {
-            font-weight: var(--font-weight-semi-bold);
-          }
-
-          &:hover {
-            background: linear-gradient(rgba(var(--interactive-rgb), var(--hover)), rgba(var(--interactive-rgb), var(--hover)));
-
+        .brx-item-container {
+          background-color: var(--gray-2);
+          padding-bottom: var(--spacing-scale-base);
+          padding-top: var(--spacing-scale-base);
+          // background: rgba(v(rgb-support-03), 0.16);
+          brx-checkbox,
+          brx-radio {
             label {
-              color: var(--text-color);
+              font-weight: var(--font-weight-semi-bold);
+            }
+
+            &:hover {
+              background: linear-gradient(rgba(var(--interactive-rgb), var(--hover)), rgba(var(--interactive-rgb), var(--hover)));
+
+              label {
+                color: var(--text-color);
+              }
             }
           }
         }
 
         &[selected] {
-          background-color: var(--selected);
+          .brx-item-container {
+            background-color: var(--selected);
+          }
         }
       }
     }

@@ -1,12 +1,7 @@
 @import '../../styles/component-base';
 @import 'mixins';
 
-brx-item:not([pass-styles]) {
-  background: var(--background);
-  @include item-configs;
-}
-
-brx-item[pass-styles] > * {
+brx-item > .brx-item-container {
   width: 100%;
   height: 100%;
 
@@ -18,7 +13,7 @@ brx-item[pass-styles] > * {
 }
 
 // Item aplicado em link/botão
-brx-item[pass-styles] > a {
+brx-item > a.brx-item-container {
   color: var(--interactive);
 
   height: auto;
@@ -27,7 +22,7 @@ brx-item[pass-styles] > a {
   @include active;
 }
 
-brx-item[pass-styles] > button {
+brx-item > button.brx-item-container {
   background-color: transparent;
   color: var(--color);
 
