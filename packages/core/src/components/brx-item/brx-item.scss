@@ -1,19 +1,13 @@
 @import '../../styles/component-base';
 @import 'mixins';
 
-brx-item > .brx-item-container {
-  width: 100%;
-  height: 100%;
-
-  border: none;
+brx-item {
   display: block;
-
-  background: var(--background);
   @include item-configs;
 }
 
 // Item aplicado em link/botão
-brx-item > a.brx-item-container {
+brx-item a.brx-item-container {
   color: var(--interactive);
 
   height: auto;
@@ -22,7 +16,7 @@ brx-item > a.brx-item-container {
   @include active;
 }
 
-brx-item > button.brx-item-container {
+brx-item button.brx-item-container {
   background-color: transparent;
   color: var(--color);
 
