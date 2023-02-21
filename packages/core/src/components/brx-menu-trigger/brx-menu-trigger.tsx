@@ -4,7 +4,7 @@ import { findTarget } from '../../utils/helpers';
 @Component({
   tag: 'brx-menu-trigger',
   styleUrl: 'brx-menu-trigger.scss',
-  shadow: true,
+  shadow: false,
 })
 export class BrxMenuTrigger {
   @Element()

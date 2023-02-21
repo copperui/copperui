@@ -16,18 +16,26 @@
   }
 
   brx-item {
-    @include light-mode;
-    --item-padding-y: var(--spacing-scale-2x);
-    --interactive-rgb: var(--color-rgb);
-    background-color: var(--background-light);
-    color: var(--color);
+    .brx-item-container {
+      @include light-mode;
+
+      --item-padding-y: var(--spacing-scale-2x);
+      --interactive-rgb: var(--color-rgb);
+
+      background-color: var(--background-light);
+      color: var(--color);
+    }
 
     &:not(:last-child) {
-      border-bottom: 1px solid var(--border-color);
+      .brx-item-container {
+        border-bottom: 1px solid var(--border-color);
+      }
     }
 
     &[selected] {
-      @include dark-mode;
+      .brx-item-container {
+        @include dark-mode;
+      }
     }
   }
 }

@@ -39,36 +39,40 @@
         <brx-divider></brx-divider>
 
         <brx-item>
-          <div class="row align-items-center">
-            <div class="col-auto"><img alt="Imagem de exemplo do item sem interação" class="rounded" src="https://picsum.photos/40" /></div>
-            <div class="col"><span>Sint ipsum est excepteur qui. Aute Lorem cillum duis reprehenderit. Ut aute cillum esse dolor.</span></div>
-          </div>
-        </brx-item>
-
-        <brx-divider></brx-divider>
-
-        <brx-item>
-          <div class="row align-items-center">
-            <div class="col">Lorem ipsum <a href="#">dolor</a>, sit amet consectetur <a href="#">adipisicing</a> elit.</div>
-
-            <div class="col-auto">
-              <brx-button aria-label="Interagir com item" circle type="button">
-                <brx-icon aria-hidden="true" name="city"></brx-icon>
-              </brx-button>
+          <div class="brx-item-container">
+            <div class="row align-items-center">
+              <div class="col-auto"><img alt="Imagem de exemplo do item sem interação" class="rounded" src="https://picsum.photos/40" /></div>
+              <div class="col"><span>Sint ipsum est excepteur qui. Aute Lorem cillum duis reprehenderit. Ut aute cillum esse dolor.</span></div>
             </div>
           </div>
         </brx-item>
 
         <brx-divider></brx-divider>
 
-        <brx-item pass-styles>
-          <a href="#">Item link</a>
+        <brx-item>
+          <div class="brx-item-container">
+            <div class="row align-items-center">
+              <div class="col">Lorem ipsum <a href="#">dolor</a>, sit amet consectetur <a href="#">adipisicing</a> elit.</div>
+
+              <div class="col-auto">
+                <brx-button aria-label="Interagir com item" circle type="button">
+                  <brx-icon aria-hidden="true" name="city"></brx-icon>
+                </brx-button>
+              </div>
+            </div>
+          </div>
         </brx-item>
 
         <brx-divider></brx-divider>
 
-        <brx-item pass-styles>
-          <button type="button">Item botão</button>
+        <brx-item>
+          <a href class="brx-item-container" href="#">Item link</a>
+        </brx-item>
+
+        <brx-divider></brx-divider>
+
+        <brx-item>
+          <button class="brx-item-container" type="button">Item botão</button>
         </brx-item>
       </div>
 
@@ -79,19 +83,27 @@
 
         <div>
           <brx-item data-toggle="selection">
-            <brx-checkbox label="Oi"></brx-checkbox>
+            <div class="brx-item-container">
+              <brx-checkbox label="Oi"></brx-checkbox>
+            </div>
           </brx-item>
 
           <brx-item data-toggle="selection">
-            <brx-checkbox label="Oi"></brx-checkbox>
+            <div class="brx-item-container">
+              <brx-checkbox label="Oi"></brx-checkbox>
+            </div>
           </brx-item>
 
           <brx-item data-toggle="selection">
-            <brx-radio label="Rótulo do Radio 01" name="item-sel-rad" value="item-sel-rad-1"></brx-radio>
+            <div class="brx-item-container">
+              <brx-radio label="Rótulo do Radio 01" name="item-sel-rad" value="item-sel-rad-1"></brx-radio>
+            </div>
           </brx-item>
 
           <brx-item data-toggle="selection">
-            <brx-radio label="Rótulo do Radio 02" name="item-sel-rad" value="item-sel-rad-2"></brx-radio>
+            <div class="brx-item-container">
+              <brx-radio label="Rótulo do Radio 02" name="item-sel-rad" value="item-sel-rad-2"></brx-radio>
+            </div>
           </brx-item>
         </div>
       </div>
@@ -105,9 +117,11 @@
 
         <div>
           <brx-item disabled="disabled">
-            <div class="row align-items-center">
-              <div class="col-auto"><img alt="imagem de exemplo 1" class="rounded" src="https://picsum.photos/40/40" /></div>
-              <div class="col"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span></div>
+            <div class="brx-item-container">
+              <div class="row align-items-center">
+                <div class="col-auto"><img alt="imagem de exemplo 1" class="rounded" src="https://picsum.photos/40/40" /></div>
+                <div class="col"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span></div>
+              </div>
             </div>
           </brx-item>
         </div>

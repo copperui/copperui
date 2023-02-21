@@ -18,9 +18,6 @@ export class BrxItem implements ComponentInterface {
   @Prop({ reflect: true, mutable: true })
   selected: boolean;
 
-  @Prop({ reflect: true })
-  passStyles: boolean;
-
   syncInProgress: boolean = false;
 
   async getBrxInput() {

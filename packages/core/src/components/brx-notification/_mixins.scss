@@ -83,8 +83,7 @@
     brx-tabs-panels {
       overflow-y: auto;
 
-      brx-item:not([pass-styles]),
-      brx-item[pass-styles] > * {
+      brx-item .brx-item-container {
         --interactive-rgb: var(--rgb-secondary-08);
         --item-color: var(--text-color);
 

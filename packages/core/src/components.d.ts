@@ -201,8 +201,46 @@ export namespace Components {
         "breakpoint": string | undefined;
         "iconToHide": string;
         "iconToShow": string;
+        "keepTargetVisibleWhenHidden": boolean;
         "target": HTMLElement | string;
         "useIcons": boolean;
+    }
+    interface BrxHeader {
+        "compact": boolean;
+    }
+    interface BrxHeaderActions {
+    }
+    interface BrxHeaderAvatar {
+    }
+    interface BrxHeaderBottom {
+    }
+    interface BrxHeaderFunctions {
+    }
+    interface BrxHeaderInfo {
+    }
+    interface BrxHeaderLinks {
+    }
+    interface BrxHeaderLogin {
+    }
+    interface BrxHeaderLogo {
+    }
+    interface BrxHeaderMenu {
+    }
+    interface BrxHeaderMenuTrigger {
+    }
+    interface BrxHeaderSearch {
+    }
+    interface BrxHeaderSearchTrigger {
+    }
+    interface BrxHeaderSign {
+    }
+    interface BrxHeaderSignIn {
+    }
+    interface BrxHeaderSubtitle {
+    }
+    interface BrxHeaderTitle {
+    }
+    interface BrxHeaderTop {
     }
     interface BrxIcon {
         "iconClass": string | undefined;
@@ -336,7 +374,6 @@ export namespace Components {
     interface BrxItem {
         "button": boolean;
         "disabled": boolean;
-        "passStyles": boolean;
         "selected": boolean;
     }
     interface BrxList {
@@ -933,6 +970,114 @@ declare global {
         prototype: HTMLBrxDropdownTriggerElement;
         new (): HTMLBrxDropdownTriggerElement;
     };
+    interface HTMLBrxHeaderElement extends Components.BrxHeader, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderElement: {
+        prototype: HTMLBrxHeaderElement;
+        new (): HTMLBrxHeaderElement;
+    };
+    interface HTMLBrxHeaderActionsElement extends Components.BrxHeaderActions, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderActionsElement: {
+        prototype: HTMLBrxHeaderActionsElement;
+        new (): HTMLBrxHeaderActionsElement;
+    };
+    interface HTMLBrxHeaderAvatarElement extends Components.BrxHeaderAvatar, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderAvatarElement: {
+        prototype: HTMLBrxHeaderAvatarElement;
+        new (): HTMLBrxHeaderAvatarElement;
+    };
+    interface HTMLBrxHeaderBottomElement extends Components.BrxHeaderBottom, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderBottomElement: {
+        prototype: HTMLBrxHeaderBottomElement;
+        new (): HTMLBrxHeaderBottomElement;
+    };
+    interface HTMLBrxHeaderFunctionsElement extends Components.BrxHeaderFunctions, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderFunctionsElement: {
+        prototype: HTMLBrxHeaderFunctionsElement;
+        new (): HTMLBrxHeaderFunctionsElement;
+    };
+    interface HTMLBrxHeaderInfoElement extends Components.BrxHeaderInfo, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderInfoElement: {
+        prototype: HTMLBrxHeaderInfoElement;
+        new (): HTMLBrxHeaderInfoElement;
+    };
+    interface HTMLBrxHeaderLinksElement extends Components.BrxHeaderLinks, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderLinksElement: {
+        prototype: HTMLBrxHeaderLinksElement;
+        new (): HTMLBrxHeaderLinksElement;
+    };
+    interface HTMLBrxHeaderLoginElement extends Components.BrxHeaderLogin, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderLoginElement: {
+        prototype: HTMLBrxHeaderLoginElement;
+        new (): HTMLBrxHeaderLoginElement;
+    };
+    interface HTMLBrxHeaderLogoElement extends Components.BrxHeaderLogo, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderLogoElement: {
+        prototype: HTMLBrxHeaderLogoElement;
+        new (): HTMLBrxHeaderLogoElement;
+    };
+    interface HTMLBrxHeaderMenuElement extends Components.BrxHeaderMenu, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderMenuElement: {
+        prototype: HTMLBrxHeaderMenuElement;
+        new (): HTMLBrxHeaderMenuElement;
+    };
+    interface HTMLBrxHeaderMenuTriggerElement extends Components.BrxHeaderMenuTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderMenuTriggerElement: {
+        prototype: HTMLBrxHeaderMenuTriggerElement;
+        new (): HTMLBrxHeaderMenuTriggerElement;
+    };
+    interface HTMLBrxHeaderSearchElement extends Components.BrxHeaderSearch, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderSearchElement: {
+        prototype: HTMLBrxHeaderSearchElement;
+        new (): HTMLBrxHeaderSearchElement;
+    };
+    interface HTMLBrxHeaderSearchTriggerElement extends Components.BrxHeaderSearchTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderSearchTriggerElement: {
+        prototype: HTMLBrxHeaderSearchTriggerElement;
+        new (): HTMLBrxHeaderSearchTriggerElement;
+    };
+    interface HTMLBrxHeaderSignElement extends Components.BrxHeaderSign, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderSignElement: {
+        prototype: HTMLBrxHeaderSignElement;
+        new (): HTMLBrxHeaderSignElement;
+    };
+    interface HTMLBrxHeaderSignInElement extends Components.BrxHeaderSignIn, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderSignInElement: {
+        prototype: HTMLBrxHeaderSignInElement;
+        new (): HTMLBrxHeaderSignInElement;
+    };
+    interface HTMLBrxHeaderSubtitleElement extends Components.BrxHeaderSubtitle, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderSubtitleElement: {
+        prototype: HTMLBrxHeaderSubtitleElement;
+        new (): HTMLBrxHeaderSubtitleElement;
+    };
+    interface HTMLBrxHeaderTitleElement extends Components.BrxHeaderTitle, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderTitleElement: {
+        prototype: HTMLBrxHeaderTitleElement;
+        new (): HTMLBrxHeaderTitleElement;
+    };
+    interface HTMLBrxHeaderTopElement extends Components.BrxHeaderTop, HTMLStencilElement {
+    }
+    var HTMLBrxHeaderTopElement: {
+        prototype: HTMLBrxHeaderTopElement;
+        new (): HTMLBrxHeaderTopElement;
+    };
     interface HTMLBrxIconElement extends Components.BrxIcon, HTMLStencilElement {
     }
     var HTMLBrxIconElement: {
@@ -1303,6 +1448,24 @@ declare global {
         "brx-divider": HTMLBrxDividerElement;
         "brx-dropdown": HTMLBrxDropdownElement;
         "brx-dropdown-trigger": HTMLBrxDropdownTriggerElement;
+        "brx-header": HTMLBrxHeaderElement;
+        "brx-header-actions": HTMLBrxHeaderActionsElement;
+        "brx-header-avatar": HTMLBrxHeaderAvatarElement;
+        "brx-header-bottom": HTMLBrxHeaderBottomElement;
+        "brx-header-functions": HTMLBrxHeaderFunctionsElement;
+        "brx-header-info": HTMLBrxHeaderInfoElement;
+        "brx-header-links": HTMLBrxHeaderLinksElement;
+        "brx-header-login": HTMLBrxHeaderLoginElement;
+        "brx-header-logo": HTMLBrxHeaderLogoElement;
+        "brx-header-menu": HTMLBrxHeaderMenuElement;
+        "brx-header-menu-trigger": HTMLBrxHeaderMenuTriggerElement;
+        "brx-header-search": HTMLBrxHeaderSearchElement;
+        "brx-header-search-trigger": HTMLBrxHeaderSearchTriggerElement;
+        "brx-header-sign": HTMLBrxHeaderSignElement;
+        "brx-header-sign-in": HTMLBrxHeaderSignInElement;
+        "brx-header-subtitle": HTMLBrxHeaderSubtitleElement;
+        "brx-header-title": HTMLBrxHeaderTitleElement;
+        "brx-header-top": HTMLBrxHeaderTopElement;
         "brx-icon": HTMLBrxIconElement;
         "brx-input": HTMLBrxInputElement;
         "brx-item": HTMLBrxItemElement;
@@ -1560,8 +1723,46 @@ declare namespace LocalJSX {
         "breakpoint"?: string | undefined;
         "iconToHide"?: string;
         "iconToShow"?: string;
+        "keepTargetVisibleWhenHidden"?: boolean;
         "target"?: HTMLElement | string;
         "useIcons"?: boolean;
+    }
+    interface BrxHeader {
+        "compact"?: boolean;
+    }
+    interface BrxHeaderActions {
+    }
+    interface BrxHeaderAvatar {
+    }
+    interface BrxHeaderBottom {
+    }
+    interface BrxHeaderFunctions {
+    }
+    interface BrxHeaderInfo {
+    }
+    interface BrxHeaderLinks {
+    }
+    interface BrxHeaderLogin {
+    }
+    interface BrxHeaderLogo {
+    }
+    interface BrxHeaderMenu {
+    }
+    interface BrxHeaderMenuTrigger {
+    }
+    interface BrxHeaderSearch {
+    }
+    interface BrxHeaderSearchTrigger {
+    }
+    interface BrxHeaderSign {
+    }
+    interface BrxHeaderSignIn {
+    }
+    interface BrxHeaderSubtitle {
+    }
+    interface BrxHeaderTitle {
+    }
+    interface BrxHeaderTop {
     }
     interface BrxIcon {
         "iconClass"?: string | undefined;
@@ -1702,7 +1903,6 @@ declare namespace LocalJSX {
     interface BrxItem {
         "button"?: boolean;
         "disabled"?: boolean;
-        "passStyles"?: boolean;
         "selected"?: boolean;
     }
     interface BrxList {
@@ -2129,6 +2329,24 @@ declare namespace LocalJSX {
         "brx-divider": BrxDivider;
         "brx-dropdown": BrxDropdown;
         "brx-dropdown-trigger": BrxDropdownTrigger;
+        "brx-header": BrxHeader;
+        "brx-header-actions": BrxHeaderActions;
+        "brx-header-avatar": BrxHeaderAvatar;
+        "brx-header-bottom": BrxHeaderBottom;
+        "brx-header-functions": BrxHeaderFunctions;
+        "brx-header-info": BrxHeaderInfo;
+        "brx-header-links": BrxHeaderLinks;
+        "brx-header-login": BrxHeaderLogin;
+        "brx-header-logo": BrxHeaderLogo;
+        "brx-header-menu": BrxHeaderMenu;
+        "brx-header-menu-trigger": BrxHeaderMenuTrigger;
+        "brx-header-search": BrxHeaderSearch;
+        "brx-header-search-trigger": BrxHeaderSearchTrigger;
+        "brx-header-sign": BrxHeaderSign;
+        "brx-header-sign-in": BrxHeaderSignIn;
+        "brx-header-subtitle": BrxHeaderSubtitle;
+        "brx-header-title": BrxHeaderTitle;
+        "brx-header-top": BrxHeaderTop;
         "brx-icon": BrxIcon;
         "brx-input": BrxInput;
         "brx-item": BrxItem;
@@ -2214,6 +2432,24 @@ declare module "@stencil/core" {
             "brx-divider": LocalJSX.BrxDivider & JSXBase.HTMLAttributes<HTMLBrxDividerElement>;
             "brx-dropdown": LocalJSX.BrxDropdown & JSXBase.HTMLAttributes<HTMLBrxDropdownElement>;
             "brx-dropdown-trigger": LocalJSX.BrxDropdownTrigger & JSXBase.HTMLAttributes<HTMLBrxDropdownTriggerElement>;
+            "brx-header": LocalJSX.BrxHeader & JSXBase.HTMLAttributes<HTMLBrxHeaderElement>;
+            "brx-header-actions": LocalJSX.BrxHeaderActions & JSXBase.HTMLAttributes<HTMLBrxHeaderActionsElement>;
+            "brx-header-avatar": LocalJSX.BrxHeaderAvatar & JSXBase.HTMLAttributes<HTMLBrxHeaderAvatarElement>;
+            "brx-header-bottom": LocalJSX.BrxHeaderBottom & JSXBase.HTMLAttributes<HTMLBrxHeaderBottomElement>;
+            "brx-header-functions": LocalJSX.BrxHeaderFunctions & JSXBase.HTMLAttributes<HTMLBrxHeaderFunctionsElement>;
+            "brx-header-info": LocalJSX.BrxHeaderInfo & JSXBase.HTMLAttributes<HTMLBrxHeaderInfoElement>;
+            "brx-header-links": LocalJSX.BrxHeaderLinks & JSXBase.HTMLAttributes<HTMLBrxHeaderLinksElement>;
+            "brx-header-login": LocalJSX.BrxHeaderLogin & JSXBase.HTMLAttributes<HTMLBrxHeaderLoginElement>;
+            "brx-header-logo": LocalJSX.BrxHeaderLogo & JSXBase.HTMLAttributes<HTMLBrxHeaderLogoElement>;
+            "brx-header-menu": LocalJSX.BrxHeaderMenu & JSXBase.HTMLAttributes<HTMLBrxHeaderMenuElement>;
+            "brx-header-menu-trigger": LocalJSX.BrxHeaderMenuTrigger & JSXBase.HTMLAttributes<HTMLBrxHeaderMenuTriggerElement>;
+            "brx-header-search": LocalJSX.BrxHeaderSearch & JSXBase.HTMLAttributes<HTMLBrxHeaderSearchElement>;
+            "brx-header-search-trigger": LocalJSX.BrxHeaderSearchTrigger & JSXBase.HTMLAttributes<HTMLBrxHeaderSearchTriggerElement>;
+            "brx-header-sign": LocalJSX.BrxHeaderSign & JSXBase.HTMLAttributes<HTMLBrxHeaderSignElement>;
+            "brx-header-sign-in": LocalJSX.BrxHeaderSignIn & JSXBase.HTMLAttributes<HTMLBrxHeaderSignInElement>;
+            "brx-header-subtitle": LocalJSX.BrxHeaderSubtitle & JSXBase.HTMLAttributes<HTMLBrxHeaderSubtitleElement>;
+            "brx-header-title": LocalJSX.BrxHeaderTitle & JSXBase.HTMLAttributes<HTMLBrxHeaderTitleElement>;
+            "brx-header-top": LocalJSX.BrxHeaderTop & JSXBase.HTMLAttributes<HTMLBrxHeaderTopElement>;
             "brx-icon": LocalJSX.BrxIcon & JSXBase.HTMLAttributes<HTMLBrxIconElement>;
             "brx-input": LocalJSX.BrxInput & JSXBase.HTMLAttributes<HTMLBrxInputElement>;
             "brx-item": LocalJSX.BrxItem & JSXBase.HTMLAttributes<HTMLBrxItemElement>;

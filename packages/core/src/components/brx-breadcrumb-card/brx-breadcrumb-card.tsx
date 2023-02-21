@@ -49,7 +49,9 @@ export class BrxBreadcrumbCard implements ComponentInterface {
       <Host>
         <brx-card>
           {cardItems.map(item => (
-            <brx-item passStyles key={item.id} innerHTML={item.content}></brx-item>
+            <brx-item key={item.id}>
+              <div class="brx-item-container" innerHTML={item.content}></div>
+            </brx-item>
           ))}
         </brx-card>
       </Host>
