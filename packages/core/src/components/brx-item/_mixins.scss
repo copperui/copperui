@@ -16,13 +16,16 @@
 
 @mixin item-default {
   --focus-offset: calc(var(--focus-width) * -1);
-  border: 0;
-  color: var(--color);
-  display: block;
-  font-weight: var(--font-weight);
-  padding: var(--item-padding);
-  text-align: left;
-  width: 100%;
+
+  .brx-item-container {
+    border: 0;
+    color: var(--color);
+    display: block;
+    font-weight: var(--font-weight);
+    padding: var(--item-padding);
+    text-align: left;
+    width: 100%;
+  }
 
   // Regras para Grid interna
   .row {
@@ -37,7 +40,8 @@
   }
 
   // Fix para floats internos
-  &::after {
+
+  .brx-item-container::after {
     clear: both;
     content: '';
     display: block;
@@ -46,14 +50,18 @@
   // Transforma curso em cursor pointer quando br-item eh data-toggle
   &[button],
   &[data-toggle] {
-    cursor: pointer;
+    .brx-item-container {
+      cursor: pointer;
+    }
   }
 }
 
 // TODO: migrar customização do Select para o mixin abaixo
 @mixin item-checkbox {
   &[data-toggle='selection'] {
-    @include hover('color');
+    .brx-item-container {
+      @include hover('color');
+    }
   }
 
   brx-checkbox,
@@ -91,15 +99,11 @@
     }
   }
 
-  brx-checkbox {
-    input {
+  brx-checkbox,
+  brx-checkbox[data-checked] {
+    input,
+    input:checked {
       + label {
-        min-height: calc(var(--checkbox-size) + var(--item-padding-y) * 2);
-
-        &:not(:empty) {
-          padding-left: calc(var(--checkbox-padding) + var(--checkbox-size) + var(--item-padding-x));
-        }
-
         &::after {
           left: calc(var(--item-padding-x) + 8px);
           top: calc(var(--item-padding-y) + 4px);
@@ -122,7 +126,26 @@
       + label {
         min-height: calc(var(--radio-size) + var(--item-padding-y) * 2);
         padding-left: calc(var(--spacing-scale-base) + var(--radio-size) + var(--item-padding-x));
+      }
+    }
+  }
 
+  brx-checkbox {
+    input {
+      + label {
+        min-height: calc(var(--checkbox-size) + var(--item-padding-y) * 2);
+
+        &:not(:empty) {
+          padding-left: calc(var(--checkbox-padding) + var(--checkbox-size) + var(--item-padding-x));
+        }
+      }
+    }
+  }
+
+  brx-radio {
+    input,
+    input:checked {
+      + label {
         &::after {
           left: calc(var(--item-padding-x) + var(--radio-bullet-position));
           top: calc(var(--item-padding-y) + var(--radio-bullet-position) - 1px);
@@ -144,7 +167,9 @@
 @mixin item-colors {
   @each $key in map-keys($br-colors) {
     &.#{$key} {
-      @include colorize($key);
+      .brx-item-container {
+        @include colorize($key);
+      }
     }
   }
 }
@@ -152,26 +177,34 @@
 @mixin item-states {
   // Selecionado
   &[selected] {
-    @include dark-mode;
-    background-color: var(--selected);
+    .brx-item-container {
+      @include dark-mode;
+      background-color: var(--selected);
+    }
   }
 
   // Ativo
   &[active] {
-    @include dark-mode;
-    background-color: var(--active);
-    color: var(--color);
+    .brx-item-container {
+      @include dark-mode;
+      background-color: var(--active);
+      color: var(--color);
+    }
   }
 
   // Dark-mode
   &[dark-mode] {
-    @include dark-mode;
+    .brx-item-container {
+      @include dark-mode;
+    }
 
     &[active] {
-      @include light-mode;
-      --interactive-rgb: var(--active-rgb);
-      background-color: var(--background-light);
-      color: var(--active);
+      .brx-item-container {
+        @include light-mode;
+        --interactive-rgb: var(--active-rgb);
+        background-color: var(--background-light);
+        color: var(--active);
+      }
     }
   }
 }
@@ -179,30 +212,37 @@
 @mixin item-toggle {
   &[button],
   &[data-toggle] {
-    @include hover('color');
+    .brx-item-container {
+      @include hover('color');
 
-    .content {
-      i {
-        color: var(--interactive);
+      .content {
+        i,
+        brx-icon {
+          color: var(--interactive);
+        }
       }
     }
   }
 }
 
 @mixin item-center {
-  align-items: center;
-  display: flex;
+  .brx-item-container {
+    align-items: center;
+    display: flex;
 
-  .content {
-    flex: 1;
+    .content {
+      flex: 1;
+    }
+
+    @include hover;
   }
-
-  @include hover;
 }
 
 @mixin item-brackground-transparent {
   &[active] {
-    background: transparent;
+    .brx-item-container {
+      background: transparent;
+    }
   }
 }
 
@@ -216,6 +256,7 @@
 
   // Necessario devido a implementacao do fontawasome seguindo os padroes do projeto. Antes usava-se <i></i>
   // Css ajusta o tamanho do icone de seta quando item faz parte de uma lista.
+  brx-icon,
   [class*='fa-'] {
     height: 16px;
     width: 14px !important;
@@ -229,8 +270,10 @@
 }
 
 @mixin item-align-horizontal-list {
-  flex: 1;
-  height: auto;
-  min-height: 56px;
-  width: auto;
+  .brx-item-container {
+    flex: 1;
+    height: auto;
+    min-height: 56px;
+    width: auto;
+  }
 }

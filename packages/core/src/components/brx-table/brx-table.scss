@@ -1,0 +1,8 @@
+@import '../../styles/component-base';
+@import 'mixins';
+
+brx-table {
+  display: block;
+
+  @include table-configs;
+}

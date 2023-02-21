@@ -104,12 +104,23 @@ export class BrxRadio implements ComponentInterface {
     }
   }
 
+  private prevValue: any = null;
+  private prevCurrentChecked: any = null;
+
   @Watch('value')
   @Watch('currentChecked')
   emitUpdateEvent() {
+    console.count('emitUpdateEvent');
+
     const value = this.value;
     const checked = this.currentChecked;
-    this.brxUpdate.emit({ value, checked });
+
+    if (value !== this.prevValue || checked !== this.prevCurrentChecked) {
+      this.brxUpdate.emit({ value, checked });
+    }
+
+    this.prevValue = value;
+    this.prevCurrentChecked = checked;
   }
 
   /**
@@ -204,12 +215,14 @@ export class BrxRadio implements ComponentInterface {
     const brxRadio = target?.closest('brx-radio');
 
     if (brxRadio) {
-      this.nativeInputChecked = this.currentChecked;
+      if (this.currentChecked !== this.nativeInputChecked) {
+        this.nativeInputChecked = this.currentChecked;
 
-      if (!this.radioGroup) {
-        enqueueIdleCallback(() => {
-          this.syncCheckedFromNative();
-        });
+        if (!this.radioGroup) {
+          enqueueIdleCallback(() => {
+            this.syncCheckedFromNative();
+          });
+        }
       }
     }
   }

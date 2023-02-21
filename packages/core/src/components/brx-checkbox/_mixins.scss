@@ -79,6 +79,8 @@
 }
 
 @mixin checkbox-checked {
+  // &[data-checked] {
+  //   input {
   &[data-checked] {
     input {
       + label {

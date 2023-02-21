@@ -598,6 +598,25 @@ export namespace Components {
         "tooltipText": string | undefined;
         "value": string | undefined;
     }
+    interface BrxTable {
+        "density": 'small' | 'medium' | 'large' | undefined;
+    }
+    interface BrxTableActionsTrigger {
+    }
+    interface BrxTableFooter {
+    }
+    interface BrxTableHeader {
+    }
+    interface BrxTableHeaderTopBar {
+    }
+    interface BrxTableSearchBar {
+    }
+    interface BrxTableSearchTrigger {
+    }
+    interface BrxTableSelectedBar {
+    }
+    interface BrxTableTitle {
+    }
     interface BrxTabs {
         "controlledValue": string | undefined | TOKEN_UNCONTROLLED;
         "counter": boolean;
@@ -1372,6 +1391,60 @@ declare global {
         prototype: HTMLBrxTabElement;
         new (): HTMLBrxTabElement;
     };
+    interface HTMLBrxTableElement extends Components.BrxTable, HTMLStencilElement {
+    }
+    var HTMLBrxTableElement: {
+        prototype: HTMLBrxTableElement;
+        new (): HTMLBrxTableElement;
+    };
+    interface HTMLBrxTableActionsTriggerElement extends Components.BrxTableActionsTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxTableActionsTriggerElement: {
+        prototype: HTMLBrxTableActionsTriggerElement;
+        new (): HTMLBrxTableActionsTriggerElement;
+    };
+    interface HTMLBrxTableFooterElement extends Components.BrxTableFooter, HTMLStencilElement {
+    }
+    var HTMLBrxTableFooterElement: {
+        prototype: HTMLBrxTableFooterElement;
+        new (): HTMLBrxTableFooterElement;
+    };
+    interface HTMLBrxTableHeaderElement extends Components.BrxTableHeader, HTMLStencilElement {
+    }
+    var HTMLBrxTableHeaderElement: {
+        prototype: HTMLBrxTableHeaderElement;
+        new (): HTMLBrxTableHeaderElement;
+    };
+    interface HTMLBrxTableHeaderTopBarElement extends Components.BrxTableHeaderTopBar, HTMLStencilElement {
+    }
+    var HTMLBrxTableHeaderTopBarElement: {
+        prototype: HTMLBrxTableHeaderTopBarElement;
+        new (): HTMLBrxTableHeaderTopBarElement;
+    };
+    interface HTMLBrxTableSearchBarElement extends Components.BrxTableSearchBar, HTMLStencilElement {
+    }
+    var HTMLBrxTableSearchBarElement: {
+        prototype: HTMLBrxTableSearchBarElement;
+        new (): HTMLBrxTableSearchBarElement;
+    };
+    interface HTMLBrxTableSearchTriggerElement extends Components.BrxTableSearchTrigger, HTMLStencilElement {
+    }
+    var HTMLBrxTableSearchTriggerElement: {
+        prototype: HTMLBrxTableSearchTriggerElement;
+        new (): HTMLBrxTableSearchTriggerElement;
+    };
+    interface HTMLBrxTableSelectedBarElement extends Components.BrxTableSelectedBar, HTMLStencilElement {
+    }
+    var HTMLBrxTableSelectedBarElement: {
+        prototype: HTMLBrxTableSelectedBarElement;
+        new (): HTMLBrxTableSelectedBarElement;
+    };
+    interface HTMLBrxTableTitleElement extends Components.BrxTableTitle, HTMLStencilElement {
+    }
+    var HTMLBrxTableTitleElement: {
+        prototype: HTMLBrxTableTitleElement;
+        new (): HTMLBrxTableTitleElement;
+    };
     interface HTMLBrxTabsElement extends Components.BrxTabs, HTMLStencilElement {
     }
     var HTMLBrxTabsElement: {
@@ -1515,6 +1588,15 @@ declare global {
         "brx-step-progress": HTMLBrxStepProgressElement;
         "brx-step-progress-btn": HTMLBrxStepProgressBtnElement;
         "brx-tab": HTMLBrxTabElement;
+        "brx-table": HTMLBrxTableElement;
+        "brx-table-actions-trigger": HTMLBrxTableActionsTriggerElement;
+        "brx-table-footer": HTMLBrxTableFooterElement;
+        "brx-table-header": HTMLBrxTableHeaderElement;
+        "brx-table-header-top-bar": HTMLBrxTableHeaderTopBarElement;
+        "brx-table-search-bar": HTMLBrxTableSearchBarElement;
+        "brx-table-search-trigger": HTMLBrxTableSearchTriggerElement;
+        "brx-table-selected-bar": HTMLBrxTableSelectedBarElement;
+        "brx-table-title": HTMLBrxTableTitleElement;
         "brx-tabs": HTMLBrxTabsElement;
         "brx-tabs-panel": HTMLBrxTabsPanelElement;
         "brx-tabs-panels": HTMLBrxTabsPanelsElement;
@@ -2127,6 +2209,25 @@ declare namespace LocalJSX {
         "tooltipText"?: string | undefined;
         "value"?: string | undefined;
     }
+    interface BrxTable {
+        "density"?: 'small' | 'medium' | 'large' | undefined;
+    }
+    interface BrxTableActionsTrigger {
+    }
+    interface BrxTableFooter {
+    }
+    interface BrxTableHeader {
+    }
+    interface BrxTableHeaderTopBar {
+    }
+    interface BrxTableSearchBar {
+    }
+    interface BrxTableSearchTrigger {
+    }
+    interface BrxTableSelectedBar {
+    }
+    interface BrxTableTitle {
+    }
     interface BrxTabs {
         "controlledValue"?: string | undefined | TOKEN_UNCONTROLLED;
         "counter"?: boolean;
@@ -2396,6 +2497,15 @@ declare namespace LocalJSX {
         "brx-step-progress": BrxStepProgress;
         "brx-step-progress-btn": BrxStepProgressBtn;
         "brx-tab": BrxTab;
+        "brx-table": BrxTable;
+        "brx-table-actions-trigger": BrxTableActionsTrigger;
+        "brx-table-footer": BrxTableFooter;
+        "brx-table-header": BrxTableHeader;
+        "brx-table-header-top-bar": BrxTableHeaderTopBar;
+        "brx-table-search-bar": BrxTableSearchBar;
+        "brx-table-search-trigger": BrxTableSearchTrigger;
+        "brx-table-selected-bar": BrxTableSelectedBar;
+        "brx-table-title": BrxTableTitle;
         "brx-tabs": BrxTabs;
         "brx-tabs-panel": BrxTabsPanel;
         "brx-tabs-panels": BrxTabsPanels;
@@ -2499,6 +2609,15 @@ declare module "@stencil/core" {
             "brx-step-progress": LocalJSX.BrxStepProgress & JSXBase.HTMLAttributes<HTMLBrxStepProgressElement>;
             "brx-step-progress-btn": LocalJSX.BrxStepProgressBtn & JSXBase.HTMLAttributes<HTMLBrxStepProgressBtnElement>;
             "brx-tab": LocalJSX.BrxTab & JSXBase.HTMLAttributes<HTMLBrxTabElement>;
+            "brx-table": LocalJSX.BrxTable & JSXBase.HTMLAttributes<HTMLBrxTableElement>;
+            "brx-table-actions-trigger": LocalJSX.BrxTableActionsTrigger & JSXBase.HTMLAttributes<HTMLBrxTableActionsTriggerElement>;
+            "brx-table-footer": LocalJSX.BrxTableFooter & JSXBase.HTMLAttributes<HTMLBrxTableFooterElement>;
+            "brx-table-header": LocalJSX.BrxTableHeader & JSXBase.HTMLAttributes<HTMLBrxTableHeaderElement>;
+            "brx-table-header-top-bar": LocalJSX.BrxTableHeaderTopBar & JSXBase.HTMLAttributes<HTMLBrxTableHeaderTopBarElement>;
+            "brx-table-search-bar": LocalJSX.BrxTableSearchBar & JSXBase.HTMLAttributes<HTMLBrxTableSearchBarElement>;
+            "brx-table-search-trigger": LocalJSX.BrxTableSearchTrigger & JSXBase.HTMLAttributes<HTMLBrxTableSearchTriggerElement>;
+            "brx-table-selected-bar": LocalJSX.BrxTableSelectedBar & JSXBase.HTMLAttributes<HTMLBrxTableSelectedBarElement>;
+            "brx-table-title": LocalJSX.BrxTableTitle & JSXBase.HTMLAttributes<HTMLBrxTableTitleElement>;
             "brx-tabs": LocalJSX.BrxTabs & JSXBase.HTMLAttributes<HTMLBrxTabsElement>;
             "brx-tabs-panel": LocalJSX.BrxTabsPanel & JSXBase.HTMLAttributes<HTMLBrxTabsPanelElement>;
             "brx-tabs-panels": LocalJSX.BrxTabsPanels & JSXBase.HTMLAttributes<HTMLBrxTabsPanelsElement>;

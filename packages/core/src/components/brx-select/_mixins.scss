@@ -60,9 +60,10 @@
       }
 
       brx-item {
+        --item-padding-y: var(--spacing-scale-2x);
+
         .brx-item-container {
           @include light-mode;
-          --item-padding-y: var(--spacing-scale-2x);
 
           .content {
             padding: 0;
@@ -107,8 +108,9 @@
         }
 
         &:not([disabled]) {
+          --focus-offset: calc(var(--spacing-scale-half) * -1);
+
           .brx-item-container {
-            --focus-offset: calc(var(--spacing-scale-half) * -1);
             @include focus;
             @include hover('color');
           }
