@@ -18,7 +18,7 @@ export const config: Config = {
     react({
       componentCorePackage: '@copperui/core',
       proxiesFile: '../integration-react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: true,
+      // includeDefineCustomElements: true,
     }),
     {
       type: 'dist',

@@ -104,4 +104,18 @@ Em seu `App.js`, `_app.js` ou relacionados:
 import '@copperui/core/dist/copperui/copperui.css';
 ```
 
+```tsx
+function App() {
+  useEffect(() => {
+    const { applyPolyfills, defineCustomElements } = require('@copperui/core/loader');
+    applyPolyfills().then(() => defineCustomElements(window));
+    return () => {};
+  }, []);
+
+  // ...
+
+  return <div>...</div>;
+}
+```
+
 Siga para o [Uso](./uso.mdx).
