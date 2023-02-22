@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/copperui/copperui/compare/v0.5.0...v0.5.1) (2023-02-22)
+
+### Bug Fixes
+
+- **core:** stencil.config.js: react: disable includeDefineCustomElements ([9fbfc6d](https://github.com/copperui/copperui/commit/9fbfc6dd1c3db102473065edbe00313a95c6f421))
+
 # [0.5.0](https://github.com/copperui/copperui/compare/v0.4.3...v0.5.0) (2023-02-21)
 
 ### Features
