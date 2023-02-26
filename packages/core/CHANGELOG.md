@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/copperui/copperui/compare/v0.6.0...v0.7.0) (2023-02-26)
+
+### Features
+
+- **core:** brx-switch ([#43](https://github.com/copperui/copperui/issues/43)) ([4f85f45](https://github.com/copperui/copperui/commit/4f85f45898415567c1504c316f09d4c8cb752e08))
+
 # [0.6.0](https://github.com/copperui/copperui/compare/v0.5.1...v0.6.0) (2023-02-26)
 
 ### Bug Fixes
