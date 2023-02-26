@@ -12,7 +12,7 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
   el: HTMLElement;
 
   @Prop()
-  keepTargetVisibleWhenHidden: boolean = true;
+  keepTargetVisibleWhenHidden: boolean = false;
 
   private get isTriggerVisible() {
     return this.el.offsetParent !== null;
@@ -64,19 +64,21 @@ export class BrxDropdownTrigger implements ComponentInterface, IBrxCollapseTrigg
   }
 
   private async syncDynamicActiveState() {
-    const collapseTriggerEl = await this.collapseTriggerEl.getTrigger();
-    const collapseTargetEl = await this.collapseTriggerEl.getTarget();
+    const collapseTriggerEl = await this.collapseTriggerEl?.getTrigger();
+    const collapseTargetEl = await this.collapseTriggerEl?.getTarget();
 
-    const isTargetHidden = collapseTargetEl.hasAttribute('hidden');
+    if (collapseTargetEl && collapseTriggerEl) {
+      const isTargetHidden = collapseTargetEl.hasAttribute('hidden');
 
-    if (this.keepTargetVisibleWhenHidden) {
-      if (!this.isTriggerVisible) {
-        if (isTargetHidden) {
-          collapseTriggerEl.click();
-        }
-      } else {
-        if (!isTargetHidden) {
-          collapseTriggerEl.click();
+      if (this.keepTargetVisibleWhenHidden) {
+        if (!this.isTriggerVisible) {
+          if (isTargetHidden) {
+            collapseTriggerEl.click();
+          }
+        } else {
+          if (!isTargetHidden) {
+            collapseTriggerEl.click();
+          }
         }
       }
     }
