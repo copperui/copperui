@@ -19,10 +19,10 @@ export class BrxScrim {
   brxScrimChange: EventEmitter<ScrimChangeEventDetail>;
 
   @Prop()
-  active: boolean | undefined;
+  active: boolean;
 
   @Prop()
-  controlledActive: boolean | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  controlledActive: boolean | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentActive = false;
@@ -58,14 +58,21 @@ export class BrxScrim {
   }
 
   handleClickFoco(event: MouseEvent) {
-    const closeElement = this.closeElement;
     const target = event.target as HTMLElement;
+
+    if (target.closest('brx-scrim') !== this.el) {
+      return;
+    }
 
     if (target === this.el) {
       this.hideScrim();
     }
 
-    if (closeElement && target.closest(closeElement)) {
+    const closeElement = this.closeElement;
+
+    const closeElementTrigger = closeElement && target.closest(closeElement);
+
+    if (closeElementTrigger && !closeElementTrigger.hasAttribute('disabled')) {
       this.hideScrim();
     }
   }
