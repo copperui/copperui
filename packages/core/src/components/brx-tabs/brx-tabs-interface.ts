@@ -5,3 +5,7 @@ export interface TabChangeEventDetail {
 export interface TabClickEventDetail {
   value: string;
 }
+
+export interface TabUpdateEventDetail {
+  value: string | undefined;
+}

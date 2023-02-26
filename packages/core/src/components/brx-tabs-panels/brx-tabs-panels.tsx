@@ -1,6 +1,6 @@
-import { Component, Host, h, Prop, Element, Listen, State, Watch, ComponentInterface } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 import { findTargets } from '../../utils/helpers';
-import { TabChangeEventDetail } from '../brx-tabs/brx-tabs-interface';
+import { TabUpdateEventDetail } from '../brx-tabs/brx-tabs-interface';
 
 @Component({
   tag: 'brx-tabs-panels',
@@ -50,8 +50,8 @@ export class BrxTabsPanels implements ComponentInterface {
     this.syncPanels();
   }
 
-  @Listen('brxTabChange', { target: 'window', passive: true })
-  handleGlobalTabChange(event: CustomEvent<TabChangeEventDetail>) {
+  @Listen('brxTabUpdate', { target: 'window', passive: true })
+  handleGlobalTabChange(event: CustomEvent<TabUpdateEventDetail>) {
     const target = event.target as HTMLElement;
 
     const tabs = target.closest('brx-tabs');

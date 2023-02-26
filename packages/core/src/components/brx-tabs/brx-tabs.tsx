@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { TOKEN_UNCONTROLLED } from '../../tokens';
 import { findTarget, findTargets, getWindow } from '../../utils/helpers';
-import { TabChangeEventDetail, TabClickEventDetail } from './brx-tabs-interface';
+import { TabChangeEventDetail, TabClickEventDetail, TabUpdateEventDetail } from './brx-tabs-interface';
 
 @Component({
   tag: 'brx-tabs',
@@ -17,6 +17,9 @@ export class BrxTabs implements ComponentInterface {
 
   @Event()
   brxTabChange: EventEmitter<TabChangeEventDetail>;
+
+  @Event()
+  brxTabUpdate: EventEmitter<TabUpdateEventDetail>;
 
   get navEl() {
     return findTarget<HTMLDivElement>('.brx-tabs-nav', this.el);
@@ -164,6 +167,7 @@ export class BrxTabs implements ComponentInterface {
 
   @Watch('currentValue')
   handleCurrentValueChange() {
+    this.brxTabUpdate.emit({ value: this.currentValue });
     this.syncTabs();
   }
 
