@@ -44,10 +44,10 @@ export class BrxMenu implements ComponentInterface {
   variant: 'push' | 'contextual' | undefined;
 
   @Prop()
-  active: boolean | undefined;
+  active: boolean;
 
   @Prop()
-  controlledActive: boolean | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  controlledActive: boolean | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentActive = false;

@@ -44,7 +44,7 @@ export class BrxButton implements ComponentInterface, IBrxButtonInterfaceState {
    * If `true`, the user cannot interact with the button.
    */
   @Prop({ reflect: true })
-  disabled: boolean | undefined = false;
+  disabled: boolean = false;
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to

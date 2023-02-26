@@ -61,10 +61,10 @@ export class BrxRadio implements ComponentInterface {
    * If `true`, the radio is selected.
    */
   @Prop()
-  checked: boolean | undefined;
+  checked: boolean;
 
   @Prop()
-  controlledChecked: boolean | undefined | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
+  controlledChecked: boolean | TOKEN_UNCONTROLLED = TOKEN_UNCONTROLLED;
 
   @State()
   currentChecked = false;

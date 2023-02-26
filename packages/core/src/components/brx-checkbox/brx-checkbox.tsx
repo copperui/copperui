@@ -117,13 +117,13 @@ export class BrxCheckbox implements ComponentInterface {
   size: 'small' | 'medium' = 'medium';
 
   @Prop({ reflect: true })
-  valid: boolean | undefined;
+  valid: boolean;
 
   @Prop({ reflect: true })
-  danger: boolean | undefined;
+  danger: boolean;
 
   @Prop({ reflect: true })
-  invalid: boolean | undefined;
+  invalid: boolean;
 
   @Prop({ reflect: true })
   state: 'valid' | 'invalid' | 'danger' | undefined = undefined;
