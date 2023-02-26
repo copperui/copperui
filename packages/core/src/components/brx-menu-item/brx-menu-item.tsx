@@ -15,6 +15,9 @@ export class BrxMenuItem implements ComponentInterface {
   @Prop()
   initialSetup = true;
 
+  @Prop({ reflect: true })
+  link = false;
+
   private get parentElement() {
     return this.el.parentElement;
   }
