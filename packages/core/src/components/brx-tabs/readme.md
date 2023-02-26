@@ -23,6 +23,7 @@
 | -------------- | ----------- | ----------------------------------- |
 | `brxTabChange` |             | `CustomEvent<TabChangeEventDetail>` |
 | `brxTabClick`  |             | `CustomEvent<TabClickEventDetail>`  |
+| `brxTabUpdate` |             | `CustomEvent<TabUpdateEventDetail>` |
 
 
 ## Methods

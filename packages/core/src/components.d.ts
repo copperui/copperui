@@ -18,7 +18,7 @@ import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interfa
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
-import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
+import { TabChangeEventDetail, TabClickEventDetail, TabUpdateEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 import { AttachmentAsset, IHandleUploadFiles, UploadChangeEventDetail } from "./components/brx-upload/brx-upload-interfaces";
@@ -80,7 +80,7 @@ export namespace Components {
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled": boolean | undefined;
+        "disabled": boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -136,7 +136,7 @@ export namespace Components {
         "checked": boolean | null;
         "child": string | undefined;
         "controlledChecked": boolean | TOKEN_UNCONTROLLED;
-        "danger": boolean | undefined;
+        "danger": boolean;
         "darkMode": boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -150,7 +150,7 @@ export namespace Components {
          */
         "indeterminate": boolean;
         "inputId": string | undefined;
-        "invalid": boolean | undefined;
+        "invalid": boolean;
         "label": string | undefined;
         /**
           * The name of the control, which is submitted with the form data.
@@ -161,7 +161,7 @@ export namespace Components {
         "size": 'small' | 'medium';
         "state": 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel": string;
-        "valid": boolean | undefined;
+        "valid": boolean;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
@@ -390,10 +390,10 @@ export namespace Components {
         "variant": string | undefined;
     }
     interface BrxMenu {
-        "active": boolean | undefined;
+        "active": boolean;
         "breakpoints": string[];
         "closeMenu": () => Promise<void>;
-        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive": boolean | TOKEN_UNCONTROLLED;
         "openMenu": () => Promise<void>;
         "pushShadow": string;
         "toggleMenu": () => Promise<void>;
@@ -416,6 +416,7 @@ export namespace Components {
     interface BrxMenuItem {
         "hide": () => Promise<void>;
         "initialSetup": boolean;
+        "link": boolean;
         "setupParent": () => Promise<void>;
         "show": () => Promise<void>;
     }
@@ -486,8 +487,8 @@ export namespace Components {
         /**
           * If `true`, the radio is selected.
          */
-        "checked": boolean | undefined;
-        "controlledChecked": boolean | undefined | TOKEN_UNCONTROLLED;
+        "checked": boolean;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -522,9 +523,9 @@ export namespace Components {
         "value": any | undefined | null;
     }
     interface BrxScrim {
-        "active": boolean | undefined;
+        "active": boolean;
         "closeElement": string;
-        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive": boolean | TOKEN_UNCONTROLLED;
         "hideScrim": () => Promise<void>;
         "showScrim": () => Promise<void>;
         "type": 'foco' | 'legibilidade' | 'inibicao';
@@ -1666,7 +1667,7 @@ declare namespace LocalJSX {
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -1729,7 +1730,7 @@ declare namespace LocalJSX {
         "checked"?: boolean | null;
         "child"?: string | undefined;
         "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
-        "danger"?: boolean | undefined;
+        "danger"?: boolean;
         "darkMode"?: boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -1741,7 +1742,7 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         "inputId"?: string | undefined;
-        "invalid"?: boolean | undefined;
+        "invalid"?: boolean;
         "label"?: string | undefined;
         /**
           * The name of the control, which is submitted with the form data.
@@ -1767,7 +1768,7 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium';
         "state"?: 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel"?: string;
-        "valid"?: boolean | undefined;
+        "valid"?: boolean;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
@@ -2001,9 +2002,9 @@ declare namespace LocalJSX {
         "variant"?: string | undefined;
     }
     interface BrxMenu {
-        "active"?: boolean | undefined;
+        "active"?: boolean;
         "breakpoints"?: string[];
-        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive"?: boolean | TOKEN_UNCONTROLLED;
         "onBrxChange"?: (event: BrxMenuCustomEvent<boolean>) => void;
         "pushShadow"?: string;
         "variant"?: 'push' | 'contextual' | undefined;
@@ -2024,6 +2025,7 @@ declare namespace LocalJSX {
     }
     interface BrxMenuItem {
         "initialSetup"?: boolean;
+        "link"?: boolean;
     }
     interface BrxMenuLinks {
     }
@@ -2091,8 +2093,8 @@ declare namespace LocalJSX {
         /**
           * If `true`, the radio is selected.
          */
-        "checked"?: boolean | undefined;
-        "controlledChecked"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "checked"?: boolean;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -2135,9 +2137,9 @@ declare namespace LocalJSX {
         "value"?: any | undefined | null;
     }
     interface BrxScrim {
-        "active"?: boolean | undefined;
+        "active"?: boolean;
         "closeElement"?: string;
-        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive"?: boolean | TOKEN_UNCONTROLLED;
         "onBrxScrimChange"?: (event: BrxScrimCustomEvent<ScrimChangeEventDetail>) => void;
         "type"?: 'foco' | 'legibilidade' | 'inibicao';
     }
@@ -2235,6 +2237,7 @@ declare namespace LocalJSX {
         "name"?: string;
         "onBrxTabChange"?: (event: BrxTabsCustomEvent<TabChangeEventDetail>) => void;
         "onBrxTabClick"?: (event: BrxTabsCustomEvent<TabClickEventDetail>) => void;
+        "onBrxTabUpdate"?: (event: BrxTabsCustomEvent<TabUpdateEventDetail>) => void;
         "size"?: 'small' | 'medium' | 'large';
         "value"?: string | undefined;
     }

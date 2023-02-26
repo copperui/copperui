@@ -10,7 +10,7 @@
 | `breakpoint`                  | `breakpoint`                      |             | `string`                | `undefined`              |
 | `iconToHide`                  | `icon-to-hide`                    |             | `string`                | `'fa5/fas/chevron-up'`   |
 | `iconToShow`                  | `icon-to-show`                    |             | `string`                | `'fa5/fas/chevron-down'` |
-| `keepTargetVisibleWhenHidden` | `keep-target-visible-when-hidden` |             | `boolean`               | `true`                   |
+| `keepTargetVisibleWhenHidden` | `keep-target-visible-when-hidden` |             | `boolean`               | `false`                  |
 | `target`                      | `target`                          |             | `HTMLElement \| string` | `undefined`              |
 | `useIcons`                    | `use-icons`                       |             | `boolean`               | `true`                   |
 
