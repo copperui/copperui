@@ -65,7 +65,9 @@ export class BrxMessage {
             </div>
 
             <div class="brx-message-content">
-              {messageTitle && <span class="brx-message-title">{messageTitle}</span>}
+              <span class="brx-message-title">
+                <slot name="message-title">{messageTitle && <span>{messageTitle}</span>}</slot>
+              </span>
 
               <span class="brx-message-body">
                 <slot></slot>
