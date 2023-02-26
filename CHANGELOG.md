@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/copperui/copperui/compare/v0.5.1...v0.6.0) (2023-02-26)
+
+### Bug Fixes
+
+- **core:** brx-scrim: check if the close trigger is direct child of scrim ([5ad87cb](https://github.com/copperui/copperui/commit/5ad87cbe012c7d0f8f0384a563c777870da84740))
+
+### Features
+
+- **core:** brx-button: apply display-flex on brx-button-native ([08f9ab8](https://github.com/copperui/copperui/commit/08f9ab8cdb021512f58ea603e3faf941ff6d6b87))
+- **core:** brx-dropdown-trigger: disable keepTargetVisibleWhenHidden by default ([7563b47](https://github.com/copperui/copperui/commit/7563b47f7f7afe7cd708fac5153713ed7a3078ab))
+- **core:** brx-menu-item: declare `link` property ([58437bb](https://github.com/copperui/copperui/commit/58437bbde274a28a3ea1ab7b256890009e3d4d8d))
+- **core:** brx-message: add slot for message-title ([92e6e8c](https://github.com/copperui/copperui/commit/92e6e8c9a11dbf56d9b895c1b90cda10e628de8b))
+- **core:** brx-tabs: emit brxTabUpdate ([0f0eda9](https://github.com/copperui/copperui/commit/0f0eda983d3cda14d44d48624293dfc81de14d2a))
+- **core:** remove `undefined` prop anottation for boolean props ([8d580bd](https://github.com/copperui/copperui/commit/8d580bd20d5169c70bcdaa386be7b17a60fde01b))
+
 ## [0.5.1](https://github.com/copperui/copperui/compare/v0.5.0...v0.5.1) (2023-02-22)
 
 ### Bug Fixes

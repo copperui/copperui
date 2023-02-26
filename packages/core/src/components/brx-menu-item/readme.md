@@ -10,6 +10,7 @@
 | Property       | Attribute       | Description | Type      | Default |
 | -------------- | --------------- | ----------- | --------- | ------- |
 | `initialSetup` | `initial-setup` |             | `boolean` | `true`  |
+| `link`         | `link`          |             | `boolean` | `false` |
 
 
 ## Methods

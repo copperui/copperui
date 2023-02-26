@@ -18,7 +18,8 @@ import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interfa
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
-import { TabChangeEventDetail, TabClickEventDetail } from "./components/brx-tabs/brx-tabs-interface";
+import { SwitchChangeEventDetail, SwitchUpdateEventDetail } from "./components/brx-switch/brx-switch-interface";
+import { TabChangeEventDetail, TabClickEventDetail, TabUpdateEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
 import { AttachmentAsset, IHandleUploadFiles, UploadChangeEventDetail } from "./components/brx-upload/brx-upload-interfaces";
@@ -80,7 +81,7 @@ export namespace Components {
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled": boolean | undefined;
+        "disabled": boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -136,7 +137,7 @@ export namespace Components {
         "checked": boolean | null;
         "child": string | undefined;
         "controlledChecked": boolean | TOKEN_UNCONTROLLED;
-        "danger": boolean | undefined;
+        "danger": boolean;
         "darkMode": boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -150,7 +151,7 @@ export namespace Components {
          */
         "indeterminate": boolean;
         "inputId": string | undefined;
-        "invalid": boolean | undefined;
+        "invalid": boolean;
         "label": string | undefined;
         /**
           * The name of the control, which is submitted with the form data.
@@ -161,7 +162,7 @@ export namespace Components {
         "size": 'small' | 'medium';
         "state": 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel": string;
-        "valid": boolean | undefined;
+        "valid": boolean;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
@@ -390,10 +391,10 @@ export namespace Components {
         "variant": string | undefined;
     }
     interface BrxMenu {
-        "active": boolean | undefined;
+        "active": boolean;
         "breakpoints": string[];
         "closeMenu": () => Promise<void>;
-        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive": boolean | TOKEN_UNCONTROLLED;
         "openMenu": () => Promise<void>;
         "pushShadow": string;
         "toggleMenu": () => Promise<void>;
@@ -416,6 +417,7 @@ export namespace Components {
     interface BrxMenuItem {
         "hide": () => Promise<void>;
         "initialSetup": boolean;
+        "link": boolean;
         "setupParent": () => Promise<void>;
         "show": () => Promise<void>;
     }
@@ -486,8 +488,8 @@ export namespace Components {
         /**
           * If `true`, the radio is selected.
          */
-        "checked": boolean | undefined;
-        "controlledChecked": boolean | undefined | TOKEN_UNCONTROLLED;
+        "checked": boolean;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -522,9 +524,9 @@ export namespace Components {
         "value": any | undefined | null;
     }
     interface BrxScrim {
-        "active": boolean | undefined;
+        "active": boolean;
         "closeElement": string;
-        "controlledActive": boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive": boolean | TOKEN_UNCONTROLLED;
         "hideScrim": () => Promise<void>;
         "showScrim": () => Promise<void>;
         "type": 'foco' | 'legibilidade' | 'inibicao';
@@ -588,6 +590,45 @@ export namespace Components {
         "setDisabled": (disabled: boolean) => Promise<void>;
         "stepNum": string;
         "tooltipText": string | undefined;
+    }
+    interface BrxSwitch {
+        "alignLabel": 'right' | 'top' | undefined;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean | null;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
+        "danger": boolean;
+        "darkMode": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        "getCurrentState": () => Promise<{ value: any; checked: boolean; indeterminate: boolean; }>;
+        "getNativeChecked": () => Promise<boolean>;
+        "hiddenLabel": boolean;
+        "icon": boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate": boolean;
+        "inputId": string | undefined;
+        "invalid": boolean;
+        "label": string | undefined;
+        "labelDisabled": string;
+        "labelEnabled": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setState": (checked: boolean, indeterminate: boolean) => Promise<void>;
+        "size": 'small' | 'medium';
+        "state": 'valid' | 'invalid' | 'danger' | undefined;
+        "valid": boolean;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value": any | null;
     }
     interface BrxTab {
         "counter": boolean;
@@ -849,6 +890,10 @@ export interface BrxSelectOptionCustomEvent<T> extends CustomEvent<T> {
 export interface BrxStepCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxStepElement;
+}
+export interface BrxSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxSwitchElement;
 }
 export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1385,6 +1430,12 @@ declare global {
         prototype: HTMLBrxStepProgressBtnElement;
         new (): HTMLBrxStepProgressBtnElement;
     };
+    interface HTMLBrxSwitchElement extends Components.BrxSwitch, HTMLStencilElement {
+    }
+    var HTMLBrxSwitchElement: {
+        prototype: HTMLBrxSwitchElement;
+        new (): HTMLBrxSwitchElement;
+    };
     interface HTMLBrxTabElement extends Components.BrxTab, HTMLStencilElement {
     }
     var HTMLBrxTabElement: {
@@ -1587,6 +1638,7 @@ declare global {
         "brx-step": HTMLBrxStepElement;
         "brx-step-progress": HTMLBrxStepProgressElement;
         "brx-step-progress-btn": HTMLBrxStepProgressBtnElement;
+        "brx-switch": HTMLBrxSwitchElement;
         "brx-tab": HTMLBrxTabElement;
         "brx-table": HTMLBrxTableElement;
         "brx-table-actions-trigger": HTMLBrxTableActionsTriggerElement;
@@ -1666,7 +1718,7 @@ declare namespace LocalJSX {
         /**
           * If `true`, the user cannot interact with the button.
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
@@ -1729,7 +1781,7 @@ declare namespace LocalJSX {
         "checked"?: boolean | null;
         "child"?: string | undefined;
         "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
-        "danger"?: boolean | undefined;
+        "danger"?: boolean;
         "darkMode"?: boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
@@ -1741,7 +1793,7 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         "inputId"?: string | undefined;
-        "invalid"?: boolean | undefined;
+        "invalid"?: boolean;
         "label"?: string | undefined;
         /**
           * The name of the control, which is submitted with the form data.
@@ -1767,7 +1819,7 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium';
         "state"?: 'valid' | 'invalid' | 'danger' | undefined;
         "uncheckAllLabel"?: string;
-        "valid"?: boolean | undefined;
+        "valid"?: boolean;
         /**
           * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
          */
@@ -2001,9 +2053,9 @@ declare namespace LocalJSX {
         "variant"?: string | undefined;
     }
     interface BrxMenu {
-        "active"?: boolean | undefined;
+        "active"?: boolean;
         "breakpoints"?: string[];
-        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive"?: boolean | TOKEN_UNCONTROLLED;
         "onBrxChange"?: (event: BrxMenuCustomEvent<boolean>) => void;
         "pushShadow"?: string;
         "variant"?: 'push' | 'contextual' | undefined;
@@ -2024,6 +2076,7 @@ declare namespace LocalJSX {
     }
     interface BrxMenuItem {
         "initialSetup"?: boolean;
+        "link"?: boolean;
     }
     interface BrxMenuLinks {
     }
@@ -2091,8 +2144,8 @@ declare namespace LocalJSX {
         /**
           * If `true`, the radio is selected.
          */
-        "checked"?: boolean | undefined;
-        "controlledChecked"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "checked"?: boolean;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
         /**
           * If `true`, the user cannot interact with the radio.
          */
@@ -2135,9 +2188,9 @@ declare namespace LocalJSX {
         "value"?: any | undefined | null;
     }
     interface BrxScrim {
-        "active"?: boolean | undefined;
+        "active"?: boolean;
         "closeElement"?: string;
-        "controlledActive"?: boolean | undefined | TOKEN_UNCONTROLLED;
+        "controlledActive"?: boolean | TOKEN_UNCONTROLLED;
         "onBrxScrimChange"?: (event: BrxScrimCustomEvent<ScrimChangeEventDetail>) => void;
         "type"?: 'foco' | 'legibilidade' | 'inibicao';
     }
@@ -2201,6 +2254,58 @@ declare namespace LocalJSX {
         "stepNum"?: string;
         "tooltipText"?: string | undefined;
     }
+    interface BrxSwitch {
+        "alignLabel"?: 'right' | 'top' | undefined;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean | null;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
+        "danger"?: boolean;
+        "darkMode"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        "hiddenLabel"?: boolean;
+        "icon"?: boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        "inputId"?: string | undefined;
+        "invalid"?: boolean;
+        "label"?: string | undefined;
+        "labelDisabled"?: string;
+        "labelEnabled"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onBrxBlur"?: (event: BrxSwitchCustomEvent<void>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBrxChange"?: (event: BrxSwitchCustomEvent<SwitchChangeEventDetail>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onBrxFocus"?: (event: BrxSwitchCustomEvent<void>) => void;
+        /**
+          * Emitted when the state has changed.
+         */
+        "onBrxUpdate"?: (event: BrxSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
+        "size"?: 'small' | 'medium';
+        "state"?: 'valid' | 'invalid' | 'danger' | undefined;
+        "valid"?: boolean;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value"?: any | null;
+    }
     interface BrxTab {
         "counter"?: boolean;
         "iconName"?: string;
@@ -2235,6 +2340,7 @@ declare namespace LocalJSX {
         "name"?: string;
         "onBrxTabChange"?: (event: BrxTabsCustomEvent<TabChangeEventDetail>) => void;
         "onBrxTabClick"?: (event: BrxTabsCustomEvent<TabClickEventDetail>) => void;
+        "onBrxTabUpdate"?: (event: BrxTabsCustomEvent<TabUpdateEventDetail>) => void;
         "size"?: 'small' | 'medium' | 'large';
         "value"?: string | undefined;
     }
@@ -2496,6 +2602,7 @@ declare namespace LocalJSX {
         "brx-step": BrxStep;
         "brx-step-progress": BrxStepProgress;
         "brx-step-progress-btn": BrxStepProgressBtn;
+        "brx-switch": BrxSwitch;
         "brx-tab": BrxTab;
         "brx-table": BrxTable;
         "brx-table-actions-trigger": BrxTableActionsTrigger;
@@ -2608,6 +2715,7 @@ declare module "@stencil/core" {
             "brx-step": LocalJSX.BrxStep & JSXBase.HTMLAttributes<HTMLBrxStepElement>;
             "brx-step-progress": LocalJSX.BrxStepProgress & JSXBase.HTMLAttributes<HTMLBrxStepProgressElement>;
             "brx-step-progress-btn": LocalJSX.BrxStepProgressBtn & JSXBase.HTMLAttributes<HTMLBrxStepProgressBtnElement>;
+            "brx-switch": LocalJSX.BrxSwitch & JSXBase.HTMLAttributes<HTMLBrxSwitchElement>;
             "brx-tab": LocalJSX.BrxTab & JSXBase.HTMLAttributes<HTMLBrxTabElement>;
             "brx-table": LocalJSX.BrxTable & JSXBase.HTMLAttributes<HTMLBrxTableElement>;
             "brx-table-actions-trigger": LocalJSX.BrxTableActionsTrigger & JSXBase.HTMLAttributes<HTMLBrxTableActionsTriggerElement>;
