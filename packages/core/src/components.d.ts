@@ -18,6 +18,7 @@ import { ScrimChangeEventDetail } from "./components/brx-scrim/brx-scrim-interfa
 import { SelectChangeEventDetail, SelectFilterInputChangeEventDetail } from "./components/brx-select/brx-select-interface";
 import { SelectOptionChangeEventDetail } from "./components/brx-select-option/brx-select-option-interface";
 import { StepChangeEventDetail } from "./components/brx-step/brx-step-interface";
+import { SwitchChangeEventDetail, SwitchUpdateEventDetail } from "./components/brx-switch/brx-switch-interface";
 import { TabChangeEventDetail, TabClickEventDetail, TabUpdateEventDetail } from "./components/brx-tabs/brx-tabs-interface";
 import { TextareaChangeEventDetail } from "./components/brx-textarea/brx-textarea-interface";
 import { BrxTooltip } from "./components/brx-tooltip/brx-tooltip";
@@ -590,6 +591,45 @@ export namespace Components {
         "stepNum": string;
         "tooltipText": string | undefined;
     }
+    interface BrxSwitch {
+        "alignLabel": 'right' | 'top' | undefined;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean | null;
+        "controlledChecked": boolean | TOKEN_UNCONTROLLED;
+        "danger": boolean;
+        "darkMode": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        "getCurrentState": () => Promise<{ value: any; checked: boolean; indeterminate: boolean; }>;
+        "getNativeChecked": () => Promise<boolean>;
+        "hiddenLabel": boolean;
+        "icon": boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate": boolean;
+        "inputId": string | undefined;
+        "invalid": boolean;
+        "label": string | undefined;
+        "labelDisabled": string;
+        "labelEnabled": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setState": (checked: boolean, indeterminate: boolean) => Promise<void>;
+        "size": 'small' | 'medium';
+        "state": 'valid' | 'invalid' | 'danger' | undefined;
+        "valid": boolean;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value": any | null;
+    }
     interface BrxTab {
         "counter": boolean;
         "iconName": string;
@@ -850,6 +890,10 @@ export interface BrxSelectOptionCustomEvent<T> extends CustomEvent<T> {
 export interface BrxStepCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBrxStepElement;
+}
+export interface BrxSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBrxSwitchElement;
 }
 export interface BrxTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1386,6 +1430,12 @@ declare global {
         prototype: HTMLBrxStepProgressBtnElement;
         new (): HTMLBrxStepProgressBtnElement;
     };
+    interface HTMLBrxSwitchElement extends Components.BrxSwitch, HTMLStencilElement {
+    }
+    var HTMLBrxSwitchElement: {
+        prototype: HTMLBrxSwitchElement;
+        new (): HTMLBrxSwitchElement;
+    };
     interface HTMLBrxTabElement extends Components.BrxTab, HTMLStencilElement {
     }
     var HTMLBrxTabElement: {
@@ -1588,6 +1638,7 @@ declare global {
         "brx-step": HTMLBrxStepElement;
         "brx-step-progress": HTMLBrxStepProgressElement;
         "brx-step-progress-btn": HTMLBrxStepProgressBtnElement;
+        "brx-switch": HTMLBrxSwitchElement;
         "brx-tab": HTMLBrxTabElement;
         "brx-table": HTMLBrxTableElement;
         "brx-table-actions-trigger": HTMLBrxTableActionsTriggerElement;
@@ -2203,6 +2254,58 @@ declare namespace LocalJSX {
         "stepNum"?: string;
         "tooltipText"?: string | undefined;
     }
+    interface BrxSwitch {
+        "alignLabel"?: 'right' | 'top' | undefined;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean | null;
+        "controlledChecked"?: boolean | TOKEN_UNCONTROLLED;
+        "danger"?: boolean;
+        "darkMode"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        "hiddenLabel"?: boolean;
+        "icon"?: boolean;
+        /**
+          * If `true`, the checkbox will visually appear as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        "inputId"?: string | undefined;
+        "invalid"?: boolean;
+        "label"?: string | undefined;
+        "labelDisabled"?: string;
+        "labelEnabled"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onBrxBlur"?: (event: BrxSwitchCustomEvent<void>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBrxChange"?: (event: BrxSwitchCustomEvent<SwitchChangeEventDetail>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onBrxFocus"?: (event: BrxSwitchCustomEvent<void>) => void;
+        /**
+          * Emitted when the state has changed.
+         */
+        "onBrxUpdate"?: (event: BrxSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
+        "size"?: 'small' | 'medium';
+        "state"?: 'valid' | 'invalid' | 'danger' | undefined;
+        "valid"?: boolean;
+        /**
+          * The value of the checkbox does not mean if it's checked or not, use the `checked` property for that.  The value of a checkbox is analogous to the value of an `<input type="checkbox">`, it's only used when the checkbox participates in a native `<form>`.
+         */
+        "value"?: any | null;
+    }
     interface BrxTab {
         "counter"?: boolean;
         "iconName"?: string;
@@ -2499,6 +2602,7 @@ declare namespace LocalJSX {
         "brx-step": BrxStep;
         "brx-step-progress": BrxStepProgress;
         "brx-step-progress-btn": BrxStepProgressBtn;
+        "brx-switch": BrxSwitch;
         "brx-tab": BrxTab;
         "brx-table": BrxTable;
         "brx-table-actions-trigger": BrxTableActionsTrigger;
@@ -2611,6 +2715,7 @@ declare module "@stencil/core" {
             "brx-step": LocalJSX.BrxStep & JSXBase.HTMLAttributes<HTMLBrxStepElement>;
             "brx-step-progress": LocalJSX.BrxStepProgress & JSXBase.HTMLAttributes<HTMLBrxStepProgressElement>;
             "brx-step-progress-btn": LocalJSX.BrxStepProgressBtn & JSXBase.HTMLAttributes<HTMLBrxStepProgressBtnElement>;
+            "brx-switch": LocalJSX.BrxSwitch & JSXBase.HTMLAttributes<HTMLBrxSwitchElement>;
             "brx-tab": LocalJSX.BrxTab & JSXBase.HTMLAttributes<HTMLBrxTabElement>;
             "brx-table": LocalJSX.BrxTable & JSXBase.HTMLAttributes<HTMLBrxTableElement>;
             "brx-table-actions-trigger": LocalJSX.BrxTableActionsTrigger & JSXBase.HTMLAttributes<HTMLBrxTableActionsTriggerElement>;

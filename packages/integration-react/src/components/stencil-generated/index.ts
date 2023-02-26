@@ -94,6 +94,7 @@ export const BrxSkiplink = /*@__PURE__*/createReactComponent<JSX.BrxSkiplink, HT
 export const BrxStep = /*@__PURE__*/createReactComponent<JSX.BrxStep, HTMLBrxStepElement>('brx-step');
 export const BrxStepProgress = /*@__PURE__*/createReactComponent<JSX.BrxStepProgress, HTMLBrxStepProgressElement>('brx-step-progress');
 export const BrxStepProgressBtn = /*@__PURE__*/createReactComponent<JSX.BrxStepProgressBtn, HTMLBrxStepProgressBtnElement>('brx-step-progress-btn');
+export const BrxSwitch = /*@__PURE__*/createReactComponent<JSX.BrxSwitch, HTMLBrxSwitchElement>('brx-switch');
 export const BrxTab = /*@__PURE__*/createReactComponent<JSX.BrxTab, HTMLBrxTabElement>('brx-tab');
 export const BrxTable = /*@__PURE__*/createReactComponent<JSX.BrxTable, HTMLBrxTableElement>('brx-table');
 export const BrxTableActionsTrigger = /*@__PURE__*/createReactComponent<JSX.BrxTableActionsTrigger, HTMLBrxTableActionsTriggerElement>('brx-table-actions-trigger');

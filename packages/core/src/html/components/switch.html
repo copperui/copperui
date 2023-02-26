@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- start playground assets -->
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="build/copperui.css" rel="stylesheet" />
+    <script type="module" src="build/copperui.esm.js"></script>
+    <script nomodule src="build/copperui.js"></script>
+    <style media="screen, print" type="text/css">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    </style>
+    <!-- end playground assets -->
+  </head>
+  <body>
+    <section>
+      <h1>Switch</h1>
+
+      <div>
+        <h2>Switch Padrão</h2>
+
+        <div>
+          <brx-switch label="Label"></brx-switch>
+        </div>
+      </div>
+
+      <div>
+        <h2>Alinhamentos</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-md">
+              <brx-switch class="mr-5" align-label="left" label="Label na esquerda" checked></brx-switch>
+            </div>
+            <div class="col-md mt-3 mt-md-0">
+              <brx-switch class="mr-5" align-label="right" label="Label na direita" checked></brx-switch>
+            </div>
+            <div class="col-md mt-3 mt-md-0">
+              <brx-switch class="mr-5" align-label="top" label="Label no topo" checked></brx-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Com Ícone</h2>
+
+        <div>
+          <brx-switch icon class="mr-5" label="Label" checked></brx-switch>
+        </div>
+      </div>
+
+      <div>
+        <h2>Com rótulos adicionais</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-md">
+              <brx-switch size="medium" label="Label do switch" label-enabled="Ligado" label-disabled="Desligado" checked></brx-switch>
+            </div>
+            <div class="col-md mt-3 mt-md-0">
+              <brx-switch size="medium" label="Label do switch" label-enabled="Concordo" label-disabled="Discordo" checked></brx-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Densidades</h2>
+
+        <div>
+          <div class="row">
+            <div class="col-md">
+              <brx-switch size="small" label="Densidade Alta" checked></brx-switch>
+            </div>
+            <div class="col-md mt-3 mt-md-0">
+              <brx-switch size="medium" label="Densidade Média (Padrão)" checked></brx-switch>
+            </div>
+            <div class="col-md mt-3 mt-md-0">
+              <brx-switch size="large" label="Densidade Baixa" checked></brx-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
